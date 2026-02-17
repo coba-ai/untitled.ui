@@ -9,7 +9,7 @@
   <div class="flex items-start">
     <%= render Ui::Dropdown::Component.new do |dropdown| %>
       <% dropdown.with_trigger do %>
-        <%= render Ui::Button::Component.new(color: :secondary) { "More" } %>
+        <%= render(Ui::Button::Component.new(color: :secondary)) { "More" } %>
       <% end %>
       <% dropdown.with_item(label: "Edit") %>
       <% dropdown.with_item(label: "Duplicate") %>
@@ -21,7 +21,7 @@
 
 <%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Dropdown::Component.new do |dropdown|
   dropdown.with_trigger do
-    render Ui::Button::Component.new(color: :secondary) { "More" }
+    render(Ui::Button::Component.new(color: :secondary)) { "More" }
   end
   dropdown.with_item(label: "Edit")
   dropdown.with_item(label: "Duplicate")
@@ -31,7 +31,7 @@ end' %>
   <div class="flex items-start">
     <%= render Ui::Dropdown::Component.new do |dropdown| %>
       <% dropdown.with_trigger do %>
-        <%= render Ui::Button::Component.new(color: :secondary) { "More" } %>
+        <%= render(Ui::Button::Component.new(color: :secondary)) { "More" } %>
       <% end %>
       <% dropdown.with_item(label: "Edit", icon: edit_icon) %>
       <% dropdown.with_item(label: "Duplicate", icon: copy_icon) %>
@@ -47,7 +47,7 @@ end' %>
   <div class="flex items-start">
     <%= render Ui::Dropdown::Component.new do |dropdown| %>
       <% dropdown.with_trigger do %>
-        <%= render Ui::Button::Component.new(color: :secondary) { "More" } %>
+        <%= render(Ui::Button::Component.new(color: :secondary)) { "More" } %>
       <% end %>
       <% dropdown.with_item(label: "Edit") %>
       <% dropdown.with_item(label: "Duplicate") %>
@@ -62,7 +62,7 @@ end' %>
   <div class="flex items-start">
     <%= render Ui::Dropdown::Component.new do |dropdown| %>
       <% dropdown.with_trigger do %>
-        <%= render Ui::Button::Component.new(color: :secondary) { "More" } %>
+        <%= render(Ui::Button::Component.new(color: :secondary)) { "More" } %>
       <% end %>
       <% dropdown.with_item(label: "Edit", icon: edit_icon) %>
       <% dropdown.with_item(label: "Duplicate", icon: copy_icon) %>
@@ -82,7 +82,7 @@ dropdown.with_item(label: "Delete")' %>
   <div class="flex items-start">
     <%= render Ui::Dropdown::Component.new do |dropdown| %>
       <% dropdown.with_trigger do %>
-        <%= render Ui::Button::Component.new(color: :secondary) { "Navigate" } %>
+        <%= render(Ui::Button::Component.new(color: :secondary)) { "Navigate" } %>
       <% end %>
       <% dropdown.with_item(label: "Dashboard", href: "#") %>
       <% dropdown.with_item(label: "Settings", href: "#") %>

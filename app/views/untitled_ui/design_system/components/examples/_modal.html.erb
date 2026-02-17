@@ -1,7 +1,7 @@
 <%= render "untitled_ui/design_system/shared/example_section", title: "Basic Modal" do %>
   <%= render Ui::Modal::Component.new(id: "ds-modal-basic") do |modal| %>
     <% modal.with_trigger do %>
-      <%= render Ui::Button::Component.new { "Open Modal" } %>
+      <%= render(Ui::Button::Component.new) { "Open Modal" } %>
     <% end %>
     <% modal.with_header do %>
       <h3 class="text-lg font-semibold text-primary">Modal Title</h3>
@@ -10,8 +10,8 @@
     <p class="text-sm text-tertiary">This is the body content of the modal. You can put any content here including forms, text, or other components.</p>
     <% modal.with_footer do %>
       <div class="flex justify-end gap-3">
-        <%= render Ui::Button::Component.new(color: :secondary) { "Cancel" } %>
-        <%= render Ui::Button::Component.new { "Confirm" } %>
+        <%= render(Ui::Button::Component.new(color: :secondary)) { "Cancel" } %>
+        <%= render(Ui::Button::Component.new) { "Confirm" } %>
       </div>
     <% end %>
   <% end %>
@@ -19,22 +19,22 @@
 
 <%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Modal::Component.new(id: "my-modal") do |modal|
   modal.with_trigger do
-    render Ui::Button::Component.new { "Open Modal" }
+    render(Ui::Button::Component.new) { "Open Modal" }
   end
   modal.with_header do
     # <h3>Title</h3>
   end
   # <p>Body content here.</p>
   modal.with_footer do
-    render Ui::Button::Component.new(color: :secondary) { "Cancel" }
-    render Ui::Button::Component.new { "Confirm" }
+    render(Ui::Button::Component.new(color: :secondary)) { "Cancel" }
+    render(Ui::Button::Component.new) { "Confirm" }
   end
 end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Without Footer" do %>
   <%= render Ui::Modal::Component.new(id: "ds-modal-no-footer") do |modal| %>
     <% modal.with_trigger do %>
-      <%= render Ui::Button::Component.new(color: :secondary) { "Open (No Footer)" } %>
+      <%= render(Ui::Button::Component.new(color: :secondary)) { "Open (No Footer)" } %>
     <% end %>
     <% modal.with_header do %>
       <h3 class="text-lg font-semibold text-primary">Information</h3>
@@ -48,12 +48,12 @@ end' %>
 <%= render "untitled_ui/design_system/shared/example_section", title: "Without Header" do %>
   <%= render Ui::Modal::Component.new(id: "ds-modal-no-header") do |modal| %>
     <% modal.with_trigger do %>
-      <%= render Ui::Button::Component.new(color: :secondary) { "Open (No Header)" } %>
+      <%= render(Ui::Button::Component.new(color: :secondary)) { "Open (No Header)" } %>
     <% end %>
     <p class="text-sm text-tertiary">This modal has no header. Body content is rendered directly.</p>
     <% modal.with_footer do %>
       <div class="flex justify-end gap-3">
-        <%= render Ui::Button::Component.new(color: :secondary) { "Close" } %>
+        <%= render(Ui::Button::Component.new(color: :secondary)) { "Close" } %>
       </div>
     <% end %>
   <% end %>

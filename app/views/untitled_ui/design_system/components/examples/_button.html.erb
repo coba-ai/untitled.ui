@@ -7,52 +7,52 @@
 <%= render "untitled_ui/design_system/shared/example_section", title: "Color Variants" do %>
   <div class="flex flex-wrap items-center gap-3">
     <% %i[primary secondary tertiary link_gray link_color].each do |color| %>
-      <%= render Ui::Button::Component.new(color: color) { color.to_s.titleize } %>
+      <%= render(Ui::Button::Component.new(color: color)) { color.to_s.titleize } %>
     <% end %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Button::Component.new(color: :primary) { "Click me" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Button::Component.new(color: :primary)) { "Click me" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Destructive Variants" do %>
   <div class="flex flex-wrap items-center gap-3">
     <% %i[primary_destructive secondary_destructive tertiary_destructive link_destructive].each do |color| %>
-      <%= render Ui::Button::Component.new(color: color) { color.to_s.titleize } %>
+      <%= render(Ui::Button::Component.new(color: color)) { color.to_s.titleize } %>
     <% end %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Button::Component.new(color: :primary_destructive) { "Delete" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Button::Component.new(color: :primary_destructive)) { "Delete" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
   <div class="flex flex-wrap items-end gap-3">
     <% %i[sm md lg xl].each do |size| %>
-      <%= render Ui::Button::Component.new(size: size) { size.to_s.upcase } %>
+      <%= render(Ui::Button::Component.new(size: size)) { size.to_s.upcase } %>
     <% end %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Button::Component.new(size: :lg) { "Large" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Button::Component.new(size: :lg)) { "Large" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Leading Icon" do %>
   <div class="flex flex-wrap items-center gap-3">
     <% %i[sm md lg xl].each do |size| %>
-      <%= render Ui::Button::Component.new(size: size, icon_leading: plus_icon) { "Add Item" } %>
+      <%= render(Ui::Button::Component.new(size: size, icon_leading: plus_icon)) { "Add Item" } %>
     <% end %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Button::Component.new(icon_leading: plus_svg) { "Add Item" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Button::Component.new(icon_leading: plus_svg)) { "Add Item" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Trailing Icon" do %>
   <div class="flex flex-wrap items-center gap-3">
-    <%= render Ui::Button::Component.new(icon_trailing: arrow_icon) { "Continue" } %>
-    <%= render Ui::Button::Component.new(color: :secondary, icon_trailing: check_icon) { "Confirm" } %>
-    <%= render Ui::Button::Component.new(color: :link_color, icon_trailing: arrow_icon) { "Learn more" } %>
+    <%= render(Ui::Button::Component.new(icon_trailing: arrow_icon)) { "Continue" } %>
+    <%= render(Ui::Button::Component.new(color: :secondary, icon_trailing: check_icon)) { "Confirm" } %>
+    <%= render(Ui::Button::Component.new(color: :link_color, icon_trailing: arrow_icon)) { "Learn more" } %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Button::Component.new(icon_trailing: arrow_svg) { "Continue" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Button::Component.new(icon_trailing: arrow_svg)) { "Continue" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Icon Only" do %>
   <div class="flex flex-wrap items-center gap-3">
@@ -69,21 +69,21 @@ render Ui::Button::Component.new(icon_leading: plus_svg)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "States" do %>
   <div class="flex flex-wrap items-center gap-3">
-    <%= render Ui::Button::Component.new { "Default" } %>
-    <%= render Ui::Button::Component.new(disabled: true) { "Disabled" } %>
-    <%= render Ui::Button::Component.new(loading: true) { "Loading..." } %>
+    <%= render(Ui::Button::Component.new) { "Default" } %>
+    <%= render(Ui::Button::Component.new(disabled: true)) { "Disabled" } %>
+    <%= render(Ui::Button::Component.new(loading: true)) { "Loading..." } %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Button::Component.new(disabled: true) { "Disabled" }
-render Ui::Button::Component.new(loading: true) { "Loading..." }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Button::Component.new(disabled: true)) { "Disabled" }
+render(Ui::Button::Component.new(loading: true)) { "Loading..." }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "As Link" do %>
   <div class="flex flex-wrap items-center gap-3">
-    <%= render Ui::Button::Component.new(href: "#") { "Link Button" } %>
-    <%= render Ui::Button::Component.new(href: "#", color: :secondary) { "Secondary Link" } %>
-    <%= render Ui::Button::Component.new(href: "#", disabled: true) { "Disabled Link" } %>
+    <%= render(Ui::Button::Component.new(href: "#")) { "Link Button" } %>
+    <%= render(Ui::Button::Component.new(href: "#", color: :secondary)) { "Secondary Link" } %>
+    <%= render(Ui::Button::Component.new(href: "#", disabled: true)) { "Disabled Link" } %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Button::Component.new(href: "/path") { "Navigate" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Button::Component.new(href: "/path")) { "Navigate" }' %>

@@ -6,62 +6,62 @@
 <%= render "untitled_ui/design_system/shared/example_section", title: "All Colors (Pill)" do %>
   <div class="flex flex-wrap items-center gap-3">
     <% %i[gray brand error warning success blue indigo purple pink orange].each do |color| %>
-      <%= render Ui::Badge::Component.new(color: color) { color.to_s.capitalize } %>
+      <%= render(Ui::Badge::Component.new(color: color)) { color.to_s.capitalize } %>
     <% end %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(color: :brand) { "Brand" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Badge::Component.new(color: :brand)) { "Brand" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Types" do %>
   <div class="flex flex-wrap items-center gap-3">
-    <%= render Ui::Badge::Component.new(type: :pill_color, color: :brand) { "Pill Color" } %>
-    <%= render Ui::Badge::Component.new(type: :badge_color, color: :brand) { "Badge Color" } %>
-    <%= render Ui::Badge::Component.new(type: :badge_modern) { "Badge Modern" } %>
+    <%= render(Ui::Badge::Component.new(type: :pill_color, color: :brand)) { "Pill Color" } %>
+    <%= render(Ui::Badge::Component.new(type: :badge_color, color: :brand)) { "Badge Color" } %>
+    <%= render(Ui::Badge::Component.new(type: :badge_modern)) { "Badge Modern" } %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(type: :badge_color, color: :brand) { "Badge" }
-render Ui::Badge::Component.new(type: :badge_modern) { "Modern" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Badge::Component.new(type: :badge_color, color: :brand)) { "Badge" }
+render(Ui::Badge::Component.new(type: :badge_modern)) { "Modern" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
   <div class="flex flex-wrap items-end gap-3">
-    <%= render Ui::Badge::Component.new(size: :sm, color: :brand) { "Small" } %>
-    <%= render Ui::Badge::Component.new(size: :md, color: :brand) { "Medium" } %>
-    <%= render Ui::Badge::Component.new(size: :lg, color: :brand) { "Large" } %>
+    <%= render(Ui::Badge::Component.new(size: :sm, color: :brand)) { "Small" } %>
+    <%= render(Ui::Badge::Component.new(size: :md, color: :brand)) { "Medium" } %>
+    <%= render(Ui::Badge::Component.new(size: :lg, color: :brand)) { "Large" } %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(size: :lg, color: :brand) { "Large" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Badge::Component.new(size: :lg, color: :brand)) { "Large" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Dot" do %>
   <div class="flex flex-wrap items-center gap-3">
-    <%= render Ui::Badge::Component.new(color: :success, dot: true) { "Active" } %>
-    <%= render Ui::Badge::Component.new(color: :error, dot: true) { "Error" } %>
-    <%= render Ui::Badge::Component.new(color: :warning, dot: true) { "Warning" } %>
-    <%= render Ui::Badge::Component.new(color: :brand, dot: true, type: :badge_color) { "Badge Dot" } %>
+    <%= render(Ui::Badge::Component.new(color: :success, dot: true)) { "Active" } %>
+    <%= render(Ui::Badge::Component.new(color: :error, dot: true)) { "Error" } %>
+    <%= render(Ui::Badge::Component.new(color: :warning, dot: true)) { "Warning" } %>
+    <%= render(Ui::Badge::Component.new(color: :brand, dot: true, type: :badge_color)) { "Badge Dot" } %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(color: :success, dot: true) { "Active" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Badge::Component.new(color: :success, dot: true)) { "Active" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Dismissible" do %>
   <div class="flex flex-wrap items-center gap-3">
-    <%= render Ui::Badge::Component.new(color: :brand, dismissible: true) { "Dismiss me" } %>
-    <%= render Ui::Badge::Component.new(color: :error, dismissible: true) { "Remove" } %>
-    <%= render Ui::Badge::Component.new(color: :gray, dismissible: true, type: :badge_modern) { "Modern dismiss" } %>
+    <%= render(Ui::Badge::Component.new(color: :brand, dismissible: true)) { "Dismiss me" } %>
+    <%= render(Ui::Badge::Component.new(color: :error, dismissible: true)) { "Remove" } %>
+    <%= render(Ui::Badge::Component.new(color: :gray, dismissible: true, type: :badge_modern)) { "Modern dismiss" } %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(color: :brand, dismissible: true) { "Dismiss me" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Badge::Component.new(color: :brand, dismissible: true)) { "Dismiss me" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Icons" do %>
   <div class="flex flex-wrap items-center gap-3">
-    <%= render Ui::Badge::Component.new(color: :brand, icon_leading: star_icon) { "Featured" } %>
-    <%= render Ui::Badge::Component.new(color: :success, icon_trailing: arrow_icon) { "Continue" } %>
-    <%= render Ui::Badge::Component.new(color: :purple, icon_leading: star_icon, icon_trailing: arrow_icon) { "Both" } %>
+    <%= render(Ui::Badge::Component.new(color: :brand, icon_leading: star_icon)) { "Featured" } %>
+    <%= render(Ui::Badge::Component.new(color: :success, icon_trailing: arrow_icon)) { "Continue" } %>
+    <%= render(Ui::Badge::Component.new(color: :purple, icon_leading: star_icon, icon_trailing: arrow_icon)) { "Both" } %>
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(color: :brand, icon_leading: star_svg) { "Featured" }
-render Ui::Badge::Component.new(color: :success, icon_trailing: arrow_svg) { "Continue" }' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Badge::Component.new(color: :brand, icon_leading: star_svg)) { "Featured" }
+render(Ui::Badge::Component.new(color: :success, icon_trailing: arrow_svg)) { "Continue" }' %>

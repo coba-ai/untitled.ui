@@ -8,19 +8,19 @@
       <td class="px-6 py-4 text-sm font-medium text-primary">Jane Cooper</td>
       <td class="px-6 py-4 text-sm text-tertiary">jane@example.com</td>
       <td class="px-6 py-4 text-sm text-tertiary">Admin</td>
-      <td class="px-6 py-4"><%= render Ui::Badge::Component.new(color: :success, type: :pill_color) { "Active" } %></td>
+      <td class="px-6 py-4"><%= render(Ui::Badge::Component.new(color: :success, type: :pill_color)) { "Active" } %></td>
     </tr>
     <tr class="border-b border-secondary">
       <td class="px-6 py-4 text-sm font-medium text-primary">John Smith</td>
       <td class="px-6 py-4 text-sm text-tertiary">john@example.com</td>
       <td class="px-6 py-4 text-sm text-tertiary">Member</td>
-      <td class="px-6 py-4"><%= render Ui::Badge::Component.new(color: :warning, type: :pill_color) { "Pending" } %></td>
+      <td class="px-6 py-4"><%= render(Ui::Badge::Component.new(color: :warning, type: :pill_color)) { "Pending" } %></td>
     </tr>
     <tr>
       <td class="px-6 py-4 text-sm font-medium text-primary">Alice Brown</td>
       <td class="px-6 py-4 text-sm text-tertiary">alice@example.com</td>
       <td class="px-6 py-4 text-sm text-tertiary">Viewer</td>
-      <td class="px-6 py-4"><%= render Ui::Badge::Component.new(color: :gray, type: :pill_color) { "Inactive" } %></td>
+      <td class="px-6 py-4"><%= render(Ui::Badge::Component.new(color: :gray, type: :pill_color)) { "Inactive" } %></td>
     </tr>
   <% end %>
 <% end %>
@@ -42,13 +42,13 @@ end' %>
       <td class="px-6 py-4 text-sm font-medium text-primary">Jane Cooper</td>
       <td class="px-6 py-4 text-sm text-tertiary">jane@example.com</td>
       <td class="px-6 py-4 text-sm text-tertiary">Admin</td>
-      <td class="px-6 py-4"><%= render Ui::Badge::Component.new(color: :success, type: :pill_color) { "Active" } %></td>
+      <td class="px-6 py-4"><%= render(Ui::Badge::Component.new(color: :success, type: :pill_color)) { "Active" } %></td>
     </tr>
     <tr>
       <td class="px-6 py-4 text-sm font-medium text-primary">John Smith</td>
       <td class="px-6 py-4 text-sm text-tertiary">john@example.com</td>
       <td class="px-6 py-4 text-sm text-tertiary">Member</td>
-      <td class="px-6 py-4"><%= render Ui::Badge::Component.new(color: :warning, type: :pill_color) { "Pending" } %></td>
+      <td class="px-6 py-4"><%= render(Ui::Badge::Component.new(color: :warning, type: :pill_color)) { "Pending" } %></td>
     </tr>
   <% end %>
 <% end %>
@@ -60,7 +60,7 @@ end' %>
     <% table.with_header_content do %>
       <div class="flex items-center justify-between px-6 py-4">
         <h3 class="text-lg font-semibold text-primary">Team Members</h3>
-        <%= render Ui::Button::Component.new(size: :sm) { "Add Member" } %>
+        <%= render(Ui::Button::Component.new(size: :sm)) { "Add Member" } %>
       </div>
     <% end %>
     <% table.with_column(label: "Name") %>
@@ -81,7 +81,7 @@ end' %>
 
 <%= render "untitled_ui/design_system/shared/code_block", code: 'table.with_header_content do
   # Custom header HTML with title and actions
-  render Ui::Button::Component.new(size: :sm) { "Add Member" }
+  render(Ui::Button::Component.new(size: :sm)) { "Add Member" }
 end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Small Size" do %>
@@ -92,12 +92,12 @@ end' %>
     <tr class="border-b border-secondary">
       <td class="px-4 py-2 text-xs font-medium text-primary">Jane Cooper</td>
       <td class="px-4 py-2 text-xs text-tertiary">jane@example.com</td>
-      <td class="px-4 py-2"><%= render Ui::Badge::Component.new(size: :sm, color: :success, type: :pill_color) { "Active" } %></td>
+      <td class="px-4 py-2"><%= render(Ui::Badge::Component.new(size: :sm, color: :success, type: :pill_color)) { "Active" } %></td>
     </tr>
     <tr>
       <td class="px-4 py-2 text-xs font-medium text-primary">John Smith</td>
       <td class="px-4 py-2 text-xs text-tertiary">john@example.com</td>
-      <td class="px-4 py-2"><%= render Ui::Badge::Component.new(size: :sm, color: :warning, type: :pill_color) { "Pending" } %></td>
+      <td class="px-4 py-2"><%= render(Ui::Badge::Component.new(size: :sm, color: :warning, type: :pill_color)) { "Pending" } %></td>
     </tr>
   <% end %>
 <% end %>

@@ -6,30 +6,30 @@
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Default" do %>
   <%= render Ui::ButtonGroup::Component.new do %>
-    <%= render Ui::Button::Component.new(color: :secondary) { "Day" } %>
-    <%= render Ui::Button::Component.new(color: :secondary) { "Week" } %>
-    <%= render Ui::Button::Component.new(color: :secondary) { "Month" } %>
-    <%= render Ui::Button::Component.new(color: :secondary) { "Year" } %>
+    <%= render(Ui::Button::Component.new(color: :secondary)) { "Day" } %>
+    <%= render(Ui::Button::Component.new(color: :secondary)) { "Week" } %>
+    <%= render(Ui::Button::Component.new(color: :secondary)) { "Month" } %>
+    <%= render(Ui::Button::Component.new(color: :secondary)) { "Year" } %>
   <% end %>
 <% end %>
 
 <%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ButtonGroup::Component.new do
-  render Ui::Button::Component.new(color: :secondary) { "Day" }
-  render Ui::Button::Component.new(color: :secondary) { "Week" }
-  render Ui::Button::Component.new(color: :secondary) { "Month" }
+  render(Ui::Button::Component.new(color: :secondary)) { "Day" }
+  render(Ui::Button::Component.new(color: :secondary)) { "Week" }
+  render(Ui::Button::Component.new(color: :secondary)) { "Month" }
 end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Different Colors" do %>
   <%= render Ui::ButtonGroup::Component.new do %>
-    <%= render Ui::Button::Component.new { "Primary" } %>
-    <%= render Ui::Button::Component.new(color: :secondary) { "Secondary" } %>
-    <%= render Ui::Button::Component.new(color: :tertiary) { "Tertiary" } %>
+    <%= render(Ui::Button::Component.new) { "Primary" } %>
+    <%= render(Ui::Button::Component.new(color: :secondary)) { "Secondary" } %>
+    <%= render(Ui::Button::Component.new(color: :tertiary)) { "Tertiary" } %>
   <% end %>
 <% end %>
 
 <%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ButtonGroup::Component.new do
-  render Ui::Button::Component.new { "Primary" }
-  render Ui::Button::Component.new(color: :secondary) { "Secondary" }
+  render(Ui::Button::Component.new) { "Primary" }
+  render(Ui::Button::Component.new(color: :secondary)) { "Secondary" }
 end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Icon Buttons" do %>

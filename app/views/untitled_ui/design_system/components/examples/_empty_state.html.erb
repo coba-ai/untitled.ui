@@ -11,7 +11,7 @@
       <%= folder_icon.html_safe %>
     <% end %>
     <% es.with_actions do %>
-      <%= render Ui::Button::Component.new { "Create Project" } %>
+      <%= render(Ui::Button::Component.new) { "Create Project" } %>
     <% end %>
   <% end %>
 <% end %>
@@ -22,7 +22,7 @@
 ) do |es|
   es.with_icon { "<svg ...>...</svg>" }
   es.with_actions do
-    render Ui::Button::Component.new { "Create Project" }
+    render(Ui::Button::Component.new) { "Create Project" }
   end
 end' %>
 
@@ -33,7 +33,7 @@ end' %>
         <span class="mb-2 block text-xs font-medium text-tertiary"><%= size.to_s.upcase %></span>
         <%= render Ui::EmptyState::Component.new(size: size, title: "No items", description: "Nothing to show here.") do |es| %>
           <% es.with_actions do %>
-            <%= render Ui::Button::Component.new(size: :sm) { "Add Item" } %>
+            <%= render(Ui::Button::Component.new(size: :sm)) { "Add Item" } %>
           <% end %>
         <% end %>
       </div>
@@ -43,7 +43,7 @@ end' %>
 
 <%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::EmptyState::Component.new(size: :sm, title: "No items", description: "Nothing here.") do |es|
   es.with_actions do
-    render Ui::Button::Component.new(size: :sm) { "Add Item" }
+    render(Ui::Button::Component.new(size: :sm)) { "Add Item" }
   end
 end' %>
 
@@ -68,7 +68,7 @@ end' %>
     description: "You're all caught up! Check back later for new updates."
   ) do |es| %>
     <% es.with_actions do %>
-      <%= render Ui::Button::Component.new(color: :secondary) { "Refresh" } %>
+      <%= render(Ui::Button::Component.new(color: :secondary)) { "Refresh" } %>
     <% end %>
   <% end %>
 <% end %>

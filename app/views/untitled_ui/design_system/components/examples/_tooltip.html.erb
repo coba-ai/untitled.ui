@@ -3,7 +3,7 @@
     <% %i[top bottom left right].each do |placement| %>
       <%= render Ui::Tooltip::Component.new(title: "Tooltip #{placement}", placement: placement) do |tooltip| %>
         <% tooltip.with_trigger do %>
-          <%= render Ui::Button::Component.new(color: :secondary) { placement.to_s.capitalize } %>
+          <%= render(Ui::Button::Component.new(color: :secondary)) { placement.to_s.capitalize } %>
         <% end %>
       <% end %>
     <% end %>
@@ -12,7 +12,7 @@
 
 <%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Tooltip::Component.new(title: "Tooltip top", placement: :top) do |tooltip|
   tooltip.with_trigger do
-    render Ui::Button::Component.new(color: :secondary) { "Hover me" }
+    render(Ui::Button::Component.new(color: :secondary)) { "Hover me" }
   end
 end' %>
 
@@ -20,7 +20,7 @@ end' %>
   <div class="flex items-center justify-center py-6">
     <%= render Ui::Tooltip::Component.new(title: "Help", description: "This is a longer description that provides more context about the feature.") do |tooltip| %>
       <% tooltip.with_trigger do %>
-        <%= render Ui::Button::Component.new(color: :secondary) { "Hover me" } %>
+        <%= render(Ui::Button::Component.new(color: :secondary)) { "Hover me" } %>
       <% end %>
     <% end %>
   </div>
@@ -28,6 +28,6 @@ end' %>
 
 <%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Tooltip::Component.new(title: "Help", description: "More context about the feature.") do |tooltip|
   tooltip.with_trigger do
-    render Ui::Button::Component.new(color: :secondary) { "Hover me" }
+    render(Ui::Button::Component.new(color: :secondary)) { "Hover me" }
   end
 end' %>
