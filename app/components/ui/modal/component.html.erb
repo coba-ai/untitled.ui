@@ -1,0 +1,31 @@
+<% if trigger.present? %>
+  <div data-action="click->modal#open" commandfor="<%= modal_id %>">
+    <%= trigger %>
+  </div>
+<% end %>
+
+<dialog id="<%= modal_id %>"
+        class="<%= overlay_classes %>"
+        data-controller="modal"
+        data-modal-target="dialog">
+  <div class="<%= dialog_classes %>">
+    <% if header.present? %>
+      <div class="flex items-start justify-between border-b border-secondary px-6 py-5">
+        <div class="flex-1"><%= header %></div>
+        <%= render Ui::CloseButton::Component.new(
+          label: "Close dialog"
+        ) %>
+      </div>
+    <% end %>
+
+    <div class="px-6 py-5">
+      <%= content %>
+    </div>
+
+    <% if footer.present? %>
+      <div class="flex items-center justify-end gap-3 border-t border-secondary px-6 py-4">
+        <%= footer %>
+      </div>
+    <% end %>
+  </div>
+</dialog>

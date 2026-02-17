@@ -1,0 +1,24 @@
+<div class="<%= cx('mx-auto flex w-full max-w-lg flex-col items-center justify-center', extra_classes) %>">
+  <% if icon.present? %>
+    <header class="<%= cx('relative', header_margin) %>">
+      <%= icon %>
+    </header>
+  <% end %>
+
+  <main class="<%= cx('z-10 flex w-full max-w-88 flex-col items-center justify-center', content_gap) %>">
+    <% if title.present? %>
+      <h1 class="<%= title_classes %>"><%= title %></h1>
+    <% end %>
+    <% if description.present? %>
+      <p class="<%= description_classes %>"><%= description %></p>
+    <% end %>
+  </main>
+
+  <% if actions.present? %>
+    <footer class="z-10 flex gap-3">
+      <%= actions %>
+    </footer>
+  <% end %>
+
+  <%= content %>
+</div>

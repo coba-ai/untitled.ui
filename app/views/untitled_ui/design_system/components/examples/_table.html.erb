@@ -1,0 +1,72 @@
+<%# Props %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Props</h2>
+  </div>
+  <table class="w-full text-sm">
+    <thead class="bg-secondary">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Param</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Type</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Default</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Description</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-secondary">
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">size</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">:md</td><td class="px-6 py-3 text-tertiary">:sm, :md</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<%# Column Params %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Column Params</h2>
+  </div>
+  <table class="w-full text-sm">
+    <thead class="bg-secondary">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Param</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Type</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Description</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-secondary">
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">label</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 text-tertiary">Column header text (required)</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">sortable</td><td class="px-6 py-3 text-tertiary">Boolean</td><td class="px-6 py-3 text-tertiary">Shows sort indicator</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<%# Live Example %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Live Preview</h2>
+  </div>
+  <div class="p-6">
+    <%= render Ui::Table::Component.new do |table| %>
+      <% table.with_column(label: "Name", sortable: true) %>
+      <% table.with_column(label: "Email") %>
+      <% table.with_column(label: "Role") %>
+      <% table.with_column(label: "Status") %>
+      <tr class="border-b border-secondary">
+        <td class="px-6 py-4 text-sm font-medium text-primary">Jane Cooper</td>
+        <td class="px-6 py-4 text-sm text-tertiary">jane@example.com</td>
+        <td class="px-6 py-4 text-sm text-tertiary">Admin</td>
+        <td class="px-6 py-4"><%= render Ui::Badge::Component.new(color: :success, type: :pill_color) do %>Active<% end %></td>
+      </tr>
+      <tr class="border-b border-secondary">
+        <td class="px-6 py-4 text-sm font-medium text-primary">John Smith</td>
+        <td class="px-6 py-4 text-sm text-tertiary">john@example.com</td>
+        <td class="px-6 py-4 text-sm text-tertiary">Member</td>
+        <td class="px-6 py-4"><%= render Ui::Badge::Component.new(color: :warning, type: :pill_color) do %>Pending<% end %></td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 text-sm font-medium text-primary">Alice Brown</td>
+        <td class="px-6 py-4 text-sm text-tertiary">alice@example.com</td>
+        <td class="px-6 py-4 text-sm text-tertiary">Viewer</td>
+        <td class="px-6 py-4"><%= render Ui::Badge::Component.new(color: :gray, type: :pill_color) do %>Inactive<% end %></td>
+      </tr>
+    <% end %>
+  </div>
+</div>

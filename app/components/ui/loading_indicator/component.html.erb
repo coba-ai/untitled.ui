@@ -1,0 +1,16 @@
+<div class="<%= cx('flex flex-col items-center justify-center', SIZE_STYLES.dig(size, :root)) %>">
+  <% if type == :line_spinner %>
+    <svg class="<%= spinner_classes %>" viewBox="0 0 32 32" fill="none">
+      <circle class="stroke-fg-brand-primary" cx="16" cy="16" r="14" fill="none" stroke-width="4" stroke-dashoffset="40" stroke-dasharray="100" stroke-linecap="round"/>
+    </svg>
+  <% else %>
+    <svg class="<%= spinner_classes %>" viewBox="0 0 32 32" fill="none">
+      <circle class="text-bg-tertiary" cx="16" cy="16" r="14" stroke="currentColor" stroke-width="4"/>
+      <circle class="stroke-fg-brand-primary" cx="16" cy="16" r="14" fill="none" stroke-width="4" stroke-dashoffset="75" stroke-dasharray="100" stroke-linecap="round"/>
+    </svg>
+  <% end %>
+
+  <% if label.present? %>
+    <span class="<%= cx('text-secondary', SIZE_STYLES.dig(size, :label)) %>"><%= label %></span>
+  <% end %>
+</div>

@@ -1,0 +1,41 @@
+<div class="relative inline-block" data-controller="dropdown">
+  <div data-action="click->dropdown#toggle" data-dropdown-target="trigger">
+    <% if trigger.present? %>
+      <%= trigger %>
+    <% else %>
+      <button type="button" class="cursor-pointer rounded-md text-fg-quaternary outline-focus-ring transition duration-100 ease-linear hover:text-fg-quaternary_hover" aria-label="Open menu">
+        <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"/>
+        </svg>
+      </button>
+    <% end %>
+  </div>
+
+  <div class="<%= cx(popover_classes, 'absolute right-0 z-50 mt-1 hidden') %>"
+       data-dropdown-target="menu"
+       role="menu">
+    <div class="h-min overflow-y-auto py-1 outline-hidden select-none">
+      <% items.each do |item| %>
+        <div class="<%= item.item_classes %>" role="menuitem">
+          <% if item.href.present? && !item.disabled %>
+            <a href="<%= item.href %>" class="<%= item.inner_classes %>">
+          <% else %>
+            <div class="<%= item.inner_classes %>">
+          <% end %>
+            <% if item.icon.present? %>
+              <span class="<%= item.icon_classes %>"><%= item.icon.html_safe %></span>
+            <% end %>
+            <span class="<%= item.label_classes %>"><%= item.label %></span>
+            <% if item.addon.present? %>
+              <span class="ml-3 shrink-0 rounded px-1 py-px text-xs font-medium ring-1 ring-secondary ring-inset text-quaternary"><%= item.addon %></span>
+            <% end %>
+          <% if item.href.present? && !item.disabled %>
+            </a>
+          <% else %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

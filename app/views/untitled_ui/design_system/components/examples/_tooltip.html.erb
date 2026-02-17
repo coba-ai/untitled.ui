@@ -1,0 +1,49 @@
+<%# Props %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Props</h2>
+  </div>
+  <table class="w-full text-sm">
+    <thead class="bg-secondary">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Param</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Type</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Default</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Description</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-secondary">
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">title</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">required</td><td class="px-6 py-3 text-tertiary">Tooltip title</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">description</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Extended description</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">placement</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">:top</td><td class="px-6 py-3 text-tertiary">:top, :bottom, :left, :right</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Placements</h2>
+  </div>
+  <div class="flex flex-wrap items-center justify-center gap-6 p-12">
+    <% %i[top bottom left right].each do |placement| %>
+      <%= render Ui::Tooltip::Component.new(title: "Tooltip #{placement}", placement: placement) do |tooltip| %>
+        <% tooltip.with_trigger do %>
+          <%= render Ui::Button::Component.new(color: :secondary) do %><%= placement.to_s.capitalize %><% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">With Description</h2>
+  </div>
+  <div class="flex items-center justify-center p-12">
+    <%= render Ui::Tooltip::Component.new(title: "Help", description: "This is a longer description that provides more context about the feature.") do |tooltip| %>
+      <% tooltip.with_trigger do %>
+        <%= render Ui::Button::Component.new(color: :secondary) do %>Hover me<% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

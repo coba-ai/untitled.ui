@@ -1,0 +1,22 @@
+<%= content_tag(root_tag, **root_attrs) do %>
+  <% if has_leading_icon? %>
+    <span class="<%= ICON_CLASSES %>" data-icon="leading"><%= icon_leading_content %></span>
+  <% end %>
+
+  <% if loading %>
+    <svg fill="none" data-icon="loading" viewBox="0 0 20 20" class="<%= cx(ICON_CLASSES, 'animate-spin', !content? && 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2') %>">
+      <circle class="stroke-current opacity-30" cx="10" cy="10" r="8" fill="none" stroke-width="2" />
+      <circle class="origin-center animate-spin stroke-current" cx="10" cy="10" r="8" fill="none" stroke-width="2" stroke-dasharray="12.5 50" stroke-linecap="round" />
+    </svg>
+  <% end %>
+
+  <% if content? %>
+    <span data-text class="<%= cx('transition-inherit-all', !link_type? && 'px-0.5') %>">
+      <%= content %>
+    </span>
+  <% end %>
+
+  <% if has_trailing_icon? %>
+    <span class="<%= ICON_CLASSES %>" data-icon="trailing"><%= icon_trailing_content %></span>
+  <% end %>
+<% end %>

@@ -1,0 +1,85 @@
+/* UntitledUi Brand Colors
+ *
+ * Customize these values to match your brand.
+ * These override the default brand scale in the Untitled UI theme.
+ * Import this file in your application.css after the untitled_ui imports.
+ */
+
+@theme {
+  /* Primary Colors - Customize to your brand */
+  --color-primary-50: #F3F8F6;
+  --color-primary-100: #CFF3E8;
+  --color-primary-200: #9EE7D1;
+  --color-primary-300: #6EDAB9;
+  --color-primary-400: #3DCEA2;
+  --color-primary-500: #0DC28B;
+  --color-primary-600: #03A372;
+  --color-primary-700: #028A5E;
+  --color-primary-800: #02734D;
+  --color-primary-900: #015C3E;
+  --color-primary: #0DC28B;
+  --color-primary-light: #3DCEA2;
+  --color-primary-dark: #03A372;
+
+  /* Secondary Green Colors (Lime) */
+  --color-secondary-green-50: #F9FCF7;
+  --color-secondary-green-100: #F3F8EE;
+  --color-secondary-green-200: #EDF5E6;
+  --color-secondary-green-300: #E7F1DD;
+  --color-secondary-green-400: #E1EED5;
+  --color-secondary-green-500: #D2F0B7;
+  --color-secondary-green-600: #BBDE9B;
+  --color-secondary-green-700: #96C472;
+  --color-secondary-green-800: #72A84E;
+  --color-secondary-green-900: #4F8D2F;
+
+  /* Secondary Blue Colors */
+  --color-secondary-blue-50: #F3F7FB;
+  --color-secondary-blue-100: #E8EFF7;
+  --color-secondary-blue-200: #DCE6F3;
+  --color-secondary-blue-300: #D1DEEF;
+  --color-secondary-blue-400: #C5D6EB;
+  --color-secondary-blue-500: #A1B7D1;
+  --color-secondary-blue-600: #7D9AB7;
+  --color-secondary-blue-700: #5A7D9D;
+  --color-secondary-blue-800: #3A5169;
+  --color-secondary-blue-900: #1A2535;
+
+  /* Secondary Yellow Colors */
+  --color-secondary-yellow-50: #FFFCF7;
+  --color-secondary-yellow-100: #FFF9F0;
+  --color-secondary-yellow-200: #FFF6E8;
+  --color-secondary-yellow-300: #FFF3E1;
+  --color-secondary-yellow-400: #FFF1DC;
+  --color-secondary-yellow-500: #FCE7C7;
+  --color-secondary-yellow-600: #E3B85E;
+  --color-secondary-yellow-700: #C99A3B;
+  --color-secondary-yellow-800: #A67D1F;
+  --color-secondary-yellow-900: #7A5A0A;
+
+  /* Neutral Colors */
+  --color-neutral-50: #F9FAFA;
+  --color-neutral-100: #F3F8F6;
+  --color-neutral-200: #F2F5F7;
+  --color-neutral-300: #D1D5DB;
+  --color-neutral-400: #9CA3AF;
+  --color-neutral-500: #6B7280;
+  --color-neutral-600: #4B5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1F2937;
+  --color-neutral-900: #000000;
+
+  /* Dark Mode Colors — neutral darks, green accent */
+  --color-dark-background: #09090B;
+  --color-dark-surface: #18181B;
+  --color-dark-surface-raised: #27272A;
+  --color-dark-border: #3F3F46;
+  --color-dark-border-subtle: #27272A;
+  --color-dark-foreground: #FAFAFA;
+  --color-dark-muted: #A1A1AA;
+  --color-dark-accent: #3DCEA2;
+  --color-dark-accent-hover: #6EDAB9;
+  --color-dark-primary: #0DC28B;
+  --color-dark-primary-light: #3DCEA2;
+  --color-dark-secondary: #111113;
+}

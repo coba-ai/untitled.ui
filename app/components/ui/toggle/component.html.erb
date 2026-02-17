@@ -1,0 +1,26 @@
+<label class="<%= cx('flex w-max items-start', disabled && 'cursor-not-allowed', size == :sm ? 'gap-2' : 'gap-3', extra_classes) %>"
+       data-controller="toggle">
+  <input type="hidden" name="<%= name %>" value="0" <% if disabled %>disabled<% end %>>
+  <input type="checkbox"
+         class="sr-only peer"
+         <% if name.present? %>name="<%= name %>" value="1"<% end %>
+         <% if checked %>checked<% end %>
+         <% if disabled %>disabled<% end %>
+         data-toggle-target="input"
+         data-action="change->toggle#toggle">
+
+  <div class="<%= track_classes %>" data-toggle-target="track">
+    <div class="<%= thumb_classes %>" data-toggle-target="thumb"></div>
+  </div>
+
+  <% if label.present? || hint.present? %>
+    <div class="<%= cx('flex flex-col', size == :md && 'gap-0.5') %>">
+      <% if label.present? %>
+        <p class="<%= cx('text-secondary select-none', size == :sm ? 'text-sm font-medium' : 'text-md font-medium') %>"><%= label %></p>
+      <% end %>
+      <% if hint.present? %>
+        <span class="<%= cx('text-tertiary', size == :sm ? 'text-sm' : 'text-md') %>"><%= hint %></span>
+      <% end %>
+    </div>
+  <% end %>
+</label>

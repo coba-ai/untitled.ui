@@ -1,0 +1,19 @@
+<% if label_position == :right %>
+  <div class="flex items-center gap-3">
+    <div class="<%= bar_classes %>" role="progressbar" aria-valuenow="<%= value %>" aria-valuemin="<%= min %>" aria-valuemax="<%= max %>">
+      <div class="<%= fill_classes %>" style="<%= fill_style %>"></div>
+    </div>
+    <span class="shrink-0 text-sm font-medium text-secondary tabular-nums"><%= formatted_value %></span>
+  </div>
+<% elsif label_position == :bottom %>
+  <div class="flex flex-col items-end gap-2">
+    <div class="<%= bar_classes %>" role="progressbar" aria-valuenow="<%= value %>" aria-valuemin="<%= min %>" aria-valuemax="<%= max %>">
+      <div class="<%= fill_classes %>" style="<%= fill_style %>"></div>
+    </div>
+    <span class="text-sm font-medium text-secondary tabular-nums"><%= formatted_value %></span>
+  </div>
+<% else %>
+  <div class="<%= bar_classes %>" role="progressbar" aria-valuenow="<%= value %>" aria-valuemin="<%= min %>" aria-valuemax="<%= max %>">
+    <div class="<%= fill_classes %>" style="<%= fill_style %>"></div>
+  </div>
+<% end %>

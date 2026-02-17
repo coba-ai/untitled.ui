@@ -1,0 +1,25 @@
+<span class="<%= root_classes %>">
+  <% if icon_leading.present? %>
+    <span class="<%= cx(addon_classes, 'size-3 stroke-3') %>"><%= icon_leading.html_safe %></span>
+  <% end %>
+
+  <% if dot %>
+    <svg class="<%= cx(addon_classes, 'size-1.5') %>" viewBox="0 0 6 6" aria-hidden="true">
+      <circle cx="3" cy="3" r="3" fill="currentColor"/>
+    </svg>
+  <% end %>
+
+  <%= content %>
+
+  <% if icon_trailing.present? %>
+    <span class="<%= cx(addon_classes, 'size-3 stroke-3') %>"><%= icon_trailing.html_safe %></span>
+  <% end %>
+
+  <% if dismissible %>
+    <button type="button" class="<%= cx('flex cursor-pointer items-center justify-center p-0.5 outline-focus-ring transition duration-100 ease-linear focus-visible:outline-2', addon_classes, type == :pill_color ? 'rounded-full' : 'rounded-[3px]') %>">
+      <svg class="size-3 stroke-[3px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  <% end %>
+</span>

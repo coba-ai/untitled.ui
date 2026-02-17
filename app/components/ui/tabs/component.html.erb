@@ -1,0 +1,29 @@
+<div data-controller="tabs" class="flex w-full flex-col">
+  <div class="<%= list_classes %>" role="tablist">
+    <% tabs.each do |tab| %>
+      <button type="button"
+              role="tab"
+              id="tab-<%= tab.id %>"
+              aria-selected="<%= tab.active %>"
+              aria-controls="panel-<%= tab.id %>"
+              class="<%= tab.tab_classes %>"
+              data-tabs-target="tab"
+              data-action="click->tabs#select">
+        <%= tab.label %>
+        <% if tab.badge.present? %>
+          <%= render Ui::Badge::Component.new(size: :sm, type: :pill_color, color: tab.active ? :brand : :gray) { tab.badge } %>
+        <% end %>
+      </button>
+    <% end %>
+  </div>
+
+  <% panels.each_with_index do |panel, i| %>
+    <div role="tabpanel"
+         id="panel-<%= tabs[i]&.id %>"
+         aria-labelledby="tab-<%= tabs[i]&.id %>"
+         class="<%= cx('outline-focus-ring focus-visible:outline-2 focus-visible:outline-offset-2', !tabs[i]&.active && 'hidden') %>"
+         data-tabs-target="panel">
+      <%= panel %>
+    </div>
+  <% end %>
+</div>

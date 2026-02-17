@@ -1,0 +1,37 @@
+<%# Props Table %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Props</h2>
+  </div>
+  <table class="w-full text-sm">
+    <thead class="bg-secondary">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Param</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Type</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Default</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Description</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-secondary">
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">size</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">:sm</td><td class="px-6 py-3 text-tertiary">:sm, :md</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">label</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Label text</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">hint</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Help text</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">checked</td><td class="px-6 py-3 text-tertiary">Boolean</td><td class="px-6 py-3 font-mono text-xs">false</td><td class="px-6 py-3 text-tertiary">Selected state</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">disabled</td><td class="px-6 py-3 text-tertiary">Boolean</td><td class="px-6 py-3 font-mono text-xs">false</td><td class="px-6 py-3 text-tertiary">Disables the radio</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">name</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Input name for grouping</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<%# Examples %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Radio Group</h2>
+  </div>
+  <div class="space-y-3 p-6">
+    <%= render Ui::RadioButton::Component.new(name: "plan", label: "Basic", hint: "Free forever", checked: true) %>
+    <%= render Ui::RadioButton::Component.new(name: "plan", label: "Pro", hint: "$9/month") %>
+    <%= render Ui::RadioButton::Component.new(name: "plan", label: "Enterprise", hint: "Custom pricing") %>
+    <%= render Ui::RadioButton::Component.new(name: "plan", label: "Disabled", disabled: true) %>
+  </div>
+</div>

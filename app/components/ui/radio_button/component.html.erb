@@ -1,0 +1,23 @@
+<label class="<%= cx('flex items-start', disabled && 'cursor-not-allowed', SIZE_STYLES.dig(size, :gap), extra_classes) %>">
+  <input type="radio"
+         class="sr-only peer"
+         <% if name.present? %>name="<%= name %>"<% end %>
+         <% if value.present? %>value="<%= value %>"<% end %>
+         <% if checked %>checked<% end %>
+         <% if disabled %>disabled<% end %>>
+
+  <div class="<%= radio_classes %>">
+    <div class="<%= dot_classes %>"></div>
+  </div>
+
+  <% if label.present? || hint.present? %>
+    <div class="inline-flex flex-col">
+      <% if label.present? %>
+        <p class="<%= cx('text-secondary select-none', SIZE_STYLES.dig(size, :label)) %>"><%= label %></p>
+      <% end %>
+      <% if hint.present? %>
+        <span class="<%= cx('text-tertiary', SIZE_STYLES.dig(size, :hint)) %>"><%= hint %></span>
+      <% end %>
+    </div>
+  <% end %>
+</label>

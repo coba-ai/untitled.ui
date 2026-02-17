@@ -1,0 +1,296 @@
+<%# Primary Colors %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Primary Colors</h2>
+    <p class="mt-1 text-sm text-tertiary">The four foundation colors of the design system.</p>
+  </div>
+  <div class="grid grid-cols-2 gap-4 p-6 lg:grid-cols-4">
+    <div>
+      <div class="h-24 rounded-lg" style="background-color: #0DC28B;"></div>
+      <p class="mt-2 text-sm font-semibold text-primary">#0DC28B</p>
+      <p class="text-xs text-tertiary">Primary Green</p>
+    </div>
+    <div>
+      <div class="h-24 rounded-lg" style="background-color: #E1EED5;"></div>
+      <p class="mt-2 text-sm font-semibold text-primary">#E1EED5</p>
+      <p class="text-xs text-tertiary">Secondary Green</p>
+    </div>
+    <div>
+      <div class="h-24 rounded-lg" style="background-color: #C5D6EB;"></div>
+      <p class="mt-2 text-sm font-semibold text-primary">#C5D6EB</p>
+      <p class="text-xs text-tertiary">Secondary Blue</p>
+    </div>
+    <div>
+      <div class="h-24 rounded-lg" style="background-color: #FFF1DC;"></div>
+      <p class="mt-2 text-sm font-semibold text-primary">#FFF1DC</p>
+      <p class="text-xs text-tertiary">Secondary Yellow</p>
+    </div>
+  </div>
+</div>
+
+<%# Primary Green Scale %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Primary Green Scale</h2>
+    <p class="mt-1 text-sm text-tertiary">Main brand color scale. Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">primary-*</code> or <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">brand-*</code> tokens.</p>
+  </div>
+  <div class="grid grid-cols-5 gap-0 lg:grid-cols-10">
+    <% [
+      { shade: "50", hex: "#F3F8F6", text: "dark" },
+      { shade: "100", hex: "#CFF3E8", text: "dark" },
+      { shade: "200", hex: "#9EE7D1", text: "dark" },
+      { shade: "300", hex: "#6EDAB9", text: "dark" },
+      { shade: "400", hex: "#3DCEA2", text: "dark" },
+      { shade: "500", hex: "#0DC28B", text: "light" },
+      { shade: "600", hex: "#03A372", text: "light" },
+      { shade: "700", hex: "#028A5E", text: "light" },
+      { shade: "800", hex: "#02734D", text: "light" },
+      { shade: "900", hex: "#015C3E", text: "light" }
+    ].each do |c| %>
+      <div class="flex flex-col items-center p-3" style="background-color: <%= c[:hex] %>;">
+        <span class="text-xs font-semibold <%= c[:text] == 'light' ? 'text-white' : 'text-gray-900' %>"><%= c[:shade] %></span>
+        <span class="mt-1 text-[10px] font-mono <%= c[:text] == 'light' ? 'text-white/80' : 'text-gray-600' %>"><%= c[:hex] %></span>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%# Secondary Green Scale %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Secondary Green (Lime) Scale</h2>
+    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">secondary-green-*</code> tokens.</p>
+  </div>
+  <div class="grid grid-cols-5 gap-0 lg:grid-cols-10">
+    <% [
+      { shade: "50", hex: "#F9FCF7", text: "dark" },
+      { shade: "100", hex: "#F3F8EE", text: "dark" },
+      { shade: "200", hex: "#EDF5E6", text: "dark" },
+      { shade: "300", hex: "#E7F1DD", text: "dark" },
+      { shade: "400", hex: "#E1EED5", text: "dark" },
+      { shade: "500", hex: "#D2F0B7", text: "dark" },
+      { shade: "600", hex: "#BBDE9B", text: "dark" },
+      { shade: "700", hex: "#96C472", text: "dark" },
+      { shade: "800", hex: "#72A84E", text: "light" },
+      { shade: "900", hex: "#4F8D2F", text: "light" }
+    ].each do |c| %>
+      <div class="flex flex-col items-center p-3" style="background-color: <%= c[:hex] %>;">
+        <span class="text-xs font-semibold <%= c[:text] == 'light' ? 'text-white' : 'text-gray-900' %>"><%= c[:shade] %></span>
+        <span class="mt-1 text-[10px] font-mono <%= c[:text] == 'light' ? 'text-white/80' : 'text-gray-600' %>"><%= c[:hex] %></span>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%# Secondary Blue Scale %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Secondary Blue Scale</h2>
+    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">secondary-blue-*</code> tokens.</p>
+  </div>
+  <div class="grid grid-cols-5 gap-0 lg:grid-cols-10">
+    <% [
+      { shade: "50", hex: "#F3F7FB", text: "dark" },
+      { shade: "100", hex: "#E8EFF7", text: "dark" },
+      { shade: "200", hex: "#DCE6F3", text: "dark" },
+      { shade: "300", hex: "#D1DEEF", text: "dark" },
+      { shade: "400", hex: "#C5D6EB", text: "dark" },
+      { shade: "500", hex: "#A1B7D1", text: "dark" },
+      { shade: "600", hex: "#7D9AB7", text: "dark" },
+      { shade: "700", hex: "#5A7D9D", text: "light" },
+      { shade: "800", hex: "#3A5169", text: "light" },
+      { shade: "900", hex: "#1A2535", text: "light" }
+    ].each do |c| %>
+      <div class="flex flex-col items-center p-3" style="background-color: <%= c[:hex] %>;">
+        <span class="text-xs font-semibold <%= c[:text] == 'light' ? 'text-white' : 'text-gray-900' %>"><%= c[:shade] %></span>
+        <span class="mt-1 text-[10px] font-mono <%= c[:text] == 'light' ? 'text-white/80' : 'text-gray-600' %>"><%= c[:hex] %></span>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%# Secondary Yellow Scale %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Secondary Yellow Scale</h2>
+    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">secondary-yellow-*</code> tokens.</p>
+  </div>
+  <div class="grid grid-cols-5 gap-0 lg:grid-cols-10">
+    <% [
+      { shade: "50", hex: "#FFFCF7", text: "dark" },
+      { shade: "100", hex: "#FFF9F0", text: "dark" },
+      { shade: "200", hex: "#FFF6E8", text: "dark" },
+      { shade: "300", hex: "#FFF3E1", text: "dark" },
+      { shade: "400", hex: "#FFF1DC", text: "dark" },
+      { shade: "500", hex: "#FCE7C7", text: "dark" },
+      { shade: "600", hex: "#E3B85E", text: "dark" },
+      { shade: "700", hex: "#C99A3B", text: "light" },
+      { shade: "800", hex: "#A67D1F", text: "light" },
+      { shade: "900", hex: "#7A5A0A", text: "light" }
+    ].each do |c| %>
+      <div class="flex flex-col items-center p-3" style="background-color: <%= c[:hex] %>;">
+        <span class="text-xs font-semibold <%= c[:text] == 'light' ? 'text-white' : 'text-gray-900' %>"><%= c[:shade] %></span>
+        <span class="mt-1 text-[10px] font-mono <%= c[:text] == 'light' ? 'text-white/80' : 'text-gray-600' %>"><%= c[:hex] %></span>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%# Neutral Scale %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Neutral Scale</h2>
+    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">neutral-*</code> tokens.</p>
+  </div>
+  <div class="grid grid-cols-5 gap-0 lg:grid-cols-10">
+    <% [
+      { shade: "50", hex: "#F9FAFA", text: "dark" },
+      { shade: "100", hex: "#F3F8F6", text: "dark" },
+      { shade: "200", hex: "#F2F5F7", text: "dark" },
+      { shade: "300", hex: "#D1D5DB", text: "dark" },
+      { shade: "400", hex: "#9CA3AF", text: "dark" },
+      { shade: "500", hex: "#6B7280", text: "light" },
+      { shade: "600", hex: "#4B5563", text: "light" },
+      { shade: "700", hex: "#374151", text: "light" },
+      { shade: "800", hex: "#1F2937", text: "light" },
+      { shade: "900", hex: "#000000", text: "light" }
+    ].each do |c| %>
+      <div class="flex flex-col items-center p-3" style="background-color: <%= c[:hex] %>;">
+        <span class="text-xs font-semibold <%= c[:text] == 'light' ? 'text-white' : 'text-gray-900' %>"><%= c[:shade] %></span>
+        <span class="mt-1 text-[10px] font-mono <%= c[:text] == 'light' ? 'text-white/80' : 'text-gray-600' %>"><%= c[:hex] %></span>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%# Dark Mode Palette %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Dark Mode Palette</h2>
+    <p class="mt-1 text-sm text-tertiary">Clean neutral darks with green used as accent. Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">dark-*</code> tokens.</p>
+  </div>
+  <div class="grid grid-cols-2 gap-0 lg:grid-cols-6">
+    <% [
+      { name: "background", hex: "#09090B", desc: "Page background" },
+      { name: "secondary", hex: "#111113", desc: "Recessed areas" },
+      { name: "surface", hex: "#18181B", desc: "Cards, panels" },
+      { name: "surface-raised", hex: "#27272A", desc: "Elevated surfaces" },
+      { name: "border-subtle", hex: "#27272A", desc: "Subtle dividers" },
+      { name: "border", hex: "#3F3F46", desc: "Borders, rings" }
+    ].each do |c| %>
+      <div class="flex flex-col items-center p-4" style="background-color: <%= c[:hex] %>;">
+        <span class="text-xs font-semibold text-white"><%= c[:name] %></span>
+        <span class="mt-1 text-[10px] font-mono text-white/60"><%= c[:hex] %></span>
+        <span class="mt-0.5 text-[10px] text-white/40"><%= c[:desc] %></span>
+      </div>
+    <% end %>
+  </div>
+  <div class="grid grid-cols-2 gap-0 lg:grid-cols-4">
+    <% [
+      { name: "foreground", hex: "#FAFAFA", desc: "Primary text" },
+      { name: "muted", hex: "#A1A1AA", desc: "Secondary text" },
+      { name: "accent", hex: "#3DCEA2", desc: "Links, active states" },
+      { name: "accent-hover", hex: "#6EDAB9", desc: "Hover state" }
+    ].each do |c| %>
+      <div class="flex flex-col items-center p-4" style="background-color: #18181B;">
+        <span class="text-xs font-semibold" style="color: <%= c[:hex] %>;"><%= c[:name] %></span>
+        <span class="mt-1 text-[10px] font-mono" style="color: <%= c[:hex] %>; opacity: 0.7;"><%= c[:hex] %></span>
+        <span class="mt-0.5 text-[10px] text-white/40"><%= c[:desc] %></span>
+      </div>
+    <% end %>
+  </div>
+  <div class="border-t border-secondary bg-secondary/50 px-6 py-4">
+    <pre class="text-xs text-tertiary"><code><%# Dark mode tokens %>
+dark-background     <%# #09090B — near-black %>
+dark-surface        <%# #18181B — card/panel fill %>
+dark-surface-raised <%# #27272A — elevated panels %>
+dark-border         <%# #3F3F46 — dividers %>
+dark-foreground     <%# #FAFAFA — primary text (clean white) %>
+dark-muted          <%# #A1A1AA — secondary text %>
+dark-accent         <%# #3DCEA2 — interactive green %>
+dark-primary        <%# #0DC28B — brand in dark context %></code></pre>
+  </div>
+</div>
+
+<%# Brand Token Mapping %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Brand Token Mapping</h2>
+    <p class="mt-1 text-sm text-tertiary">How primary colors map to Untitled UI semantic tokens.</p>
+  </div>
+  <table class="w-full text-sm">
+    <thead class="bg-secondary">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Token</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Maps To</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Color</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Usage</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-secondary">
+      <tr>
+        <td class="px-6 py-3 font-mono text-xs text-brand-secondary">bg-brand-solid</td>
+        <td class="px-6 py-3 font-mono text-xs text-tertiary">brand-600</td>
+        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #0DC28B;"></span></td>
+        <td class="px-6 py-3 text-tertiary">Primary buttons, CTAs</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-3 font-mono text-xs text-brand-secondary">bg-brand-solid_hover</td>
+        <td class="px-6 py-3 font-mono text-xs text-tertiary">brand-700</td>
+        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #03A372;"></span></td>
+        <td class="px-6 py-3 text-tertiary">Hover state for primary buttons</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-3 font-mono text-xs text-brand-secondary">bg-brand-primary_alt</td>
+        <td class="px-6 py-3 font-mono text-xs text-tertiary">brand-50</td>
+        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #F3F8F6;"></span></td>
+        <td class="px-6 py-3 text-tertiary">Light tinted backgrounds</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-3 font-mono text-xs text-brand-secondary">text-brand-secondary</td>
+        <td class="px-6 py-3 font-mono text-xs text-tertiary">brand-700</td>
+        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #03A372;"></span></td>
+        <td class="px-6 py-3 text-tertiary">Brand-colored text</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-3 font-mono text-xs text-brand-secondary">ring-brand</td>
+        <td class="px-6 py-3 font-mono text-xs text-tertiary">brand-600</td>
+        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #0DC28B;"></span></td>
+        <td class="px-6 py-3 text-tertiary">Focus rings, borders</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<%# Usage Example %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Usage Examples</h2>
+  </div>
+  <div class="space-y-4 p-6">
+    <div class="flex flex-wrap items-center gap-3">
+      <div class="rounded-lg bg-primary-500 px-4 py-2 text-sm font-semibold text-white">bg-primary-500</div>
+      <div class="rounded-lg bg-secondary-green-400 px-4 py-2 text-sm font-semibold text-gray-800">bg-secondary-green-400</div>
+      <div class="rounded-lg bg-secondary-blue-400 px-4 py-2 text-sm font-semibold text-gray-800">bg-secondary-blue-400</div>
+      <div class="rounded-lg bg-secondary-yellow-400 px-4 py-2 text-sm font-semibold text-gray-800">bg-secondary-yellow-400</div>
+    </div>
+    <div class="flex flex-wrap items-center gap-3">
+      <div class="rounded-lg bg-primary-100 px-4 py-2 text-sm font-semibold text-primary-800">bg-primary-100</div>
+      <div class="rounded-lg bg-secondary-green-200 px-4 py-2 text-sm font-semibold text-gray-700">bg-secondary-green-200</div>
+      <div class="rounded-lg bg-secondary-blue-200 px-4 py-2 text-sm font-semibold text-gray-700">bg-secondary-blue-200</div>
+      <div class="rounded-lg bg-secondary-yellow-200 px-4 py-2 text-sm font-semibold text-gray-700">bg-secondary-yellow-200</div>
+    </div>
+  </div>
+  <div class="border-t border-secondary bg-secondary/50 px-6 py-4">
+    <pre class="text-xs text-tertiary"><code><%# Tailwind classes %>
+bg-primary-500          <%# Main green #0DC28B %>
+bg-secondary-green-400  <%# Lime #E1EED5 %>
+bg-secondary-blue-400   <%# Blue #C5D6EB %>
+bg-secondary-yellow-400 <%# Yellow #FFF1DC %>
+
+<%# Semantic tokens (from Untitled UI theme) %>
+bg-brand-solid          <%# Primary button fill %>
+text-brand-secondary    <%# Brand-colored text %>
+ring-brand              <%# Focus ring %></code></pre>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<%# Props Table %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Props</h2>
+  </div>
+  <table class="w-full text-sm">
+    <thead class="bg-secondary">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Param</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Type</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Default</th>
+        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Description</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-secondary">
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">type</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">:pill_color</td><td class="px-6 py-3 text-tertiary">:pill_color, :badge_color, :badge_modern</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">size</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">:md</td><td class="px-6 py-3 text-tertiary">:sm, :md, :lg</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">color</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">:gray</td><td class="px-6 py-3 text-tertiary">:gray, :brand, :error, :warning, :success, :blue, :indigo, :purple, :pink, :orange</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">dot</td><td class="px-6 py-3 text-tertiary">Boolean</td><td class="px-6 py-3 font-mono text-xs">false</td><td class="px-6 py-3 text-tertiary">Show dot indicator</td></tr>
+      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">dismissible</td><td class="px-6 py-3 text-tertiary">Boolean</td><td class="px-6 py-3 font-mono text-xs">false</td><td class="px-6 py-3 text-tertiary">Show dismiss button</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<%# Color Variants %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Colors (Pill)</h2>
+  </div>
+  <div class="flex flex-wrap items-center gap-3 p-6">
+    <% %i[gray brand error warning success blue indigo purple pink orange].each do |color| %>
+      <%= render Ui::Badge::Component.new(color: color) do %><%= color.to_s.capitalize %><% end %>
+    <% end %>
+  </div>
+</div>
+
+<%# Types %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Types</h2>
+  </div>
+  <div class="flex flex-wrap items-center gap-3 p-6">
+    <%= render Ui::Badge::Component.new(type: :pill_color, color: :brand) do %>Pill Color<% end %>
+    <%= render Ui::Badge::Component.new(type: :badge_color, color: :brand) do %>Badge Color<% end %>
+    <%= render Ui::Badge::Component.new(type: :badge_modern) do %>Badge Modern<% end %>
+  </div>
+</div>
+
+<%# Sizes %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">Sizes</h2>
+  </div>
+  <div class="flex flex-wrap items-center gap-3 p-6">
+    <%= render Ui::Badge::Component.new(size: :sm, color: :brand) do %>Small<% end %>
+    <%= render Ui::Badge::Component.new(size: :md, color: :brand) do %>Medium<% end %>
+    <%= render Ui::Badge::Component.new(size: :lg, color: :brand) do %>Large<% end %>
+  </div>
+</div>
+
+<%# With Dot %>
+<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
+  <div class="border-b border-secondary px-6 py-4">
+    <h2 class="text-lg font-semibold text-primary">With Dot</h2>
+  </div>
+  <div class="flex flex-wrap items-center gap-3 p-6">
+    <%= render Ui::Badge::Component.new(color: :success, dot: true) do %>Active<% end %>
+    <%= render Ui::Badge::Component.new(color: :error, dot: true) do %>Error<% end %>
+    <%= render Ui::Badge::Component.new(color: :warning, dot: true) do %>Warning<% end %>
+  </div>
+  <div class="border-t border-secondary bg-secondary/50 px-6 py-4">
+    <pre class="text-xs text-tertiary"><code>&lt;%= render Ui::Badge::Component.new(color: :success, dot: true) do %&gt;Active&lt;% end %&gt;</code></pre>
+  </div>
+</div>

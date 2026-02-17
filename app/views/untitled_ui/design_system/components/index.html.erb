@@ -1,0 +1,30 @@
+<div class="max-w-4xl">
+  <div class="mb-8">
+    <h1 class="text-display-sm font-semibold text-primary">Untitled UI Design System</h1>
+    <p class="mt-2 text-md text-tertiary">
+      A comprehensive component library built with ViewComponent and Tailwind CSS,
+      implementing the Untitled UI design system.
+    </p>
+  </div>
+
+  <% @categories.each do |category, components| %>
+    <div class="mb-10">
+      <h2 class="mb-4 text-lg font-semibold text-primary"><%= category %> Components</h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <% components.each do |comp| %>
+          <%= link_to untitled_ui.design_system_component_path(comp[:id]),
+            class: "group rounded-xl bg-primary p-5 shadow-xs ring-1 ring-secondary transition hover:shadow-md hover:ring-brand" do %>
+            <h3 class="text-md font-semibold text-primary group-hover:text-brand-secondary"><%= comp[:name] %></h3>
+            <p class="mt-1 text-sm text-tertiary line-clamp-2"><%= comp[:description] %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @components.empty? %>
+    <div class="rounded-xl bg-primary p-12 text-center shadow-xs ring-1 ring-secondary">
+      <p class="text-md text-tertiary">No components match "<%= @query %>"</p>
+    </div>
+  <% end %>
+</div>
