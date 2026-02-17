@@ -52,7 +52,7 @@ module Ui
 
       def dot_classes(state)
         cx(
-          "size-2.5 rounded-full",
+          "block size-2.5 rounded-full",
           case state
           when :current then "bg-brand-solid"
           else "bg-quaternary"
