@@ -6,3 +6,7 @@
 /Gemfile.lock
 *.gem
 .byebug_history
+log/
+app/assets/tailwind/untitled_ui_components
+app/assets/tailwind/untitled_ui_views
+app/assets/tailwind/untitled_ui/untitled_ui

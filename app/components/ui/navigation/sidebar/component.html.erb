@@ -1,0 +1,40 @@
+<%# Mobile header %>
+<%= render Ui::Navigation::MobileHeader::Component.new do |mobile| %>
+  <% mobile.with_logo { logo } if logo.present? %>
+  <% mobile.with_sidebar_content do %>
+    <aside class="flex h-full w-full max-w-full flex-col justify-between overflow-auto bg-primary pt-4">
+      <% if logo.present? %>
+        <div class="px-4"><%= logo %></div>
+      <% end %>
+      <%= render Ui::Navigation::List::Component.new(items: items, active_url: active_url) %>
+      <div class="mt-auto flex flex-col gap-4 px-2 py-4">
+        <% if footer_items.any? %>
+          <ul class="flex flex-col">
+            <% footer_items.each do |item| %>
+              <li class="py-0.5">
+                <%= render(Ui::Navigation::Item::Component.new(type: :link, href: item[:href], icon: item[:icon], badge: item[:badge], current: active_url == item[:href])) { item[:label] } %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+        <% if show_account_card && account_card.present? %>
+          <%= account_card %>
+        <% end %>
+      </div>
+    </aside>
+  <% end %>
+<% end %>
+
+<%# Desktop sidebar %>
+<div class="<%= cx('hidden lg:fixed lg:inset-y-0 lg:left-0 lg:flex', has_secondary_panel? && 'z-50') %>"
+     <% if has_secondary_panel? %>
+       data-controller="navigation-sidebar"
+       data-action="pointerenter->navigation-sidebar#showSecondary pointerleave->navigation-sidebar#hideSecondary"
+     <% end %>>
+  <%= render partial: variant_partial, locals: { component: self } %>
+</div>
+
+<%# Spacer placeholder %>
+<div style="padding-left: <%= main_width %>px<%= '; padding-left: ' + (main_width + 4).to_s + 'px' if card_style? %>"
+     class="invisible hidden lg:sticky lg:top-0 lg:bottom-0 lg:left-0 lg:block">
+</div>

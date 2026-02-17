@@ -1,0 +1,7 @@
+<%= render Ui::Tooltip::Component.new(title: label, placement: tooltip_placement) do |tooltip| %>
+  <% tooltip.with_trigger do %>
+    <a href="<%= href %>" aria-label="<%= label %>" class="<%= root_classes %>">
+      <span class="<%= icon_classes %>" aria-hidden="true"><%= icon.html_safe %></span>
+    </a>
+  <% end %>
+<% end %>

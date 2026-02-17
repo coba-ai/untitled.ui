@@ -1,0 +1,37 @@
+<aside style="--width: <%= component.main_width %>px"
+       class="<%= component.cx(
+         'flex h-full w-full max-w-full flex-col justify-between overflow-auto bg-primary pt-4 lg:w-(--width) lg:pt-6',
+         !component.hide_border && 'border-secondary md:border-r',
+         component.extra_classes
+       ) %>">
+  <div class="flex flex-col gap-5 px-4 lg:px-5">
+    <% if component.logo.present? %>
+      <%= component.logo %>
+    <% end %>
+    <% if component.search.present? %>
+      <%= component.search %>
+    <% end %>
+  </div>
+
+  <%= render Ui::Navigation::List::Component.new(items: component.items, active_url: component.active_url) %>
+
+  <div class="mt-auto flex flex-col gap-4 px-2 py-4 lg:px-4 lg:py-6">
+    <% if component.footer_items.any? %>
+      <ul class="flex flex-col">
+        <% component.footer_items.each do |item| %>
+          <li class="py-0.5">
+            <%= render(Ui::Navigation::Item::Component.new(type: :link, href: item[:href], icon: item[:icon], badge: item[:badge], current: component.active_url == item[:href])) { item[:label] } %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <% if component.feature_card.present? %>
+      <%= component.feature_card %>
+    <% end %>
+
+    <% if component.show_account_card && component.account_card.present? %>
+      <%= component.account_card %>
+    <% end %>
+  </div>
+</aside>

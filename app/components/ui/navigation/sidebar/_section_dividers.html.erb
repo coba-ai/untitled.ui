@@ -1,0 +1,24 @@
+<div class="lg:py-1 lg:pl-1">
+  <aside style="--width: <%= component.main_width %>px"
+         class="<%= component.cx(
+           'flex h-full w-full max-w-full flex-col justify-between overflow-auto border-secondary bg-primary pt-4 shadow-xs md:border-r lg:w-(--width) lg:rounded-xl lg:border lg:pt-5',
+           component.extra_classes
+         ) %>">
+    <div class="flex flex-col gap-5 px-4 lg:px-5">
+      <% if component.logo.present? %>
+        <%= component.logo %>
+      <% end %>
+      <% if component.search.present? %>
+        <%= component.search %>
+      <% end %>
+    </div>
+
+    <%= render Ui::Navigation::List::Component.new(items: component.items, active_url: component.active_url) %>
+
+    <div class="mt-auto flex flex-col gap-4 px-2 py-4 lg:px-4 lg:py-6">
+      <% if component.show_account_card && component.account_card.present? %>
+        <%= component.account_card %>
+      <% end %>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,74 @@
+<%# Mobile header with sidebar fallback %>
+<%= render Ui::Navigation::MobileHeader::Component.new do |mobile| %>
+  <% mobile.with_logo { logo } if logo.present? %>
+  <% mobile.with_sidebar_content do %>
+    <% if mobile_sidebar.present? %>
+      <%= mobile_sidebar %>
+    <% else %>
+      <aside class="flex h-full w-full max-w-full flex-col justify-between overflow-auto bg-primary pt-4">
+        <% if logo.present? %>
+          <div class="px-4"><%= logo %></div>
+        <% end %>
+        <%= render Ui::Navigation::List::Component.new(items: items, active_url: active_url) %>
+      </aside>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%# Desktop header %>
+<header class="max-lg:hidden">
+  <section class="<%= header_classes %>">
+    <div class="flex w-full max-w-container justify-between pr-3 pl-4 md:px-8">
+      <div class="flex flex-1 items-center gap-4">
+        <% if logo.present? %>
+          <a aria-label="Go to homepage" href="/" class="rounded-xs outline-focus-ring focus-visible:outline-2 focus-visible:outline-offset-2">
+            <%= logo %>
+          </a>
+        <% end %>
+
+        <nav>
+          <ul class="flex items-center gap-0.5">
+            <% items.each do |item| %>
+              <li class="py-0.5">
+                <%= render(Ui::Navigation::Item::Component.new(type: :link, href: item[:href], icon: item[:icon], badge: item[:badge], current: active_url == item[:href])) { item[:label] } %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <% if trailing_content.present? %>
+          <%= trailing_content %>
+        <% end %>
+
+        <% if show_avatar_dropdown && avatar.present? %>
+          <%= render(Ui::Dropdown::Component.new(position: "bottom-end")) do |dropdown| %>
+            <% dropdown.with_trigger do %>
+              <%= avatar %>
+            <% end %>
+            <% if account_menu.present? %>
+              <%= account_menu %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <% if show_secondary_nav? %>
+    <section class="<%= secondary_nav_classes %>">
+      <div class="flex w-full max-w-container items-center justify-between gap-8 px-8">
+        <nav>
+          <ul class="flex items-center gap-0.5">
+            <% active_sub_items.each do |item| %>
+              <li class="py-0.5">
+                <%= render(Ui::Navigation::Item::Component.new(type: :link, href: item[:href], icon: item[:icon], badge: item[:badge], current: active_url == item[:href])) { item[:label] } %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </section>
+  <% end %>
+</header>

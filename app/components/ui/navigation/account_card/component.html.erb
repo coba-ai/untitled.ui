@@ -1,0 +1,24 @@
+<div class="<%= card_classes %>">
+  <div class="flex min-w-0 items-center gap-3">
+    <%= render Ui::Avatar::Component.new(size: :md, src: avatar_src, alt: name) %>
+    <div class="min-w-0 flex-1">
+      <p class="truncate text-sm font-semibold text-primary"><%= name %></p>
+      <p class="truncate text-sm text-tertiary"><%= email %></p>
+    </div>
+  </div>
+
+  <% if menu.present? %>
+    <div class="absolute top-1.5 right-1.5">
+      <%= render Ui::Dropdown::Component.new do |dropdown| %>
+        <% dropdown.with_trigger do %>
+          <button type="button" class="flex cursor-pointer items-center justify-center rounded-md p-1.5 text-fg-quaternary outline-focus-ring transition duration-100 ease-linear hover:bg-primary_hover hover:text-fg-quaternary_hover">
+            <svg class="size-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+            </svg>
+          </button>
+        <% end %>
+        <%= menu %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

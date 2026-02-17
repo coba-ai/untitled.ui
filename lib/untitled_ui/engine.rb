@@ -6,7 +6,17 @@ module UntitledUi
 
     # Add gem's app/components to autoload paths so Ui:: resolves at top level
     initializer "untitled_ui.autoload", before: :set_autoload_paths do |app|
-      app.config.autoload_paths.unshift(root.join("app", "components").to_s)
+      components_path = root.join("app", "components").to_s
+      unless app.config.autoload_paths.frozen?
+        app.config.autoload_paths.unshift(components_path)
+      end
+    end
+
+    # Add app/components to view paths so partials in component directories can be found
+    initializer "untitled_ui.view_paths" do
+      ActiveSupport.on_load(:action_controller) do
+        prepend_view_path UntitledUi::Engine.root.join("app", "components")
+      end
     end
 
     # Expose CSS assets for Tailwind imports
@@ -28,7 +38,7 @@ module UntitledUi
         "untitled_ui_views" => root.join("app", "views")
       }.each do |name, target|
         link = tailwind_dir.join(name)
-        next if link.exist? && link.readlink.to_s == target.to_s
+        next if link.symlink? && link.readlink.to_s == target.to_s
         FileUtils.rm_f(link) if link.symlink?
         FileUtils.ln_sf(target, link)
       end

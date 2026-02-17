@@ -1,0 +1,35 @@
+<div data-controller="navigation-mobile" class="lg:hidden">
+  <header class="flex h-16 items-center justify-between border-b border-secondary bg-primary py-3 pr-2 pl-4">
+    <% if logo.present? %>
+      <%= logo %>
+    <% end %>
+
+    <button type="button"
+            aria-label="Expand navigation menu"
+            data-action="click->navigation-mobile#toggle"
+            data-navigation-mobile-target="trigger"
+            class="group flex items-center justify-center rounded-lg bg-primary p-2 text-fg-secondary outline-focus-ring hover:bg-primary_hover hover:text-fg-secondary_hover">
+      <%# Hamburger icon %>
+      <svg class="size-6" data-navigation-mobile-target="openIcon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+  </header>
+
+  <%# Overlay %>
+  <div data-navigation-mobile-target="overlay"
+       class="fixed inset-0 z-50 hidden cursor-pointer bg-overlay/70 pr-16 backdrop-blur-md">
+    <button type="button"
+            aria-label="Close navigation menu"
+            data-action="click->navigation-mobile#close"
+            class="fixed top-3 right-2 z-50 flex cursor-pointer items-center justify-center rounded-lg p-2 text-fg-white/70 outline-focus-ring hover:bg-white/10 hover:text-fg-white">
+      <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="h-dvh w-full cursor-auto">
+      <%= sidebar_content %>
+    </div>
+  </div>
+</div>

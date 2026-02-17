@@ -1,0 +1,29 @@
+<% if type == :collapsible %>
+  <summary class="<%= root_classes %>" role="button">
+    <% if icon.present? %>
+      <span class="<%= icon_classes %>" aria-hidden="true"><%= icon.html_safe %></span>
+    <% end %>
+    <span class="<%= label_classes %>"><%= content %></span>
+    <% if badge.present? %>
+      <%= render(Ui::Badge::Component.new(size: :sm, type: :pill_color, color: :gray, class: "ml-3")) { badge.to_s } %>
+    <% end %>
+    <svg aria-hidden="true" class="ml-3 size-4 shrink-0 stroke-[2.5px] text-fg-quaternary in-open:-scale-y-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
+  </summary>
+<% else %>
+  <a class="<%= root_classes %>" <%= tag.attributes(link_attrs) %>>
+    <% if icon.present? && type != :collapsible_child %>
+      <span class="<%= icon_classes %>" aria-hidden="true"><%= icon.html_safe %></span>
+    <% end %>
+    <span class="<%= label_classes %>"><%= content %></span>
+    <% if external? %>
+      <svg class="size-4 stroke-[2.5px] text-fg-quaternary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+      </svg>
+    <% end %>
+    <% if badge.present? %>
+      <%= render(Ui::Badge::Component.new(size: :sm, type: :pill_color, color: :gray, class: "ml-3")) { badge.to_s } %>
+    <% end %>
+  </a>
+<% end %>

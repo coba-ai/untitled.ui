@@ -1,0 +1,41 @@
+<ul class="<%= list_classes %>">
+  <% items.each do |item| %>
+    <% if divider?(item) %>
+      <li class="w-full px-0.5 py-2">
+        <hr class="h-px w-full border-none bg-border-secondary" />
+      </li>
+    <% elsif collapsible?(item) %>
+      <details class="appearance-none py-0.5" <%= "open" if child_active?(item) %>>
+        <%= render(Ui::Navigation::Item::Component.new(
+          type: :collapsible,
+          icon: item[:icon],
+          badge: item[:badge]
+        )) { item[:label] } %>
+        <dd>
+          <ul class="py-0.5">
+            <% item[:items].each do |sub| %>
+              <li class="py-0.5">
+                <%= render(Ui::Navigation::Item::Component.new(
+                  type: :collapsible_child,
+                  href: sub[:href],
+                  badge: sub[:badge],
+                  current: active_url == sub[:href]
+                )) { sub[:label] } %>
+              </li>
+            <% end %>
+          </ul>
+        </dd>
+      </details>
+    <% else %>
+      <li class="py-0.5">
+        <%= render(Ui::Navigation::Item::Component.new(
+          type: :link,
+          href: item[:href],
+          icon: item[:icon],
+          badge: item[:badge],
+          current: active?(item)
+        )) { item[:label] } %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

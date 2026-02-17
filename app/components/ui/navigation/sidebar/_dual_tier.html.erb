@@ -1,0 +1,56 @@
+<%# Main sidebar (full-width with labels) %>
+<aside style="--width: <%= component.main_width %>px"
+       class="<%= component.cx(
+         'relative flex w-full flex-col border-r border-secondary pt-4 transition duration-300 lg:w-(--width) lg:pt-6',
+         component.hide_border && 'border-transparent'
+       ) %>">
+  <div class="flex flex-col gap-5 px-4 lg:px-5">
+    <% if component.logo.present? %>
+      <%= component.logo %>
+    <% end %>
+    <% if component.search.present? %>
+      <%= component.search %>
+    <% end %>
+  </div>
+
+  <%= render Ui::Navigation::List::Component.new(items: component.items, active_url: component.active_url) %>
+
+  <div class="mt-auto flex flex-col gap-4 px-2 py-4 lg:px-4 lg:py-6">
+    <% if component.footer_items.any? %>
+      <ul class="flex flex-col">
+        <% component.footer_items.each do |item| %>
+          <li class="py-0.5">
+            <%= render(Ui::Navigation::Item::Component.new(type: :link, href: item[:href], icon: item[:icon], badge: item[:badge], current: component.active_url == item[:href])) { item[:label] } %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <% if component.feature_card.present? %>
+      <%= component.feature_card %>
+    <% end %>
+
+    <% if component.show_account_card && component.account_card.present? %>
+      <%= component.account_card %>
+    <% end %>
+  </div>
+</aside>
+
+<%# Secondary sidebar (appears on hover) %>
+<div data-navigation-sidebar-target="secondaryPanel"
+     style="--secondary-width: <%= component.secondary_width %>px"
+     class="relative h-full w-0 invisible overflow-hidden bg-primary transition-all duration-200 ease-in-out border-r border-transparent">
+  <div style="width: <%= component.secondary_width %>px" class="flex h-full flex-col px-4 pt-6">
+    <% active_item = component.items.find { |i| i[:href] == component.active_url || i[:items]&.any? { |s| s[:href] == component.active_url } } %>
+    <% if active_item && active_item[:items]&.any? %>
+      <h3 class="text-sm font-semibold text-brand-secondary"><%= active_item[:label] %></h3>
+      <ul class="py-2">
+        <% active_item[:items].each do |sub| %>
+          <li class="py-0.5">
+            <%= render(Ui::Navigation::Item::Component.new(type: :link, href: sub[:href], icon: sub[:icon], badge: sub[:badge], current: component.active_url == sub[:href])) { sub[:label] } %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

@@ -28,7 +28,11 @@ module UntitledUi
         { id: "dropdown", name: "Dropdown", category: "Application", description: "Dropdown menu with items, icons, and keyboard navigation." },
         { id: "table", name: "Table", category: "Application", description: "Data table with sortable columns, header content slot, and size variants." },
         { id: "empty_state", name: "Empty State", category: "Application", description: "Placeholder content for empty views with icon and action slots." },
-        { id: "button_group", name: "Button Group", category: "Application", description: "Groups buttons together with shared border styling." }
+        { id: "button_group", name: "Button Group", category: "Application", description: "Groups buttons together with shared border styling." },
+        { id: "nav_item", name: "Nav Item", category: "Navigation", description: "Base navigation link with collapsible, icon, badge, and active state support." },
+        { id: "nav_sidebar", name: "Nav Sidebar", category: "Navigation", description: "Sidebar navigation with 5 variant types: simple, slim, dual_tier, section_dividers, section_subheadings." },
+        { id: "nav_header", name: "Nav Header", category: "Navigation", description: "Top header navigation bar with horizontal items, secondary sub-nav, and avatar dropdown." },
+        { id: "nav_account_card", name: "Nav Account Card", category: "Navigation", description: "User account card with avatar, name, email, and optional dropdown menu." }
       ].freeze
 
       def index

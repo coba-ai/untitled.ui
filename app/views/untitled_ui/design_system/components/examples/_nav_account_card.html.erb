@@ -1,0 +1,55 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Basic" do %>
+  <div class="w-72">
+    <%= render Ui::Navigation::AccountCard::Component.new(
+      name: "Olivia Rhye",
+      email: "olivia@untitledui.com"
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Navigation::AccountCard::Component.new(
+  name: "Olivia Rhye",
+  email: "olivia@untitledui.com"
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Avatar" do %>
+  <div class="w-72">
+    <%= render Ui::Navigation::AccountCard::Component.new(
+      name: "Olivia Rhye",
+      email: "olivia@untitledui.com",
+      avatar_src: "https://www.untitledui.com/images/avatars/olivia-rhye?bg=%23E0E0E0"
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Navigation::AccountCard::Component.new(
+  name: "Olivia Rhye",
+  email: "olivia@untitledui.com",
+  avatar_src: "/avatars/olivia.jpg"
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Menu" do %>
+  <div class="w-72">
+    <%= render Ui::Navigation::AccountCard::Component.new(
+      name: "Olivia Rhye",
+      email: "olivia@untitledui.com"
+    ) do |card| %>
+      <% card.with_menu do %>
+        <div class="flex flex-col gap-1 p-1">
+          <a href="#" class="rounded-md px-3 py-2 text-sm text-secondary hover:bg-primary_hover">View profile</a>
+          <a href="#" class="rounded-md px-3 py-2 text-sm text-secondary hover:bg-primary_hover">Settings</a>
+          <a href="#" class="rounded-md px-3 py-2 text-sm text-secondary hover:bg-primary_hover">Log out</a>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Navigation::AccountCard::Component.new(
+  name: "Olivia Rhye",
+  email: "olivia@untitledui.com"
+) do |card|
+  card.with_menu do
+    # Dropdown menu items rendered here
+  end
+end' %>

@@ -1,0 +1,68 @@
+<%# Main sidebar (icon-only, narrow) %>
+<aside style="width: <%= component.main_width %>px"
+       class="group flex h-full max-h-full max-w-full overflow-y-auto py-1 pl-1 transition duration-100 ease-linear">
+  <div class="<%= component.cx(
+    'flex w-auto flex-col justify-between rounded-xl bg-primary pt-5 ring-1 ring-secondary transition duration-300 ring-inset',
+    component.hide_border && 'ring-transparent'
+  ) %>">
+    <% if component.logo.present? %>
+      <div class="flex justify-center px-3"><%= component.logo %></div>
+    <% end %>
+
+    <ul class="mt-4 flex flex-col gap-0.5 px-3">
+      <% component.items.each do |item| %>
+        <% next unless item[:icon].present? %>
+        <li>
+          <%= render Ui::Navigation::ItemButton::Component.new(
+            label: item[:label],
+            icon: item[:icon],
+            href: item[:href],
+            current: component.active_url == item[:href]
+          ) %>
+        </li>
+      <% end %>
+    </ul>
+
+    <div class="mt-auto flex flex-col gap-4 px-3 py-5">
+      <% if component.footer_items.any? %>
+        <ul class="flex flex-col gap-0.5">
+          <% component.footer_items.each do |item| %>
+            <% next unless item[:icon].present? %>
+            <li>
+              <%= render Ui::Navigation::ItemButton::Component.new(
+                label: item[:label],
+                icon: item[:icon],
+                href: item[:href],
+                current: component.active_url == item[:href]
+              ) %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <% if component.show_account_card && component.account_card.present? %>
+        <%= component.account_card %>
+      <% end %>
+    </div>
+  </div>
+</aside>
+
+<%# Secondary sidebar (appears on hover) %>
+<div data-navigation-sidebar-target="secondaryPanel"
+     style="--secondary-width: <%= component.secondary_width %>px"
+     class="relative h-full w-0 invisible overflow-hidden bg-primary transition-all duration-200 ease-in-out border-r border-transparent">
+  <div style="width: <%= component.secondary_width %>px" class="flex h-full flex-col px-4 pt-6">
+    <%# Content rendered for each active item's sub-items %>
+    <% active_item = component.items.find { |i| i[:href] == component.active_url || i[:items]&.any? { |s| s[:href] == component.active_url } } %>
+    <% if active_item && active_item[:items]&.any? %>
+      <h3 class="text-sm font-semibold text-brand-secondary"><%= active_item[:label] %></h3>
+      <ul class="py-2">
+        <% active_item[:items].each do |sub| %>
+          <li class="py-0.5">
+            <%= render(Ui::Navigation::Item::Component.new(type: :link, href: sub[:href], icon: sub[:icon], badge: sub[:badge], current: component.active_url == sub[:href])) { sub[:label] } %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
