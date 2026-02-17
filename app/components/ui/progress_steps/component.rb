@@ -32,7 +32,7 @@ module Ui
         cx(
           "relative z-10 flex size-8 shrink-0 items-center justify-center rounded-full border-2",
           case state
-          when :completed then "border-brand-solid bg-brand-solid"
+          when :completed then "border-transparent bg-brand-solid"
           when :current then "border-brand-solid bg-primary"
           else "border-secondary bg-primary"
           end
