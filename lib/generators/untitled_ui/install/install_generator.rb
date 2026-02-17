@@ -39,7 +39,7 @@ module UntitledUi
 @import "./untitled_ui/typography.css";
 @import "./untitled_ui/globals.css";
 /* Scan UntitledUi gem templates for Tailwind classes (via symlinks) */
-@source "./untitled_ui_components/**/*.erb";
+@source "./untitled_ui_components/**/*.{erb,rb}";
 @source "./untitled_ui_views/**/*.erb";
         CSS
 
@@ -60,12 +60,16 @@ module UntitledUi
           import CheckboxController from "untitled_ui/checkbox_controller"
           import DropdownController from "untitled_ui/dropdown_controller"
           import ModalController from "untitled_ui/modal_controller"
+          import NavigationMobileController from "untitled_ui/navigation_mobile_controller"
+          import NavigationSidebarController from "untitled_ui/navigation_sidebar_controller"
           import TabsController from "untitled_ui/tabs_controller"
           import ToggleController from "untitled_ui/toggle_controller"
           import TooltipController from "untitled_ui/tooltip_controller"
           application.register("checkbox", CheckboxController)
           application.register("dropdown", DropdownController)
           application.register("modal", ModalController)
+          application.register("navigation-mobile", NavigationMobileController)
+          application.register("navigation-sidebar", NavigationSidebarController)
           application.register("tabs", TabsController)
           application.register("toggle", ToggleController)
           application.register("tooltip", TooltipController)
