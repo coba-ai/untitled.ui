@@ -23,9 +23,9 @@ module Ui
 
       def track_classes
         cx(
-          "cursor-pointer rounded-full bg-tertiary outline-focus-ring transition duration-150 ease-linear",
+          "cursor-pointer rounded-full outline-focus-ring transition duration-150 ease-linear",
           TRACK_SIZES[@size],
-          @checked && "bg-brand-solid",
+          @checked ? "bg-brand-solid" : "bg-tertiary",
           @disabled && "cursor-not-allowed bg-disabled"
         )
       end

@@ -23,9 +23,9 @@ module Ui
 
       def radio_classes
         cx(
-          "flex cursor-pointer appearance-none items-center justify-center rounded-full bg-primary ring-1 ring-primary ring-inset",
+          "flex cursor-pointer appearance-none items-center justify-center rounded-full ring-1 ring-inset transition-inherit-all",
+          "bg-primary ring-primary peer-checked:bg-brand-solid peer-checked:ring-bg-brand-solid",
           SIZE_STYLES.dig(@size, :radio),
-          @checked && !@disabled && "bg-brand-solid ring-bg-brand-solid",
           @disabled && "cursor-not-allowed border-disabled bg-disabled_subtle",
           (@label || @hint) && "mt-0.5"
         )
@@ -33,10 +33,9 @@ module Ui
 
       def dot_classes
         cx(
-          "rounded-full bg-fg-white opacity-0 transition-inherit-all",
+          "rounded-full bg-fg-white opacity-0 peer-checked:opacity-100 transition-inherit-all",
           SIZE_STYLES.dig(@size, :dot),
-          @disabled && "bg-fg-disabled_subtle",
-          @checked && "opacity-100"
+          @disabled && "bg-fg-disabled_subtle"
         )
       end
     end
