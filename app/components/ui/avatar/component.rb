@@ -36,7 +36,7 @@ module Ui
 
       def root_classes
         cx(
-          "relative inline-flex shrink-0 items-center justify-center rounded-full bg-avatar-bg outline outline-avatar-contrast-border",
+          "relative inline-flex shrink-0 items-center justify-center rounded-full bg-avatar-bg outline outline-avatar-contrast-border/30",
           SIZE_STYLES.dig(@size, :root),
           @extra_classes
         )
