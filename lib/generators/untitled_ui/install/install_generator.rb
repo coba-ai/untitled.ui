@@ -57,13 +57,18 @@ module UntitledUi
         registration = <<~JS
 
           // UntitledUi Stimulus controllers
-          import { ModalController, DropdownController, TabsController, TooltipController, ToggleController, CheckboxController } from "untitled_ui"
-          application.register("modal", ModalController)
-          application.register("dropdown", DropdownController)
-          application.register("tabs", TabsController)
-          application.register("tooltip", TooltipController)
-          application.register("toggle", ToggleController)
+          import CheckboxController from "untitled_ui/checkbox_controller"
+          import DropdownController from "untitled_ui/dropdown_controller"
+          import ModalController from "untitled_ui/modal_controller"
+          import TabsController from "untitled_ui/tabs_controller"
+          import ToggleController from "untitled_ui/toggle_controller"
+          import TooltipController from "untitled_ui/tooltip_controller"
           application.register("checkbox", CheckboxController)
+          application.register("dropdown", DropdownController)
+          application.register("modal", ModalController)
+          application.register("tabs", TabsController)
+          application.register("toggle", ToggleController)
+          application.register("tooltip", TooltipController)
         JS
 
         append_to_file js_file, registration
