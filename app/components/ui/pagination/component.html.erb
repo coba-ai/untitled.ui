@@ -3,50 +3,7 @@
   arrow_right = '<svg class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0-7-7m7 7-7 7" /></svg>'
 %>
 
-<% if button_group_type? %>
-  <%# Button Group variant %>
-  <nav aria-label="Pagination" class="<%= root_classes %>">
-    <%= render Ui::ButtonGroup::Component.new do %>
-      <%= render(Ui::Button::Component.new(
-        tag: :a,
-        href: prev_url,
-        color: :secondary,
-        size: :md,
-        icon_leading: arrow_left,
-        disabled: first_page?
-      )) { "Previous" } %>
-
-      <% pages.each do |item| %>
-        <% if item[:type] == :page %>
-          <%= render(Ui::Button::Component.new(
-            tag: :a,
-            href: page_url(item[:value]),
-            color: :secondary,
-            size: :md,
-            class: cx("size-10 items-center justify-center", item[:value] == current_page && "bg-primary_hover")
-          )) { item[:value].to_s } %>
-        <% else %>
-          <%= render(Ui::Button::Component.new(
-            color: :secondary,
-            size: :md,
-            disabled: true,
-            class: "pointer-events-none size-10 items-center justify-center"
-          )) { raw("&#8230;") } %>
-        <% end %>
-      <% end %>
-
-      <%= render(Ui::Button::Component.new(
-        tag: :a,
-        href: next_url,
-        color: :secondary,
-        size: :md,
-        icon_trailing: arrow_right,
-        disabled: last_page?
-      )) { "Next" } %>
-    <% end %>
-  </nav>
-
-<% elsif minimal_type? %>
+<% if minimal_type? %>
   <%# Card Minimal variant %>
   <div class="<%= root_classes %>">
     <%# Mobile %>

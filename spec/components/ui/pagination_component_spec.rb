@@ -87,14 +87,6 @@ RSpec.describe Ui::Pagination::Component, type: :component do
     end
   end
 
-  describe "button_group type" do
-    it "renders inside button group" do
-      render_inline(described_class.new(type: :button_group, current_page: 1, total_pages: 5))
-
-      expect(page).to have_css("[role='group']")
-    end
-  end
-
   it "raises error for invalid type" do
     expect {
       described_class.new(type: :invalid)

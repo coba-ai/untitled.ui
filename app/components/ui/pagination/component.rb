@@ -3,8 +3,7 @@
 module Ui
   module Pagination
     class Component < Ui::Base
-      VALID_TYPES = %i[page_default page_minimal card_default card_minimal button_group].freeze
-      VALID_ALIGNS = %i[left center right].freeze
+      VALID_TYPES = %i[page_default page_minimal card_default card_minimal].freeze
 
       attr_reader :type, :current_page, :total_pages, :rounded, :align, :extra_classes
 
@@ -61,24 +60,8 @@ module Ui
         @pages ||= build_pages
       end
 
-      def page_type?
-        @type.in?(%i[page_default page_minimal])
-      end
-
-      def card_type?
-        @type.in?(%i[card_default card_minimal])
-      end
-
-      def button_group_type?
-        @type == :button_group
-      end
-
       def minimal_type?
         @type == :card_minimal
-      end
-
-      def show_numbered_pages?
-        !minimal_type?
       end
 
       def root_classes
@@ -89,14 +72,6 @@ module Ui
           cx("flex w-full items-center justify-between gap-3 border-t border-secondary px-4 py-3 md:px-6 md:pt-3 md:pb-4", @extra_classes)
         when :card_minimal
           cx("border-t border-secondary px-4 py-3 md:px-6 md:pt-3 md:pb-4", @extra_classes)
-        when :button_group
-          cx(
-            "flex border-t border-secondary px-4 py-3 md:px-6 md:pt-3 md:pb-4",
-            @align == :left && "justify-start",
-            @align == :center && "justify-center",
-            @align == :right && "justify-end",
-            @extra_classes
-          )
         end
       end
 
@@ -106,14 +81,6 @@ module Ui
           @rounded ? "rounded-full" : "rounded-lg",
           page_number == @current_page && "bg-primary_hover text-secondary"
         )
-      end
-
-      def prev_button_color
-        @type == :page_default ? :link_gray : :secondary
-      end
-
-      def next_button_color
-        @type == :page_default ? :link_gray : :secondary
       end
 
       private
