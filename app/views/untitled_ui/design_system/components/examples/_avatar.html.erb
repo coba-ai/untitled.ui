@@ -13,7 +13,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Avatar::Component.new(size: :lg, initials: "AK") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Avatar::Component.new(size: :lg, initials: "AK")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Image" do %>
   <div class="flex flex-wrap items-end gap-3">
@@ -24,7 +24,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Avatar::Component.new(src: "https://i.pravatar.cc/150?img=1", alt: "User") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Avatar::Component.new(src: "https://i.pravatar.cc/150?img=1", alt: "User")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Status Indicator" do %>
   <div class="flex flex-wrap items-center gap-4">
@@ -35,8 +35,8 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Avatar::Component.new(initials: "ON", status: :online) %>
-<%%= render Ui::Avatar::Component.new(src: "...", status: :offline) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Avatar::Component.new(initials: "ON", status: :online)
+render Ui::Avatar::Component.new(src: "...", status: :offline)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Fallback (Placeholder)" do %>
   <div class="flex flex-wrap items-end gap-3">
@@ -46,5 +46,5 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%# No src or initials renders a default user icon placeholder %>
-<%%= render Ui::Avatar::Component.new(size: :lg) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: '# No src or initials renders a default user icon placeholder
+render Ui::Avatar::Component.new(size: :lg)' %>

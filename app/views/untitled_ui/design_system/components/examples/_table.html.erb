@@ -25,16 +25,12 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Table::Component.new do |table| %>
-  <%% table.with_column(label: "Name") %>
-  <%% table.with_column(label: "Email") %>
-  <%% table.with_column(label: "Status") %>
-  <tr class="border-b border-secondary">
-    <td class="px-6 py-4 text-sm font-medium text-primary">Jane Cooper</td>
-    <td class="px-6 py-4 text-sm text-tertiary">jane@example.com</td>
-    <td class="px-6 py-4"><%%= render Ui::Badge::Component.new(color: :success) { "Active" } %></td>
-  </tr>
-<%% end %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Table::Component.new do |table|
+  table.with_column(label: "Name")
+  table.with_column(label: "Email")
+  table.with_column(label: "Status")
+  # <tr> with <td> cells for each row
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Sortable Columns" do %>
   <%= render Ui::Table::Component.new do |table| %>
@@ -57,7 +53,7 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%% table.with_column(label: "Name", sortable: true) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'table.with_column(label: "Name", sortable: true)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Header Content" do %>
   <%= render Ui::Table::Component.new do |table| %>
@@ -83,12 +79,10 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%% table.with_header_content do %>
-  <div class="flex items-center justify-between px-6 py-4">
-    <h3 class="text-lg font-semibold text-primary">Team Members</h3>
-    <%%= render Ui::Button::Component.new(size: :sm) { "Add Member" } %>
-  </div>
-<%% end %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'table.with_header_content do
+  # Custom header HTML with title and actions
+  render Ui::Button::Component.new(size: :sm) { "Add Member" }
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Small Size" do %>
   <%= render Ui::Table::Component.new(size: :sm) do |table| %>
@@ -108,6 +102,6 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Table::Component.new(size: :sm) do |table| %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Table::Component.new(size: :sm) do |table|
   ...
-<%% end %>' %>
+end' %>

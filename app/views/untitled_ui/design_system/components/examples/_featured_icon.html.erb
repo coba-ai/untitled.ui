@@ -17,9 +17,9 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::FeaturedIcon::Component.new(theme: :light, color: :brand) do %>
-  <svg ...>...</svg>
-<%% end %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::FeaturedIcon::Component.new(theme: :light, color: :brand) do
+  # <svg ...>...</svg>
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Colors" do %>
   <div class="flex flex-wrap items-center gap-4">
@@ -36,9 +36,9 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::FeaturedIcon::Component.new(theme: :light, color: :error) do %>
-  <svg ...>...</svg>
-<%% end %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::FeaturedIcon::Component.new(theme: :light, color: :error) do
+  # <svg ...>...</svg>
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
   <div class="flex flex-wrap items-end gap-4">
@@ -55,6 +55,6 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::FeaturedIcon::Component.new(theme: :light, color: :brand, size: :xl) do %>
-  <svg ...>...</svg>
-<%% end %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::FeaturedIcon::Component.new(theme: :light, color: :brand, size: :xl) do
+  # <svg ...>...</svg>
+end' %>

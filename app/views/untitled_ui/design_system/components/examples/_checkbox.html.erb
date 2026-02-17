@@ -6,9 +6,9 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Checkbox::Component.new(label: "Unchecked") %>
-<%%= render Ui::Checkbox::Component.new(label: "Checked", checked: true) %>
-<%%= render Ui::Checkbox::Component.new(label: "Indeterminate", indeterminate: true) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Checkbox::Component.new(label: "Unchecked")
+render Ui::Checkbox::Component.new(label: "Checked", checked: true)
+render Ui::Checkbox::Component.new(label: "Indeterminate", indeterminate: true)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Disabled States" do %>
   <div class="space-y-4">
@@ -18,8 +18,8 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Checkbox::Component.new(label: "Disabled", disabled: true) %>
-<%%= render Ui::Checkbox::Component.new(label: "Disabled checked", checked: true, disabled: true) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Checkbox::Component.new(label: "Disabled", disabled: true)
+render Ui::Checkbox::Component.new(label: "Disabled checked", checked: true, disabled: true)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
   <div class="space-y-4">
@@ -28,8 +28,8 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Checkbox::Component.new(size: :sm, label: "Small") %>
-<%%= render Ui::Checkbox::Component.new(size: :md, label: "Medium") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Checkbox::Component.new(size: :sm, label: "Small")
+render Ui::Checkbox::Component.new(size: :md, label: "Medium")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Label & Hint" do %>
   <div class="space-y-4">
@@ -38,4 +38,4 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Checkbox::Component.new(label: "Accept terms", hint: "You agree to our Terms of Service.") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Checkbox::Component.new(label: "Accept terms", hint: "You agree to our Terms of Service.") %>' %>

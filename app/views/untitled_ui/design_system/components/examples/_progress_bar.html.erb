@@ -4,7 +4,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::ProgressBar::Component.new(value: 40) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ProgressBar::Component.new(value: 40)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Label Right" do %>
   <div class="max-w-md">
@@ -12,7 +12,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::ProgressBar::Component.new(value: 65, label_position: :right) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ProgressBar::Component.new(value: 65, label_position: :right)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Label Bottom" do %>
   <div class="max-w-md">
@@ -20,7 +20,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::ProgressBar::Component.new(value: 85, label_position: :bottom) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ProgressBar::Component.new(value: 85, label_position: :bottom)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Different Values" do %>
   <div class="max-w-md space-y-4">
@@ -33,6 +33,6 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::ProgressBar::Component.new(value: 0, label_position: :right) %>
-<%%= render Ui::ProgressBar::Component.new(value: 50, label_position: :right) %>
-<%%= render Ui::ProgressBar::Component.new(value: 100, label_position: :right) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ProgressBar::Component.new(value: 0, label_position: :right)
+render Ui::ProgressBar::Component.new(value: 50, label_position: :right)
+render Ui::ProgressBar::Component.new(value: 100, label_position: :right)' %>

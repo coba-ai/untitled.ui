@@ -10,11 +10,11 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tooltip::Component.new(title: "Tooltip top", placement: :top) do |tooltip| %>
-  <%% tooltip.with_trigger do %>
-    <%%= render Ui::Button::Component.new(color: :secondary) { "Hover me" } %>
-  <%% end %>
-<%% end %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Tooltip::Component.new(title: "Tooltip top", placement: :top) do |tooltip|
+  tooltip.with_trigger do
+    render Ui::Button::Component.new(color: :secondary) { "Hover me" }
+  end
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Description" do %>
   <div class="flex items-center justify-center py-6">
@@ -26,8 +26,8 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tooltip::Component.new(title: "Help", description: "More context about the feature.") do |tooltip| %>
-  <%% tooltip.with_trigger do %>
-    <%%= render Ui::Button::Component.new(color: :secondary) { "Hover me" } %>
-  <%% end %>
-<%% end %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Tooltip::Component.new(title: "Help", description: "More context about the feature.") do |tooltip|
+  tooltip.with_trigger do
+    render Ui::Button::Component.new(color: :secondary) { "Hover me" }
+  end
+end' %>

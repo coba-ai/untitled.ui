@@ -19,13 +19,13 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Dropdown::Component.new do |dropdown| %>
-  <%% dropdown.with_trigger do %>
-    <%%= render Ui::Button::Component.new(color: :secondary) { "More" } %>
-  <%% end %>
-  <%% dropdown.with_item(label: "Edit") %>
-  <%% dropdown.with_item(label: "Duplicate") %>
-<%% end %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Dropdown::Component.new do |dropdown|
+  dropdown.with_trigger do
+    render Ui::Button::Component.new(color: :secondary) { "More" }
+  end
+  dropdown.with_item(label: "Edit")
+  dropdown.with_item(label: "Duplicate")
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Icons" do %>
   <div class="flex items-start">
@@ -41,7 +41,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%% dropdown.with_item(label: "Edit", icon: edit_svg) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'dropdown.with_item(label: "Edit", icon: edit_svg)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Disabled Item" do %>
   <div class="flex items-start">
@@ -56,7 +56,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%% dropdown.with_item(label: "Delete", disabled: true) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'dropdown.with_item(label: "Delete", disabled: true)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Separator" do %>
   <div class="flex items-start">
@@ -74,9 +74,9 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%% dropdown.with_item(label: "Edit") %>
-<%% dropdown.with_separator %>
-<%% dropdown.with_item(label: "Delete") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'dropdown.with_item(label: "Edit")
+dropdown.with_separator
+dropdown.with_item(label: "Delete")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Href Links" do %>
   <div class="flex items-start">
@@ -91,4 +91,4 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%% dropdown.with_item(label: "Dashboard", href: "/dashboard") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'dropdown.with_item(label: "Dashboard", href: "/dashboard")' %>

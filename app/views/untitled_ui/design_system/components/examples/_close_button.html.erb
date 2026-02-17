@@ -9,10 +9,10 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::CloseButton::Component.new(size: :xs) %>
-<%%= render Ui::CloseButton::Component.new(size: :sm) %>
-<%%= render Ui::CloseButton::Component.new(size: :md) %>
-<%%= render Ui::CloseButton::Component.new(size: :lg) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::CloseButton::Component.new(size: :xs)
+render Ui::CloseButton::Component.new(size: :sm)
+render Ui::CloseButton::Component.new(size: :md)
+render Ui::CloseButton::Component.new(size: :lg)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Light Theme" do %>
   <div class="flex flex-wrap items-center gap-4">
@@ -22,7 +22,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::CloseButton::Component.new(size: :md, theme: :light) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::CloseButton::Component.new(size: :md, theme: :light)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Dark Theme" do %>
   <div class="flex flex-wrap items-center gap-4 rounded-lg bg-primary-solid p-6">
@@ -32,7 +32,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::CloseButton::Component.new(size: :md, theme: :dark) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::CloseButton::Component.new(size: :md, theme: :dark)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Custom Label" do %>
   <div class="flex flex-wrap items-center gap-4">
@@ -41,4 +41,4 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::CloseButton::Component.new(label: "Dismiss notification") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::CloseButton::Component.new(label: "Dismiss notification")' %>

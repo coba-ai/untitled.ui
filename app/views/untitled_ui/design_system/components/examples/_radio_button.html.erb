@@ -6,9 +6,9 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::RadioButton::Component.new(name: "plan", value: "basic", label: "Basic", hint: "Free forever", checked: true) %>
-<%%= render Ui::RadioButton::Component.new(name: "plan", value: "pro", label: "Pro", hint: "$9/month") %>
-<%%= render Ui::RadioButton::Component.new(name: "plan", value: "enterprise", label: "Enterprise", hint: "Custom pricing") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::RadioButton::Component.new(name: "plan", value: "basic", label: "Basic", hint: "Free forever", checked: true)
+render Ui::RadioButton::Component.new(name: "plan", value: "pro", label: "Pro", hint: "$9/month")
+render Ui::RadioButton::Component.new(name: "plan", value: "enterprise", label: "Enterprise", hint: "Custom pricing")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
   <div class="space-y-3">
@@ -17,8 +17,8 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::RadioButton::Component.new(size: :sm, name: "group", label: "Small") %>
-<%%= render Ui::RadioButton::Component.new(size: :md, name: "group", label: "Medium") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::RadioButton::Component.new(size: :sm, name: "group", label: "Small")
+render Ui::RadioButton::Component.new(size: :md, name: "group", label: "Medium")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "States" do %>
   <div class="space-y-3">
@@ -29,6 +29,6 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::RadioButton::Component.new(name: "group", label: "Unchecked") %>
-<%%= render Ui::RadioButton::Component.new(name: "group", label: "Checked", checked: true) %>
-<%%= render Ui::RadioButton::Component.new(name: "group", label: "Disabled", disabled: true) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::RadioButton::Component.new(name: "group", label: "Unchecked")
+render Ui::RadioButton::Component.new(name: "group", label: "Checked", checked: true)
+render Ui::RadioButton::Component.new(name: "group", label: "Disabled", disabled: true)' %>

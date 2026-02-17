@@ -9,7 +9,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(placeholder: "Enter text...") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Input::Component.new(placeholder: "Enter text...")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
   <div class="max-w-sm space-y-4">
@@ -18,8 +18,8 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(size: :sm, placeholder: "Small") %>
-<%%= render Ui::Input::Component.new(size: :md, placeholder: "Medium") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Input::Component.new(size: :sm, placeholder: "Small")
+render Ui::Input::Component.new(size: :md, placeholder: "Medium")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Label & Hint" do %>
   <div class="max-w-sm">
@@ -27,7 +27,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "Email", placeholder: "you@example.com", hint: "We'\''ll never share your email.") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Input::Component.new(label: "Email", placeholder: "you@example.com", hint: "We'\''ll never share your email.")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Required" do %>
   <div class="max-w-sm">
@@ -35,7 +35,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "Full Name", placeholder: "Enter your name", required: true) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Input::Component.new(label: "Full Name", placeholder: "Enter your name", required: true)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Invalid with Error Hint" do %>
   <div class="max-w-sm">
@@ -43,7 +43,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "Email", invalid: true, hint: "Please enter a valid email address.") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Input::Component.new(label: "Email", invalid: true, hint: "Please enter a valid email address.")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Disabled" do %>
   <div class="max-w-sm">
@@ -51,7 +51,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "Disabled", disabled: true) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Input::Component.new(label: "Disabled", disabled: true)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Leading Icon" do %>
   <div class="max-w-sm space-y-4">
@@ -60,7 +60,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(placeholder: "Search...", icon: search_svg) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Input::Component.new(placeholder: "Search...", icon: search_svg)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Input Types" do %>
   <div class="max-w-sm space-y-4">
@@ -69,8 +69,8 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "Email", type: "email", placeholder: "you@example.com") %>
-<%%= render Ui::Input::Component.new(label: "Password", type: "password") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Input::Component.new(label: "Email", type: "email", placeholder: "you@example.com")
+render Ui::Input::Component.new(label: "Password", type: "password")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Tooltip" do %>
   <div class="max-w-sm">
@@ -78,4 +78,4 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "API Key", tooltip: "Your secret API key from the dashboard") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Input::Component.new(label: "API Key", tooltip: "Your secret API key from the dashboard")' %>

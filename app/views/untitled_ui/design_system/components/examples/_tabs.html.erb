@@ -9,12 +9,12 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tabs::Component.new(type: :button_brand) do |tabs| %>
-  <%% tabs.with_tab(id: "t1", label: "Overview", active: true) %>
-  <%% tabs.with_tab(id: "t2", label: "Features") %>
-  <%% tabs.with_panel do %>Overview content<%% end %>
-  <%% tabs.with_panel do %>Features content<%% end %>
-<%% end %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Tabs::Component.new(type: :button_brand) do |tabs|
+  tabs.with_tab(id: "t1", label: "Overview", active: true)
+  tabs.with_tab(id: "t2", label: "Features")
+  tabs.with_panel { "Overview content" }
+  tabs.with_panel { "Features content" }
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Button Gray" do %>
   <%= render Ui::Tabs::Component.new(type: :button_gray) do |tabs| %>
@@ -27,9 +27,9 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tabs::Component.new(type: :button_gray) do |tabs| %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Tabs::Component.new(type: :button_gray) do |tabs|
   ...
-<%% end %>' %>
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Underline" do %>
   <%= render Ui::Tabs::Component.new(type: :underline) do |tabs| %>
@@ -42,9 +42,9 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tabs::Component.new(type: :underline) do |tabs| %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Tabs::Component.new(type: :underline) do |tabs|
   ...
-<%% end %>' %>
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Full Width" do %>
   <%= render Ui::Tabs::Component.new(type: :button_brand, full_width: true) do |tabs| %>
@@ -57,9 +57,9 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tabs::Component.new(type: :button_brand, full_width: true) do |tabs| %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Tabs::Component.new(type: :button_brand, full_width: true) do |tabs|
   ...
-<%% end %>' %>
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Badge" do %>
   <%= render Ui::Tabs::Component.new(type: :button_brand) do |tabs| %>
@@ -72,7 +72,7 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%% tabs.with_tab(id: "t1", label: "Features", badge: "New") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'tabs.with_tab(id: "t1", label: "Features", badge: "New")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
   <div class="space-y-6">
@@ -93,6 +93,6 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tabs::Component.new(type: :button_brand, size: :sm) do |tabs| %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Tabs::Component.new(type: :button_brand, size: :sm) do |tabs|
   ...
-<%% end %>' %>
+end' %>

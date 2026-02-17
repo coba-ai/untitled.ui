@@ -16,17 +16,15 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::EmptyState::Component.new(
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::EmptyState::Component.new(
   title: "No projects yet",
   description: "Get started by creating your first project."
-) do |es| %>
-  <%% es.with_icon do %>
-    <svg ...>...</svg>
-  <%% end %>
-  <%% es.with_actions do %>
-    <%%= render Ui::Button::Component.new { "Create Project" } %>
-  <%% end %>
-<%% end %>' %>
+) do |es|
+  es.with_icon { "<svg ...>...</svg>" }
+  es.with_actions do
+    render Ui::Button::Component.new { "Create Project" }
+  end
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
   <div class="space-y-8">
@@ -43,11 +41,11 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::EmptyState::Component.new(size: :sm, title: "No items", description: "Nothing here.") do |es| %>
-  <%% es.with_actions do %>
-    <%%= render Ui::Button::Component.new(size: :sm) { "Add Item" } %>
-  <%% end %>
-<%% end %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::EmptyState::Component.new(size: :sm, title: "No items", description: "Nothing here.") do |es|
+  es.with_actions do
+    render Ui::Button::Component.new(size: :sm) { "Add Item" }
+  end
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Without Actions" do %>
   <%= render Ui::EmptyState::Component.new(
@@ -62,7 +60,7 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%# Omit es.with_actions to render without action buttons %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: '# Omit es.with_actions to render without action buttons' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Without Icon" do %>
   <%= render Ui::EmptyState::Component.new(
@@ -75,4 +73,4 @@
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%# Omit es.with_icon to render without the icon %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: '# Omit es.with_icon to render without the icon' %>

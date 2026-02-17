@@ -11,8 +11,8 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::LoadingIndicator::Component.new(type: :line_simple) %>
-<%%= render Ui::LoadingIndicator::Component.new(type: :line_spinner) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::LoadingIndicator::Component.new(type: :line_simple)
+render Ui::LoadingIndicator::Component.new(type: :line_spinner)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
   <div class="flex flex-wrap items-end gap-8">
@@ -25,9 +25,9 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::LoadingIndicator::Component.new(size: :sm) %>
-<%%= render Ui::LoadingIndicator::Component.new(size: :lg) %>
-<%%= render Ui::LoadingIndicator::Component.new(size: :xl) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::LoadingIndicator::Component.new(size: :sm)
+render Ui::LoadingIndicator::Component.new(size: :lg)
+render Ui::LoadingIndicator::Component.new(size: :xl)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Label" do %>
   <div class="flex flex-wrap items-end gap-8">
@@ -37,5 +37,5 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::LoadingIndicator::Component.new(size: :md, label: "Loading...") %>
-<%%= render Ui::LoadingIndicator::Component.new(type: :line_spinner, label: "Processing") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::LoadingIndicator::Component.new(size: :md, label: "Loading...")
+render Ui::LoadingIndicator::Component.new(type: :line_spinner, label: "Processing")' %>

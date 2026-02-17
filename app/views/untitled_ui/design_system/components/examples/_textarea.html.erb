@@ -4,7 +4,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Textarea::Component.new(placeholder: "Enter a description...") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Textarea::Component.new(placeholder: "Enter a description...")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Label & Hint" do %>
   <div class="max-w-sm">
@@ -12,7 +12,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Textarea::Component.new(label: "Description", placeholder: "Enter a description...", hint: "Max 500 characters.") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Textarea::Component.new(label: "Description", placeholder: "Enter a description...", hint: "Max 500 characters.")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Required" do %>
   <div class="max-w-sm">
@@ -20,7 +20,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Textarea::Component.new(label: "Bio", placeholder: "Tell us about yourself...", required: true) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Textarea::Component.new(label: "Bio", placeholder: "Tell us about yourself...", required: true)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Invalid" do %>
   <div class="max-w-sm">
@@ -28,7 +28,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Textarea::Component.new(label: "Comments", invalid: true, hint: "This field is required.") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Textarea::Component.new(label: "Comments", invalid: true, hint: "This field is required.")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Disabled" do %>
   <div class="max-w-sm">
@@ -36,7 +36,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Textarea::Component.new(label: "Notes", disabled: true) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Textarea::Component.new(label: "Notes", disabled: true)' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Custom Rows" do %>
   <div class="max-w-sm space-y-4">
@@ -45,5 +45,5 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Textarea::Component.new(label: "Short", rows: 2) %>
-<%%= render Ui::Textarea::Component.new(label: "Tall", rows: 8) %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Textarea::Component.new(label: "Short", rows: 2)
+render Ui::Textarea::Component.new(label: "Tall", rows: 8)' %>

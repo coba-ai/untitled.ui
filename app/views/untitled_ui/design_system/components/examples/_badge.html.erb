@@ -11,7 +11,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Badge::Component.new(color: :brand) { "Brand" } %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(color: :brand) { "Brand" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Types" do %>
   <div class="flex flex-wrap items-center gap-3">
@@ -21,8 +21,8 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Badge::Component.new(type: :badge_color, color: :brand) { "Badge" } %>
-<%%= render Ui::Badge::Component.new(type: :badge_modern) { "Modern" } %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(type: :badge_color, color: :brand) { "Badge" }
+render Ui::Badge::Component.new(type: :badge_modern) { "Modern" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
   <div class="flex flex-wrap items-end gap-3">
@@ -32,7 +32,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Badge::Component.new(size: :lg, color: :brand) { "Large" } %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(size: :lg, color: :brand) { "Large" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Dot" do %>
   <div class="flex flex-wrap items-center gap-3">
@@ -43,7 +43,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Badge::Component.new(color: :success, dot: true) { "Active" } %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(color: :success, dot: true) { "Active" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Dismissible" do %>
   <div class="flex flex-wrap items-center gap-3">
@@ -53,7 +53,7 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Badge::Component.new(color: :brand, dismissible: true) { "Dismiss me" } %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(color: :brand, dismissible: true) { "Dismiss me" }' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Icons" do %>
   <div class="flex flex-wrap items-center gap-3">
@@ -63,5 +63,5 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Badge::Component.new(color: :brand, icon_leading: star_svg) { "Featured" } %>
-<%%= render Ui::Badge::Component.new(color: :success, icon_trailing: arrow_svg) { "Continue" } %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Badge::Component.new(color: :brand, icon_leading: star_svg) { "Featured" }
+render Ui::Badge::Component.new(color: :success, icon_trailing: arrow_svg) { "Continue" }' %>

@@ -9,9 +9,9 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::DotIcon::Component.new(color: "text-utility-brand-500") %>
-<%%= render Ui::DotIcon::Component.new(color: "text-utility-success-500") %>
-<%%= render Ui::DotIcon::Component.new(color: "text-utility-error-500") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::DotIcon::Component.new(color: "text-utility-brand-500")
+render Ui::DotIcon::Component.new(color: "text-utility-success-500")
+render Ui::DotIcon::Component.new(color: "text-utility-error-500")' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
   <div class="flex flex-wrap items-center gap-4">
@@ -24,6 +24,6 @@
   </div>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::DotIcon::Component.new(size: :sm, color: "text-utility-brand-500") %>
-<%%= render Ui::DotIcon::Component.new(size: :md, color: "text-utility-brand-500") %>
-<%%= render Ui::DotIcon::Component.new(size: :lg, color: "text-utility-brand-500") %>' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::DotIcon::Component.new(size: :sm, color: "text-utility-brand-500")
+render Ui::DotIcon::Component.new(size: :md, color: "text-utility-brand-500")
+render Ui::DotIcon::Component.new(size: :lg, color: "text-utility-brand-500")' %>
