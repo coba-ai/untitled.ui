@@ -1,0 +1,10 @@
+<nav aria-label="Pagination" class="<%= root_classes %>">
+  <% (1..total_pages).each do |p| %>
+    <%= tag.a(
+      href: page_url(p),
+      class: line_classes(p),
+      "aria-label": "Page #{p}",
+      "aria-current": (p == current_page ? "page" : nil)
+    ) %>
+  <% end %>
+</nav>

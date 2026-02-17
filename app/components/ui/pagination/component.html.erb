@@ -1,0 +1,140 @@
+<%
+  arrow_left = '<svg class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m0 0 7 7m-7-7 7-7" /></svg>'
+  arrow_right = '<svg class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0-7-7m7 7-7 7" /></svg>'
+%>
+
+<% if button_group_type? %>
+  <%# Button Group variant %>
+  <nav aria-label="Pagination" class="<%= root_classes %>">
+    <%= render Ui::ButtonGroup::Component.new do %>
+      <%= render(Ui::Button::Component.new(
+        tag: :a,
+        href: prev_url,
+        color: :secondary,
+        size: :md,
+        icon_leading: arrow_left,
+        disabled: first_page?
+      )) { "Previous" } %>
+
+      <% pages.each do |item| %>
+        <% if item[:type] == :page %>
+          <%= render(Ui::Button::Component.new(
+            tag: :a,
+            href: page_url(item[:value]),
+            color: :secondary,
+            size: :md,
+            class: cx("size-10 items-center justify-center", item[:value] == current_page && "bg-primary_hover")
+          )) { item[:value].to_s } %>
+        <% else %>
+          <%= render(Ui::Button::Component.new(
+            color: :secondary,
+            size: :md,
+            disabled: true,
+            class: "pointer-events-none size-10 items-center justify-center"
+          )) { raw("&#8230;") } %>
+        <% end %>
+      <% end %>
+
+      <%= render(Ui::Button::Component.new(
+        tag: :a,
+        href: next_url,
+        color: :secondary,
+        size: :md,
+        icon_trailing: arrow_right,
+        disabled: last_page?
+      )) { "Next" } %>
+    <% end %>
+  </nav>
+
+<% elsif minimal_type? %>
+  <%# Card Minimal variant %>
+  <div class="<%= root_classes %>">
+    <%# Mobile %>
+    <nav aria-label="Pagination" class="flex items-center justify-between md:hidden">
+      <%= render(Ui::Button::Component.new(tag: :a, href: prev_url, color: :secondary, size: :sm, icon_leading: arrow_left, disabled: first_page?)) %>
+      <span class="text-sm text-fg-secondary">
+        Page <span class="font-medium"><%= current_page %></span> of <span class="font-medium"><%= total_pages %></span>
+      </span>
+      <%= render(Ui::Button::Component.new(tag: :a, href: next_url, color: :secondary, size: :sm, icon_leading: arrow_right, disabled: last_page?)) %>
+    </nav>
+
+    <%# Desktop %>
+    <nav aria-label="Pagination" class="<%= cx('hidden items-center gap-3 md:flex', align == :center && 'justify-between') %>">
+      <div class="<%= cx(align == :center && 'flex flex-1 justify-start') %>">
+        <%= render(Ui::Button::Component.new(tag: :a, href: prev_url, color: :secondary, size: :sm, disabled: first_page?)) { "Previous" } %>
+      </div>
+
+      <span class="<%= cx(
+        'text-sm font-medium text-fg-secondary',
+        align == :right && 'order-first mr-auto',
+        align == :left && 'order-last ml-auto'
+      ) %>">
+        Page <%= current_page %> of <%= total_pages %>
+      </span>
+
+      <div class="<%= cx(align == :center && 'flex flex-1 justify-end') %>">
+        <%= render(Ui::Button::Component.new(tag: :a, href: next_url, color: :secondary, size: :sm, disabled: last_page?)) { "Next" } %>
+      </div>
+    </nav>
+  </div>
+
+<% else %>
+  <%# Page Default / Page Minimal / Card Default variants %>
+  <nav aria-label="Pagination" class="<%= root_classes %>">
+    <%# Desktop prev %>
+    <% if type == :page_default %>
+      <div class="hidden flex-1 justify-start md:flex">
+        <%= render(Ui::Button::Component.new(tag: :a, href: prev_url, color: :link_gray, size: :sm, icon_leading: arrow_left, disabled: first_page?)) { "Previous" } %>
+      </div>
+    <% else %>
+      <div class="flex flex-1 justify-start">
+        <%= render(Ui::Button::Component.new(tag: :a, href: prev_url, color: :secondary, size: :sm, icon_leading: arrow_left, disabled: first_page?)) { "Previous" } %>
+      </div>
+    <% end %>
+
+    <%# Mobile prev (page_default only) %>
+    <% if type == :page_default %>
+      <div class="md:hidden">
+        <%= render(Ui::Button::Component.new(tag: :a, href: prev_url, color: :secondary, size: :sm, icon_leading: arrow_left, disabled: first_page?)) %>
+      </div>
+    <% end %>
+
+    <%# Desktop page numbers %>
+    <div class="hidden justify-center gap-0.5 md:flex">
+      <% pages.each do |item| %>
+        <% if item[:type] == :page %>
+          <%= tag.a(
+            href: page_url(item[:value]),
+            class: page_item_classes(item[:value]),
+            "aria-current": (item[:value] == current_page ? "page" : nil)
+          ) { item[:value].to_s } %>
+        <% else %>
+          <span class="flex size-10 shrink-0 items-center justify-center text-tertiary" aria-hidden="true">&#8230;</span>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%# Mobile page indicator %>
+    <div class="flex justify-center text-sm whitespace-pre text-fg-secondary md:hidden">
+      Page <span class="font-medium"><%= current_page %></span> of <span class="font-medium"><%= total_pages %></span>
+    </div>
+
+    <%# Desktop next %>
+    <% if type == :page_default %>
+      <div class="hidden flex-1 justify-end md:flex">
+        <%= render(Ui::Button::Component.new(tag: :a, href: next_url, color: :link_gray, size: :sm, icon_trailing: arrow_right, disabled: last_page?)) { "Next" } %>
+      </div>
+    <% else %>
+      <div class="flex flex-1 justify-end">
+        <%= render(Ui::Button::Component.new(tag: :a, href: next_url, color: :secondary, size: :sm, icon_trailing: arrow_right, disabled: last_page?)) { "Next" } %>
+      </div>
+    <% end %>
+
+    <%# Mobile next (page_default only) %>
+    <% if type == :page_default %>
+      <div class="md:hidden">
+        <%= render(Ui::Button::Component.new(tag: :a, href: next_url, color: :secondary, size: :sm, icon_leading: arrow_right, disabled: last_page?)) %>
+      </div>
+    <% end %>
+  </nav>
+<% end %>

@@ -32,7 +32,8 @@ module UntitledUi
         { id: "nav_item", name: "Nav Item", category: "Navigation", description: "Base navigation link with collapsible, icon, badge, and active state support." },
         { id: "nav_sidebar", name: "Nav Sidebar", category: "Navigation", description: "Sidebar navigation with 5 variant types: simple, slim, dual_tier, section_dividers, section_subheadings." },
         { id: "nav_header", name: "Nav Header", category: "Navigation", description: "Top header navigation bar with horizontal items, secondary sub-nav, and avatar dropdown." },
-        { id: "nav_account_card", name: "Nav Account Card", category: "Navigation", description: "User account card with avatar, name, email, and optional dropdown menu." }
+        { id: "nav_account_card", name: "Nav Account Card", category: "Navigation", description: "User account card with avatar, name, email, and optional dropdown menu." },
+        { id: "pagination", name: "Pagination", category: "Application", description: "Pagination with 5 variant types, dot and line indicators, ellipsis, and prev/next navigation." }
       ].freeze
 
       def index
