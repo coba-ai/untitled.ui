@@ -11,28 +11,39 @@ module UntitledUi
         copy_file "untitled_ui_colors.css", "app/assets/tailwind/untitled_ui_colors.css"
       end
 
+      def create_css_symlinks
+        gem_root = UntitledUi.gem_root
+        tailwind_dir = "app/assets/tailwind"
+
+        {
+          "untitled_ui" => gem_root.join("app", "assets", "tailwind", "untitled_ui"),
+          "untitled_ui_components" => gem_root.join("app", "components"),
+          "untitled_ui_views" => gem_root.join("app", "views")
+        }.each do |name, target|
+          link = File.join(tailwind_dir, name)
+          if File.exist?(link)
+            say_status :skip, "#{link} (already exists)", :yellow
+          else
+            create_link link, target
+          end
+        end
+      end
+
       def add_css_imports
         css_file = "app/assets/tailwind/application.css"
         return unless File.exist?(css_file)
 
         imports = <<~CSS
 
-          @import "untitled_ui/theme";
-          @import "untitled_ui/typography";
-          @import "untitled_ui/globals";
+@import "./untitled_ui/theme.css";
+@import "./untitled_ui/typography.css";
+@import "./untitled_ui/globals.css";
+/* Scan UntitledUi gem templates for Tailwind classes (via symlinks) */
+@source "./untitled_ui_components/**/*.erb";
+@source "./untitled_ui_views/**/*.erb";
         CSS
 
         inject_into_file css_file, imports, after: '@import "tailwindcss";'
-      end
-
-      def add_tailwind_source
-        css_file = "app/assets/tailwind/application.css"
-        return unless File.exist?(css_file)
-
-        gem_path = UntitledUi.gem_root.join("app", "components")
-        source_line = "\n@source \"#{gem_path}/**/*.erb\";\n"
-
-        append_to_file css_file, source_line
       end
 
       def mount_engine
