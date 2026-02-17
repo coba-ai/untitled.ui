@@ -11,7 +11,10 @@ module UntitledUi
 
     # Expose CSS assets for Tailwind imports
     initializer "untitled_ui.assets" do |app|
-      app.config.assets.paths << root.join("app", "assets", "tailwind").to_s if app.config.respond_to?(:assets)
+      if app.config.respond_to?(:assets)
+        app.config.assets.paths << root.join("app", "assets", "tailwind").to_s
+        app.config.assets.paths << root.join("app", "javascript").to_s
+      end
     end
 
     # Auto-create symlinks so Tailwind can resolve gem CSS and scan templates
