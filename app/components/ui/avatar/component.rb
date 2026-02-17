@@ -4,13 +4,13 @@ module Ui
   module Avatar
     class Component < Ui::Base
       SIZE_STYLES = {
-        xxs: { root: "size-4 outline-[0.5px] -outline-offset-[0.5px]", initials: "text-xs font-semibold", icon: "size-3" },
-        xs: { root: "size-6 outline-[0.5px] -outline-offset-[0.5px]", initials: "text-xs font-semibold", icon: "size-4" },
-        sm: { root: "size-8 outline-[0.75px] -outline-offset-[0.75px]", initials: "text-sm font-semibold", icon: "size-5" },
-        md: { root: "size-10 outline-1 -outline-offset-1", initials: "text-md font-semibold", icon: "size-6" },
-        lg: { root: "size-12 outline-1 -outline-offset-1", initials: "text-lg font-semibold", icon: "size-7" },
-        xl: { root: "size-14 outline-1 -outline-offset-1", initials: "text-xl font-semibold", icon: "size-8" },
-        "2xl": { root: "size-16 outline-1 -outline-offset-1", initials: "text-display-xs font-semibold", icon: "size-8" }
+        xxs: { root: "size-4", initials: "text-xs font-semibold", icon: "size-3" },
+        xs: { root: "size-6", initials: "text-xs font-semibold", icon: "size-4" },
+        sm: { root: "size-8", initials: "text-sm font-semibold", icon: "size-5" },
+        md: { root: "size-10", initials: "text-md font-semibold", icon: "size-6" },
+        lg: { root: "size-12", initials: "text-lg font-semibold", icon: "size-7" },
+        xl: { root: "size-14", initials: "text-xl font-semibold", icon: "size-8" },
+        "2xl": { root: "size-16", initials: "text-display-xs font-semibold", icon: "size-8" }
       }.freeze
 
       STATUS_STYLES = {
@@ -36,7 +36,7 @@ module Ui
 
       def root_classes
         cx(
-          "relative inline-flex shrink-0 items-center justify-center rounded-full bg-avatar-bg outline outline-avatar-contrast-border/30",
+          "relative inline-flex shrink-0 items-center justify-center rounded-full bg-avatar-bg",
           SIZE_STYLES.dig(@size, :root),
           @extra_classes
         )
