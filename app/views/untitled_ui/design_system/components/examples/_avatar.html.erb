@@ -1,52 +1,50 @@
-<%# Props Table %>
-<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
-  <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Props</h2>
-  </div>
-  <table class="w-full text-sm">
-    <thead class="bg-secondary">
-      <tr>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Param</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Type</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Default</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Description</th>
-      </tr>
-    </thead>
-    <tbody class="divide-y divide-secondary">
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">size</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">:md</td><td class="px-6 py-3 text-tertiary">:xxs, :xs, :sm, :md, :lg, :xl, :"2xl"</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">src</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Image URL</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">alt</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Alt text for image</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">initials</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Initials fallback (e.g. "AK")</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">status</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">:online, :offline</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<%# Sizes %>
-<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
-  <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Sizes</h2>
-  </div>
-  <div class="flex flex-wrap items-end gap-3 p-6">
+<%= render "untitled_ui/design_system/shared/example_section", title: "All Sizes (with Initials)" do %>
+  <div class="flex flex-wrap items-end gap-3">
     <% %i[xxs xs sm md lg xl].each do |size| %>
-      <%= render Ui::Avatar::Component.new(size: size, initials: "AK") %>
+      <div class="flex flex-col items-center gap-1">
+        <%= render Ui::Avatar::Component.new(size: size, initials: "AK") %>
+        <span class="text-xs text-tertiary"><%= size %></span>
+      </div>
     <% end %>
-    <%= render Ui::Avatar::Component.new(size: :"2xl", initials: "AK") %>
+    <div class="flex flex-col items-center gap-1">
+      <%= render Ui::Avatar::Component.new(size: :"2xl", initials: "AK") %>
+      <span class="text-xs text-tertiary">2xl</span>
+    </div>
   </div>
-</div>
+<% end %>
 
-<%# Variants %>
-<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
-  <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Variants</h2>
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Avatar::Component.new(size: :lg, initials: "AK") %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Image" do %>
+  <div class="flex flex-wrap items-end gap-3">
+    <% %i[xs sm md lg xl].each do |size| %>
+      <%= render Ui::Avatar::Component.new(size: size, src: "https://i.pravatar.cc/150?img=1", alt: "User avatar") %>
+    <% end %>
+    <%= render Ui::Avatar::Component.new(size: :"2xl", src: "https://i.pravatar.cc/150?img=1", alt: "User avatar") %>
   </div>
-  <div class="flex flex-wrap items-center gap-4 p-6">
-    <%= render Ui::Avatar::Component.new(initials: "JD") %>
-    <%= render Ui::Avatar::Component.new(status: :online, initials: "AB") %>
-    <%= render Ui::Avatar::Component.new(status: :offline, initials: "CD") %>
-    <%= render Ui::Avatar::Component.new %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Avatar::Component.new(src: "https://i.pravatar.cc/150?img=1", alt: "User") %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Status Indicator" do %>
+  <div class="flex flex-wrap items-center gap-4">
+    <%= render Ui::Avatar::Component.new(initials: "ON", status: :online) %>
+    <%= render Ui::Avatar::Component.new(initials: "OF", status: :offline) %>
+    <%= render Ui::Avatar::Component.new(src: "https://i.pravatar.cc/150?img=3", status: :online) %>
+    <%= render Ui::Avatar::Component.new(src: "https://i.pravatar.cc/150?img=5", status: :offline) %>
   </div>
-  <div class="border-t border-secondary bg-secondary/50 px-6 py-4">
-    <pre class="text-xs text-tertiary"><code>&lt;%= render Ui::Avatar::Component.new(initials: "JD", status: :online) %&gt;</code></pre>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Avatar::Component.new(initials: "ON", status: :online) %>
+<%%= render Ui::Avatar::Component.new(src: "...", status: :offline) %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Fallback (Placeholder)" do %>
+  <div class="flex flex-wrap items-end gap-3">
+    <% %i[sm md lg xl].each do |size| %>
+      <%= render Ui::Avatar::Component.new(size: size) %>
+    <% end %>
   </div>
-</div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%# No src or initials renders a default user icon placeholder %>
+<%%= render Ui::Avatar::Component.new(size: :lg) %>' %>

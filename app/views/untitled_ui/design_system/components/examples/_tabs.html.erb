@@ -1,51 +1,98 @@
-<%# Props %>
-<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
-  <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Props</h2>
-  </div>
-  <table class="w-full text-sm">
-    <thead class="bg-secondary">
-      <tr>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Param</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Type</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Default</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Description</th>
-      </tr>
-    </thead>
-    <tbody class="divide-y divide-secondary">
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">type</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">:button_brand</td><td class="px-6 py-3 text-tertiary">:button_brand, :button_gray, :underline</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">size</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">:sm</td><td class="px-6 py-3 text-tertiary">:sm, :md</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">full_width</td><td class="px-6 py-3 text-tertiary">Boolean</td><td class="px-6 py-3 font-mono text-xs">false</td><td class="px-6 py-3 text-tertiary">Stretch tabs to full width</td></tr>
-    </tbody>
-  </table>
-</div>
+<%= render "untitled_ui/design_system/shared/example_section", title: "Button Brand" do %>
+  <%= render Ui::Tabs::Component.new(type: :button_brand) do |tabs| %>
+    <% tabs.with_tab(id: "bb-overview", label: "Overview", active: true) %>
+    <% tabs.with_tab(id: "bb-features", label: "Features") %>
+    <% tabs.with_tab(id: "bb-settings", label: "Settings") %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Overview content goes here.</div><% end %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Features content goes here.</div><% end %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Settings content goes here.</div><% end %>
+  <% end %>
+<% end %>
 
-<%# Types %>
-<% %i[button_brand button_gray underline].each do |type| %>
-  <div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
-    <div class="border-b border-secondary px-6 py-4">
-      <h2 class="text-lg font-semibold text-primary"><%= type.to_s.titleize %></h2>
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tabs::Component.new(type: :button_brand) do |tabs| %>
+  <%% tabs.with_tab(id: "t1", label: "Overview", active: true) %>
+  <%% tabs.with_tab(id: "t2", label: "Features") %>
+  <%% tabs.with_panel do %>Overview content<%% end %>
+  <%% tabs.with_panel do %>Features content<%% end %>
+<%% end %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Button Gray" do %>
+  <%= render Ui::Tabs::Component.new(type: :button_gray) do |tabs| %>
+    <% tabs.with_tab(id: "bg-overview", label: "Overview", active: true) %>
+    <% tabs.with_tab(id: "bg-features", label: "Features") %>
+    <% tabs.with_tab(id: "bg-settings", label: "Settings") %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Overview content goes here.</div><% end %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Features content goes here.</div><% end %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Settings content goes here.</div><% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tabs::Component.new(type: :button_gray) do |tabs| %>
+  ...
+<%% end %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Underline" do %>
+  <%= render Ui::Tabs::Component.new(type: :underline) do |tabs| %>
+    <% tabs.with_tab(id: "ul-overview", label: "Overview", active: true) %>
+    <% tabs.with_tab(id: "ul-features", label: "Features") %>
+    <% tabs.with_tab(id: "ul-settings", label: "Settings") %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Overview content goes here.</div><% end %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Features content goes here.</div><% end %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Settings content goes here.</div><% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tabs::Component.new(type: :underline) do |tabs| %>
+  ...
+<%% end %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Full Width" do %>
+  <%= render Ui::Tabs::Component.new(type: :button_brand, full_width: true) do |tabs| %>
+    <% tabs.with_tab(id: "fw-tab1", label: "Overview", active: true) %>
+    <% tabs.with_tab(id: "fw-tab2", label: "Features") %>
+    <% tabs.with_tab(id: "fw-tab3", label: "Settings") %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Full width tabs stretch to fill the container.</div><% end %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Features content.</div><% end %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Settings content.</div><% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tabs::Component.new(type: :button_brand, full_width: true) do |tabs| %>
+  ...
+<%% end %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Badge" do %>
+  <%= render Ui::Tabs::Component.new(type: :button_brand) do |tabs| %>
+    <% tabs.with_tab(id: "badge-overview", label: "Overview", active: true) %>
+    <% tabs.with_tab(id: "badge-features", label: "Features", badge: "New") %>
+    <% tabs.with_tab(id: "badge-settings", label: "Settings", badge: "3") %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Overview content.</div><% end %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Features content.</div><% end %>
+    <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Settings content.</div><% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%% tabs.with_tab(id: "t1", label: "Features", badge: "New") %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
+  <div class="space-y-6">
+    <div>
+      <span class="mb-2 block text-xs text-tertiary">Small</span>
+      <%= render Ui::Tabs::Component.new(type: :button_brand, size: :sm) do |tabs| %>
+        <% tabs.with_tab(id: "sm-tab1", label: "Overview", active: true) %>
+        <% tabs.with_tab(id: "sm-tab2", label: "Features") %>
+      <% end %>
     </div>
-    <div class="p-6">
-      <%= render Ui::Tabs::Component.new(type: type) do |tabs| %>
-        <% tabs.with_tab(id: "tab1", label: "Overview", active: true) %>
-        <% tabs.with_tab(id: "tab2", label: "Features") %>
-        <% tabs.with_tab(id: "tab3", label: "Settings") %>
-        <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Overview content</div><% end %>
-        <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Features content</div><% end %>
-        <% tabs.with_panel do %><div class="mt-4 text-sm text-tertiary">Settings content</div><% end %>
+    <div>
+      <span class="mb-2 block text-xs text-tertiary">Medium</span>
+      <%= render Ui::Tabs::Component.new(type: :button_brand, size: :md) do |tabs| %>
+        <% tabs.with_tab(id: "md-tab1", label: "Overview", active: true) %>
+        <% tabs.with_tab(id: "md-tab2", label: "Features") %>
       <% end %>
     </div>
   </div>
 <% end %>
 
-<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
-  <div class="border-t border-secondary bg-secondary/50 px-6 py-4">
-    <pre class="text-xs text-tertiary"><code>&lt;%= render Ui::Tabs::Component.new(type: :button_brand) do |tabs| %&gt;
-  &lt;% tabs.with_tab(id: "t1", label: "Tab 1", active: true) %&gt;
-  &lt;% tabs.with_tab(id: "t2", label: "Tab 2") %&gt;
-  &lt;% tabs.with_panel do %&gt;Panel 1&lt;% end %&gt;
-  &lt;% tabs.with_panel do %&gt;Panel 2&lt;% end %&gt;
-&lt;% end %&gt;</code></pre>
-  </div>
-</div>
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Tabs::Component.new(type: :button_brand, size: :sm) do |tabs| %>
+  ...
+<%% end %>' %>

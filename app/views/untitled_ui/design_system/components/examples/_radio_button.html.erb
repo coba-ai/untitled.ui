@@ -1,37 +1,34 @@
-<%# Props Table %>
-<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
-  <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Props</h2>
+<%= render "untitled_ui/design_system/shared/example_section", title: "Radio Group" do %>
+  <div class="space-y-3">
+    <%= render Ui::RadioButton::Component.new(name: "plan", value: "basic", label: "Basic", hint: "Free forever", checked: true) %>
+    <%= render Ui::RadioButton::Component.new(name: "plan", value: "pro", label: "Pro", hint: "$9/month") %>
+    <%= render Ui::RadioButton::Component.new(name: "plan", value: "enterprise", label: "Enterprise", hint: "Custom pricing") %>
   </div>
-  <table class="w-full text-sm">
-    <thead class="bg-secondary">
-      <tr>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Param</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Type</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Default</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Description</th>
-      </tr>
-    </thead>
-    <tbody class="divide-y divide-secondary">
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">size</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">:sm</td><td class="px-6 py-3 text-tertiary">:sm, :md</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">label</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Label text</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">hint</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Help text</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">checked</td><td class="px-6 py-3 text-tertiary">Boolean</td><td class="px-6 py-3 font-mono text-xs">false</td><td class="px-6 py-3 text-tertiary">Selected state</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">disabled</td><td class="px-6 py-3 text-tertiary">Boolean</td><td class="px-6 py-3 font-mono text-xs">false</td><td class="px-6 py-3 text-tertiary">Disables the radio</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">name</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Input name for grouping</td></tr>
-    </tbody>
-  </table>
-</div>
+<% end %>
 
-<%# Examples %>
-<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
-  <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Radio Group</h2>
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::RadioButton::Component.new(name: "plan", value: "basic", label: "Basic", hint: "Free forever", checked: true) %>
+<%%= render Ui::RadioButton::Component.new(name: "plan", value: "pro", label: "Pro", hint: "$9/month") %>
+<%%= render Ui::RadioButton::Component.new(name: "plan", value: "enterprise", label: "Enterprise", hint: "Custom pricing") %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
+  <div class="space-y-3">
+    <%= render Ui::RadioButton::Component.new(size: :sm, name: "size_demo", value: "sm", label: "Small radio", checked: true) %>
+    <%= render Ui::RadioButton::Component.new(size: :md, name: "size_demo_md", value: "md", label: "Medium radio", checked: true) %>
   </div>
-  <div class="space-y-3 p-6">
-    <%= render Ui::RadioButton::Component.new(name: "plan", label: "Basic", hint: "Free forever", checked: true) %>
-    <%= render Ui::RadioButton::Component.new(name: "plan", label: "Pro", hint: "$9/month") %>
-    <%= render Ui::RadioButton::Component.new(name: "plan", label: "Enterprise", hint: "Custom pricing") %>
-    <%= render Ui::RadioButton::Component.new(name: "plan", label: "Disabled", disabled: true) %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::RadioButton::Component.new(size: :sm, name: "group", label: "Small") %>
+<%%= render Ui::RadioButton::Component.new(size: :md, name: "group", label: "Medium") %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "States" do %>
+  <div class="space-y-3">
+    <%= render Ui::RadioButton::Component.new(name: "states_unchecked", label: "Unchecked") %>
+    <%= render Ui::RadioButton::Component.new(name: "states_checked", label: "Checked", checked: true) %>
+    <%= render Ui::RadioButton::Component.new(name: "states_disabled", label: "Disabled", disabled: true) %>
+    <%= render Ui::RadioButton::Component.new(name: "states_disabled_checked", label: "Disabled checked", checked: true, disabled: true) %>
   </div>
-</div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::RadioButton::Component.new(name: "group", label: "Unchecked") %>
+<%%= render Ui::RadioButton::Component.new(name: "group", label: "Checked", checked: true) %>
+<%%= render Ui::RadioButton::Component.new(name: "group", label: "Disabled", disabled: true) %>' %>

@@ -1,50 +1,81 @@
-<%# Props Table %>
-<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
-  <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Props</h2>
-  </div>
-  <table class="w-full text-sm">
-    <thead class="bg-secondary">
-      <tr>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Param</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Type</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Default</th>
-        <th class="px-6 py-3 text-left text-xs font-semibold text-quaternary">Description</th>
-      </tr>
-    </thead>
-    <tbody class="divide-y divide-secondary">
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">size</td><td class="px-6 py-3 text-tertiary">Symbol</td><td class="px-6 py-3 font-mono text-xs">:sm</td><td class="px-6 py-3 text-tertiary">:sm, :md</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">label</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Label text</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">hint</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Hint text below input</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">placeholder</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Placeholder text</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">required</td><td class="px-6 py-3 text-tertiary">Boolean</td><td class="px-6 py-3 font-mono text-xs">false</td><td class="px-6 py-3 text-tertiary">Shows required asterisk</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">invalid</td><td class="px-6 py-3 text-tertiary">Boolean</td><td class="px-6 py-3 font-mono text-xs">false</td><td class="px-6 py-3 text-tertiary">Shows error state</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">disabled</td><td class="px-6 py-3 text-tertiary">Boolean</td><td class="px-6 py-3 font-mono text-xs">false</td><td class="px-6 py-3 text-tertiary">Disables the input</td></tr>
-      <tr><td class="px-6 py-3 font-mono text-xs text-brand-secondary">name</td><td class="px-6 py-3 text-tertiary">String</td><td class="px-6 py-3 font-mono text-xs">nil</td><td class="px-6 py-3 text-tertiary">Input name attribute</td></tr>
-    </tbody>
-  </table>
-</div>
+<%
+  search_icon = '<svg class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>'
+  mail_icon = '<svg class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>'
+%>
 
-<%# Variants %>
-<div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
-  <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Variants</h2>
+<%= render "untitled_ui/design_system/shared/example_section", title: "Default" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Input::Component.new(placeholder: "Enter text...") %>
   </div>
-  <div class="space-y-6 p-6">
-    <div class="max-w-sm">
-      <%= render Ui::Input::Component.new(label: "Email", placeholder: "you@example.com", hint: "We'll never share your email.") %>
-    </div>
-    <div class="max-w-sm">
-      <%= render Ui::Input::Component.new(label: "Required Field", placeholder: "Enter value...", required: true) %>
-    </div>
-    <div class="max-w-sm">
-      <%= render Ui::Input::Component.new(label: "Invalid Input", placeholder: "Wrong value", invalid: true, hint: "This field is required.") %>
-    </div>
-    <div class="max-w-sm">
-      <%= render Ui::Input::Component.new(label: "Disabled", placeholder: "Cannot edit", disabled: true) %>
-    </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(placeholder: "Enter text...") %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
+  <div class="max-w-sm space-y-4">
+    <%= render Ui::Input::Component.new(size: :sm, placeholder: "Small input") %>
+    <%= render Ui::Input::Component.new(size: :md, placeholder: "Medium input") %>
   </div>
-  <div class="border-t border-secondary bg-secondary/50 px-6 py-4">
-    <pre class="text-xs text-tertiary"><code>&lt;%= render Ui::Input::Component.new(label: "Email", placeholder: "you@example.com", hint: "Help text") %&gt;</code></pre>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(size: :sm, placeholder: "Small") %>
+<%%= render Ui::Input::Component.new(size: :md, placeholder: "Medium") %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Label & Hint" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Input::Component.new(label: "Email", placeholder: "you@example.com", hint: "We'll never share your email.") %>
   </div>
-</div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "Email", placeholder: "you@example.com", hint: "We'\''ll never share your email.") %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Required" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Input::Component.new(label: "Full Name", placeholder: "Enter your name", required: true) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "Full Name", placeholder: "Enter your name", required: true) %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Invalid with Error Hint" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Input::Component.new(label: "Email", placeholder: "you@example.com", invalid: true, hint: "Please enter a valid email address.") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "Email", invalid: true, hint: "Please enter a valid email address.") %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Disabled" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Input::Component.new(label: "Disabled Field", placeholder: "Cannot edit", disabled: true) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "Disabled", disabled: true) %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Leading Icon" do %>
+  <div class="max-w-sm space-y-4">
+    <%= render Ui::Input::Component.new(placeholder: "Search...", icon: search_icon) %>
+    <%= render Ui::Input::Component.new(label: "Email", placeholder: "you@example.com", icon: mail_icon) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(placeholder: "Search...", icon: search_svg) %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Input Types" do %>
+  <div class="max-w-sm space-y-4">
+    <%= render Ui::Input::Component.new(label: "Email", type: "email", placeholder: "you@example.com", name: "email") %>
+    <%= render Ui::Input::Component.new(label: "Password", type: "password", placeholder: "Enter password", name: "password") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "Email", type: "email", placeholder: "you@example.com") %>
+<%%= render Ui::Input::Component.new(label: "Password", type: "password") %>' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Tooltip" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Input::Component.new(label: "API Key", placeholder: "sk-...", tooltip: "Your secret API key from the dashboard") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%%= render Ui::Input::Component.new(label: "API Key", tooltip: "Your secret API key from the dashboard") %>' %>
