@@ -37,7 +37,7 @@ rails generate untitled_ui:install
 
 The generator performs the following steps:
 
-1. **Copies a brand color template** to `app/assets/tailwind/untitled_ui_colors.css`. This file contains CSS custom properties for your brand palette (primary, secondary, neutral, and dark mode colors). Edit this file to match your brand.
+1. **Copies a brand color template** to `app/assets/tailwind/untitled_ui_colors.css`. It starts with the default Untitled UI palette and can be edited to match your brand.
 
 2. **Copies Untitled UI templates into your app**:
    - `app/components/ui/**` (component classes and templates)
@@ -53,6 +53,7 @@ The generator performs the following steps:
    @import "./untitled_ui/theme.css";
    @import "./untitled_ui/typography.css";
    @import "./untitled_ui/globals.css";
+   @import "./untitled_ui_colors.css";
    @source "./untitled_ui_components/**/*.erb";
    @source "./untitled_ui_components/**/*.rb";
    @source "./untitled_ui_views/**/*.erb";

@@ -6,46 +6,48 @@
   </div>
   <div class="grid grid-cols-2 gap-4 p-6 lg:grid-cols-4">
     <div>
-      <div class="h-24 rounded-lg" style="background-color: #0DC28B;"></div>
-      <p class="mt-2 text-sm font-semibold text-primary">#0DC28B</p>
-      <p class="text-xs text-tertiary">Primary Green</p>
+      <div class="h-24 rounded-lg" style="background-color: #9E77ED;"></div>
+      <p class="mt-2 text-sm font-semibold text-primary">#9E77ED</p>
+      <p class="text-xs text-tertiary">Brand 500</p>
     </div>
     <div>
-      <div class="h-24 rounded-lg" style="background-color: #E1EED5;"></div>
-      <p class="mt-2 text-sm font-semibold text-primary">#E1EED5</p>
-      <p class="text-xs text-tertiary">Secondary Green</p>
+      <div class="h-24 rounded-lg" style="background-color: #717680;"></div>
+      <p class="mt-2 text-sm font-semibold text-primary">#717680</p>
+      <p class="text-xs text-tertiary">Gray 500</p>
     </div>
     <div>
-      <div class="h-24 rounded-lg" style="background-color: #C5D6EB;"></div>
-      <p class="mt-2 text-sm font-semibold text-primary">#C5D6EB</p>
-      <p class="text-xs text-tertiary">Secondary Blue</p>
+      <div class="h-24 rounded-lg" style="background-color: #F04438;"></div>
+      <p class="mt-2 text-sm font-semibold text-primary">#F04438</p>
+      <p class="text-xs text-tertiary">Error 500</p>
     </div>
     <div>
-      <div class="h-24 rounded-lg" style="background-color: #FFF1DC;"></div>
-      <p class="mt-2 text-sm font-semibold text-primary">#FFF1DC</p>
-      <p class="text-xs text-tertiary">Secondary Yellow</p>
+      <div class="h-24 rounded-lg" style="background-color: #17B26A;"></div>
+      <p class="mt-2 text-sm font-semibold text-primary">#17B26A</p>
+      <p class="text-xs text-tertiary">Success 500</p>
     </div>
   </div>
 </div>
 
-<%# Primary Green Scale %>
+<%# Brand Scale %>
 <div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
   <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Primary Green Scale</h2>
-    <p class="mt-1 text-sm text-tertiary">Main brand color scale. Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">primary-*</code> or <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">brand-*</code> tokens.</p>
+    <h2 class="text-lg font-semibold text-primary">Brand Scale</h2>
+    <p class="mt-1 text-sm text-tertiary">Main brand color scale. Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">brand-*</code> tokens.</p>
   </div>
-  <div class="grid grid-cols-5 gap-0 lg:grid-cols-10">
+  <div class="grid grid-cols-4 gap-0 lg:grid-cols-12">
     <% [
-      { shade: "50", hex: "#F3F8F6", text: "dark" },
-      { shade: "100", hex: "#CFF3E8", text: "dark" },
-      { shade: "200", hex: "#9EE7D1", text: "dark" },
-      { shade: "300", hex: "#6EDAB9", text: "dark" },
-      { shade: "400", hex: "#3DCEA2", text: "dark" },
-      { shade: "500", hex: "#0DC28B", text: "light" },
-      { shade: "600", hex: "#03A372", text: "light" },
-      { shade: "700", hex: "#028A5E", text: "light" },
-      { shade: "800", hex: "#02734D", text: "light" },
-      { shade: "900", hex: "#015C3E", text: "light" }
+      { shade: "25", hex: "#FCFAFF", text: "dark" },
+      { shade: "50", hex: "#F9F5FF", text: "dark" },
+      { shade: "100", hex: "#F4EBFF", text: "dark" },
+      { shade: "200", hex: "#E9D7FE", text: "dark" },
+      { shade: "300", hex: "#D6BBFB", text: "dark" },
+      { shade: "400", hex: "#B692F6", text: "dark" },
+      { shade: "500", hex: "#9E77ED", text: "light" },
+      { shade: "600", hex: "#7F56D9", text: "light" },
+      { shade: "700", hex: "#6941C6", text: "light" },
+      { shade: "800", hex: "#53389E", text: "light" },
+      { shade: "900", hex: "#42307D", text: "light" },
+      { shade: "950", hex: "#2C1C5F", text: "light" }
     ].each do |c| %>
       <div class="flex flex-col items-center p-3" style="background-color: <%= c[:hex] %>;">
         <span class="text-xs font-semibold <%= c[:text] == 'light' ? 'text-white' : 'text-gray-900' %>"><%= c[:shade] %></span>
@@ -55,24 +57,26 @@
   </div>
 </div>
 
-<%# Secondary Green Scale %>
+<%# Gray Blue Scale %>
 <div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
   <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Secondary Green (Lime) Scale</h2>
-    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">secondary-green-*</code> tokens.</p>
+    <h2 class="text-lg font-semibold text-primary">Gray Blue Scale</h2>
+    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">gray-blue-*</code> tokens.</p>
   </div>
-  <div class="grid grid-cols-5 gap-0 lg:grid-cols-10">
+  <div class="grid grid-cols-4 gap-0 lg:grid-cols-12">
     <% [
-      { shade: "50", hex: "#F9FCF7", text: "dark" },
-      { shade: "100", hex: "#F3F8EE", text: "dark" },
-      { shade: "200", hex: "#EDF5E6", text: "dark" },
-      { shade: "300", hex: "#E7F1DD", text: "dark" },
-      { shade: "400", hex: "#E1EED5", text: "dark" },
-      { shade: "500", hex: "#D2F0B7", text: "dark" },
-      { shade: "600", hex: "#BBDE9B", text: "dark" },
-      { shade: "700", hex: "#96C472", text: "dark" },
-      { shade: "800", hex: "#72A84E", text: "light" },
-      { shade: "900", hex: "#4F8D2F", text: "light" }
+      { shade: "25", hex: "#FCFCFD", text: "dark" },
+      { shade: "50", hex: "#F8F9FC", text: "dark" },
+      { shade: "100", hex: "#EAEAF5", text: "dark" },
+      { shade: "200", hex: "#D5D9EB", text: "dark" },
+      { shade: "300", hex: "#B3B8DB", text: "dark" },
+      { shade: "400", hex: "#717BBC", text: "light" },
+      { shade: "500", hex: "#4E5BA6", text: "light" },
+      { shade: "600", hex: "#3E4784", text: "light" },
+      { shade: "700", hex: "#363F72", text: "light" },
+      { shade: "800", hex: "#293056", text: "light" },
+      { shade: "900", hex: "#101323", text: "light" },
+      { shade: "950", hex: "#0D0F1C", text: "light" }
     ].each do |c| %>
       <div class="flex flex-col items-center p-3" style="background-color: <%= c[:hex] %>;">
         <span class="text-xs font-semibold <%= c[:text] == 'light' ? 'text-white' : 'text-gray-900' %>"><%= c[:shade] %></span>
@@ -82,24 +86,26 @@
   </div>
 </div>
 
-<%# Secondary Blue Scale %>
+<%# Gray Cool Scale %>
 <div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
   <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Secondary Blue Scale</h2>
-    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">secondary-blue-*</code> tokens.</p>
+    <h2 class="text-lg font-semibold text-primary">Gray Cool Scale</h2>
+    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">gray-cool-*</code> tokens.</p>
   </div>
-  <div class="grid grid-cols-5 gap-0 lg:grid-cols-10">
+  <div class="grid grid-cols-4 gap-0 lg:grid-cols-12">
     <% [
-      { shade: "50", hex: "#F3F7FB", text: "dark" },
-      { shade: "100", hex: "#E8EFF7", text: "dark" },
-      { shade: "200", hex: "#DCE6F3", text: "dark" },
-      { shade: "300", hex: "#D1DEEF", text: "dark" },
-      { shade: "400", hex: "#C5D6EB", text: "dark" },
-      { shade: "500", hex: "#A1B7D1", text: "dark" },
-      { shade: "600", hex: "#7D9AB7", text: "dark" },
-      { shade: "700", hex: "#5A7D9D", text: "light" },
-      { shade: "800", hex: "#3A5169", text: "light" },
-      { shade: "900", hex: "#1A2535", text: "light" }
+      { shade: "25", hex: "#FCFCFD", text: "dark" },
+      { shade: "50", hex: "#F9F9FB", text: "dark" },
+      { shade: "100", hex: "#EFF1F5", text: "dark" },
+      { shade: "200", hex: "#DCDDEA", text: "dark" },
+      { shade: "300", hex: "#B9C0D4", text: "dark" },
+      { shade: "400", hex: "#7D89B0", text: "light" },
+      { shade: "500", hex: "#5D6B98", text: "light" },
+      { shade: "600", hex: "#4A5578", text: "light" },
+      { shade: "700", hex: "#404968", text: "light" },
+      { shade: "800", hex: "#30374F", text: "light" },
+      { shade: "900", hex: "#111322", text: "light" },
+      { shade: "950", hex: "#0E101B", text: "light" }
     ].each do |c| %>
       <div class="flex flex-col items-center p-3" style="background-color: <%= c[:hex] %>;">
         <span class="text-xs font-semibold <%= c[:text] == 'light' ? 'text-white' : 'text-gray-900' %>"><%= c[:shade] %></span>
@@ -109,24 +115,26 @@
   </div>
 </div>
 
-<%# Secondary Yellow Scale %>
+<%# Gray Modern Scale %>
 <div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
   <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Secondary Yellow Scale</h2>
-    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">secondary-yellow-*</code> tokens.</p>
+    <h2 class="text-lg font-semibold text-primary">Gray Modern Scale</h2>
+    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">gray-modern-*</code> tokens.</p>
   </div>
-  <div class="grid grid-cols-5 gap-0 lg:grid-cols-10">
+  <div class="grid grid-cols-4 gap-0 lg:grid-cols-12">
     <% [
-      { shade: "50", hex: "#FFFCF7", text: "dark" },
-      { shade: "100", hex: "#FFF9F0", text: "dark" },
-      { shade: "200", hex: "#FFF6E8", text: "dark" },
-      { shade: "300", hex: "#FFF3E1", text: "dark" },
-      { shade: "400", hex: "#FFF1DC", text: "dark" },
-      { shade: "500", hex: "#FCE7C7", text: "dark" },
-      { shade: "600", hex: "#E3B85E", text: "dark" },
-      { shade: "700", hex: "#C99A3B", text: "light" },
-      { shade: "800", hex: "#A67D1F", text: "light" },
-      { shade: "900", hex: "#7A5A0A", text: "light" }
+      { shade: "25", hex: "#FCFCFD", text: "dark" },
+      { shade: "50", hex: "#F8FAFC", text: "dark" },
+      { shade: "100", hex: "#EEF2F6", text: "dark" },
+      { shade: "200", hex: "#E3E8EF", text: "dark" },
+      { shade: "300", hex: "#CDD5DF", text: "dark" },
+      { shade: "400", hex: "#9AA4B2", text: "light" },
+      { shade: "500", hex: "#697586", text: "light" },
+      { shade: "600", hex: "#4B5565", text: "light" },
+      { shade: "700", hex: "#364152", text: "light" },
+      { shade: "800", hex: "#202939", text: "light" },
+      { shade: "900", hex: "#121926", text: "light" },
+      { shade: "950", hex: "#0D121C", text: "light" }
     ].each do |c| %>
       <div class="flex flex-col items-center p-3" style="background-color: <%= c[:hex] %>;">
         <span class="text-xs font-semibold <%= c[:text] == 'light' ? 'text-white' : 'text-gray-900' %>"><%= c[:shade] %></span>
@@ -136,24 +144,26 @@
   </div>
 </div>
 
-<%# Neutral Scale %>
+<%# Gray Neutral Scale %>
 <div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
   <div class="border-b border-secondary px-6 py-4">
-    <h2 class="text-lg font-semibold text-primary">Neutral Scale</h2>
-    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">neutral-*</code> tokens.</p>
+    <h2 class="text-lg font-semibold text-primary">Gray Neutral Scale</h2>
+    <p class="mt-1 text-sm text-tertiary">Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">gray-neutral-*</code> tokens.</p>
   </div>
-  <div class="grid grid-cols-5 gap-0 lg:grid-cols-10">
+  <div class="grid grid-cols-4 gap-0 lg:grid-cols-12">
     <% [
-      { shade: "50", hex: "#F9FAFA", text: "dark" },
-      { shade: "100", hex: "#F3F8F6", text: "dark" },
-      { shade: "200", hex: "#F2F5F7", text: "dark" },
-      { shade: "300", hex: "#D1D5DB", text: "dark" },
-      { shade: "400", hex: "#9CA3AF", text: "dark" },
-      { shade: "500", hex: "#6B7280", text: "light" },
-      { shade: "600", hex: "#4B5563", text: "light" },
-      { shade: "700", hex: "#374151", text: "light" },
-      { shade: "800", hex: "#1F2937", text: "light" },
-      { shade: "900", hex: "#000000", text: "light" }
+      { shade: "25", hex: "#FCFCFD", text: "dark" },
+      { shade: "50", hex: "#F9FAFB", text: "dark" },
+      { shade: "100", hex: "#F3F4F6", text: "dark" },
+      { shade: "200", hex: "#E5E7EB", text: "dark" },
+      { shade: "300", hex: "#D2D6DB", text: "dark" },
+      { shade: "400", hex: "#9DA4AE", text: "dark" },
+      { shade: "500", hex: "#6C737F", text: "light" },
+      { shade: "600", hex: "#4D5761", text: "light" },
+      { shade: "700", hex: "#384250", text: "light" },
+      { shade: "800", hex: "#1F2A37", text: "light" },
+      { shade: "900", hex: "#111927", text: "light" },
+      { shade: "950", hex: "#0D121C", text: "light" }
     ].each do |c| %>
       <div class="flex flex-col items-center p-3" style="background-color: <%= c[:hex] %>;">
         <span class="text-xs font-semibold <%= c[:text] == 'light' ? 'text-white' : 'text-gray-900' %>"><%= c[:shade] %></span>
@@ -167,16 +177,16 @@
 <div class="mb-8 overflow-hidden rounded-xl bg-primary shadow-xs ring-1 ring-secondary">
   <div class="border-b border-secondary px-6 py-4">
     <h2 class="text-lg font-semibold text-primary">Dark Mode Palette</h2>
-    <p class="mt-1 text-sm text-tertiary">Clean neutral darks with green used as accent. Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">dark-*</code> tokens.</p>
+    <p class="mt-1 text-sm text-tertiary">Clean neutral darks with brand purple used as accent. Use <code class="text-xs font-mono bg-secondary px-1 py-0.5 rounded">dark-*</code> tokens.</p>
   </div>
   <div class="grid grid-cols-2 gap-0 lg:grid-cols-6">
     <% [
-      { name: "background", hex: "#09090B", desc: "Page background" },
-      { name: "secondary", hex: "#111113", desc: "Recessed areas" },
-      { name: "surface", hex: "#18181B", desc: "Cards, panels" },
-      { name: "surface-raised", hex: "#27272A", desc: "Elevated surfaces" },
-      { name: "border-subtle", hex: "#27272A", desc: "Subtle dividers" },
-      { name: "border", hex: "#3F3F46", desc: "Borders, rings" }
+      { name: "background", hex: "#0C0E12", desc: "Page background" },
+      { name: "secondary", hex: "#13161B", desc: "Recessed areas" },
+      { name: "surface", hex: "#22262F", desc: "Cards, panels" },
+      { name: "surface-raised", hex: "#373A41", desc: "Elevated surfaces" },
+      { name: "border-subtle", hex: "#373A41", desc: "Subtle dividers" },
+      { name: "border", hex: "#61656C", desc: "Borders, rings" }
     ].each do |c| %>
       <div class="flex flex-col items-center p-4" style="background-color: <%= c[:hex] %>;">
         <span class="text-xs font-semibold text-white"><%= c[:name] %></span>
@@ -188,9 +198,9 @@
   <div class="grid grid-cols-2 gap-0 lg:grid-cols-4">
     <% [
       { name: "foreground", hex: "#FAFAFA", desc: "Primary text" },
-      { name: "muted", hex: "#A1A1AA", desc: "Secondary text" },
-      { name: "accent", hex: "#3DCEA2", desc: "Links, active states" },
-      { name: "accent-hover", hex: "#6EDAB9", desc: "Hover state" }
+      { name: "muted", hex: "#94979C", desc: "Secondary text" },
+      { name: "accent", hex: "#B692F6", desc: "Links, active states" },
+      { name: "accent-hover", hex: "#D6BBFB", desc: "Hover state" }
     ].each do |c| %>
       <div class="flex flex-col items-center p-4" style="background-color: #18181B;">
         <span class="text-xs font-semibold" style="color: <%= c[:hex] %>;"><%= c[:name] %></span>
@@ -201,14 +211,14 @@
   </div>
   <div class="border-t border-secondary bg-secondary/50 px-6 py-4">
     <pre class="text-xs text-tertiary"><code><%# Dark mode tokens %>
-dark-background     <%# #09090B — near-black %>
-dark-surface        <%# #18181B — card/panel fill %>
-dark-surface-raised <%# #27272A — elevated panels %>
-dark-border         <%# #3F3F46 — dividers %>
+dark-background     <%# #0C0E12 — near-black %>
+dark-surface        <%# #22262F — card/panel fill %>
+dark-surface-raised <%# #373A41 — elevated panels %>
+dark-border         <%# #61656C — dividers %>
 dark-foreground     <%# #FAFAFA — primary text (clean white) %>
-dark-muted          <%# #A1A1AA — secondary text %>
-dark-accent         <%# #3DCEA2 — interactive green %>
-dark-primary        <%# #0DC28B — brand in dark context %></code></pre>
+dark-muted          <%# #94979C — secondary text %>
+dark-accent         <%# #B692F6 — interactive brand tint %>
+dark-primary        <%# #9E77ED — brand in dark context %></code></pre>
   </div>
 </div>
 
@@ -231,31 +241,31 @@ dark-primary        <%# #0DC28B — brand in dark context %></code></pre>
       <tr>
         <td class="px-6 py-3 font-mono text-xs text-brand-secondary">bg-brand-solid</td>
         <td class="px-6 py-3 font-mono text-xs text-tertiary">brand-600</td>
-        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #0DC28B;"></span></td>
+        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #7F56D9;"></span></td>
         <td class="px-6 py-3 text-tertiary">Primary buttons, CTAs</td>
       </tr>
       <tr>
         <td class="px-6 py-3 font-mono text-xs text-brand-secondary">bg-brand-solid_hover</td>
         <td class="px-6 py-3 font-mono text-xs text-tertiary">brand-700</td>
-        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #03A372;"></span></td>
+        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #6941C6;"></span></td>
         <td class="px-6 py-3 text-tertiary">Hover state for primary buttons</td>
       </tr>
       <tr>
         <td class="px-6 py-3 font-mono text-xs text-brand-secondary">bg-brand-primary_alt</td>
         <td class="px-6 py-3 font-mono text-xs text-tertiary">brand-50</td>
-        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #F3F8F6;"></span></td>
+        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #F9F5FF;"></span></td>
         <td class="px-6 py-3 text-tertiary">Light tinted backgrounds</td>
       </tr>
       <tr>
         <td class="px-6 py-3 font-mono text-xs text-brand-secondary">text-brand-secondary</td>
         <td class="px-6 py-3 font-mono text-xs text-tertiary">brand-700</td>
-        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #03A372;"></span></td>
+        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #6941C6;"></span></td>
         <td class="px-6 py-3 text-tertiary">Brand-colored text</td>
       </tr>
       <tr>
         <td class="px-6 py-3 font-mono text-xs text-brand-secondary">ring-brand</td>
         <td class="px-6 py-3 font-mono text-xs text-tertiary">brand-600</td>
-        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #0DC28B;"></span></td>
+        <td class="px-6 py-3"><span class="inline-block size-4 rounded" style="background-color: #7F56D9;"></span></td>
         <td class="px-6 py-3 text-tertiary">Focus rings, borders</td>
       </tr>
     </tbody>
@@ -269,24 +279,24 @@ dark-primary        <%# #0DC28B — brand in dark context %></code></pre>
   </div>
   <div class="space-y-4 p-6">
     <div class="flex flex-wrap items-center gap-3">
-      <div class="rounded-lg bg-primary-500 px-4 py-2 text-sm font-semibold text-white">bg-primary-500</div>
-      <div class="rounded-lg bg-secondary-green-400 px-4 py-2 text-sm font-semibold text-gray-800">bg-secondary-green-400</div>
-      <div class="rounded-lg bg-secondary-blue-400 px-4 py-2 text-sm font-semibold text-gray-800">bg-secondary-blue-400</div>
-      <div class="rounded-lg bg-secondary-yellow-400 px-4 py-2 text-sm font-semibold text-gray-800">bg-secondary-yellow-400</div>
+      <div class="rounded-lg bg-brand-500 px-4 py-2 text-sm font-semibold text-white">bg-brand-500</div>
+      <div class="rounded-lg bg-gray-blue-500 px-4 py-2 text-sm font-semibold text-white">bg-gray-blue-500</div>
+      <div class="rounded-lg bg-gray-cool-500 px-4 py-2 text-sm font-semibold text-white">bg-gray-cool-500</div>
+      <div class="rounded-lg bg-gray-modern-500 px-4 py-2 text-sm font-semibold text-white">bg-gray-modern-500</div>
     </div>
     <div class="flex flex-wrap items-center gap-3">
-      <div class="rounded-lg bg-primary-100 px-4 py-2 text-sm font-semibold text-primary-800">bg-primary-100</div>
-      <div class="rounded-lg bg-secondary-green-200 px-4 py-2 text-sm font-semibold text-gray-700">bg-secondary-green-200</div>
-      <div class="rounded-lg bg-secondary-blue-200 px-4 py-2 text-sm font-semibold text-gray-700">bg-secondary-blue-200</div>
-      <div class="rounded-lg bg-secondary-yellow-200 px-4 py-2 text-sm font-semibold text-gray-700">bg-secondary-yellow-200</div>
+      <div class="rounded-lg bg-brand-100 px-4 py-2 text-sm font-semibold text-brand-800">bg-brand-100</div>
+      <div class="rounded-lg bg-gray-blue-200 px-4 py-2 text-sm font-semibold text-gray-700">bg-gray-blue-200</div>
+      <div class="rounded-lg bg-gray-cool-200 px-4 py-2 text-sm font-semibold text-gray-700">bg-gray-cool-200</div>
+      <div class="rounded-lg bg-gray-modern-200 px-4 py-2 text-sm font-semibold text-gray-700">bg-gray-modern-200</div>
     </div>
   </div>
   <div class="border-t border-secondary bg-secondary/50 px-6 py-4">
     <pre class="text-xs text-tertiary"><code><%# Tailwind classes %>
-bg-primary-500          <%# Main green #0DC28B %>
-bg-secondary-green-400  <%# Lime #E1EED5 %>
-bg-secondary-blue-400   <%# Blue #C5D6EB %>
-bg-secondary-yellow-400 <%# Yellow #FFF1DC %>
+bg-brand-500            <%# Brand purple #9E77ED %>
+bg-gray-blue-500        <%# Gray blue #4E5BA6 %>
+bg-gray-cool-500        <%# Gray cool #5D6B98 %>
+bg-gray-modern-500      <%# Gray modern #697586 %>
 
 <%# Semantic tokens (from Untitled UI theme) %>
 bg-brand-solid          <%# Primary button fill %>

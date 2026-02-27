@@ -52,6 +52,7 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       expect(css).to include('@import "./untitled_ui/theme.css";')
       expect(css).to include('@import "./untitled_ui/typography.css";')
       expect(css).to include('@import "./untitled_ui/globals.css";')
+      expect(css).to include('@import "./untitled_ui_colors.css";')
       expect(css).to include('@source "./untitled_ui_components/**/*.erb";')
       expect(css).to include('@source "./untitled_ui_views/**/*.erb";')
 
@@ -71,6 +72,7 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
 
       css = File.read(File.join(root, "app/assets/tailwind/application.css"))
       expect(css).to include('@import "./untitled_ui/theme.css";')
+      expect(css).to include('@import "./untitled_ui_colors.css";')
       expect(css).to include('@source "./untitled_ui_components/**/*.erb";')
     end
   end
@@ -83,6 +85,7 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       css = File.read(File.join(root, "app/assets/tailwind/application.css"))
       expect(css).to include('@import "tailwindcss";')
       expect(css).to include('@import "./untitled_ui/theme.css";')
+      expect(css).to include('@import "./untitled_ui_colors.css";')
       expect(css).to include('@source "./untitled_ui_components/**/*.erb";')
     end
   end
