@@ -33,7 +33,8 @@ module UntitledUi
         copy_tree(
           source_dir: UntitledUi.gem_root.join("app", "assets", "tailwind", "untitled_ui"),
           destination_dir: destination,
-          only_extensions: [".css"]
+          only_extensions: [".css"],
+          overwrite: true
         )
       end
 
@@ -144,7 +145,7 @@ module UntitledUi
 
       private
 
-      def copy_tree(source_dir:, destination_dir:, only_extensions: nil)
+      def copy_tree(source_dir:, destination_dir:, only_extensions: nil, overwrite: false)
         source_path = Pathname.new(source_dir)
         return unless source_path.directory?
 
@@ -158,7 +159,12 @@ module UntitledUi
           FileUtils.mkdir_p(target_file.dirname)
 
           if target_file.exist?
-            say_status :skip, "#{target_file} (already exists)", :yellow
+            if overwrite
+              FileUtils.cp(source_file, target_file)
+              say_status :update, target_file.to_s, :green
+            else
+              say_status :skip, "#{target_file} (already exists)", :yellow
+            end
           else
             FileUtils.cp(source_file, target_file)
             say_status :copy, target_file.to_s, :green

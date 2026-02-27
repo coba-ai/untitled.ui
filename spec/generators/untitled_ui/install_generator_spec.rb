@@ -100,4 +100,20 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       expect(File.exist?(File.join(old_link, "theme.css"))).to be(true)
     end
   end
+
+  it "updates untitled_ui tailwind css files on reinstall" do
+    Dir.mktmpdir do |root|
+      prepare_minimal_app!(root)
+      run_install!(root)
+
+      globals_path = File.join(root, "app/assets/tailwind/untitled_ui/globals.css")
+      File.write(globals_path, "/* stale */\n")
+
+      run_install!(root)
+
+      globals = File.read(globals_path)
+      expect(globals).not_to include("/* stale */")
+      expect(globals).to include("@custom-variant dark")
+    end
+  end
 end
