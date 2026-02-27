@@ -116,4 +116,20 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       expect(globals).to include("@custom-variant dark")
     end
   end
+
+  it "updates untitled_ui design system view templates on reinstall" do
+    Dir.mktmpdir do |root|
+      prepare_minimal_app!(root)
+      run_install!(root)
+
+      view_path = File.join(root, "app/views/untitled_ui/design_system/components/show.html.erb")
+      File.write(view_path, "<!-- stale -->\n")
+
+      run_install!(root)
+
+      view = File.read(view_path)
+      expect(view).not_to include("<!-- stale -->")
+      expect(view).to include("<h1 class=\"text-display-sm font-semibold text-primary\">")
+    end
+  end
 end

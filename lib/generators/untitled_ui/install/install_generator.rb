@@ -49,7 +49,8 @@ module UntitledUi
         copy_tree(
           source_dir: UntitledUi.gem_root.join("app", "views", "untitled_ui"),
           destination_dir: app_path("app/views/untitled_ui"),
-          only_extensions: [".erb"]
+          only_extensions: [".erb"],
+          overwrite: true
         )
       end
 
