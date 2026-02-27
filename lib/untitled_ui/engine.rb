@@ -8,14 +8,15 @@ module UntitledUi
     initializer "untitled_ui.autoload", before: :set_autoload_paths do |app|
       components_path = root.join("app", "components").to_s
       unless app.config.autoload_paths.frozen?
-        app.config.autoload_paths.unshift(components_path)
+        app.config.autoload_paths << components_path unless app.config.autoload_paths.include?(components_path)
       end
+      app.config.eager_load_paths << components_path unless app.config.eager_load_paths.include?(components_path)
     end
 
     # Add app/components to view paths so partials in component directories can be found
     initializer "untitled_ui.view_paths" do
       ActiveSupport.on_load(:action_controller) do
-        prepend_view_path UntitledUi::Engine.root.join("app", "components")
+        append_view_path UntitledUi::Engine.root.join("app", "components")
       end
     end
 
@@ -32,14 +33,26 @@ module UntitledUi
       tailwind_dir = app.root.join("app", "assets", "tailwind")
       next unless tailwind_dir.directory?
 
+      component_scan_target = if app.root.join("app", "components", "ui").directory?
+                                app.root.join("app", "components")
+                              else
+                                root.join("app", "components")
+                              end
+
+      view_scan_target = if app.root.join("app", "views", "untitled_ui").directory?
+                           app.root.join("app", "views")
+                         else
+                           root.join("app", "views")
+                         end
+
       {
         "untitled_ui" => root.join("app", "assets", "tailwind", "untitled_ui"),
-        "untitled_ui_components" => root.join("app", "components"),
-        "untitled_ui_views" => root.join("app", "views")
+        "untitled_ui_components" => component_scan_target,
+        "untitled_ui_views" => view_scan_target
       }.each do |name, target|
         link = tailwind_dir.join(name)
-        next if link.symlink? && link.readlink.to_s == target.to_s
-        FileUtils.rm_f(link) if link.symlink?
+        next if link.exist? || link.symlink?
+
         FileUtils.ln_sf(target, link)
       end
     rescue Errno::EPERM

@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "fileutils"
+require "pathname"
+
 module UntitledUi
   module Generators
     class InstallGenerator < Rails::Generators::Base
@@ -7,43 +10,90 @@ module UntitledUi
 
       desc "Install UntitledUi into your Rails application"
 
+      TAILWIND_REQUIRED_LINES = [
+        '@import "./untitled_ui/theme.css";',
+        '@import "./untitled_ui/typography.css";',
+        '@import "./untitled_ui/globals.css";',
+        '@source "./untitled_ui_components/**/*.erb";',
+        '@source "./untitled_ui_views/**/*.erb";',
+        '@source "./untitled_ui_components/**/*.rb";'
+      ].freeze
+
       def copy_color_template
         copy_file "untitled_ui_colors.css", "app/assets/tailwind/untitled_ui_colors.css"
       end
 
-      def create_css_symlinks
-        gem_root = UntitledUi.gem_root
-        tailwind_dir = "app/assets/tailwind"
+      def copy_tailwind_assets
+        destination = app_path("app/assets/tailwind/untitled_ui")
+        if destination.symlink?
+          remove_file(destination.to_s)
+          say_status :remove, "#{destination} (replacing symlink with local directory)", :yellow
+        end
+
+        copy_tree(
+          source_dir: UntitledUi.gem_root.join("app", "assets", "tailwind", "untitled_ui"),
+          destination_dir: destination,
+          only_extensions: [".css"]
+        )
+      end
+
+      def copy_component_templates
+        copy_tree(
+          source_dir: UntitledUi.gem_root.join("app", "components", "ui"),
+          destination_dir: app_path("app/components/ui")
+        )
+      end
+
+      def copy_view_templates
+        copy_tree(
+          source_dir: UntitledUi.gem_root.join("app", "views", "untitled_ui"),
+          destination_dir: app_path("app/views/untitled_ui"),
+          only_extensions: [".erb"]
+        )
+      end
+
+      def create_tailwind_scan_symlinks
+        tailwind_dir = app_path("app/assets/tailwind")
+        return unless tailwind_dir.directory?
 
         {
-          "untitled_ui" => gem_root.join("app", "assets", "tailwind", "untitled_ui"),
-          "untitled_ui_components" => gem_root.join("app", "components"),
-          "untitled_ui_views" => gem_root.join("app", "views")
+          "untitled_ui_components" => app_path("app/components"),
+          "untitled_ui_views" => app_path("app/views")
         }.each do |name, target|
-          link = File.join(tailwind_dir, name)
-          if File.exist?(link)
+          link = tailwind_dir.join(name)
+
+          if link.symlink?
+            if link.readlink.to_s == target.to_s
+              say_status :skip, "#{link} (already linked)", :yellow
+            else
+              remove_file(link.to_s)
+              create_link(link.to_s, target.to_s)
+            end
+          elsif link.exist?
             say_status :skip, "#{link} (already exists)", :yellow
           else
-            create_link link, target
+            create_link(link.to_s, target.to_s)
           end
         end
       end
 
       def add_css_imports
-        css_file = "app/assets/tailwind/application.css"
-        return unless File.exist?(css_file)
+        css_file = app_path("app/assets/tailwind/application.css")
+        return unless css_file.exist?
 
-        imports = <<~CSS
+        content = css_file.read
+        missing_lines = TAILWIND_REQUIRED_LINES.reject { |line| content.include?(line) }
+        return if missing_lines.empty?
 
-@import "./untitled_ui/theme.css";
-@import "./untitled_ui/typography.css";
-@import "./untitled_ui/globals.css";
-/* Scan UntitledUi gem templates for Tailwind classes (via symlinks) */
-@source "./untitled_ui_components/**/*.{erb,rb}";
-@source "./untitled_ui_views/**/*.erb";
-        CSS
+        insertion = missing_lines.join("\n")
+        updated = if content.match?(/@import\s+["']tailwindcss["'][^;]*;/)
+                    content.sub(/@import\s+["']tailwindcss["'][^;]*;/) { |match| "#{match}\n#{insertion}" }
+                  else
+                    "#{content.rstrip}\n\n#{insertion}\n"
+                  end
 
-        inject_into_file css_file, imports, after: '@import "tailwindcss";'
+        css_file.write(updated)
+        say_status :insert, css_file.to_s, :green
       end
 
       def mount_engine
@@ -84,11 +134,40 @@ module UntitledUi
         say ""
         say "Next steps:"
         say "  1. Customize brand colors in app/assets/tailwind/untitled_ui_colors.css"
-        say "  2. Visit /design_system to browse components"
-        say "  3. Use components in views:"
+        say "  2. Review generated templates in app/components/ui and app/views/untitled_ui"
+        say "  3. Visit /design_system to browse components"
+        say "  4. Use components in views:"
         say "     render Ui::Button::Component.new(color: :primary) { 'Click me' }"
         say "     render Ui::Input::Component.new(label: 'Email')"
         say ""
+      end
+
+      private
+
+      def copy_tree(source_dir:, destination_dir:, only_extensions: nil)
+        source_path = Pathname.new(source_dir)
+        return unless source_path.directory?
+
+        Dir.glob(source_path.join("**/*").to_s).sort.each do |source|
+          source_file = Pathname.new(source)
+          next if source_file.directory?
+          next if only_extensions && !only_extensions.include?(source_file.extname)
+
+          relative_path = source_file.relative_path_from(source_path)
+          target_file = destination_dir.join(relative_path)
+          FileUtils.mkdir_p(target_file.dirname)
+
+          if target_file.exist?
+            say_status :skip, "#{target_file} (already exists)", :yellow
+          else
+            FileUtils.cp(source_file, target_file)
+            say_status :copy, target_file.to_s, :green
+          end
+        end
+      end
+
+      def app_path(relative_path)
+        Pathname.new(File.join(destination_root, relative_path))
       end
     end
   end

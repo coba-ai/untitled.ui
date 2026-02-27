@@ -39,28 +39,33 @@ The generator performs the following steps:
 
 1. **Copies a brand color template** to `app/assets/tailwind/untitled_ui_colors.css`. This file contains CSS custom properties for your brand palette (primary, secondary, neutral, and dark mode colors). Edit this file to match your brand.
 
-2. **Creates symlinks** in `app/assets/tailwind/` so Tailwind CSS can resolve gem assets:
-   - `untitled_ui` -> gem's CSS theme files (theme, typography, globals)
-   - `untitled_ui_components` -> gem's component templates (for Tailwind class scanning)
-   - `untitled_ui_views` -> gem's view templates (for Tailwind class scanning)
+2. **Copies Untitled UI templates into your app**:
+   - `app/components/ui/**` (component classes and templates)
+   - `app/views/untitled_ui/**` (design system views)
+   - `app/assets/tailwind/untitled_ui/**` (theme, typography, globals CSS)
 
-3. **Injects CSS imports** into your `app/assets/tailwind/application.css`:
+3. **Creates local scan symlinks** in `app/assets/tailwind/`:
+   - `untitled_ui_components` -> `app/components`
+   - `untitled_ui_views` -> `app/views`
+
+4. **Injects CSS imports** into your `app/assets/tailwind/application.css`:
    ```css
    @import "./untitled_ui/theme.css";
    @import "./untitled_ui/typography.css";
    @import "./untitled_ui/globals.css";
    @source "./untitled_ui_components/**/*.erb";
+   @source "./untitled_ui_components/**/*.rb";
    @source "./untitled_ui_views/**/*.erb";
    ```
-   The `@source` directives tell Tailwind v4 to scan the gem's templates for class names.
+   The `@source` directives tell Tailwind v4 to scan installed app templates/classes for class names.
 
-4. **Mounts the engine** in your `config/routes.rb`:
+5. **Mounts the engine** in your `config/routes.rb`:
    ```ruby
    mount UntitledUi::Engine => "/design_system"
    ```
    This gives you a built-in design system browser at `/design_system` with live examples for every component.
 
-5. **Registers Stimulus controllers** in `app/javascript/controllers/index.js` for interactive components (checkbox, dropdown, modal, tabs, toggle, tooltip).
+6. **Registers Stimulus controllers** in `app/javascript/controllers/index.js` for interactive components (checkbox, dropdown, modal, tabs, toggle, tooltip).
 
 ## Usage
 
