@@ -6,7 +6,9 @@
 /Gemfile.lock
 *.gem
 .byebug_history
-log/
+# Runtime logs
+log/*.log
+!log/.keep
 app/assets/tailwind/untitled_ui_components
 app/assets/tailwind/untitled_ui_views
 app/assets/tailwind/untitled_ui/untitled_ui
