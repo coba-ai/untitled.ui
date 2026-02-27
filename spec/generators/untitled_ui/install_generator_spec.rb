@@ -7,9 +7,11 @@ require "rails/generators"
 require "generators/untitled_ui/install/install_generator"
 
 RSpec.describe UntitledUi::Generators::InstallGenerator do
-  def prepare_minimal_app!(root, tailwind_import: '@import "tailwindcss";')
+  def prepare_minimal_app!(root, tailwind_import: '@import "tailwindcss";', create_tailwind_css: true)
     FileUtils.mkdir_p(File.join(root, "app/assets/tailwind"))
-    File.write(File.join(root, "app/assets/tailwind/application.css"), "#{tailwind_import}\n")
+    if create_tailwind_css
+      File.write(File.join(root, "app/assets/tailwind/application.css"), "#{tailwind_import}\n")
+    end
 
     FileUtils.mkdir_p(File.join(root, "app/javascript/controllers"))
     File.write(
@@ -67,6 +69,18 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       run_install!(root)
 
       css = File.read(File.join(root, "app/assets/tailwind/application.css"))
+      expect(css).to include('@import "./untitled_ui/theme.css";')
+      expect(css).to include('@source "./untitled_ui_components/**/*.erb";')
+    end
+  end
+
+  it "creates a missing tailwind entrypoint and injects required untitled_ui directives" do
+    Dir.mktmpdir do |root|
+      prepare_minimal_app!(root, create_tailwind_css: false)
+      run_install!(root)
+
+      css = File.read(File.join(root, "app/assets/tailwind/application.css"))
+      expect(css).to include('@import "tailwindcss";')
       expect(css).to include('@import "./untitled_ui/theme.css";')
       expect(css).to include('@source "./untitled_ui_components/**/*.erb";')
     end

@@ -79,7 +79,7 @@ module UntitledUi
 
       def add_css_imports
         css_file = app_path("app/assets/tailwind/application.css")
-        return unless css_file.exist?
+        ensure_tailwind_entrypoint!(css_file)
 
         content = css_file.read
         missing_lines = TAILWIND_REQUIRED_LINES.reject { |line| content.include?(line) }
@@ -168,6 +168,14 @@ module UntitledUi
 
       def app_path(relative_path)
         Pathname.new(File.join(destination_root, relative_path))
+      end
+
+      def ensure_tailwind_entrypoint!(css_file)
+        return if css_file.exist?
+
+        FileUtils.mkdir_p(css_file.dirname)
+        css_file.write("@import \"tailwindcss\";\n")
+        say_status :create, css_file.to_s, :green
       end
     end
   end
