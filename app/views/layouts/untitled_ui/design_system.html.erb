@@ -11,7 +11,7 @@
   <body class="min-h-full bg-secondary text-primary">
     <div class="flex min-h-dvh">
       <%# Sidebar %>
-      <aside class="sticky top-0 h-dvh w-72 shrink-0 overflow-y-auto border-r border-secondary bg-primary px-6 py-8">
+      <aside class="sticky top-0 h-dvh w-72 shrink-0 overflow-y-auto border-r border-secondary bg-primary px-6 pt-10 pb-8">
         <div class="mb-8">
           <%= link_to untitled_ui.design_system_components_path, class: "flex items-center gap-2 text-lg font-bold text-primary" do %>
             <svg class="size-6 text-brand-solid" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -25,10 +25,10 @@
         <%# Search %>
         <div class="mb-8">
           <%= form_with url: untitled_ui.design_system_components_path, method: :get, local: true, class: "relative" do |f| %>
-            <svg class="pointer-events-none absolute left-3 top-2.5 size-4 text-fg-quaternary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <svg class="pointer-events-none absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-fg-quaternary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
-            <input type="search" name="q" value="<%= params[:q] %>" placeholder="Search components..." class="w-full rounded-lg border-0 bg-secondary py-2 pl-9 pr-3 text-sm text-primary ring-1 ring-primary ring-inset placeholder:text-placeholder focus:ring-2 focus:ring-brand outline-hidden" />
+            <input type="search" name="q" value="<%= params[:q] %>" placeholder="Search components..." class="w-full rounded-lg border-0 bg-secondary py-2.5 pl-10 pr-3 text-sm text-primary ring-1 ring-primary ring-inset placeholder:text-placeholder focus:ring-2 focus:ring-brand outline-hidden" />
           <% end %>
         </div>
 
@@ -52,7 +52,7 @@
       </aside>
 
       <%# Main content %>
-      <main class="flex-1 px-8 py-10 lg:px-12 lg:py-12">
+      <main class="flex-1 px-8 pt-12 pb-10 lg:px-12 lg:pt-14 lg:pb-12">
         <%= yield %>
       </main>
     </div>
