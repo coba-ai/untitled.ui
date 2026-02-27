@@ -54,6 +54,15 @@ module UntitledUi
         )
       end
 
+      def copy_layout_templates
+        copy_tree(
+          source_dir: UntitledUi.gem_root.join("app", "views", "layouts", "untitled_ui"),
+          destination_dir: app_path("app/views/layouts/untitled_ui"),
+          only_extensions: [".erb"],
+          overwrite: true
+        )
+      end
+
       def create_tailwind_scan_symlinks
         tailwind_dir = app_path("app/assets/tailwind")
         return unless tailwind_dir.directory?

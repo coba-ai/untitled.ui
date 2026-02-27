@@ -45,6 +45,7 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       expect(File.exist?(File.join(root, "app/components/ui/button/component.rb"))).to be(true)
       expect(File.exist?(File.join(root, "app/components/ui/button/component.html.erb"))).to be(true)
       expect(File.exist?(File.join(root, "app/views/untitled_ui/design_system/components/index.html.erb"))).to be(true)
+      expect(File.exist?(File.join(root, "app/views/layouts/untitled_ui/design_system.html.erb"))).to be(true)
       expect(File.exist?(File.join(root, "app/assets/tailwind/untitled_ui/theme.css"))).to be(true)
 
       css = File.read(File.join(root, "app/assets/tailwind/application.css"))
@@ -130,6 +131,22 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       view = File.read(view_path)
       expect(view).not_to include("<!-- stale -->")
       expect(view).to include("<h1 class=\"text-display-sm font-semibold text-primary\">")
+    end
+  end
+
+  it "updates untitled_ui design system layout template on reinstall" do
+    Dir.mktmpdir do |root|
+      prepare_minimal_app!(root)
+      run_install!(root)
+
+      layout_path = File.join(root, "app/views/layouts/untitled_ui/design_system.html.erb")
+      File.write(layout_path, "<!-- stale layout -->\n")
+
+      run_install!(root)
+
+      layout = File.read(layout_path)
+      expect(layout).not_to include("<!-- stale layout -->")
+      expect(layout).to include("<aside class=\"sticky top-0")
     end
   end
 end
