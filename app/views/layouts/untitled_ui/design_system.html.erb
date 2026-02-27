@@ -11,7 +11,7 @@
   <body class="min-h-full bg-secondary text-primary">
     <div class="flex min-h-dvh">
       <%# Sidebar %>
-      <aside class="sticky top-0 h-dvh w-72 shrink-0 overflow-y-auto border-r border-secondary bg-primary px-6 pt-14 pb-8 lg:pt-16">
+      <aside class="sticky top-0 h-dvh w-72 shrink-0 overflow-y-auto border-r border-secondary bg-primary px-6 pb-8" style="padding-top: 4.5rem;">
         <div class="mb-8">
           <%= link_to untitled_ui.design_system_components_path, class: "flex items-center gap-2 text-lg font-bold text-primary" do %>
             <svg class="size-6 text-brand-solid" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -52,7 +52,7 @@
       </aside>
 
       <%# Main content %>
-      <main class="flex-1 px-8 pt-16 pb-10 lg:px-12 lg:pt-20 lg:pb-12">
+      <main class="flex-1 px-8 pb-10 lg:px-12 lg:pb-12" style="padding-top: 5rem;">
         <%= yield %>
       </main>
     </div>
