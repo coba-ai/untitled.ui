@@ -15,9 +15,9 @@ module UntitledUi
         '@import "./untitled_ui/typography.css";',
         '@import "./untitled_ui/globals.css";',
         '@import "./untitled_ui_colors.css";',
-        '@source "./untitled_ui_components/**/*.erb";',
-        '@source "./untitled_ui_views/**/*.erb";',
-        '@source "./untitled_ui_components/**/*.rb";'
+        '@source "../../components/**/*.erb";',
+        '@source "../../components/**/*.rb";',
+        '@source "../../views/**/*.erb";'
       ].freeze
 
       def copy_color_template
@@ -62,31 +62,6 @@ module UntitledUi
           only_extensions: [".erb"],
           overwrite: true
         )
-      end
-
-      def create_tailwind_scan_symlinks
-        tailwind_dir = app_path("app/assets/tailwind")
-        return unless tailwind_dir.directory?
-
-        {
-          "untitled_ui_components" => app_path("app/components"),
-          "untitled_ui_views" => app_path("app/views")
-        }.each do |name, target|
-          link = tailwind_dir.join(name)
-
-          if link.symlink?
-            if link.readlink.to_s == target.to_s
-              say_status :skip, "#{link} (already linked)", :yellow
-            else
-              remove_file(link.to_s)
-              create_link(link.to_s, target.to_s)
-            end
-          elsif link.exist?
-            say_status :skip, "#{link} (already exists)", :yellow
-          else
-            create_link(link.to_s, target.to_s)
-          end
-        end
       end
 
       def add_css_imports

@@ -28,37 +28,6 @@ module UntitledUi
       end
     end
 
-    # Auto-create symlinks so Tailwind can resolve gem CSS and scan templates
-    initializer "untitled_ui.symlinks", after: :load_config_initializers do |app|
-      tailwind_dir = app.root.join("app", "assets", "tailwind")
-      next unless tailwind_dir.directory?
-
-      component_scan_target = if app.root.join("app", "components", "ui").directory?
-                                app.root.join("app", "components")
-                              else
-                                root.join("app", "components")
-                              end
-
-      view_scan_target = if app.root.join("app", "views", "untitled_ui").directory?
-                           app.root.join("app", "views")
-                         else
-                           root.join("app", "views")
-                         end
-
-      {
-        "untitled_ui" => root.join("app", "assets", "tailwind", "untitled_ui"),
-        "untitled_ui_components" => component_scan_target,
-        "untitled_ui_views" => view_scan_target
-      }.each do |name, target|
-        link = tailwind_dir.join(name)
-        next if link.exist? || link.symlink?
-
-        FileUtils.ln_sf(target, link)
-      end
-    rescue Errno::EPERM
-      # Skip if filesystem doesn't allow symlinks (e.g. read-only containers)
-    end
-
     # Expose JS for importmap
     initializer "untitled_ui.importmap", before: "importmap" do |app|
       if app.respond_to?(:importmap)
