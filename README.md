@@ -42,31 +42,28 @@ The generator performs the following steps:
 2. **Copies Untitled UI templates into your app**:
    - `app/components/ui/**` (component classes and templates)
    - `app/views/untitled_ui/**` (design system views)
-   - `app/assets/tailwind/untitled_ui/**` (theme, typography, globals CSS)
+   - `app/views/layouts/untitled_ui/**` (design system layout)
+   - `app/assets/tailwind/untitled_ui/**` (theme, typography, globals, hacker CSS)
 
-3. **Creates local scan symlinks** in `app/assets/tailwind/`:
-   - `untitled_ui_components` -> `app/components`
-   - `untitled_ui_views` -> `app/views`
-
-4. **Injects CSS imports** into your `app/assets/tailwind/application.css`:
+3. **Injects CSS imports** into your `app/assets/tailwind/application.css`:
    ```css
    @import "./untitled_ui/theme.css";
    @import "./untitled_ui/typography.css";
    @import "./untitled_ui/globals.css";
+   @import "./untitled_ui/hacker.css";
    @import "./untitled_ui_colors.css";
-   @source "./untitled_ui_components/**/*.erb";
-   @source "./untitled_ui_components/**/*.rb";
-   @source "./untitled_ui_views/**/*.erb";
+   @source "../../components/**/*.erb";
+   @source "../../components/**/*.rb";
+   @source "../../views/**/*.erb";
    ```
-   The `@source` directives tell Tailwind v4 to scan installed app templates/classes for class names.
 
-5. **Mounts the engine** in your `config/routes.rb`:
+4. **Mounts the engine** in your `config/routes.rb`:
    ```ruby
    mount UntitledUi::Engine => "/design_system"
    ```
    This gives you a built-in design system browser at `/design_system` with live examples for every component.
 
-6. **Registers Stimulus controllers** in `app/javascript/controllers/index.js` for interactive components (checkbox, dropdown, modal, tabs, toggle, tooltip).
+5. **Registers Stimulus controllers** in `app/javascript/controllers/index.js` for interactive components (checkbox, dropdown, modal, tabs, toggle, tooltip).
 
 ## Usage
 
@@ -97,6 +94,8 @@ Use components in any view:
 | **Forms** | Input, Textarea, Checkbox, Toggle, RadioButton, Label, HintText |
 | **Data Display** | Avatar, Table, Tabs, DotIcon, FeaturedIcon |
 | **Overlays** | Modal, Tooltip |
+| **Navigation** | Sidebar, Header, MobileHeader, Item, ItemButton, AccountCard, List |
+| **Layout** | Pagination, ProgressSteps |
 
 ### Design System Browser
 
@@ -105,6 +104,66 @@ Visit `/design_system` to browse all components with live, interactive examples 
 ### Customizing Brand Colors
 
 Edit `app/assets/tailwind/untitled_ui_colors.css` to customize your brand palette. The Untitled UI token system automatically cascades your brand colors through all semantic tokens used by the components.
+
+## Themes
+
+UntitledUi ships with two themes: the default clean/professional theme and a **hacker theme** (terminal-inspired with neon green accents, monospace fonts, and dark backgrounds).
+
+### Theme Toggle in the Design System
+
+The design system browser (`/design_system`) includes a theme toggle button in the sidebar. Click the terminal icon to switch to the hacker theme. The preference is saved in localStorage and persists across page reloads.
+
+### Setting the Default Theme
+
+Configure the default theme in an initializer:
+
+```ruby
+# config/initializers/untitled_ui.rb
+UntitledUi.configure do |config|
+  config.theme = :hacker  # :default or :hacker
+end
+```
+
+### Using the Theme in Your Own Layouts
+
+Add the theme class to your `<body>` tag using the provided helper:
+
+```erb
+<body class="<%= untitled_ui_theme_class %>">
+```
+
+Or toggle it with JavaScript for client-side switching:
+
+```javascript
+// Enable hacker theme
+document.body.classList.add('hacker-theme');
+
+// Disable hacker theme
+document.body.classList.remove('hacker-theme');
+```
+
+### How It Works
+
+The hacker theme uses CSS variable overrides scoped under the `.hacker-theme` class selector. This follows the same pattern as the built-in `.dark-mode` support in `theme.css`. When `.hacker-theme` is present on the body:
+
+- **Fonts**: `--font-body` and `--font-display` resolve to JetBrains Mono / IBM Plex Mono
+- **Border radius**: All `--radius-*` values become `2px` (sharp terminal aesthetic), except `--radius-full` which stays `9999px` for avatars
+- **Shadows**: Skeuomorphic shadows are replaced with subtle green glow effects
+- **Colors**: Full dark palette with neon green (`#00ff88`) as the brand color, terminal-appropriate error/warning/success colors
+
+No component code changes are needed — all Tailwind utilities resolve through CSS custom properties that the theme overrides.
+
+### Hacker Utility Classes
+
+The hacker theme also provides optional utility classes for enhanced terminal effects:
+
+| Class | Effect |
+|-------|--------|
+| `hacker-glow` | Green glow box-shadow |
+| `hacker-scanlines` | CRT scanline overlay via `::after` |
+| `hacker-grid-bg` | Subtle grid background pattern |
+| `hacker-glitch` | Glitch animation |
+| `hacker-cursor` | Blinking cursor via `::after` |
 
 ## Development
 

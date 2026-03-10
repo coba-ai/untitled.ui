@@ -8,18 +8,33 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags "untitled_ui" %>
   </head>
-  <body class="min-h-full bg-secondary text-primary">
+  <body class="min-h-full bg-secondary text-primary <%= untitled_ui_theme_class %>">
     <div class="flex min-h-dvh">
       <%# Sidebar %>
       <aside class="sticky top-0 h-dvh w-72 shrink-0 overflow-y-auto border-r border-secondary bg-primary px-6 pt-18 pb-8">
-        <div class="mb-8">
-          <%= link_to untitled_ui.design_system_components_path, class: "flex items-center gap-2 text-lg font-bold text-primary" do %>
-            <svg class="size-6 text-brand-solid" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />
+        <div class="mb-8 flex items-center justify-between">
+          <div>
+            <%= link_to untitled_ui.design_system_components_path, class: "flex items-center gap-2 text-lg font-bold text-primary" do %>
+              <svg class="size-6 text-brand-solid" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />
+              </svg>
+              Untitled UI
+            <% end %>
+            <p class="mt-1 text-sm text-tertiary">Component Library</p>
+          </div>
+          <button
+            id="theme-toggle"
+            type="button"
+            title="Toggle hacker theme"
+            class="rounded-md p-2 text-tertiary transition hover:bg-primary_hover hover:text-secondary_hover"
+          >
+            <svg id="theme-icon-default" class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
             </svg>
-            Untitled UI
-          <% end %>
-          <p class="mt-1 text-sm text-tertiary">Component Library</p>
+            <svg id="theme-icon-hacker" class="hidden size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+          </button>
         </div>
 
         <%# Search %>
@@ -56,5 +71,38 @@
         <%= yield %>
       </main>
     </div>
+
+    <script>
+      (function() {
+        var toggle = document.getElementById('theme-toggle');
+        var body = document.body;
+        var iconDefault = document.getElementById('theme-icon-default');
+        var iconHacker = document.getElementById('theme-icon-hacker');
+
+        function updateIcons() {
+          var isHacker = body.classList.contains('hacker-theme');
+          iconDefault.classList.toggle('hidden', isHacker);
+          iconHacker.classList.toggle('hidden', !isHacker);
+        }
+
+        // Restore from localStorage
+        if (localStorage.getItem('untitled-ui-theme') === 'hacker') {
+          body.classList.add('hacker-theme');
+        }
+        updateIcons();
+
+        toggle.addEventListener('click', function() {
+          body.classList.add('theme-transition');
+          body.classList.toggle('hacker-theme');
+          var isHacker = body.classList.contains('hacker-theme');
+          localStorage.setItem('untitled-ui-theme', isHacker ? 'hacker' : 'default');
+          updateIcons();
+
+          // Remove transition class after animation completes to avoid
+          // interfering with component transitions (hover, focus, etc.)
+          setTimeout(function() { body.classList.remove('theme-transition'); }, 250);
+        });
+      })();
+    </script>
   </body>
 </html>

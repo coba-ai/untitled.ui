@@ -14,6 +14,7 @@ module UntitledUi
         '@import "./untitled_ui/theme.css";',
         '@import "./untitled_ui/typography.css";',
         '@import "./untitled_ui/globals.css";',
+        '@import "./untitled_ui/hacker.css";',
         '@import "./untitled_ui_colors.css";',
         '@source "../../components/**/*.erb";',
         '@source "../../components/**/*.rb";',

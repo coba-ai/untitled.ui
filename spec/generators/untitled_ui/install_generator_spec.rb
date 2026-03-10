@@ -52,16 +52,11 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       expect(css).to include('@import "./untitled_ui/theme.css";')
       expect(css).to include('@import "./untitled_ui/typography.css";')
       expect(css).to include('@import "./untitled_ui/globals.css";')
+      expect(css).to include('@import "./untitled_ui/hacker.css";')
       expect(css).to include('@import "./untitled_ui_colors.css";')
-      expect(css).to include('@source "./untitled_ui_components/**/*.erb";')
-      expect(css).to include('@source "./untitled_ui_views/**/*.erb";')
-
-      components_link = File.join(root, "app/assets/tailwind/untitled_ui_components")
-      views_link = File.join(root, "app/assets/tailwind/untitled_ui_views")
-      expect(File.symlink?(components_link)).to be(true)
-      expect(File.symlink?(views_link)).to be(true)
-      expect(File.realpath(components_link)).to eq(File.realpath(File.join(root, "app/components")))
-      expect(File.realpath(views_link)).to eq(File.realpath(File.join(root, "app/views")))
+      expect(css).to include('@source "../../components/**/*.erb";')
+      expect(css).to include('@source "../../components/**/*.rb";')
+      expect(css).to include('@source "../../views/**/*.erb";')
     end
   end
 
@@ -73,7 +68,7 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       css = File.read(File.join(root, "app/assets/tailwind/application.css"))
       expect(css).to include('@import "./untitled_ui/theme.css";')
       expect(css).to include('@import "./untitled_ui_colors.css";')
-      expect(css).to include('@source "./untitled_ui_components/**/*.erb";')
+      expect(css).to include('@source "../../components/**/*.erb";')
     end
   end
 
@@ -86,7 +81,7 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       expect(css).to include('@import "tailwindcss";')
       expect(css).to include('@import "./untitled_ui/theme.css";')
       expect(css).to include('@import "./untitled_ui_colors.css";')
-      expect(css).to include('@source "./untitled_ui_components/**/*.erb";')
+      expect(css).to include('@source "../../components/**/*.erb";')
     end
   end
 
