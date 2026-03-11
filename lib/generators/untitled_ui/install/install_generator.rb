@@ -88,33 +88,22 @@ module UntitledUi
         route 'mount UntitledUi::Engine => "/design_system"'
       end
 
-      def add_stimulus_controllers
-        js_file = "app/javascript/controllers/index.js"
+      # Importmap pins are now auto-registered by the engine via config/importmap.rb.
+      # No need to add them to the host app's importmap.
+
+      def add_js_import
+        js_file = "app/javascript/application.js"
         return unless File.exist?(js_file)
 
-        registration = <<~JS
+        content = File.read(js_file)
+        return if content.include?("untitled_ui/index")
 
-          // UntitledUi Stimulus controllers
-          import CheckboxController from "untitled_ui/checkbox_controller"
-          import DropdownController from "untitled_ui/dropdown_controller"
-          import ModalController from "untitled_ui/modal_controller"
-          import NavigationMobileController from "untitled_ui/navigation_mobile_controller"
-          import NavigationSidebarController from "untitled_ui/navigation_sidebar_controller"
-          import TabsController from "untitled_ui/tabs_controller"
-          import ToggleController from "untitled_ui/toggle_controller"
-          import TooltipController from "untitled_ui/tooltip_controller"
-          application.register("checkbox", CheckboxController)
-          application.register("dropdown", DropdownController)
-          application.register("modal", ModalController)
-          application.register("navigation-mobile", NavigationMobileController)
-          application.register("navigation-sidebar", NavigationSidebarController)
-          application.register("tabs", TabsController)
-          application.register("toggle", ToggleController)
-          application.register("tooltip", TooltipController)
-        JS
-
-        append_to_file js_file, registration
+        inject_into_file js_file, "import \"untitled_ui/index\"\n", before: /import ["']controllers["']/
+        say_status :insert, "Untitled UI JS import into #{js_file}", :green
       end
+
+      # ThemeHelper is now auto-included by the engine via ActiveSupport.on_load.
+      # No need to manually add it to ApplicationController.
 
       def show_instructions
         say ""
@@ -124,7 +113,8 @@ module UntitledUi
         say "  1. Customize brand colors in app/assets/tailwind/untitled_ui_colors.css"
         say "  2. Review generated templates in app/components/ui and app/views/untitled_ui"
         say "  3. Visit /design_system to browse components"
-        say "  4. Use components in views:"
+        say "  4. Add <%= untitled_ui_theme_class %> to your <body> tag for theming"
+        say "  5. Use components in views:"
         say "     render Ui::Button::Component.new(color: :primary) { 'Click me' }"
         say "     render Ui::Input::Component.new(label: 'Email')"
         say ""

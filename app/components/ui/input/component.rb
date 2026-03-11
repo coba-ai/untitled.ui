@@ -43,10 +43,8 @@ module Ui
         has_leading = @icon.present?
         cx(
           WRAPPER_CLASSES,
-          "focus-within:ring-2 focus-within:ring-brand",
           @disabled && "cursor-not-allowed bg-disabled_subtle ring-disabled",
-          @invalid && "ring-error_subtle",
-          @invalid && "focus-within:ring-2 focus-within:ring-error",
+          @invalid ? "ring-error_subtle focus-within:ring-2 focus-within:ring-error" : "focus-within:ring-2 focus-within:ring-brand",
           @wrapper_class
         )
       end

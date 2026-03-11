@@ -20,6 +20,13 @@ module UntitledUi
       end
     end
 
+    # Auto-include ThemeHelper in all controllers
+    initializer "untitled_ui.helpers" do
+      ActiveSupport.on_load(:action_controller_base) do
+        helper UntitledUi::ThemeHelper
+      end
+    end
+
     # Expose CSS assets for Tailwind imports
     initializer "untitled_ui.assets" do |app|
       if app.config.respond_to?(:assets)
