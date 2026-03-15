@@ -1,0 +1,18 @@
+---
+EnableDefaultLinters: true
+
+linters:
+  RequireInputAutocomplete:
+    enabled: false
+
+  Accessibility::AriaLabelIsWellFormed:
+    enabled: true
+
+  Accessibility::ImageHasAlt:
+    enabled: true
+
+  Accessibility::NoPositiveTabIndex:
+    enabled: true
+
+  Accessibility::NoRedundantImageAlt:
+    enabled: true
