@@ -89,31 +89,13 @@ module UntitledUi
       end
 
       def add_stimulus_controllers
-        js_file = "app/javascript/controllers/index.js"
-        return unless File.exist?(js_file)
-
-        registration = <<~JS
-
-          // UntitledUi Stimulus controllers
-          import CheckboxController from "untitled_ui/checkbox_controller"
-          import DropdownController from "untitled_ui/dropdown_controller"
-          import ModalController from "untitled_ui/modal_controller"
-          import NavigationMobileController from "untitled_ui/navigation_mobile_controller"
-          import NavigationSidebarController from "untitled_ui/navigation_sidebar_controller"
-          import TabsController from "untitled_ui/tabs_controller"
-          import ToggleController from "untitled_ui/toggle_controller"
-          import TooltipController from "untitled_ui/tooltip_controller"
-          application.register("checkbox", CheckboxController)
-          application.register("dropdown", DropdownController)
-          application.register("modal", ModalController)
-          application.register("navigation-mobile", NavigationMobileController)
-          application.register("navigation-sidebar", NavigationSidebarController)
-          application.register("tabs", TabsController)
-          application.register("toggle", ToggleController)
-          application.register("tooltip", TooltipController)
-        JS
-
-        append_to_file js_file, registration
+        if importmap?
+          add_importmap_controllers
+        elsif node_bundler?
+          copy_controllers_for_bundler
+        else
+          say_status :skip, "No supported JS setup detected (importmap or package.json)", :yellow
+        end
       end
 
       def show_instructions
@@ -127,6 +109,8 @@ module UntitledUi
         say "  4. Use components in views:"
         say "     render Ui::Button::Component.new(color: :primary) { 'Click me' }"
         say "     render Ui::Input::Component.new(label: 'Email')"
+        say ""
+        say "JS bundler detected: #{importmap? ? 'importmap' : node_bundler? ? 'node (esbuild/Vite/Webpack)' : 'none'}"
         say ""
       end
 
@@ -169,6 +153,63 @@ module UntitledUi
         FileUtils.mkdir_p(css_file.dirname)
         css_file.write("@import \"tailwindcss\";\n")
         say_status :create, css_file.to_s, :green
+      end
+
+      def importmap?
+        File.exist?(File.join(destination_root, "config", "importmap.rb"))
+      end
+
+      def node_bundler?
+        File.exist?(File.join(destination_root, "package.json"))
+      end
+
+      def stimulus_registration(import_prefix)
+        <<~JS
+
+          // UntitledUi Stimulus controllers
+          import CheckboxController from "#{import_prefix}/checkbox_controller"
+          import DropdownController from "#{import_prefix}/dropdown_controller"
+          import ModalController from "#{import_prefix}/modal_controller"
+          import NavigationMobileController from "#{import_prefix}/navigation_mobile_controller"
+          import NavigationSidebarController from "#{import_prefix}/navigation_sidebar_controller"
+          import TabsController from "#{import_prefix}/tabs_controller"
+          import ToggleController from "#{import_prefix}/toggle_controller"
+          import TooltipController from "#{import_prefix}/tooltip_controller"
+          application.register("checkbox", CheckboxController)
+          application.register("dropdown", DropdownController)
+          application.register("modal", ModalController)
+          application.register("navigation-mobile", NavigationMobileController)
+          application.register("navigation-sidebar", NavigationSidebarController)
+          application.register("tabs", TabsController)
+          application.register("toggle", ToggleController)
+          application.register("tooltip", TooltipController)
+        JS
+      end
+
+      def add_importmap_controllers
+        js_file = File.join(destination_root, "app/javascript/controllers/index.js")
+        return unless File.exist?(js_file)
+        return if File.read(js_file).include?("untitled_ui")
+
+        append_to_file "app/javascript/controllers/index.js", stimulus_registration("untitled_ui")
+      end
+
+      def copy_controllers_for_bundler
+        source_js = UntitledUi.gem_root.join("app", "javascript", "untitled_ui")
+        dest_js = app_path("app/javascript/controllers/untitled_ui")
+
+        copy_tree(
+          source_dir: source_js,
+          destination_dir: dest_js,
+          only_extensions: [".js"],
+          overwrite: false
+        )
+
+        js_file = File.join(destination_root, "app/javascript/controllers/index.js")
+        return unless File.exist?(js_file)
+        return if File.read(js_file).include?("untitled_ui")
+
+        append_to_file "app/javascript/controllers/index.js", stimulus_registration("./untitled_ui")
       end
     end
   end
