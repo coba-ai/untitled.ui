@@ -3,6 +3,7 @@
 require "view_component"
 require "untitled_ui/version"
 require "untitled_ui/configuration"
+require "untitled_ui/form_builder"
 require "untitled_ui/engine"
 
 module UntitledUi
