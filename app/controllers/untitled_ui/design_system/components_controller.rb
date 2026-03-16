@@ -59,7 +59,9 @@ module UntitledUi
         { id: "stat", name: "Stat", category: "Application",
           description: "Metric display card with value, trend indicator, and change percentage." },
         { id: "select", name: "Select", category: "Base",
-          description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." }
+          description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." },
+        { id: "date_picker", name: "Date Picker", category: "Base",
+          description: "Calendar date picker with month navigation, range constraints, and input styling." }
       ].freeze
 
       def index

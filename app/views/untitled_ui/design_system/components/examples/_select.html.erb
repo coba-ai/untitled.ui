@@ -1,0 +1,87 @@
+<%
+  fruit_options = [["Apple", "apple"], ["Banana", "banana"], ["Cherry", "cherry"], ["Date", "date"], ["Elderberry", "elderberry"]]
+  country_options = [
+    { label: "United States", value: "us" },
+    { label: "United Kingdom", value: "uk" },
+    { label: "Canada", value: "ca" },
+    { label: "Australia", value: "au" },
+    { label: "Germany", value: "de" },
+    { label: "France", value: "fr" },
+    { label: "Japan", value: "jp" },
+    { label: "Brazil", value: "br" }
+  ]
+%>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Default" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Select::Component.new(options: fruit_options, placeholder: "Select a fruit...") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Select::Component.new(options: [["Apple", "apple"], ["Banana", "banana"]], placeholder: "Select a fruit...")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Label & Hint" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Select::Component.new(options: fruit_options, label: "Favorite Fruit", hint: "Choose the fruit you like most.", placeholder: "Select a fruit...") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Select::Component.new(options: fruit_options, label: "Favorite Fruit", hint: "Choose the fruit you like most.")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Pre-selected Value" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Select::Component.new(options: fruit_options, label: "Fruit", value: "cherry", placeholder: "Select a fruit...") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Select::Component.new(options: fruit_options, label: "Fruit", value: "cherry")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
+  <div class="max-w-sm space-y-4">
+    <%= render Ui::Select::Component.new(options: fruit_options, size: :sm, placeholder: "Small select") %>
+    <%= render Ui::Select::Component.new(options: fruit_options, size: :md, placeholder: "Medium select") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Select::Component.new(options: fruit_options, size: :sm, placeholder: "Small")
+render Ui::Select::Component.new(options: fruit_options, size: :md, placeholder: "Medium")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Searchable" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Select::Component.new(options: country_options, label: "Country", searchable: true, placeholder: "Search countries...") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Select::Component.new(options: country_options, label: "Country", searchable: true, placeholder: "Search countries...")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Required" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Select::Component.new(options: fruit_options, label: "Fruit", required: true, placeholder: "Select a fruit...") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Select::Component.new(options: fruit_options, label: "Fruit", required: true)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Invalid" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Select::Component.new(options: fruit_options, label: "Fruit", invalid: true, hint: "Please select a fruit.", placeholder: "Select a fruit...") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Select::Component.new(options: fruit_options, label: "Fruit", invalid: true, hint: "Please select a fruit.")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Disabled" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Select::Component.new(options: fruit_options, label: "Fruit", disabled: true, placeholder: "Select a fruit...") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Select::Component.new(options: fruit_options, label: "Fruit", disabled: true)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Form Name" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Select::Component.new(options: fruit_options, label: "Fruit", name: "user[favorite_fruit]", value: "banana", id: "user_favorite_fruit") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Select::Component.new(options: fruit_options, label: "Fruit", name: "user[favorite_fruit]", value: "banana", id: "user_favorite_fruit")' %>
