@@ -9,15 +9,16 @@ module Ui
         md: { base: "size-5", translate: "translate-x-5" }
       }.freeze
 
-      attr_reader :size, :label, :hint, :checked, :disabled, :name, :extra_classes
+      attr_reader :size, :label, :hint, :checked, :disabled, :name, :id, :extra_classes
 
-      def initialize(size: :sm, label: nil, hint: nil, checked: false, disabled: false, name: nil, class: nil, **_opts)
+      def initialize(size: :sm, label: nil, hint: nil, checked: false, disabled: false, name: nil, id: nil, class: nil, **_opts)
         @size = size.to_sym
         @label = label
         @hint = hint
         @checked = checked
         @disabled = disabled
         @name = name
+        @id = id
         @extra_classes = binding.local_variable_get(:class)
       end
 

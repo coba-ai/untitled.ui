@@ -3,6 +3,7 @@
   <input type="hidden" name="<%= name %>" value="0" <% if disabled %>disabled<% end %>>
   <input type="checkbox"
          class="sr-only peer"
+         <% if id.present? %>id="<%= id %>"<% end %>
          <% if name.present? %>name="<%= name %>"<% end %>
          <% if value.present? %>value="<%= value %>"<% end %>
          <% if checked %>checked<% end %>
