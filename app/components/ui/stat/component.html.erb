@@ -1,0 +1,24 @@
+<div class="<%= root_classes %>">
+  <div class="flex items-center justify-between">
+    <span class="text-sm font-medium text-secondary"><%= label %></span>
+    <% if icon.present? %>
+      <span class="text-tertiary"><%= icon.html_safe %></span>
+    <% end %>
+  </div>
+
+  <div class="mt-2 text-display-sm font-semibold text-primary"><%= value %></div>
+
+  <% if show_trend? %>
+    <div class="mt-2 flex items-center gap-1">
+      <span class="<%= cx('inline-flex items-center gap-0.5 text-sm font-medium', trend_color) %>">
+        <svg class="<%= cx('size-4', trend_icon_rotation) %>" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"/>
+        </svg>
+        <%= change %>
+      </span>
+      <% if period.present? %>
+        <span class="text-sm text-tertiary"><%= period %></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>
