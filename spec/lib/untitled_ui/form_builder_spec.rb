@@ -2,16 +2,27 @@
 
 require "rails_helper"
 
+class FormBuilderTestModel
+  include ActiveModel::Model
+  include ActiveModel::Attributes
+
+  attribute :email, :string
+  attribute :bio, :string
+  attribute :notifications, :boolean
+  attribute :plan, :string
+
+  def persisted?
+    true
+  end
+
+  def to_key
+    [1]
+  end
+end
+
 RSpec.describe UntitledUi::FormBuilder do
   let(:object) do
-    obj = OpenStruct.new(email: "test@example.com", bio: "Hello", notifications: true, plan: "pro")
-    errors = ActiveModel::Errors.new(obj)
-    allow(obj).to receive(:errors).and_return(errors)
-    allow(obj).to receive(:to_model).and_return(obj)
-    allow(obj).to receive(:model_name).and_return(ActiveModel::Name.new(nil, nil, "User"))
-    allow(obj).to receive(:to_key).and_return([1])
-    allow(obj).to receive(:persisted?).and_return(true)
-    obj
+    FormBuilderTestModel.new(email: "test@example.com", bio: "Hello", notifications: true, plan: "pro")
   end
   let(:template) do
     controller = ActionController::Base.new
