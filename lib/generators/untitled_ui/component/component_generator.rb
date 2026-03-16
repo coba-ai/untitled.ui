@@ -8,17 +8,25 @@ module UntitledUi
     class ComponentGenerator < Rails::Generators::Base
       desc "Copy specific UntitledUi components into your application for customization"
 
-      argument :components, type: :array, banner: "component [component ...]"
+      argument :components, type: :array, default: [], banner: "component [component ...]"
 
-      AVAILABLE_COMPONENTS = %w[
-        avatar badge button button_group checkbox close_button dot_icon
-        dropdown empty_state featured_icon hint_text input label
-        loading_indicator modal pagination progress_bar progress_steps
-        radio_button table tabs textarea toggle tooltip
-        navigation/sidebar navigation/header navigation/mobile_header
-        navigation/item navigation/item_button navigation/account_card
-        navigation/list
-      ].freeze
+      class_option :list, type: :boolean, default: false, desc: "List all available components"
+
+      COMPONENT_CATALOG = {
+        "Actions" => %w[button button_group close_button dropdown],
+        "Feedback" => %w[badge progress_bar loading_indicator empty_state],
+        "Forms" => %w[input textarea checkbox toggle radio_button label hint_text],
+        "Data Display" => %w[avatar table tabs dot_icon featured_icon],
+        "Overlays" => %w[modal tooltip],
+        "Navigation" => %w[
+          navigation/sidebar navigation/header navigation/mobile_header
+          navigation/item navigation/item_button navigation/account_card
+          navigation/list
+        ],
+        "Layout" => %w[pagination progress_steps]
+      }.freeze
+
+      AVAILABLE_COMPONENTS = COMPONENT_CATALOG.values.flatten.freeze
 
       SHARED_FILES = %w[
         base.rb
@@ -26,18 +34,41 @@ module UntitledUi
         concerns/has_variants.rb
       ].freeze
 
+      def handle_list
+        return unless options[:list]
+
+        say ""
+        say "Available UntitledUi components:", :green
+        say ""
+        COMPONENT_CATALOG.each do |category, names|
+          say "  #{category}:"
+          names.each { |name| say "    - #{name}" }
+          say ""
+        end
+        say "Usage: rails generate untitled_ui:component button modal tabs"
+        say ""
+
+        raise SystemExit
+      end
+
       def validate_components
+        if components.empty?
+          say_status :error, "No components specified. Use --list to see available components.", :red
+          raise Thor::Error, "No components specified"
+        end
+
         unknown = components - AVAILABLE_COMPONENTS
         return if unknown.empty?
 
         say_status :error, "Unknown component(s): #{unknown.join(', ')}", :red
         say ""
-        say "Available components:"
-        AVAILABLE_COMPONENTS.each { |c| say "  - #{c}" }
+        say "Run `rails generate untitled_ui:component --list` to see all available components."
         raise Thor::Error, "Unknown component(s): #{unknown.join(', ')}"
       end
 
       def copy_shared_dependencies
+        return if options[:list]
+
         source_base = UntitledUi.gem_root.join("app", "components", "ui")
         dest_base = Pathname.new(File.join(destination_root, "app", "components", "ui"))
 
@@ -55,6 +86,8 @@ module UntitledUi
       end
 
       def copy_components
+        return if options[:list]
+
         source_base = UntitledUi.gem_root.join("app", "components", "ui")
         dest_base = Pathname.new(File.join(destination_root, "app", "components", "ui"))
 
@@ -85,6 +118,8 @@ module UntitledUi
       end
 
       def show_instructions
+        return if options[:list]
+
         say ""
         say "Components copied successfully!", :green
         say ""
