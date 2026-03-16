@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe Ui::Navigation::Sidebar::Component, type: :component do
@@ -89,8 +91,8 @@ RSpec.describe Ui::Navigation::Sidebar::Component, type: :component do
   end
 
   it "raises error for invalid type" do
-    expect {
+    expect do
       described_class.new(type: :invalid, items: items)
-    }.to raise_error(ArgumentError, /Invalid sidebar type/)
+    end.to raise_error(ArgumentError, /Invalid sidebar type/)
   end
 end

@@ -10,8 +10,8 @@ module Ui
     #
     # @param args [Array<String, Array, Hash, nil>] class name arguments
     # @return [String] merged class string
-    def cx(*args)
-      Ui::ClassNames.cx(*args)
+    def cx(*)
+      Ui::ClassNames.cx(*)
     end
 
     # Generates an HTML tag with the given name, attributes, and optional content.
@@ -21,8 +21,8 @@ module Ui
     # @param attrs [Hash] HTML attributes
     # @param block [Proc] optional block for content
     # @return [String] rendered HTML
-    def polymorphic_tag(tag_name, **attrs, &block)
-      content_tag(tag_name, **attrs, &block)
+    def polymorphic_tag(tag_name, **attrs, &)
+      content_tag(tag_name, **attrs, &)
     end
 
     private

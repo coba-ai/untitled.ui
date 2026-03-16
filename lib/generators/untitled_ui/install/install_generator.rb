@@ -136,7 +136,7 @@ module UntitledUi
         source_path = Pathname.new(source_dir)
         return unless source_path.directory?
 
-        Dir.glob(source_path.join("**/*").to_s).sort.each do |source|
+        Dir.glob(source_path.join("**/*").to_s).each do |source|
           source_file = Pathname.new(source)
           next if source_file.directory?
           next if only_extensions && !only_extensions.include?(source_file.extname)
