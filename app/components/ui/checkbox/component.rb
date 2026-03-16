@@ -8,10 +8,10 @@ module Ui
         md: { box: "size-5 rounded-md", check: "size-3.5", label: "text-md font-medium", hint: "text-md", gap: "gap-3" }
       }.freeze
 
-      attr_reader :size, :label, :hint, :checked, :disabled, :name, :value, :indeterminate, :extra_classes
+      attr_reader :size, :label, :hint, :checked, :disabled, :name, :value, :id, :indeterminate, :extra_classes
 
-      def initialize(size: :sm, label: nil, hint: nil, checked: false, disabled: false, name: nil, value: nil, indeterminate: false, class: nil,
-                     **_opts)
+      def initialize(size: :sm, label: nil, hint: nil, checked: false, disabled: false, name: nil, value: nil, id: nil,
+                     indeterminate: false, class: nil, **_opts)
         @size = size.to_sym
         @label = label
         @hint = hint
@@ -19,6 +19,7 @@ module Ui
         @disabled = disabled
         @name = name
         @value = value
+        @id = id
         @indeterminate = indeterminate
         @extra_classes = binding.local_variable_get(:class)
       end

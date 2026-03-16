@@ -1,10 +1,11 @@
 <div class="<%= cx('group flex h-max w-full flex-col items-start justify-start gap-1.5', extra_classes) %>">
   <% if label.present? %>
-    <%= render Ui::Label::Component.new(text: label, required: required) %>
+    <%= render Ui::Label::Component.new(text: label, required: required, for_id: id) %>
   <% end %>
 
   <textarea
     class="<%= textarea_classes %>"
+    <% if id.present? %>id="<%= id %>"<% end %>
     <% if name.present? %>name="<%= name %>"<% end %>
     <% if placeholder.present? %>placeholder="<%= placeholder %>"<% end %>
     <% if rows %>rows="<%= rows %>"<% end %>
@@ -14,6 +15,6 @@
   ><%= value %></textarea>
 
   <% if hint.present? %>
-    <%= render Ui::HintText::Component.new(invalid: invalid) { hint } %>
+    <%= render Ui::HintText::Component.new(invalid: invalid).with_content(hint) %>
   <% end %>
 </div>

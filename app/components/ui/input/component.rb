@@ -12,13 +12,13 @@ module Ui
       INPUT_CLASSES = "m-0 w-full bg-transparent text-md text-primary ring-0 outline-hidden placeholder:text-placeholder"
 
       attr_reader :size, :label, :hint, :placeholder, :icon, :tooltip, :required,
-                  :invalid, :disabled, :name, :value, :type, :extra_classes,
+                  :invalid, :disabled, :name, :value, :type, :id, :extra_classes,
                   :input_class, :wrapper_class
 
       def initialize(
         size: :sm, label: nil, hint: nil, placeholder: nil, icon: nil,
         tooltip: nil, required: false, invalid: false, disabled: false,
-        name: nil, value: nil, type: "text", input_class: nil, wrapper_class: nil,
+        name: nil, value: nil, type: "text", id: nil, input_class: nil, wrapper_class: nil,
         class: nil, **_opts
       )
         @size = size.to_sym
@@ -33,6 +33,7 @@ module Ui
         @name = name
         @value = value
         @type = type
+        @id = id
         @input_class = input_class
         @wrapper_class = wrapper_class
         @extra_classes = binding.local_variable_get(:class)

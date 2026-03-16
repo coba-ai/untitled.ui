@@ -1,4 +1,4 @@
-<label data-label="true" class="<%= root_classes %>">
+<label data-label="true" class="<%= root_classes %>" <% if for_id.present? %>for="<%= for_id %>"<% end %>>
   <%= text %>
 
   <span class="<%= cx('text-brand-tertiary', required? ? 'block' : 'hidden') %>">*</span>

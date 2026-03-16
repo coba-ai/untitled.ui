@@ -1,6 +1,7 @@
 <label class="<%= cx('flex items-start', disabled && 'cursor-not-allowed', SIZE_STYLES.dig(size, :gap), extra_classes) %>">
   <input type="radio"
          class="sr-only peer"
+         <% if id.present? %>id="<%= id %>"<% end %>
          <% if name.present? %>name="<%= name %>"<% end %>
          <% if value.present? %>value="<%= value %>"<% end %>
          <% if checked %>checked<% end %>

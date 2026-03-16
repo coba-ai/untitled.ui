@@ -4,10 +4,10 @@ module Ui
   module Textarea
     class Component < Ui::Base
       attr_reader :label, :hint, :placeholder, :required, :invalid, :disabled,
-                  :name, :value, :rows, :cols, :extra_classes, :textarea_class
+                  :name, :value, :id, :rows, :cols, :extra_classes, :textarea_class
 
       def initialize(label: nil, hint: nil, placeholder: nil, required: false, invalid: false,
-                     disabled: false, name: nil, value: nil, rows: 4, cols: nil,
+                     disabled: false, name: nil, value: nil, id: nil, rows: 4, cols: nil,
                      textarea_class: nil, class: nil, **_opts)
         @label = label
         @hint = hint
@@ -17,6 +17,7 @@ module Ui
         @disabled = disabled
         @name = name
         @value = value
+        @id = id
         @rows = rows
         @cols = cols
         @textarea_class = textarea_class

@@ -7,17 +7,18 @@ module Ui
       # @param required [Boolean] whether to show a required asterisk
       # @param tooltip [String] optional tooltip text
       # @param class [String] additional CSS classes
-      def initialize(text:, required: false, tooltip: nil, **attrs)
+      def initialize(text:, required: false, tooltip: nil, for_id: nil, **attrs)
         super()
         @text = text
         @required = required
         @tooltip = tooltip
+        @for_id = for_id
         @extra_classes = attrs[:class]
       end
 
       private
 
-      attr_reader :text, :tooltip
+      attr_reader :text, :tooltip, :for_id
 
       def required?
         @required
