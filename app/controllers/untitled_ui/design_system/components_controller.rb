@@ -49,7 +49,9 @@ module UntitledUi
         { id: "pagination", name: "Pagination", category: "Application",
           description: "Pagination with 4 variant types, ellipsis algorithm, and prev/next navigation." },
         { id: "progress_steps", name: "Progress Steps", category: "Application",
-          description: "Horizontal progress steps with centered icons, connector lines, and completed/current/upcoming states." }
+          description: "Horizontal progress steps with centered icons, connector lines, and completed/current/upcoming states." },
+        { id: "file_upload", name: "File Upload", category: "Base",
+          description: "Drag-and-drop file upload zone with click fallback, file type filtering, and size limits." }
       ].freeze
 
       def index
