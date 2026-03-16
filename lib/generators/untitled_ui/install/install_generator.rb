@@ -121,6 +121,10 @@ module UntitledUi
         say ""
       end
 
+      STIMULUS_BLOCK_START = "// UntitledUi Stimulus controllers"
+      STIMULUS_BLOCK_END = 'application.register("tooltip", TooltipController)'
+      VALID_IMPORT_PREFIXES = %w[untitled_ui ./untitled_ui].freeze
+
       private
 
       def copy_tree(source_dir:, destination_dir:, only_extensions: nil, overwrite: false)
@@ -171,9 +175,11 @@ module UntitledUi
       end
 
       def stimulus_registration(import_prefix)
+        raise ArgumentError, "Invalid import prefix: #{import_prefix}" unless VALID_IMPORT_PREFIXES.include?(import_prefix)
+
         <<~JS
 
-          // UntitledUi Stimulus controllers
+          #{STIMULUS_BLOCK_START}
           import CheckboxController from "#{import_prefix}/checkbox_controller"
           import DropdownController from "#{import_prefix}/dropdown_controller"
           import ModalController from "#{import_prefix}/modal_controller"
@@ -189,16 +195,30 @@ module UntitledUi
           application.register("navigation-sidebar", NavigationSidebarController)
           application.register("tabs", TabsController)
           application.register("toggle", ToggleController)
-          application.register("tooltip", TooltipController)
+          #{STIMULUS_BLOCK_END}
         JS
       end
 
-      def add_importmap_controllers
-        js_file = File.join(destination_root, "app/javascript/controllers/index.js")
-        return unless File.exist?(js_file)
-        return if File.read(js_file).include?("untitled_ui")
+      def replace_or_append_stimulus_registration(js_path, import_prefix)
+        return unless File.exist?(File.join(destination_root, js_path))
 
-        append_to_file "app/javascript/controllers/index.js", stimulus_registration("untitled_ui")
+        content = File.read(File.join(destination_root, js_path))
+
+        if content.include?(STIMULUS_BLOCK_START)
+          # Replace existing block (handles bundler switches)
+          updated = content.sub(
+            /\n*#{Regexp.escape(STIMULUS_BLOCK_START)}.*?#{Regexp.escape(STIMULUS_BLOCK_END)}\n*/m,
+            stimulus_registration(import_prefix)
+          )
+          File.write(File.join(destination_root, js_path), updated)
+          say_status :update, "#{js_path} (replaced UntitledUi controllers)", :green
+        else
+          append_to_file js_path, stimulus_registration(import_prefix)
+        end
+      end
+
+      def add_importmap_controllers
+        replace_or_append_stimulus_registration("app/javascript/controllers/index.js", "untitled_ui")
       end
 
       def copy_controllers_for_bundler
@@ -212,11 +232,7 @@ module UntitledUi
           overwrite: false
         )
 
-        js_file = File.join(destination_root, "app/javascript/controllers/index.js")
-        return unless File.exist?(js_file)
-        return if File.read(js_file).include?("untitled_ui")
-
-        append_to_file "app/javascript/controllers/index.js", stimulus_registration("./untitled_ui")
+        replace_or_append_stimulus_registration("app/javascript/controllers/index.js", "./untitled_ui")
       end
     end
   end

@@ -145,4 +145,86 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       expect(layout).to include("<aside class=\"sticky top-0")
     end
   end
+
+  describe "bundler detection" do
+    def prepare_importmap_app!(root)
+      prepare_minimal_app!(root)
+      File.write(File.join(root, "config/importmap.rb"), "# importmap config\n")
+    end
+
+    def prepare_node_app!(root)
+      prepare_minimal_app!(root)
+      File.write(File.join(root, "package.json"), '{"name": "test-app"}')
+    end
+
+    it "registers controllers via importmap when config/importmap.rb exists" do
+      Dir.mktmpdir do |root|
+        prepare_importmap_app!(root)
+        run_install!(root)
+
+        js = File.read(File.join(root, "app/javascript/controllers/index.js"))
+        expect(js).to include('from "untitled_ui/checkbox_controller"')
+        expect(js).to include('application.register("checkbox", CheckboxController)')
+        expect(js).not_to include("./untitled_ui")
+      end
+    end
+
+    it "copies JS files and uses relative imports for node bundlers" do
+      Dir.mktmpdir do |root|
+        prepare_node_app!(root)
+        run_install!(root)
+
+        js = File.read(File.join(root, "app/javascript/controllers/index.js"))
+        expect(js).to include('from "./untitled_ui/checkbox_controller"')
+        expect(js).to include('application.register("modal", ModalController)')
+
+        expect(File.exist?(File.join(root, "app/javascript/controllers/untitled_ui/checkbox_controller.js"))).to be(true)
+        expect(File.exist?(File.join(root, "app/javascript/controllers/untitled_ui/modal_controller.js"))).to be(true)
+      end
+    end
+
+    it "skips JS registration when neither importmap nor package.json exists" do
+      Dir.mktmpdir do |root|
+        prepare_minimal_app!(root)
+        # No importmap.rb, no package.json
+        run_install!(root)
+
+        js = File.read(File.join(root, "app/javascript/controllers/index.js"))
+        expect(js).not_to include("untitled_ui")
+      end
+    end
+
+    it "is idempotent — does not duplicate registrations on re-run" do
+      Dir.mktmpdir do |root|
+        prepare_importmap_app!(root)
+        run_install!(root)
+        run_install!(root)
+
+        js = File.read(File.join(root, "app/javascript/controllers/index.js"))
+        expect(js.scan("UntitledUi Stimulus controllers").length).to eq(1)
+        expect(js.scan('application.register("checkbox"').length).to eq(1)
+      end
+    end
+
+    it "replaces import paths when switching from importmap to node bundler" do
+      Dir.mktmpdir do |root|
+        # First install with importmap
+        prepare_importmap_app!(root)
+        run_install!(root)
+
+        js = File.read(File.join(root, "app/javascript/controllers/index.js"))
+        expect(js).to include('from "untitled_ui/checkbox_controller"')
+
+        # Switch to node bundler
+        FileUtils.rm(File.join(root, "config/importmap.rb"))
+        File.write(File.join(root, "package.json"), '{"name": "test-app"}')
+        run_install!(root)
+
+        js = File.read(File.join(root, "app/javascript/controllers/index.js"))
+        expect(js).to include('from "./untitled_ui/checkbox_controller"')
+        expect(js).not_to include('from "untitled_ui/checkbox_controller"')
+        expect(js.scan("UntitledUi Stimulus controllers").length).to eq(1)
+      end
+    end
+  end
 end
