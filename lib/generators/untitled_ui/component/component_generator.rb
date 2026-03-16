@@ -60,14 +60,13 @@ module UntitledUi
 
         components.each do |component|
           source_dir = source_base.join(component)
-          dest_dir = dest_base.join(component)
 
           unless source_dir.directory?
             say_status :error, "Component directory not found: #{source_dir}", :red
             next
           end
 
-          Dir.glob(source_dir.join("**/*").to_s).sort.each do |source|
+          Dir.glob(source_dir.join("**/*").to_s).each do |source|
             source_file = Pathname.new(source)
             next if source_file.directory?
 
