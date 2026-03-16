@@ -1,0 +1,40 @@
+Description:
+  Generate a custom UntitledUi theme CSS file with color overrides.
+
+  A theme overrides CSS custom properties (brand, error, warning, success,
+  and gray color scales) scoped under a CSS class, so you can switch themes
+  by toggling that class on <body>.
+
+Usage:
+  rails generate untitled_ui:theme THEME_NAME [--preset=PRESET]
+
+Arguments:
+  THEME_NAME  - The name of the theme (e.g. corporate, ocean, dark).
+                This determines the CSS class name (.corporate-theme)
+                and the output file name (corporate.css).
+
+Options:
+  --preset    - Optional. Use a curated color preset instead of
+                placeholder values. Available presets:
+                  corporate - Professional blue-gray palette
+                  ocean     - Cool blue-teal coastal palette
+                  warm      - Warm orange-earth tone palette
+
+Examples:
+  rails generate untitled_ui:theme corporate
+    Creates app/assets/tailwind/untitled_ui/corporate.css with placeholder
+    colors and adds the import to application.css.
+
+  rails generate untitled_ui:theme ocean --preset=ocean
+    Creates app/assets/tailwind/untitled_ui/ocean.css with curated ocean
+    color values pre-filled.
+
+  rails generate untitled_ui:theme dark --preset=corporate
+    Creates a theme named "dark" but seeded with the corporate color preset.
+
+Applying a theme:
+  Add the theme class to your <body> tag:
+    <body class="corporate-theme">
+
+  To switch themes dynamically with JavaScript:
+    document.body.className = 'ocean-theme';
