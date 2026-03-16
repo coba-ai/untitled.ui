@@ -55,7 +55,11 @@ module UntitledUi
         { id: "progress_steps", name: "Progress Steps", category: "Application",
           description: "Horizontal progress steps with centered icons, connector lines, and completed/current/upcoming states." },
         { id: "breadcrumb", name: "Breadcrumb", category: "Navigation",
-          description: "Breadcrumb navigation with chevron/slash separators and aria support." }
+          description: "Breadcrumb navigation with chevron/slash separators and aria support." },
+        { id: "stat", name: "Stat", category: "Application",
+          description: "Metric display card with value, trend indicator, and change percentage." },
+        { id: "select", name: "Select", category: "Base",
+          description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." }
       ].freeze
 
       def index
