@@ -1,0 +1,127 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Success Toast" do %>
+  <div class="relative space-y-3">
+    <%= render Ui::Toast::Component.new(
+      title: "Successfully saved!",
+      description: "Your changes have been saved and are now live.",
+      variant: :success,
+      auto_dismiss: false
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Toast::Component.new(
+  title: "Successfully saved!",
+  description: "Your changes have been saved and are now live.",
+  variant: :success
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Error Toast" do %>
+  <div class="relative space-y-3">
+    <%= render Ui::Toast::Component.new(
+      title: "Something went wrong",
+      description: "There was an error processing your request. Please try again.",
+      variant: :error,
+      auto_dismiss: false
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Toast::Component.new(
+  title: "Something went wrong",
+  description: "There was an error processing your request.",
+  variant: :error
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Warning Toast" do %>
+  <div class="relative space-y-3">
+    <%= render Ui::Toast::Component.new(
+      title: "Heads up!",
+      description: "Your trial expires in 3 days. Upgrade to keep your data.",
+      variant: :warning,
+      auto_dismiss: false
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Toast::Component.new(
+  title: "Heads up!",
+  description: "Your trial expires in 3 days.",
+  variant: :warning
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Info Toast" do %>
+  <div class="relative space-y-3">
+    <%= render Ui::Toast::Component.new(
+      title: "New update available",
+      description: "A new version of the application is ready to install.",
+      variant: :info,
+      auto_dismiss: false
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Toast::Component.new(
+  title: "New update available",
+  description: "A new version is ready to install.",
+  variant: :info
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Small Size" do %>
+  <div class="relative space-y-3">
+    <%= render Ui::Toast::Component.new(
+      title: "File uploaded",
+      variant: :success,
+      size: :sm,
+      auto_dismiss: false
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Toast::Component.new(
+  title: "File uploaded",
+  variant: :success,
+  size: :sm
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Non-dismissible" do %>
+  <div class="relative space-y-3">
+    <%= render Ui::Toast::Component.new(
+      title: "Processing...",
+      description: "Your file is being uploaded. Please wait.",
+      variant: :info,
+      dismissible: false,
+      auto_dismiss: false
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Toast::Component.new(
+  title: "Processing...",
+  description: "Your file is being uploaded.",
+  variant: :info,
+  dismissible: false,
+  auto_dismiss: false
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Custom Content" do %>
+  <div class="relative space-y-3">
+    <%= render Ui::Toast::Component.new(
+      title: "Record deleted",
+      description: "The item has been removed.",
+      variant: :error,
+      auto_dismiss: false
+    ) do %>
+      <div class="flex gap-3">
+        <%= render Ui::Button::Component.new(size: :sm, color: :secondary) { "Undo" } %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Toast::Component.new(
+  title: "Record deleted",
+  description: "The item has been removed.",
+  variant: :error
+) do
+  render Ui::Button::Component.new(size: :sm, color: :secondary) { "Undo" }
+end' %>
