@@ -40,11 +40,13 @@ module Ui
 
       def prev_url
         return nil if first_page?
+
         page_url(@current_page - 1)
       end
 
       def next_url
         return nil if last_page?
+
         page_url(@current_page + 1)
       end
 
@@ -87,7 +89,7 @@ module Ui
 
       def build_pages
         items = []
-        total_page_numbers = @sibling_count * 2 + 5
+        total_page_numbers = (@sibling_count * 2) + 5
 
         if total_page_numbers >= @total_pages
           (1..@total_pages).each { |i| items << { type: :page, value: i } }
@@ -99,12 +101,12 @@ module Ui
           show_right_ellipsis = right_sibling < @total_pages - 1
 
           if !show_left_ellipsis && show_right_ellipsis
-            left_count = @sibling_count * 2 + 3
+            left_count = (@sibling_count * 2) + 3
             (1..left_count).each { |i| items << { type: :page, value: i } }
             items << { type: :ellipsis }
             items << { type: :page, value: @total_pages }
           elsif show_left_ellipsis && !show_right_ellipsis
-            right_count = @sibling_count * 2 + 3
+            right_count = (@sibling_count * 2) + 3
             items << { type: :page, value: 1 }
             items << { type: :ellipsis }
             ((@total_pages - right_count + 1)..@total_pages).each { |i| items << { type: :page, value: i } }

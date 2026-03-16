@@ -1,0 +1,59 @@
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - "spec/dummy/**/*"
+    - "vendor/**/*"
+    - "bin/**/*"
+    - "node_modules/**/*"
+    - "app/assets/tailwind/untitled_ui_components/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/AbcSize:
+  Max: 40
+
+Metrics/ClassLength:
+  Max: 250
+
+Layout/LineLength:
+  Max: 320
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "*.gemspec"
+
+Metrics/ParameterLists:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/PerceivedComplexity:
+  Max: 15
+
+Naming/PredicatePrefix:
+  Enabled: false
+
+Lint/MissingSuper:
+  Exclude:
+    - "app/components/**/*"
+
+Lint/DuplicateBranch:
+  Exclude:
+    - "app/components/**/*"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either

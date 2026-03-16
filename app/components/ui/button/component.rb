@@ -42,7 +42,7 @@ module Ui
         link_destructive: "justify-normal rounded p-0! text-error-primary outline-error hover:text-error-primary_hover"
       }.freeze
 
-      ICON_CLASSES = "pointer-events-none size-5 shrink-0".freeze
+      ICON_CLASSES = "pointer-events-none size-5 shrink-0"
 
       renders_one :icon_leading_slot
       renders_one :icon_trailing_slot

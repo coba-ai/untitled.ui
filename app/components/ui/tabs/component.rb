@@ -31,7 +31,7 @@ module Ui
 
       attr_reader :type, :size, :full_width, :extra_classes
 
-      renders_many :tabs, ->(id:, label:, badge: nil, active: false, **opts) {
+      renders_many :tabs, lambda { |id:, label:, badge: nil, active: false, **opts|
         Ui::Tabs::TabItem.new(id: id, label: label, badge: badge, active: active, type: @type, size: @size, **opts)
       }
 

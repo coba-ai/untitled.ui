@@ -36,7 +36,8 @@ module Ui
 
       attr_reader :type, :size, :color, :dot, :dismissible, :icon_leading, :icon_trailing, :extra_classes
 
-      def initialize(type: :pill_color, size: :md, color: :gray, dot: false, dismissible: false, icon_leading: nil, icon_trailing: nil, class: nil, **_opts)
+      def initialize(type: :pill_color, size: :md, color: :gray, dot: false, dismissible: false, icon_leading: nil, icon_trailing: nil, class: nil,
+                     **_opts)
         @type = type.to_sym
         @size = size.to_sym
         @color = color.to_sym

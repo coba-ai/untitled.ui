@@ -17,7 +17,7 @@ module UntitledUi
     end
 
     def gem_root
-      Pathname.new(File.expand_path("../..", __FILE__))
+      Pathname.new(File.expand_path("..", __dir__))
     end
   end
 end

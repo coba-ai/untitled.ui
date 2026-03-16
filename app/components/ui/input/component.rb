@@ -8,8 +8,8 @@ module Ui
         md: { root: "px-3.5 py-2.5", icon_leading: "left-3.5", icon_trailing: "right-3.5" }
       }.freeze
 
-      WRAPPER_CLASSES = "relative flex w-full flex-row place-content-center place-items-center rounded-lg bg-primary shadow-xs ring-1 ring-primary transition-shadow duration-100 ease-linear ring-inset".freeze
-      INPUT_CLASSES = "m-0 w-full bg-transparent text-md text-primary ring-0 outline-hidden placeholder:text-placeholder".freeze
+      WRAPPER_CLASSES = "relative flex w-full flex-row place-content-center place-items-center rounded-lg bg-primary shadow-xs ring-1 ring-primary transition-shadow duration-100 ease-linear ring-inset"
+      INPUT_CLASSES = "m-0 w-full bg-transparent text-md text-primary ring-0 outline-hidden placeholder:text-placeholder"
 
       attr_reader :size, :label, :hint, :placeholder, :icon, :tooltip, :required,
                   :invalid, :disabled, :name, :value, :type, :id, :extra_classes,
@@ -40,8 +40,8 @@ module Ui
       end
 
       def wrapper_classes
-        has_trailing = @tooltip || @invalid
-        has_leading = @icon.present?
+        @tooltip || @invalid
+        @icon.present?
         cx(
           WRAPPER_CLASSES,
           "focus-within:ring-2 focus-within:ring-brand",
