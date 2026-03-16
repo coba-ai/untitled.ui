@@ -1,0 +1,36 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Variants" do %>
+  <div class="space-y-4">
+    <%= render(Ui::Alert::Component.new(variant: :info, title: "Information", description: "This is an informational alert to keep you updated.")) %>
+    <%= render(Ui::Alert::Component.new(variant: :success, title: "Success", description: "Your changes have been saved successfully.")) %>
+    <%= render(Ui::Alert::Component.new(variant: :warning, title: "Warning", description: "Please review this before proceeding.")) %>
+    <%= render(Ui::Alert::Component.new(variant: :error, title: "Error", description: "Something went wrong. Please try again.")) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Alert::Component.new(variant: :success, title: "Success", description: "Your changes have been saved."))' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Dismissible" do %>
+  <div class="space-y-4">
+    <%= render(Ui::Alert::Component.new(variant: :info, title: "Dismissible info", description: "Click the X to dismiss this alert.", dismissible: true)) %>
+    <%= render(Ui::Alert::Component.new(variant: :error, title: "Dismissible error", description: "This error can be dismissed.", dismissible: true)) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Alert::Component.new(variant: :info, title: "Heads up", description: "Dismissible alert.", dismissible: true))' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Title only" do %>
+  <div class="space-y-4">
+    <%= render(Ui::Alert::Component.new(variant: :success, title: "Operation completed successfully.")) %>
+    <%= render(Ui::Alert::Component.new(variant: :warning, title: "Your trial expires in 3 days.")) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Alert::Component.new(variant: :warning, title: "Your trial expires in 3 days."))' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Description only" do %>
+  <div class="space-y-4">
+    <%= render(Ui::Alert::Component.new(variant: :info, description: "A new software update is available. See what is new in version 2.0.")) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render(Ui::Alert::Component.new(variant: :info, description: "A new software update is available."))' %>

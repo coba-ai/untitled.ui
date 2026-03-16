@@ -1,0 +1,23 @@
+<div class="<%= root_classes %>" role="alert">
+  <% if icon.present? %>
+    <span class="<%= icon_classes %>"><%= icon.html_safe %></span>
+  <% end %>
+
+  <div class="flex-1 space-y-1">
+    <% if title.present? %>
+      <p class="<%= title_classes %>"><%= title %></p>
+    <% end %>
+
+    <% if description.present? %>
+      <p class="<%= description_classes %>"><%= description %></p>
+    <% end %>
+  </div>
+
+  <% if dismissible %>
+    <button type="button" class="<%= close_classes %>" onclick="this.closest('[role=alert]').remove()" aria-label="Dismiss">
+      <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  <% end %>
+</div>

@@ -8,6 +8,8 @@ module UntitledUi
       COMPONENTS = [
         { id: "colors", name: "Colors", category: "Foundations",
           description: "The complete color palette including primary, secondary, and neutral scales." },
+        { id: "alert", name: "Alert", category: "Base",
+          description: "Persistent alert banner with info/success/warning/error variants and optional dismiss." },
         { id: "button", name: "Button", category: "Base",
           description: "Versatile button with multiple sizes, colors, icons, loading state, and polymorphic rendering." },
         { id: "badge", name: "Badge", category: "Base",
