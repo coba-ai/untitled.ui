@@ -1,0 +1,80 @@
+<div
+  class="<%= cx('flex h-max w-full flex-col items-start justify-start gap-1.5', extra_classes) %>"
+  data-controller="<%= disabled ? '' : 'date-picker' %>"
+  <% stimulus_values.each do |key, val| %>
+    data-date-picker-<%= key %>-value="<%= val %>"
+  <% end %>
+>
+  <% if label.present? %>
+    <%= render Ui::Label::Component.new(text: label, required: required, for_id: id) %>
+  <% end %>
+
+  <div class="<%= wrapper_classes %>" data-date-picker-target="trigger" data-action="click->date-picker#toggle">
+    <input
+      type="text"
+      readonly
+      <% if id.present? %>id="<%= id %>"<% end %>
+      <% if placeholder.present? %>placeholder="<%= placeholder %>"<% end %>
+      <% if disabled %>disabled<% end %>
+      <% if display_value.present? %>value="<%= display_value %>"<% end %>
+      class="<%= display_classes %>"
+      data-date-picker-target="display"
+    >
+
+    <input
+      type="hidden"
+      <% if name.present? %>name="<%= name %>"<% end %>
+      <% if hidden_value.present? %>value="<%= hidden_value %>"<% end %>
+      <% if required %>required<% end %>
+      data-date-picker-target="hidden"
+    >
+
+    <svg class="<%= icon_classes %>" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+    </svg>
+  </div>
+
+  <div
+    class="absolute z-50 mt-1 hidden w-72 rounded-lg border border-primary bg-primary p-4 shadow-lg"
+    data-date-picker-target="calendar"
+  >
+    <%# Header with month/year navigation %>
+    <div class="mb-3 flex items-center justify-between">
+      <button
+        type="button"
+        class="rounded p-1 text-secondary hover:bg-secondary hover:text-primary"
+        data-action="click->date-picker#prevMonth"
+        aria-label="Previous month"
+      >
+        <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+
+      <span class="text-sm font-semibold text-primary" data-date-picker-target="monthYear"></span>
+
+      <button
+        type="button"
+        class="rounded p-1 text-secondary hover:bg-secondary hover:text-primary"
+        data-action="click->date-picker#nextMonth"
+        aria-label="Next month"
+      >
+        <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+    </div>
+
+    <%# Day-of-week headers %>
+    <div class="mb-1 grid grid-cols-7 text-center text-xs font-medium text-tertiary">
+      <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+    </div>
+
+    <%# Days grid %>
+    <div class="grid grid-cols-7 gap-0.5" data-date-picker-target="days"></div>
+  </div>
+
+  <% if hint.present? %>
+    <%= render Ui::HintText::Component.new(invalid: invalid).with_content(hint) %>
+  <% end %>
+</div>
