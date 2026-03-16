@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "A ViewComponent-based design system implementing Untitled UI tokens, components, and patterns for Rails applications with Tailwind CSS."
   spec.license     = "MIT"
 
-  spec.required_ruby_version = ">= 3.1"
+  spec.required_ruby_version = ">= 3.2"
 
   spec.files = Dir[
     "app/**/*",

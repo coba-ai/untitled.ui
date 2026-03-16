@@ -4,7 +4,7 @@ A ViewComponent-based design system implementing Untitled UI tokens, components,
 
 ## Requirements
 
-- Ruby >= 3.1
+- Ruby >= 3.2
 - Rails >= 7.1
 - [ViewComponent](https://viewcomponent.org/) >= 3.0
 - [Tailwind CSS v4](https://tailwindcss.com/) with `@import "tailwindcss"`
