@@ -10,8 +10,8 @@ module Ui
     #
     # @param args [Array<String, Array, Hash, nil>] class name arguments
     # @return [String] merged class string
-    def cx(*args)
-      Ui::ClassNames.cx(*args)
+    def cx(*)
+      Ui::ClassNames.cx(*)
     end
 
     # Generates an HTML tag with the given name, attributes, and optional content.
