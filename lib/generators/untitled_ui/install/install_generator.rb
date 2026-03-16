@@ -110,7 +110,14 @@ module UntitledUi
         say "     render Ui::Button::Component.new(color: :primary) { 'Click me' }"
         say "     render Ui::Input::Component.new(label: 'Email')"
         say ""
-        say "JS bundler detected: #{importmap? ? 'importmap' : node_bundler? ? 'node (esbuild/Vite/Webpack)' : 'none'}"
+        bundler_name = if importmap?
+                         "importmap"
+                       elsif node_bundler?
+                         "node (esbuild/Vite/Webpack)"
+                       else
+                         "none"
+                       end
+        say "JS bundler detected: #{bundler_name}"
         say ""
       end
 
