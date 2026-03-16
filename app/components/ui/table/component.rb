@@ -6,7 +6,7 @@ module Ui
       attr_reader :size, :extra_classes
 
       renders_one :header_content
-      renders_many :columns, ->(label:, sortable: false, tooltip: nil, **opts) {
+      renders_many :columns, lambda { |label:, sortable: false, tooltip: nil, **opts|
         Ui::Table::Column.new(label: label, sortable: sortable, tooltip: tooltip, size: @size, **opts)
       }
 

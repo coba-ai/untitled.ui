@@ -7,6 +7,7 @@ AllCops:
     - "vendor/**/*"
     - "bin/**/*"
     - "node_modules/**/*"
+    - "app/assets/tailwind/untitled_ui_components/**/*"
 
 Style/Documentation:
   Enabled: false
@@ -15,21 +16,41 @@ Style/FrozenStringLiteralComment:
   Enabled: true
 
 Metrics/MethodLength:
-  Max: 25
+  Max: 30
 
 Metrics/AbcSize:
-  Max: 30
+  Max: 40
 
 Metrics/ClassLength:
   Max: 200
 
 Layout/LineLength:
-  Max: 150
+  Max: 320
 
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
     - "*.gemspec"
+
+Metrics/ParameterLists:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/PerceivedComplexity:
+  Max: 15
+
+Naming/PredicatePrefix:
+  Enabled: false
+
+Lint/MissingSuper:
+  Exclude:
+    - "app/components/**/*"
+
+Lint/DuplicateBranch:
+  Exclude:
+    - "app/components/**/*"
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

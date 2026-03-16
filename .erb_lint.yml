@@ -1,0 +1,39 @@
+---
+EnableDefaultLinters: false
+
+linters:
+  ClosingErbTagIndent:
+    enabled: true
+
+  CommentSyntax:
+    enabled: true
+
+  ExtraNewline:
+    enabled: true
+
+  FinalNewline:
+    enabled: true
+
+  NoJavascriptTagHelper:
+    enabled: true
+
+  ParserErrors:
+    enabled: true
+
+  SelfClosingTag:
+    enabled: true
+
+  SpaceAroundErbTag:
+    enabled: false
+
+  SpaceInHtmlTag:
+    enabled: false
+
+  SpaceIndentation:
+    enabled: false
+
+  TrailingWhitespace:
+    enabled: true
+
+  RequireInputAutocomplete:
+    enabled: false

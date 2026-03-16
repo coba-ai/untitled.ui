@@ -10,7 +10,8 @@ module Ui
 
       attr_reader :size, :label, :hint, :checked, :disabled, :name, :value, :indeterminate, :extra_classes
 
-      def initialize(size: :sm, label: nil, hint: nil, checked: false, disabled: false, name: nil, value: nil, indeterminate: false, class: nil, **_opts)
+      def initialize(size: :sm, label: nil, hint: nil, checked: false, disabled: false, name: nil, value: nil, indeterminate: false, class: nil,
+                     **_opts)
         @size = size.to_sym
         @label = label
         @hint = hint

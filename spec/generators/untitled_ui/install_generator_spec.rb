@@ -9,9 +9,7 @@ require "generators/untitled_ui/install/install_generator"
 RSpec.describe UntitledUi::Generators::InstallGenerator do
   def prepare_minimal_app!(root, tailwind_import: '@import "tailwindcss";', create_tailwind_css: true)
     FileUtils.mkdir_p(File.join(root, "app/assets/tailwind"))
-    if create_tailwind_css
-      File.write(File.join(root, "app/assets/tailwind/application.css"), "#{tailwind_import}\n")
-    end
+    File.write(File.join(root, "app/assets/tailwind/application.css"), "#{tailwind_import}\n") if create_tailwind_css
 
     FileUtils.mkdir_p(File.join(root, "app/javascript/controllers"))
     File.write(

@@ -6,7 +6,7 @@ module Ui
       attr_reader :extra_classes
 
       renders_one :trigger
-      renders_many :items, ->(label:, icon: nil, addon: nil, disabled: false, href: nil, **opts) {
+      renders_many :items, lambda { |label:, icon: nil, addon: nil, disabled: false, href: nil, **opts|
         Ui::Dropdown::Item.new(label: label, icon: icon, addon: addon, disabled: disabled, href: href, **opts)
       }
       renders_many :separators

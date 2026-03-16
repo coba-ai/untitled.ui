@@ -2,7 +2,7 @@
   <% items.each do |item| %>
     <% if divider?(item) %>
       <li class="w-full px-0.5 py-2">
-        <hr class="h-px w-full border-none bg-border-secondary" />
+        <hr class="h-px w-full border-none bg-border-secondary">
       </li>
     <% elsif collapsible?(item) %>
       <details class="appearance-none py-0.5" <%= "open" if child_active?(item) %>>

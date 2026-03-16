@@ -7,9 +7,7 @@ module UntitledUi
     # Add gem's app/components to autoload paths so Ui:: resolves at top level
     initializer "untitled_ui.autoload", before: :set_autoload_paths do |app|
       components_path = root.join("app", "components").to_s
-      unless app.config.autoload_paths.frozen?
-        app.config.autoload_paths << components_path unless app.config.autoload_paths.include?(components_path)
-      end
+      app.config.autoload_paths << components_path if !app.config.autoload_paths.frozen? && !app.config.autoload_paths.include?(components_path)
       app.config.eager_load_paths << components_path unless app.config.eager_load_paths.include?(components_path)
     end
 

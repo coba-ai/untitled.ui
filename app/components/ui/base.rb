@@ -21,8 +21,8 @@ module Ui
     # @param attrs [Hash] HTML attributes
     # @param block [Proc] optional block for content
     # @return [String] rendered HTML
-    def polymorphic_tag(tag_name, **attrs, &block)
-      content_tag(tag_name, **attrs, &block)
+    def polymorphic_tag(tag_name, **attrs, &)
+      content_tag(tag_name, **attrs, &)
     end
 
     private
