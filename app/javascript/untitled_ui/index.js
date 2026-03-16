@@ -8,6 +8,7 @@ import NavigationMobileController from "untitled_ui/navigation_mobile_controller
 import NavigationSidebarController from "untitled_ui/navigation_sidebar_controller"
 import TabsController from "untitled_ui/tabs_controller"
 import ToggleController from "untitled_ui/toggle_controller"
+import PlaygroundController from "untitled_ui/playground_controller"
 import TooltipController from "untitled_ui/tooltip_controller"
 
 const controllerDefinitions = [
@@ -17,6 +18,7 @@ const controllerDefinitions = [
   ["modal", ModalController],
   ["navigation-mobile", NavigationMobileController],
   ["navigation-sidebar", NavigationSidebarController],
+  ["playground", PlaygroundController],
   ["tabs", TabsController],
   ["toggle", ToggleController],
   ["tooltip", TooltipController]
@@ -35,6 +37,7 @@ export {
   application,
   CheckboxController,
   ClipboardController,
+  PlaygroundController,
   DropdownController,
   ModalController,
   NavigationMobileController,

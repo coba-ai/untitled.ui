@@ -70,6 +70,21 @@ module UntitledUi
         @component = COMPONENTS.find { |c| c[:id] == params[:id] }
         redirect_to design_system_components_path, alert: "Component not found" unless @component
       end
+
+      def playground
+        @component = COMPONENTS.find { |c| c[:id] == params[:id] }
+        return head(:not_found) unless @component
+
+        config = UntitledUi::ComponentConfig.for(params[:id])
+        return head(:not_found) unless config
+
+        @props = UntitledUi::ComponentConfig.build_props(params[:id], params)
+        @content = UntitledUi::ComponentConfig.build_content(params[:id], params)
+        @code = UntitledUi::ComponentConfig.code_snippet(params[:id], @props, @content)
+        @component_class = config[:component_class].constantize
+
+        render partial: "untitled_ui/design_system/components/playground_preview", layout: false
+      end
     end
   end
 end

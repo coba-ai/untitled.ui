@@ -1,0 +1,14 @@
+<%# Rendered component preview %>
+<div class="flex min-h-[120px] items-center justify-center rounded-lg border border-dashed border-secondary p-8">
+  <% if @content.present? %>
+    <%= render(@component_class.new(**@props)) { @content } %>
+  <% else %>
+    <%= render @component_class.new(**@props) %>
+  <% end %>
+</div>
+
+<%# Code snippet %>
+<div class="mt-4">
+  <h3 class="mb-2 text-sm font-semibold uppercase tracking-wider text-quaternary">Code</h3>
+  <%= render "untitled_ui/design_system/shared/code_block", code: @code %>
+</div>

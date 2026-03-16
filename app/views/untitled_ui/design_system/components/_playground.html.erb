@@ -1,0 +1,83 @@
+<%
+  config = UntitledUi::ComponentConfig.for(@component[:id])
+  return unless config
+
+  controls = config[:controls]
+  playground_url = untitled_ui.playground_design_system_component_path(@component[:id])
+%>
+
+<div class="mb-14">
+  <h2 class="mb-5 text-lg font-semibold text-primary">Playground</h2>
+
+  <div class="rounded-xl bg-primary shadow-xs ring-1 ring-secondary"
+       data-controller="playground"
+       data-playground-url-value="<%= playground_url %>">
+    <div class="flex flex-col lg:flex-row">
+      <%# Controls panel %>
+      <div class="shrink-0 border-b border-secondary p-6 lg:w-72 lg:border-b-0 lg:border-r">
+        <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-quaternary">Controls</h3>
+
+        <form data-playground-target="form" class="space-y-4">
+          <% controls.each do |control| %>
+            <div>
+              <label class="mb-1.5 block text-sm font-medium text-secondary">
+                <%= control.param.to_s.titleize %>
+              </label>
+
+              <% case control.type %>
+              <% when :select %>
+                <select
+                  name="<%= control.param %>"
+                  data-action="change->playground#change"
+                  class="w-full rounded-lg border-0 bg-secondary py-2 pl-3 pr-8 text-sm text-primary ring-1 ring-primary ring-inset outline-hidden focus:ring-2 focus:ring-brand"
+                >
+                  <% control.options.each do |opt| %>
+                    <option value="<%= opt %>" <%= "selected" if opt == control.default %>><%= opt.to_s.titleize %></option>
+                  <% end %>
+                </select>
+
+              <% when :checkbox %>
+                <label class="inline-flex cursor-pointer items-center gap-2">
+                  <input
+                    type="hidden"
+                    name="<%= control.param %>"
+                    value="0"
+                  />
+                  <input
+                    type="checkbox"
+                    name="<%= control.param %>"
+                    value="1"
+                    <%= "checked" if control.default %>
+                    data-action="change->playground#change"
+                    class="size-4 rounded border-gray-300 text-brand-600 focus:ring-brand"
+                  />
+                  <span class="text-sm text-tertiary"><%= control.default ? "On" : "Off" %></span>
+                </label>
+
+              <% when :text %>
+                <input
+                  type="text"
+                  name="<%= control.param %>"
+                  value="<%= control.default %>"
+                  data-action="input->playground#change"
+                  class="w-full rounded-lg border-0 bg-secondary py-2 px-3 text-sm text-primary ring-1 ring-primary ring-inset outline-hidden placeholder:text-placeholder focus:ring-2 focus:ring-brand"
+                />
+              <% end %>
+            </div>
+          <% end %>
+        </form>
+      </div>
+
+      <%# Preview + code panel %>
+      <div class="flex-1 p-6 lg:p-8">
+        <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-quaternary">Preview</h3>
+
+        <div data-playground-target="preview">
+          <div class="flex min-h-[120px] items-center justify-center rounded-lg border border-dashed border-secondary p-8">
+            <span class="text-sm text-quaternary">Loading preview...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
