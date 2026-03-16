@@ -8,6 +8,8 @@ module UntitledUi
       COMPONENTS = [
         { id: "colors", name: "Colors", category: "Foundations",
           description: "The complete color palette including primary, secondary, and neutral scales." },
+        { id: "alert", name: "Alert", category: "Base",
+          description: "Persistent alert banner with info/success/warning/error variants and optional dismiss." },
         { id: "button", name: "Button", category: "Base",
           description: "Versatile button with multiple sizes, colors, icons, loading state, and polymorphic rendering." },
         { id: "badge", name: "Badge", category: "Base",
@@ -48,8 +50,12 @@ module UntitledUi
           description: "User account card with avatar, name, email, and optional dropdown menu." },
         { id: "pagination", name: "Pagination", category: "Application",
           description: "Pagination with 4 variant types, ellipsis algorithm, and prev/next navigation." },
+        { id: "card", name: "Card", category: "Base",
+          description: "Content container with header, footer, and media slots. Configurable padding, shadow, and border." },
         { id: "progress_steps", name: "Progress Steps", category: "Application",
-          description: "Horizontal progress steps with centered icons, connector lines, and completed/current/upcoming states." }
+          description: "Horizontal progress steps with centered icons, connector lines, and completed/current/upcoming states." },
+        { id: "breadcrumb", name: "Breadcrumb", category: "Navigation",
+          description: "Breadcrumb navigation with chevron/slash separators and aria support." }
       ].freeze
 
       def index
