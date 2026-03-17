@@ -166,6 +166,29 @@ module UntitledUi
         say_status :create, "app/assets/tailwind/untitled_ui/#{theme_name}.css", :green
       end
 
+      def create_dark_variant
+        return if options[:dark] # already a dark theme
+        return unless options[:preset].present?
+        return if options[:preset] == "dark" # dark preset is already dark
+
+        dark_name = "dark_#{theme_name}"
+        css_path = File.join(destination_root, "app/assets/tailwind/untitled_ui/#{dark_name}.css")
+        content = generate_theme_css(name_override: dark_name, force_dark: true)
+        File.write(css_path, content)
+        say_status :create, "app/assets/tailwind/untitled_ui/#{dark_name}.css", :green
+
+        # Add import for dark variant
+        css_file = Pathname.new(File.join(destination_root, "app/assets/tailwind/application.css"))
+        if css_file.exist?
+          import_line = "@import \"./untitled_ui/#{dark_name}.css\";"
+          file_content = css_file.read
+          unless file_content.include?(import_line)
+            css_file.write("#{file_content.rstrip}\n#{import_line}\n")
+            say_status :insert, "app/assets/tailwind/application.css (dark variant)", :green
+          end
+        end
+      end
+
       def add_css_import
         css_file = Pathname.new(File.join(destination_root, "app/assets/tailwind/application.css"))
         return unless css_file.exist?
@@ -222,10 +245,11 @@ module UntitledUi
 
       private
 
-      def generate_theme_css
+      def generate_theme_css(name_override: nil, force_dark: false)
         preset = options[:preset] ? PRESETS[options[:preset]] : nil
-        dark_mode = options[:dark] || options[:preset] == "dark"
-        sanitized_name = theme_name.gsub(/[^a-zA-Z0-9_-]/, "-")
+        dark_mode = force_dark || options[:dark] || options[:preset] == "dark"
+        name = name_override || theme_name
+        sanitized_name = name.gsub(/[^a-zA-Z0-9_-]/, "-")
 
         <<~CSS
           /* ============================================
