@@ -33,6 +33,8 @@ module UntitledUi
         { id: "loading_indicator", name: "Loading Indicator", category: "Base",
           description: "Animated spinner with line_simple and line_spinner types." },
         { id: "tabs", name: "Tabs", category: "Application", description: "Tab navigation with button_brand, button_gray, and underline types." },
+        { id: "drawer", name: "Drawer", category: "Application",
+          description: "Slide-out panel from left or right edge using HTML <dialog> with header/footer slots and size variants." },
         { id: "modal", name: "Modal", category: "Application", description: "Dialog overlay using HTML <dialog> with header/footer slots." },
         { id: "dropdown", name: "Dropdown", category: "Application", description: "Dropdown menu with items, icons, and keyboard navigation." },
         { id: "table", name: "Table", category: "Application",
