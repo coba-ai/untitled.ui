@@ -1,0 +1,55 @@
+<div class="<%= cx('flex h-max w-full flex-col items-start justify-start gap-1.5', extra_classes) %>"
+     data-controller="tag-input"
+     <% if max_tags.present? %>data-tag-input-max-tags-value="<%= max_tags %>"<% end %>>
+  <% if label.present? %>
+    <%= render Ui::Label::Component.new(text: label, for_id: id) %>
+  <% end %>
+
+  <input type="hidden"
+         <% if id.present? %>id="<%= id %>"<% end %>
+         <% if name.present? %>name="<%= name %>"<% end %>
+         value="<%= initial_value %>"
+         data-tag-input-target="hiddenInput">
+
+  <div class="<%= wrapper_classes %>"
+       data-action="click->tag-input#focusInput">
+    <% initial_tags.each do |tag| %>
+      <span class="<%= tag_classes %>"
+            data-tag-input-target="tag"
+            data-value="<%= tag %>">
+        <span><%= tag %></span>
+        <% unless disabled %>
+          <button type="button"
+                  class="<%= tag_remove_classes %>"
+                  aria-label="Remove <%= tag %>"
+                  data-action="click->tag-input#removeTag">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        <% end %>
+      </span>
+    <% end %>
+
+    <input type="text"
+           class="<%= input_classes %>"
+           placeholder="<%= placeholder %>"
+           <% if disabled %>disabled<% end %>
+           data-tag-input-target="textInput"
+           data-action="keydown->tag-input#onKeydown input->tag-input#onInput"
+           autocomplete="off"
+           aria-label="<%= label.present? ? "Add tag to #{label}" : "Add tag" %>">
+  </div>
+
+  <% if invalid %>
+    <div class="flex items-center gap-1.5">
+      <svg class="size-4 text-fg-error-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+      </svg>
+    </div>
+  <% end %>
+
+  <% if hint.present? %>
+    <%= render Ui::HintText::Component.new(invalid: invalid).with_content(hint) %>
+  <% end %>
+</div>

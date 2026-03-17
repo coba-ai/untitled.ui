@@ -1,0 +1,95 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Default" do %>
+  <div class="max-w-sm">
+    <%= render Ui::TagInput::Component.new(placeholder: "Add a tag...") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::TagInput::Component.new(placeholder: "Add a tag...")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Label & Hint" do %>
+  <div class="max-w-sm">
+    <%= render Ui::TagInput::Component.new(
+      label: "Skills",
+      placeholder: "Add a skill...",
+      hint: "Press Enter or comma to add a tag. Backspace removes the last tag."
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::TagInput::Component.new(label: "Skills", placeholder: "Add a skill...", hint: "Press Enter or comma to add a tag.")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Pre-filled Tags (Array)" do %>
+  <div class="max-w-sm">
+    <%= render Ui::TagInput::Component.new(
+      label: "Technologies",
+      value: ["Ruby", "Rails", "JavaScript"],
+      placeholder: "Add more..."
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::TagInput::Component.new(label: "Technologies", value: ["Ruby", "Rails", "JavaScript"])' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Pre-filled Tags (String)" do %>
+  <div class="max-w-sm">
+    <%= render Ui::TagInput::Component.new(
+      label: "Categories",
+      name: "post[categories]",
+      value: "design,ux,frontend",
+      placeholder: "Add category..."
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::TagInput::Component.new(label: "Categories", name: "post[categories]", value: "design,ux,frontend")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Max Tags Limit" do %>
+  <div class="max-w-sm">
+    <%= render Ui::TagInput::Component.new(
+      label: "Top 3 Skills",
+      placeholder: "Add up to 3 skills...",
+      hint: "You can add at most 3 tags.",
+      max_tags: 3
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::TagInput::Component.new(label: "Top 3 Skills", hint: "Max 3 tags.", max_tags: 3)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Invalid" do %>
+  <div class="max-w-sm">
+    <%= render Ui::TagInput::Component.new(
+      label: "Required Tags",
+      invalid: true,
+      hint: "At least one tag is required."
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::TagInput::Component.new(label: "Required Tags", invalid: true, hint: "At least one tag is required.")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Disabled" do %>
+  <div class="max-w-sm">
+    <%= render Ui::TagInput::Component.new(
+      label: "Read-only Tags",
+      value: ["Ruby", "Rails"],
+      disabled: true
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::TagInput::Component.new(label: "Read-only Tags", value: ["Ruby", "Rails"], disabled: true)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Form Integration" do %>
+  <div class="max-w-sm">
+    <%= render Ui::TagInput::Component.new(
+      label: "Post Tags",
+      name: "post[tags]",
+      id: "post_tags",
+      placeholder: "Add tags...",
+      hint: "Tags will be submitted as comma-separated values."
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::TagInput::Component.new(label: "Post Tags", name: "post[tags]", id: "post_tags")' %>
