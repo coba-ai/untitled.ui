@@ -14,6 +14,7 @@ import FileUploadController from "untitled_ui/file_upload_controller"
 import SelectController from "untitled_ui/select_controller"
 import ToastController from "untitled_ui/toast_controller"
 import TooltipController from "untitled_ui/tooltip_controller"
+import SliderController from "untitled_ui/slider_controller"
 
 const controllerDefinitions = [
   ["checkbox", CheckboxController],
@@ -29,7 +30,8 @@ const controllerDefinitions = [
   ["select", SelectController],
   ["toast", ToastController],
   ["toggle", ToggleController],
-  ["tooltip", TooltipController]
+  ["tooltip", TooltipController],
+  ["slider", SliderController]
 ]
 
 const application = window.Stimulus || Application.start()
@@ -56,5 +58,6 @@ export {
   SelectController,
   ToastController,
   ToggleController,
-  TooltipController
+  TooltipController,
+  SliderController
 }
