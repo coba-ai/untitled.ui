@@ -65,7 +65,9 @@ module UntitledUi
         { id: "select", name: "Select", category: "Base",
           description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." },
         { id: "date_picker", name: "Date Picker", category: "Base",
-          description: "Calendar date picker with month navigation, range constraints, and input styling." }
+          description: "Calendar date picker with month navigation, range constraints, and input styling." },
+        { id: "command_palette", name: "Command Palette", category: "Application",
+          description: "Keyboard-driven command palette with Cmd+K shortcut, live filtering, grouped items, and keyboard navigation." }
       ].freeze
 
       def index
