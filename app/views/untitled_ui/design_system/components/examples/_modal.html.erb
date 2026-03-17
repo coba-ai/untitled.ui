@@ -10,8 +10,8 @@
     <p class="text-sm text-tertiary">This is the body content of the modal. You can put any content here including forms, text, or other components.</p>
     <% modal.with_footer do %>
       <div class="flex justify-end gap-3">
-        <%= render(Ui::Button::Component.new(color: :secondary)) { "Cancel" } %>
-        <%= render(Ui::Button::Component.new) { "Confirm" } %>
+        <%= render(Ui::Button::Component.new(color: :secondary, data: { action: "click->modal#close" })) { "Cancel" } %>
+        <%= render(Ui::Button::Component.new(data: { action: "click->modal#close" })) { "Confirm" } %>
       </div>
     <% end %>
   <% end %>
@@ -53,7 +53,7 @@ end' %>
     <p class="text-sm text-tertiary">This modal has no header. Body content is rendered directly.</p>
     <% modal.with_footer do %>
       <div class="flex justify-end gap-3">
-        <%= render(Ui::Button::Component.new(color: :secondary)) { "Close" } %>
+        <%= render(Ui::Button::Component.new(color: :secondary, data: { action: "click->modal#close" })) { "Close" } %>
       </div>
     <% end %>
   <% end %>
