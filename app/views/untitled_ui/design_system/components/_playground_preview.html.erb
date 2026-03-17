@@ -1,7 +1,7 @@
 <%# Rendered component preview %>
 <div class="flex min-h-[120px] items-center justify-center rounded-lg border border-dashed border-secondary p-8">
   <% if @content.present? %>
-    <%= render(@component_class.new(**@props)) { @content } %>
+    <%= render(@component_class.new(**@props).with_content(@content)) %>
   <% else %>
     <%= render @component_class.new(**@props) %>
   <% end %>
