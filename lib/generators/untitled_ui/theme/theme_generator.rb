@@ -178,122 +178,122 @@ module UntitledUi
              ============================================ */
 
           @layer base {
-              .#{sanitized_name}-theme {
+            .#{sanitized_name}-theme {
 
-                  /* ----------------------------------------
-                     BRAND COLORS
-                     Your primary brand color palette.
-                     These cascade into buttons, links, focus
-                     rings, and all branded UI elements.
-                     ---------------------------------------- */
+              /* ----------------------------------------
+                 BRAND COLORS
+                 Your primary brand color palette.
+                 These cascade into buttons, links, focus
+                 rings, and all branded UI elements.
+                 ---------------------------------------- */
           #{color_scale("brand", preset)}
 
-                  /* ----------------------------------------
-                     ERROR COLORS
-                     Used for destructive actions, form
-                     validation errors, and error alerts.
-                     ---------------------------------------- */
+              /* ----------------------------------------
+                 ERROR COLORS
+                 Used for destructive actions, form
+                 validation errors, and error alerts.
+                 ---------------------------------------- */
           #{color_scale("error", preset)}
 
-                  /* ----------------------------------------
-                     WARNING COLORS
-                     Used for caution states, pending actions,
-                     and warning notifications.
-                     ---------------------------------------- */
+              /* ----------------------------------------
+                 WARNING COLORS
+                 Used for caution states, pending actions,
+                 and warning notifications.
+                 ---------------------------------------- */
           #{color_scale("warning", preset)}
 
-                  /* ----------------------------------------
-                     SUCCESS COLORS
-                     Used for positive feedback, completed
-                     actions, and success notifications.
-                     ---------------------------------------- */
+              /* ----------------------------------------
+                 SUCCESS COLORS
+                 Used for positive feedback, completed
+                 actions, and success notifications.
+                 ---------------------------------------- */
           #{color_scale("success", preset)}
 
-                  /* ----------------------------------------
-                     GRAY COLORS
-                     The neutral palette used for text,
-                     backgrounds, borders, and disabled states.
-                     Changing these significantly alters the
-                     overall look and feel.
-                     ---------------------------------------- */
+              /* ----------------------------------------
+                 GRAY COLORS
+                 The neutral palette used for text,
+                 backgrounds, borders, and disabled states.
+                 Changing these significantly alters the
+                 overall look and feel.
+                 ---------------------------------------- */
           #{color_scale("gray", preset)}
 
-                  /* ----------------------------------------
-                     TEXT COLORS
-                     Semantic text color tokens. These reference
-                     the scales above. Override only if you need
-                     fine-grained control beyond changing the
-                     base color scales.
-                     ---------------------------------------- */
-                  --color-text-primary: var(--color-gray-900);
-                  --color-text-secondary: var(--color-gray-700);
-                  --color-text-secondary_hover: var(--color-gray-800);
-                  --color-text-tertiary: var(--color-gray-600);
-                  --color-text-tertiary_hover: var(--color-gray-700);
-                  --color-text-quaternary: var(--color-gray-500);
-                  --color-text-disabled: var(--color-gray-500);
-                  --color-text-placeholder: var(--color-gray-500);
-                  --color-text-placeholder_subtle: var(--color-gray-300);
-                  --color-text-brand-primary: var(--color-brand-900);
-                  --color-text-brand-secondary: var(--color-brand-700);
-                  --color-text-brand-secondary_hover: var(--color-brand-800);
-                  --color-text-brand-tertiary: var(--color-brand-600);
-                  --color-text-brand-tertiary_alt: var(--color-brand-600);
-                  --color-text-error-primary: var(--color-error-600);
-                  --color-text-warning-primary: var(--color-warning-600);
-                  --color-text-success-primary: var(--color-success-600);
+              /* ----------------------------------------
+                 TEXT COLORS
+                 Semantic text color tokens. These reference
+                 the scales above. Override only if you need
+                 fine-grained control beyond changing the
+                 base color scales.
+                 ---------------------------------------- */
+              --color-text-primary: var(--color-gray-900);
+              --color-text-secondary: var(--color-gray-700);
+              --color-text-secondary_hover: var(--color-gray-800);
+              --color-text-tertiary: var(--color-gray-600);
+              --color-text-tertiary_hover: var(--color-gray-700);
+              --color-text-quaternary: var(--color-gray-500);
+              --color-text-disabled: var(--color-gray-500);
+              --color-text-placeholder: var(--color-gray-500);
+              --color-text-placeholder_subtle: var(--color-gray-300);
+              --color-text-brand-primary: var(--color-brand-900);
+              --color-text-brand-secondary: var(--color-brand-700);
+              --color-text-brand-secondary_hover: var(--color-brand-800);
+              --color-text-brand-tertiary: var(--color-brand-600);
+              --color-text-brand-tertiary_alt: var(--color-brand-600);
+              --color-text-error-primary: var(--color-error-600);
+              --color-text-warning-primary: var(--color-warning-600);
+              --color-text-success-primary: var(--color-success-600);
 
-                  /* ----------------------------------------
-                     BORDER COLORS
-                     Borders, dividers, and separators.
-                     ---------------------------------------- */
-                  --color-border-primary: var(--color-gray-300);
-                  --color-border-secondary: var(--color-gray-200);
-                  --color-border-tertiary: var(--color-gray-100);
-                  --color-border-brand: var(--color-brand-500);
-                  --color-border-brand_alt: var(--color-brand-600);
-                  --color-border-error: var(--color-error-500);
-                  --color-border-disabled: var(--color-gray-300);
+              /* ----------------------------------------
+                 BORDER COLORS
+                 Borders, dividers, and separators.
+                 ---------------------------------------- */
+              --color-border-primary: var(--color-gray-300);
+              --color-border-secondary: var(--color-gray-200);
+              --color-border-tertiary: var(--color-gray-100);
+              --color-border-brand: var(--color-brand-500);
+              --color-border-brand_alt: var(--color-brand-600);
+              --color-border-error: var(--color-error-500);
+              --color-border-disabled: var(--color-gray-300);
 
-                  /* ----------------------------------------
-                     FOREGROUND COLORS
-                     Icons and foreground decorative elements.
-                     ---------------------------------------- */
-                  --color-fg-primary: var(--color-gray-900);
-                  --color-fg-secondary: var(--color-gray-700);
-                  --color-fg-secondary_hover: var(--color-gray-800);
-                  --color-fg-tertiary: var(--color-gray-600);
-                  --color-fg-quaternary: var(--color-gray-400);
-                  --color-fg-brand-primary: var(--color-brand-600);
-                  --color-fg-brand-secondary: var(--color-brand-500);
-                  --color-fg-disabled: var(--color-gray-400);
-                  --color-fg-error-primary: var(--color-error-600);
-                  --color-fg-warning-primary: var(--color-warning-600);
-                  --color-fg-success-primary: var(--color-success-600);
+              /* ----------------------------------------
+                 FOREGROUND COLORS
+                 Icons and foreground decorative elements.
+                 ---------------------------------------- */
+              --color-fg-primary: var(--color-gray-900);
+              --color-fg-secondary: var(--color-gray-700);
+              --color-fg-secondary_hover: var(--color-gray-800);
+              --color-fg-tertiary: var(--color-gray-600);
+              --color-fg-quaternary: var(--color-gray-400);
+              --color-fg-brand-primary: var(--color-brand-600);
+              --color-fg-brand-secondary: var(--color-brand-500);
+              --color-fg-disabled: var(--color-gray-400);
+              --color-fg-error-primary: var(--color-error-600);
+              --color-fg-warning-primary: var(--color-warning-600);
+              --color-fg-success-primary: var(--color-success-600);
 
-                  /* ----------------------------------------
-                     BACKGROUND COLORS
-                     Surface and container backgrounds.
-                     ---------------------------------------- */
-                  --color-bg-primary: var(--color-white);
-                  --color-bg-primary_hover: var(--color-gray-50);
-                  --color-bg-secondary: var(--color-gray-50);
-                  --color-bg-secondary_hover: var(--color-gray-100);
-                  --color-bg-tertiary: var(--color-gray-100);
-                  --color-bg-quaternary: var(--color-gray-200);
-                  --color-bg-brand-primary: var(--color-brand-50);
-                  --color-bg-brand-solid: var(--color-brand-600);
-                  --color-bg-brand-solid_hover: var(--color-brand-700);
-                  --color-bg-brand-section: var(--color-brand-800);
-                  --color-bg-error-primary: var(--color-error-50);
-                  --color-bg-error-solid: var(--color-error-600);
-                  --color-bg-warning-primary: var(--color-warning-50);
-                  --color-bg-warning-solid: var(--color-warning-600);
-                  --color-bg-success-primary: var(--color-success-50);
-                  --color-bg-success-solid: var(--color-success-600);
-                  --color-bg-disabled: var(--color-gray-100);
-                  --color-bg-active: var(--color-gray-50);
-              }
+              /* ----------------------------------------
+                 BACKGROUND COLORS
+                 Surface and container backgrounds.
+                 ---------------------------------------- */
+              --color-bg-primary: var(--color-white);
+              --color-bg-primary_hover: var(--color-gray-50);
+              --color-bg-secondary: var(--color-gray-50);
+              --color-bg-secondary_hover: var(--color-gray-100);
+              --color-bg-tertiary: var(--color-gray-100);
+              --color-bg-quaternary: var(--color-gray-200);
+              --color-bg-brand-primary: var(--color-brand-50);
+              --color-bg-brand-solid: var(--color-brand-600);
+              --color-bg-brand-solid_hover: var(--color-brand-700);
+              --color-bg-brand-section: var(--color-brand-800);
+              --color-bg-error-primary: var(--color-error-50);
+              --color-bg-error-solid: var(--color-error-600);
+              --color-bg-warning-primary: var(--color-warning-50);
+              --color-bg-warning-solid: var(--color-warning-600);
+              --color-bg-success-primary: var(--color-success-50);
+              --color-bg-success-solid: var(--color-success-600);
+              --color-bg-disabled: var(--color-gray-100);
+              --color-bg-active: var(--color-gray-50);
+            }
           }
         CSS
       end
@@ -306,7 +306,7 @@ module UntitledUi
                   else
                     "rgb(0 0 0) /* TODO: customize */"
                   end
-          "            --color-#{name}-#{step}: #{value};"
+          "        --color-#{name}-#{step}: #{value};"
         end
         lines.join("\n")
       end
