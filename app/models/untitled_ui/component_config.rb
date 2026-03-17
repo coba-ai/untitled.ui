@@ -50,6 +50,191 @@ module UntitledUi
           Control.new(param: :checked, type: :checkbox, options: nil, default: false),
           Control.new(param: :disabled, type: :checkbox, options: nil, default: false)
         ]
+      },
+      "alert" => {
+        component_class: "Ui::Alert::Component",
+        content: false,
+        controls: [
+          Control.new(param: :variant, type: :select, options: %i[info success warning error], default: :info),
+          Control.new(param: :title, type: :text, options: nil, default: "Alert title"),
+          Control.new(param: :description, type: :text, options: nil, default: "This is an alert description."),
+          Control.new(param: :dismissible, type: :checkbox, options: nil, default: false)
+        ]
+      },
+      "avatar" => {
+        component_class: "Ui::Avatar::Component",
+        content: false,
+        controls: [
+          Control.new(param: :size, type: :select, options: %i[xs sm md lg xl], default: :md),
+          Control.new(param: :initials, type: :text, options: nil, default: "AB")
+        ]
+      },
+      "card" => {
+        component_class: "Ui::Card::Component",
+        content: true,
+        controls: [
+          Control.new(param: :text, type: :text, options: nil, default: "Card content goes here."),
+          Control.new(param: :padding, type: :select, options: %i[sm md lg], default: :md),
+          Control.new(param: :shadow, type: :select, options: %i[none sm md lg], default: :sm),
+          Control.new(param: :border, type: :checkbox, options: nil, default: true),
+          Control.new(param: :rounded, type: :checkbox, options: nil, default: true)
+        ]
+      },
+      "checkbox" => {
+        component_class: "Ui::Checkbox::Component",
+        content: false,
+        controls: [
+          Control.new(param: :size, type: :select, options: %i[sm md], default: :sm),
+          Control.new(param: :label, type: :text, options: nil, default: "Accept terms and conditions"),
+          Control.new(param: :checked, type: :checkbox, options: nil, default: false),
+          Control.new(param: :disabled, type: :checkbox, options: nil, default: false)
+        ]
+      },
+      "close_button" => {
+        component_class: "Ui::CloseButton::Component",
+        content: false,
+        controls: [
+          Control.new(param: :size, type: :select, options: %i[sm md lg], default: :sm),
+          Control.new(param: :theme, type: :select, options: %i[light dark], default: :light)
+        ]
+      },
+      "date_picker" => {
+        component_class: "Ui::DatePicker::Component",
+        content: false,
+        controls: [
+          Control.new(param: :label, type: :text, options: nil, default: "Date"),
+          Control.new(param: :placeholder, type: :text, options: nil, default: "Select date"),
+          Control.new(param: :disabled, type: :checkbox, options: nil, default: false),
+          Control.new(param: :invalid, type: :checkbox, options: nil, default: false)
+        ]
+      },
+      "dot_icon" => {
+        component_class: "Ui::DotIcon::Component",
+        content: false,
+        controls: [
+          Control.new(param: :size, type: :select, options: %i[sm md lg], default: :md),
+          Control.new(param: :color, type: :text, options: nil, default: "text-success-500")
+        ]
+      },
+      "empty_state" => {
+        component_class: "Ui::EmptyState::Component",
+        content: false,
+        controls: [
+          Control.new(param: :size, type: :select, options: %i[sm md lg], default: :lg),
+          Control.new(param: :title, type: :text, options: nil, default: "No results found"),
+          Control.new(param: :description, type: :text, options: nil, default: "Try adjusting your search or filters.")
+        ]
+      },
+      "featured_icon" => {
+        component_class: "Ui::FeaturedIcon::Component",
+        content: false,
+        controls: [
+          Control.new(param: :theme, type: :select, options: %i[light dark modern outline], default: :light),
+          Control.new(param: :color, type: :select, options: %i[brand gray error warning success], default: :brand),
+          Control.new(param: :size, type: :select, options: %i[sm md lg xl], default: :sm)
+        ]
+      },
+      "file_upload" => {
+        component_class: "Ui::FileUpload::Component",
+        content: false,
+        controls: [
+          Control.new(param: :label, type: :text, options: nil, default: "Upload a file"),
+          Control.new(param: :hint, type: :text, options: nil, default: "PNG, JPG, PDF up to 10MB"),
+          Control.new(param: :disabled, type: :checkbox, options: nil, default: false),
+          Control.new(param: :invalid, type: :checkbox, options: nil, default: false),
+          Control.new(param: :multiple, type: :checkbox, options: nil, default: false)
+        ]
+      },
+      "hint_text" => {
+        component_class: "Ui::HintText::Component",
+        content: true,
+        controls: [
+          Control.new(param: :text, type: :text, options: nil, default: "This is a hint for the field."),
+          Control.new(param: :invalid, type: :checkbox, options: nil, default: false)
+        ]
+      },
+      "label" => {
+        component_class: "Ui::Label::Component",
+        content: false,
+        controls: [
+          Control.new(param: :text, type: :text, options: nil, default: "Field label"),
+          Control.new(param: :required, type: :checkbox, options: nil, default: false)
+        ]
+      },
+      "loading_indicator" => {
+        component_class: "Ui::LoadingIndicator::Component",
+        content: false,
+        controls: [
+          Control.new(param: :type, type: :select, options: %i[line_simple line_spinner], default: :line_simple),
+          Control.new(param: :size, type: :select, options: %i[sm md lg xl], default: :sm),
+          Control.new(param: :label, type: :text, options: nil, default: "Loading...")
+        ]
+      },
+      "progress_bar" => {
+        component_class: "Ui::ProgressBar::Component",
+        content: false,
+        controls: [
+          Control.new(param: :value, type: :number, options: nil, default: 60),
+          Control.new(param: :label_position, type: :select, options: ["none", :above, :below, :inline], default: "none")
+        ]
+      },
+      "radio_button" => {
+        component_class: "Ui::RadioButton::Component",
+        content: false,
+        controls: [
+          Control.new(param: :size, type: :select, options: %i[sm md], default: :sm),
+          Control.new(param: :label, type: :text, options: nil, default: "Select this option"),
+          Control.new(param: :checked, type: :checkbox, options: nil, default: false),
+          Control.new(param: :disabled, type: :checkbox, options: nil, default: false)
+        ]
+      },
+      "select" => {
+        component_class: "Ui::Select::Component",
+        content: false,
+        static_props: {
+          options: [
+            { label: "Option 1", value: "1" },
+            { label: "Option 2", value: "2" },
+            { label: "Option 3", value: "3" }
+          ]
+        },
+        controls: [
+          Control.new(param: :label, type: :text, options: nil, default: "Choose an option"),
+          Control.new(param: :placeholder, type: :text, options: nil, default: "Select..."),
+          Control.new(param: :searchable, type: :checkbox, options: nil, default: false),
+          Control.new(param: :disabled, type: :checkbox, options: nil, default: false),
+          Control.new(param: :invalid, type: :checkbox, options: nil, default: false)
+        ]
+      },
+      "stat" => {
+        component_class: "Ui::Stat::Component",
+        content: false,
+        controls: [
+          Control.new(param: :label, type: :text, options: nil, default: "Total revenue"),
+          Control.new(param: :value, type: :text, options: nil, default: "$45,231"),
+          Control.new(param: :change, type: :text, options: nil, default: "+20.1%"),
+          Control.new(param: :period, type: :text, options: nil, default: "vs last month")
+        ]
+      },
+      "textarea" => {
+        component_class: "Ui::Textarea::Component",
+        content: false,
+        controls: [
+          Control.new(param: :label, type: :text, options: nil, default: "Message"),
+          Control.new(param: :placeholder, type: :text, options: nil, default: "Enter your message..."),
+          Control.new(param: :disabled, type: :checkbox, options: nil, default: false),
+          Control.new(param: :invalid, type: :checkbox, options: nil, default: false)
+        ]
+      },
+      "toast" => {
+        component_class: "Ui::Toast::Component",
+        content: false,
+        controls: [
+          Control.new(param: :title, type: :text, options: nil, default: "Notification"),
+          Control.new(param: :description, type: :text, options: nil, default: "Your changes have been saved."),
+          Control.new(param: :variant, type: :select, options: %i[success error warning info], default: :info),
+          Control.new(param: :dismissible, type: :checkbox, options: nil, default: true)
+        ]
       }
     }.freeze
 
@@ -66,9 +251,12 @@ module UntitledUi
       config = REGISTRY[component_id]
       return {} unless config
 
-      props = {}
+      # Start with any static props defined in the config (e.g. hardcoded options arrays).
+      props = (config[:static_props] || {}).dup
+
       config[:controls].each do |control|
-        next if control.param == :text # :text param is content, not a kwarg
+        # :text param is content when the component uses block content; otherwise it's a kwarg.
+        next if control.param == :text && config[:content]
 
         value = raw_params[control.param]
         props[control.param] = coerce(value, control)
@@ -111,11 +299,17 @@ module UntitledUi
     def self.coerce(value, control)
       case control.type
       when :select
-        value.present? ? value.to_sym : control.default
+        if value.present?
+          value == "none" ? nil : value.to_sym
+        else
+          control.default
+        end
       when :checkbox
         value == "1" || value == "true"
       when :text
         value.present? ? value.to_s : control.default.to_s
+      when :number
+        value.present? ? value.to_i : control.default
       else
         value || control.default
       end
