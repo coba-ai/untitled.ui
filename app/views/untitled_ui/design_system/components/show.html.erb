@@ -11,6 +11,12 @@
     <span class="mt-4 inline-block rounded-md bg-secondary px-2.5 py-1 text-xs font-medium text-tertiary ring-1 ring-secondary ring-inset"><%= @component[:category] %></span>
   </div>
 
+  <%# Interactive playground (if config exists) %>
+  <% if UntitledUi::ComponentConfig.playground_available?(@component[:id]) %>
+    <%= render partial: "untitled_ui/design_system/components/playground" %>
+  <% end %>
+
   <%# Render per-component partial %>
+  <h2 class="mb-5 text-lg font-semibold text-primary">Examples</h2>
   <%= render partial: "untitled_ui/design_system/components/examples/#{@component[:id]}" %>
 </div>

@@ -1,27 +1,23 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["modal"]
+  static targets = ["dialog"]
 
-  open(event) {
-    event.preventDefault()
-    const modal = document.getElementById("invite-modal")
-    if (modal) {
-      modal.classList.remove("hidden")
+  open() {
+    if (this.hasDialogTarget) {
+      this.dialogTarget.showModal()
     }
   }
 
-  close(event) {
-    event.preventDefault()
-    const modal = document.getElementById("invite-modal")
-    if (modal) {
-      modal.classList.add("hidden")
+  close() {
+    if (this.hasDialogTarget) {
+      this.dialogTarget.close()
     }
   }
 
   closeOnBackdrop(event) {
-    if (event.target === event.currentTarget) {
-      this.close(event)
+    if (event.target === this.dialogTarget) {
+      this.close()
     }
   }
 }

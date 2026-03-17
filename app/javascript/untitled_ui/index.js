@@ -7,6 +7,7 @@ import DropdownController from "untitled_ui/dropdown_controller"
 import ModalController from "untitled_ui/modal_controller"
 import NavigationMobileController from "untitled_ui/navigation_mobile_controller"
 import NavigationSidebarController from "untitled_ui/navigation_sidebar_controller"
+import PlaygroundController from "untitled_ui/playground_controller"
 import TabsController from "untitled_ui/tabs_controller"
 import ToggleController from "untitled_ui/toggle_controller"
 import FileUploadController from "untitled_ui/file_upload_controller"
@@ -23,6 +24,7 @@ const controllerDefinitions = [
   ["modal", ModalController],
   ["navigation-mobile", NavigationMobileController],
   ["navigation-sidebar", NavigationSidebarController],
+  ["playground", PlaygroundController],
   ["tabs", TabsController],
   ["select", SelectController],
   ["toast", ToastController],
@@ -49,6 +51,7 @@ export {
   ModalController,
   NavigationMobileController,
   NavigationSidebarController,
+  PlaygroundController,
   TabsController,
   SelectController,
   ToastController,
