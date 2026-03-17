@@ -177,8 +177,7 @@ module UntitledUi
              Generated with: rails generate untitled_ui:theme #{theme_name}#{options[:preset] ? " --preset=#{options[:preset]}" : ""}
              ============================================ */
 
-          @layer base {
-            .#{sanitized_name}-theme {
+          .#{sanitized_name}-theme {
 
               /* ----------------------------------------
                  BRAND COLORS
@@ -292,8 +291,7 @@ module UntitledUi
               --color-bg-success-primary: var(--color-success-50);
               --color-bg-success-solid: var(--color-success-600);
               --color-bg-disabled: var(--color-gray-100);
-              --color-bg-active: var(--color-gray-50);
-            }
+            --color-bg-active: var(--color-gray-50);
           }
         CSS
       end

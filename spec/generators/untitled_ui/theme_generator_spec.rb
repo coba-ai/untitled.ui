@@ -33,7 +33,6 @@ RSpec.describe UntitledUi::Generators::ThemeGenerator do
 
         content = File.read(css_path)
         expect(content).to include(".corporate-theme")
-        expect(content).to include("@layer base")
       end
     end
 
