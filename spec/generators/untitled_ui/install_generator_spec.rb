@@ -153,6 +153,34 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
     end
   end
 
+  it "removes stale view overrides from previous installs" do
+    Dir.mktmpdir do |root|
+      prepare_minimal_app!(root)
+
+      stale_files = [
+        "app/views/untitled_ui/design_system/components/index.html.erb",
+        "app/views/untitled_ui/design_system/components/show.html.erb",
+        "app/views/untitled_ui/design_system/components/_playground.html.erb",
+        "app/views/untitled_ui/design_system/components/_playground_preview.html.erb",
+        "app/views/untitled_ui/design_system/shared/_example_section.html.erb",
+        "app/views/untitled_ui/design_system/shared/_code_block.html.erb",
+        "app/views/layouts/untitled_ui/design_system.html.erb"
+      ]
+
+      stale_files.each do |file|
+        path = File.join(root, file)
+        FileUtils.mkdir_p(File.dirname(path))
+        File.write(path, "<!-- stale -->\n")
+      end
+
+      run_install!(root)
+
+      stale_files.each do |file|
+        expect(File.exist?(File.join(root, file))).to be(false), "Expected #{file} to be removed"
+      end
+    end
+  end
+
   it "updates example partials on reinstall" do
     Dir.mktmpdir do |root|
       prepare_minimal_app!(root)
