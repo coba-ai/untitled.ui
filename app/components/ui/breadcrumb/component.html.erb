@@ -1,0 +1,32 @@
+<nav aria-label="Breadcrumb" class="<%= root_classes %>">
+  <ol class="flex items-center gap-2">
+    <% items.each_with_index do |item, index| %>
+      <li class="flex items-center gap-2">
+        <%# Separator between items %>
+        <% if index > 0 %>
+          <span aria-hidden="true"><%= separator_html.html_safe %></span>
+        <% end %>
+
+        <% if item.href.present? %>
+          <a href="<%= item.href %>" class="<%= item.current? ? item_classes(item) : link_classes %>"<% if item.current? %> aria-current="page"<% end %>>
+            <% if item.icon.present? %>
+              <%= item.icon.html_safe %>
+            <% end %>
+            <%= item.label %>
+          </a>
+        <% else %>
+          <span class="<%= item_classes(item) %>" aria-current="page">
+            <% if item.icon.present? %>
+              <span class="flex items-center gap-1.5">
+                <%= item.icon.html_safe %>
+                <%= item.label %>
+              </span>
+            <% else %>
+              <%= item.label %>
+            <% end %>
+          </span>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+</nav>
