@@ -15,6 +15,7 @@ import SelectController from "untitled_ui/select_controller"
 import ToastController from "untitled_ui/toast_controller"
 import TagInputController from "untitled_ui/tag_input_controller"
 import TooltipController from "untitled_ui/tooltip_controller"
+import StepperController from "untitled_ui/stepper_controller"
 
 const controllerDefinitions = [
   ["checkbox", CheckboxController],
@@ -28,6 +29,7 @@ const controllerDefinitions = [
   ["playground", PlaygroundController],
   ["tabs", TabsController],
   ["select", SelectController],
+  ["stepper", StepperController],
   ["toast", ToastController],
   ["tag-input", TagInputController],
   ["toggle", ToggleController],
@@ -59,5 +61,6 @@ export {
   TagInputController,
   ToastController,
   ToggleController,
-  TooltipController
+  TooltipController,
+  StepperController
 }
