@@ -112,7 +112,7 @@
       auto_dismiss: false
     ) do %>
       <div class="flex gap-3">
-        <%= render Ui::Button::Component.new(size: :sm, color: :secondary) { "Undo" } %>
+        <%= render Ui::Button::Component.new(size: :sm, color: :secondary).with_content("Undo") %>
       </div>
     <% end %>
   </div>
