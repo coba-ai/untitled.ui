@@ -1,0 +1,66 @@
+<%
+  check_icon = '<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>'
+  user_icon = '<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>'
+  bell_icon = '<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>'
+  x_icon = '<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>'
+  code_icon = '<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>'
+%>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Simple Timeline" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Timeline::Component.new do |timeline| %>
+      <% timeline.with_item(title: "Project kickoff", description: "Team aligned on scope and deliverables.", timestamp: "Jan 5") %>
+      <% timeline.with_item(title: "Design phase complete", description: "All wireframes and mockups approved.", timestamp: "Jan 12") %>
+      <% timeline.with_item(title: "Development started", description: "Engineering team began implementation.", timestamp: "Jan 15") %>
+      <% timeline.with_item(title: "Beta release", description: "Internal testing with selected users.", timestamp: "Feb 2") %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Timeline::Component.new do |timeline|
+  timeline.with_item(title: "Project kickoff", description: "Team aligned on scope.", timestamp: "Jan 5")
+  timeline.with_item(title: "Design phase complete", timestamp: "Jan 12")
+  timeline.with_item(title: "Development started", timestamp: "Jan 15")
+  timeline.with_item(title: "Beta release", timestamp: "Feb 2")
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Activity Feed (with icons)" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Timeline::Component.new do |timeline| %>
+      <% timeline.with_item(title: "Deployment succeeded", description: "v2.4.1 deployed to production.", timestamp: "2 min ago", icon: check_icon, color: :success) %>
+      <% timeline.with_item(title: "New comment", description: "Alice left a comment on issue #42.", timestamp: "18 min ago", icon: user_icon, color: :brand) %>
+      <% timeline.with_item(title: "Alert triggered", description: "CPU usage exceeded 90% for 5 minutes.", timestamp: "1 hr ago", icon: bell_icon, color: :warning) %>
+      <% timeline.with_item(title: "Build failed", description: "Tests failed in the CI pipeline.", timestamp: "3 hr ago", icon: x_icon, color: :error) %>
+      <% timeline.with_item(title: "PR merged", description: "Feature branch merged into main.", timestamp: "Yesterday", icon: code_icon, color: :gray) %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'check_icon = \'<svg .../>\'
+
+render Ui::Timeline::Component.new do |timeline|
+  timeline.with_item(title: "Deployment succeeded", description: "v2.4.1 deployed.", timestamp: "2 min ago", icon: check_icon, color: :success)
+  timeline.with_item(title: "New comment", description: "Alice commented on #42.", timestamp: "18 min ago", icon: user_icon, color: :brand)
+  timeline.with_item(title: "Alert triggered", description: "CPU > 90% for 5 min.", timestamp: "1 hr ago", icon: bell_icon, color: :warning)
+  timeline.with_item(title: "Build failed", description: "Tests failed in CI.", timestamp: "3 hr ago", icon: x_icon, color: :error)
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Color Variants (dots)" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Timeline::Component.new do |timeline| %>
+      <% timeline.with_item(title: "Gray (default)", description: "Neutral event.", color: :gray) %>
+      <% timeline.with_item(title: "Brand", description: "Primary brand event.", color: :brand) %>
+      <% timeline.with_item(title: "Success", description: "Something went well.", color: :success) %>
+      <% timeline.with_item(title: "Warning", description: "Needs attention.", color: :warning) %>
+      <% timeline.with_item(title: "Error", description: "Something went wrong.", color: :error) %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Timeline::Component.new do |timeline|
+  timeline.with_item(title: "Gray",    color: :gray)
+  timeline.with_item(title: "Brand",   color: :brand)
+  timeline.with_item(title: "Success", color: :success)
+  timeline.with_item(title: "Warning", color: :warning)
+  timeline.with_item(title: "Error",   color: :error)
+end' %>
