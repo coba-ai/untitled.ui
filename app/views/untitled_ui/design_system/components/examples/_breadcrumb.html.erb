@@ -1,0 +1,57 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Chevron Separator (Default)" do %>
+  <%= render Ui::Breadcrumb::Component.new do |breadcrumb| %>
+    <% breadcrumb.with_item(label: "Home", href: "/", icon: '<svg class="size-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955a1.126 1.126 0 0 1 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>'.html_safe) %>
+    <% breadcrumb.with_item(label: "Projects", href: "/projects") %>
+    <% breadcrumb.with_item(label: "Project Alpha") %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Breadcrumb::Component.new do |breadcrumb|
+  breadcrumb.with_item(label: "Home", href: "/", icon: home_svg)
+  breadcrumb.with_item(label: "Projects", href: "/projects")
+  breadcrumb.with_item(label: "Project Alpha")
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Slash Separator" do %>
+  <%= render Ui::Breadcrumb::Component.new(separator: :slash) do |breadcrumb| %>
+    <% breadcrumb.with_item(label: "Home", href: "/") %>
+    <% breadcrumb.with_item(label: "Settings", href: "/settings") %>
+    <% breadcrumb.with_item(label: "Profile") %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Breadcrumb::Component.new(separator: :slash) do |breadcrumb|
+  breadcrumb.with_item(label: "Home", href: "/")
+  breadcrumb.with_item(label: "Settings", href: "/settings")
+  breadcrumb.with_item(label: "Profile")
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Simple (Two Items)" do %>
+  <%= render Ui::Breadcrumb::Component.new do |breadcrumb| %>
+    <% breadcrumb.with_item(label: "Home", href: "/") %>
+    <% breadcrumb.with_item(label: "Dashboard") %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Breadcrumb::Component.new do |breadcrumb|
+  breadcrumb.with_item(label: "Home", href: "/")
+  breadcrumb.with_item(label: "Dashboard")
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Deep Hierarchy" do %>
+  <%= render Ui::Breadcrumb::Component.new do |breadcrumb| %>
+    <% breadcrumb.with_item(label: "Home", href: "/") %>
+    <% breadcrumb.with_item(label: "Settings", href: "/settings") %>
+    <% breadcrumb.with_item(label: "Team", href: "/settings/team") %>
+    <% breadcrumb.with_item(label: "Members", href: "/settings/team/members") %>
+    <% breadcrumb.with_item(label: "John Doe") %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Breadcrumb::Component.new do |breadcrumb|
+  breadcrumb.with_item(label: "Home", href: "/")
+  breadcrumb.with_item(label: "Settings", href: "/settings")
+  breadcrumb.with_item(label: "Team", href: "/settings/team")
+  breadcrumb.with_item(label: "Members", href: "/settings/team/members")
+  breadcrumb.with_item(label: "John Doe")
+end' %>
