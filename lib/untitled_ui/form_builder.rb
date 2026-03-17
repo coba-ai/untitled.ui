@@ -32,6 +32,13 @@ module UntitledUi
       @template.render(Ui::RadioButton::Component.new(**options))
     end
 
+    def ui_select(method, options:, **opts)
+      set_text_field_options!(method, opts)
+      opts[:options] = options
+      opts[:value] ||= object_value(method)
+      @template.render(Ui::Select::Component.new(**opts))
+    end
+
     def ui_button(text = nil, **options, &block)
       options[:type] ||= "submit"
       content = text || (@template.capture(&block) if block) || "Submit"
