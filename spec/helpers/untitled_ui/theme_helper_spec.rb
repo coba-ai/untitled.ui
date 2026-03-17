@@ -14,6 +14,11 @@ RSpec.describe UntitledUi::ThemeHelper, type: :helper do
       expect(helper.untitled_ui_theme_class).to eq("hacker-theme")
     end
 
+    it "returns 'ocean-theme' when theme is :ocean" do
+      UntitledUi.configuration.theme = :ocean
+      expect(helper.untitled_ui_theme_class).to eq("ocean-theme")
+    end
+
     after do
       UntitledUi.configuration.theme = :default
     end
