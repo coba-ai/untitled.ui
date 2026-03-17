@@ -14,7 +14,7 @@
       <aside class="sticky top-0 h-dvh w-72 shrink-0 overflow-y-auto border-r border-secondary bg-primary px-6 pt-18 pb-8">
         <div class="mb-8 flex items-center justify-between">
           <div>
-            <%= link_to untitled_ui.design_system_components_path, class: "flex items-center gap-2 text-lg font-bold text-primary" do %>
+            <%= link_to untitled_ui.components_path, class: "flex items-center gap-2 text-lg font-bold text-primary" do %>
               <svg class="size-6 text-brand-solid" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />
               </svg>
@@ -43,7 +43,7 @@
                 <% components.sort_by { |c| c[:name] }.each do |comp| %>
                   <li data-nav-item data-name="<%= comp[:name].downcase %>">
                     <%= link_to comp[:name],
-                      untitled_ui.design_system_component_path(comp[:id]),
+                      untitled_ui.component_path(comp[:id]),
                       class: "block rounded-md px-3.5 py-2 text-sm font-medium transition #{comp[:id] == params[:id] ? 'bg-brand-primary_alt text-brand-secondary' : 'text-secondary hover:bg-primary_hover hover:text-secondary_hover'}" %>
                   </li>
                 <% end %>

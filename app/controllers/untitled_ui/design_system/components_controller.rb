@@ -84,7 +84,7 @@ module UntitledUi
 
       def show
         @component = COMPONENTS.find { |c| c[:id] == params[:id] }
-        redirect_to design_system_components_path, alert: "Component not found" unless @component
+        redirect_to components_path, alert: "Component not found" unless @component
       end
 
       def playground
