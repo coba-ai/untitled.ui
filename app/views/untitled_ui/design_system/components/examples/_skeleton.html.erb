@@ -1,0 +1,122 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Text Variant" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Skeleton::Component.new(variant: :text, lines: 3) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Skeleton::Component.new(variant: :text, lines: 3)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Text Lines" do %>
+  <div class="flex flex-wrap gap-8">
+    <% [1, 2, 3, 4].each do |n| %>
+      <div class="flex flex-col gap-1">
+        <span class="text-xs text-tertiary mb-1"><%= n %> line<%= n == 1 ? "" : "s" %></span>
+        <div class="w-48">
+          <%= render Ui::Skeleton::Component.new(variant: :text, lines: n) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Skeleton::Component.new(variant: :text, lines: 1)
+render Ui::Skeleton::Component.new(variant: :text, lines: 4)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Circular Variant" do %>
+  <div class="flex flex-wrap items-end gap-6">
+    <div class="flex flex-col items-center gap-2">
+      <%= render Ui::Skeleton::Component.new(variant: :circular, width: "32px", height: "32px") %>
+      <span class="text-xs text-tertiary">32px</span>
+    </div>
+    <div class="flex flex-col items-center gap-2">
+      <%= render Ui::Skeleton::Component.new(variant: :circular, width: "40px", height: "40px") %>
+      <span class="text-xs text-tertiary">40px</span>
+    </div>
+    <div class="flex flex-col items-center gap-2">
+      <%= render Ui::Skeleton::Component.new(variant: :circular, width: "48px", height: "48px") %>
+      <span class="text-xs text-tertiary">48px</span>
+    </div>
+    <div class="flex flex-col items-center gap-2">
+      <%= render Ui::Skeleton::Component.new(variant: :circular, width: "64px", height: "64px") %>
+      <span class="text-xs text-tertiary">64px</span>
+    </div>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Skeleton::Component.new(variant: :circular, width: "40px", height: "40px")
+render Ui::Skeleton::Component.new(variant: :circular, width: "64px", height: "64px")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Rectangular Variant" do %>
+  <div class="flex flex-wrap gap-6">
+    <div class="flex flex-col gap-2">
+      <%= render Ui::Skeleton::Component.new(variant: :rectangular, width: "200px", height: "120px") %>
+      <span class="text-xs text-tertiary">200×120</span>
+    </div>
+    <div class="flex flex-col gap-2">
+      <%= render Ui::Skeleton::Component.new(variant: :rectangular, width: "300px", height: "180px") %>
+      <span class="text-xs text-tertiary">300×180</span>
+    </div>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Skeleton::Component.new(variant: :rectangular, width: "300px", height: "180px")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Without Animation" do %>
+  <div class="flex flex-wrap gap-8">
+    <div class="max-w-xs">
+      <p class="text-xs text-tertiary mb-2">Static (no pulse)</p>
+      <%= render Ui::Skeleton::Component.new(variant: :text, lines: 3, animated: false) %>
+    </div>
+    <div>
+      <p class="text-xs text-tertiary mb-2">Animated (default)</p>
+      <div class="max-w-xs">
+        <%= render Ui::Skeleton::Component.new(variant: :text, lines: 3) %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Skeleton::Component.new(variant: :text, animated: false)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Composed Card Skeleton" do %>
+  <div class="max-w-sm rounded-xl border border-primary bg-primary p-4 shadow-sm">
+    <%# Image placeholder %>
+    <%= render Ui::Skeleton::Component.new(variant: :rectangular, width: "100%", height: "160px") %>
+
+    <div class="mt-4 flex items-center gap-3">
+      <%# Avatar placeholder %>
+      <%= render Ui::Skeleton::Component.new(variant: :circular, width: "40px", height: "40px") %>
+
+      <div class="flex-1">
+        <%# Name and username placeholders %>
+        <span class="block h-3.5 w-32 rounded bg-secondary animate-pulse mb-1.5"></span>
+        <span class="block h-3 w-24 rounded bg-secondary animate-pulse opacity-70"></span>
+      </div>
+    </div>
+
+    <%# Body text placeholder %>
+    <div class="mt-4">
+      <%= render Ui::Skeleton::Component.new(variant: :text, lines: 3) %>
+    </div>
+
+    <%# Footer action placeholder %>
+    <div class="mt-4 flex gap-2">
+      <span class="block h-8 w-20 rounded-lg bg-secondary animate-pulse"></span>
+      <span class="block h-8 w-20 rounded-lg bg-secondary animate-pulse"></span>
+    </div>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '<%# Card skeleton composition example %>
+<div class="max-w-sm rounded-xl border border-primary bg-primary p-4 shadow-sm">
+  <%= render Ui::Skeleton::Component.new(variant: :rectangular, width: "100%", height: "160px") %>
+  <div class="mt-4 flex items-center gap-3">
+    <%= render Ui::Skeleton::Component.new(variant: :circular, width: "40px", height: "40px") %>
+    <div class="flex-1">
+      <%= render Ui::Skeleton::Component.new(variant: :text, lines: 2) %>
+    </div>
+  </div>
+  <div class="mt-4">
+    <%= render Ui::Skeleton::Component.new(variant: :text, lines: 3) %>
+  </div>
+</div>' %>
