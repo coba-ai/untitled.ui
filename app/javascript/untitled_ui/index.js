@@ -1,6 +1,7 @@
 import { Application } from "@hotwired/stimulus"
 
 import CheckboxController from "untitled_ui/checkbox_controller"
+import ColorPickerController from "untitled_ui/color_picker_controller"
 import ClipboardController from "untitled_ui/clipboard_controller"
 import DatePickerController from "untitled_ui/date_picker_controller"
 import DropdownController from "untitled_ui/dropdown_controller"
@@ -17,6 +18,7 @@ import TooltipController from "untitled_ui/tooltip_controller"
 
 const controllerDefinitions = [
   ["checkbox", CheckboxController],
+  ["color-picker", ColorPickerController],
   ["clipboard", ClipboardController],
   ["date-picker", DatePickerController],
   ["dropdown", DropdownController],
@@ -44,6 +46,7 @@ controllerDefinitions.forEach(([identifier, controller]) => {
 export {
   application,
   CheckboxController,
+  ColorPickerController,
   ClipboardController,
   DatePickerController,
   DropdownController,

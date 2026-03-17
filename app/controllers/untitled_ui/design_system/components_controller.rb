@@ -65,7 +65,9 @@ module UntitledUi
         { id: "select", name: "Select", category: "Base",
           description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." },
         { id: "date_picker", name: "Date Picker", category: "Base",
-          description: "Calendar date picker with month navigation, range constraints, and input styling." }
+          description: "Calendar date picker with month navigation, range constraints, and input styling." },
+        { id: "color_picker", name: "Color Picker", category: "Base",
+          description: "Color picker with preset swatches grid and hex input field for selecting colors." }
       ].freeze
 
       def index

@@ -1,0 +1,59 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Default" do %>
+  <div class="max-w-sm">
+    <%= render Ui::ColorPicker::Component.new %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ColorPicker::Component.new' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Label & Hint" do %>
+  <div class="max-w-sm">
+    <%= render Ui::ColorPicker::Component.new(label: "Brand Color", hint: "Choose your primary brand color.", name: "brand_color") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ColorPicker::Component.new(label: "Brand Color", hint: "Choose your primary brand color.", name: "brand_color")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Preset Value" do %>
+  <div class="max-w-sm">
+    <%= render Ui::ColorPicker::Component.new(label: "Accent Color", value: "#3B82F6", name: "accent_color") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ColorPicker::Component.new(label: "Accent Color", value: "#3B82F6", name: "accent_color")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Custom Swatches" do %>
+  <div class="max-w-sm">
+    <%
+      brand_swatches = %w[#1D4ED8 #2563EB #3B82F6 #60A5FA #93C5FD #BFDBFE
+                          #1E40AF #1E3A8A #172554 #DBEAFE #EFF6FF #F8FAFC]
+    %>
+    <%= render Ui::ColorPicker::Component.new(label: "Blue Palette", swatches: brand_swatches, name: "blue_color") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ColorPicker::Component.new(label: "Blue Palette", swatches: %w[#1D4ED8 #2563EB #3B82F6 #60A5FA], name: "blue_color")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Required" do %>
+  <div class="max-w-sm">
+    <%= render Ui::ColorPicker::Component.new(label: "Theme Color", required: true, name: "theme_color") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ColorPicker::Component.new(label: "Theme Color", required: true, name: "theme_color")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Invalid" do %>
+  <div class="max-w-sm">
+    <%= render Ui::ColorPicker::Component.new(label: "Color", invalid: true, hint: "Please select a valid color.", name: "invalid_color") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ColorPicker::Component.new(label: "Color", invalid: true, hint: "Please select a valid color.")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Disabled" do %>
+  <div class="max-w-sm">
+    <%= render Ui::ColorPicker::Component.new(label: "Locked Color", value: "#8B5CF6", disabled: true, name: "locked_color") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::ColorPicker::Component.new(label: "Locked Color", value: "#8B5CF6", disabled: true)' %>
