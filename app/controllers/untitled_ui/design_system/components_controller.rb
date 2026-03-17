@@ -61,7 +61,9 @@ module UntitledUi
         { id: "file_upload", name: "File Upload", category: "Base",
           description: "Drag-and-drop file upload zone with click fallback, file type filtering, and size limits." },
         { id: "toast", name: "Toast", category: "Application",
-          description: "Toast notification with success/error/warning/info variants, auto-dismiss, and stacking." }
+          description: "Toast notification with success/error/warning/info variants, auto-dismiss, and stacking." },
+        { id: "select", name: "Select", category: "Base",
+          description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." }
       ].freeze
 
       def index
