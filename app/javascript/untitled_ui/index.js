@@ -8,6 +8,7 @@ import NavigationMobileController from "untitled_ui/navigation_mobile_controller
 import NavigationSidebarController from "untitled_ui/navigation_sidebar_controller"
 import TabsController from "untitled_ui/tabs_controller"
 import ToggleController from "untitled_ui/toggle_controller"
+import FileUploadController from "untitled_ui/file_upload_controller"
 import ToastController from "untitled_ui/toast_controller"
 import TooltipController from "untitled_ui/tooltip_controller"
 
@@ -15,6 +16,7 @@ const controllerDefinitions = [
   ["checkbox", CheckboxController],
   ["clipboard", ClipboardController],
   ["dropdown", DropdownController],
+  ["file-upload", FileUploadController],
   ["modal", ModalController],
   ["navigation-mobile", NavigationMobileController],
   ["navigation-sidebar", NavigationSidebarController],
@@ -38,6 +40,7 @@ export {
   CheckboxController,
   ClipboardController,
   DropdownController,
+  FileUploadController,
   ModalController,
   NavigationMobileController,
   NavigationSidebarController,
