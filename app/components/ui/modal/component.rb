@@ -16,7 +16,7 @@ module Ui
       end
 
       def overlay_classes
-        "fixed inset-0 z-50 flex min-h-dvh w-full items-end justify-center overflow-y-auto bg-overlay/70 px-4 pt-4 pb-4 outline-hidden backdrop-blur-[6px] sm:items-center sm:justify-center sm:p-8"
+        "hidden open:fixed open:inset-0 open:z-50 open:flex open:min-h-dvh open:w-full open:items-end open:justify-center open:overflow-y-auto bg-overlay/70 px-4 pt-4 pb-4 outline-hidden backdrop-blur-[6px] sm:open:items-center sm:open:justify-center sm:open:p-8"
       end
 
       def dialog_classes
