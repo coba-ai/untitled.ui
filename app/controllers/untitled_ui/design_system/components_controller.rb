@@ -57,7 +57,9 @@ module UntitledUi
         { id: "breadcrumb", name: "Breadcrumb", category: "Navigation",
           description: "Breadcrumb navigation with chevron/slash separators and aria support." },
         { id: "stat", name: "Stat", category: "Application",
-          description: "Metric display card with value, trend indicator, and change percentage." }
+          description: "Metric display card with value, trend indicator, and change percentage." },
+        { id: "file_upload", name: "File Upload", category: "Base",
+          description: "Drag-and-drop file upload zone with click fallback, file type filtering, and size limits." }
       ].freeze
 
       def index
