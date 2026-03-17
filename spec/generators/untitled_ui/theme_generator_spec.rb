@@ -185,6 +185,21 @@ RSpec.describe UntitledUi::Generators::ThemeGenerator do
       end
     end
 
+    it "generates inverted semantic tokens with --dark flag and custom colors" do
+      Dir.mktmpdir do |root|
+        prepare_minimal_app!(root)
+        run_generator!(root, "midnight", dark: true)
+
+        content = File.read(File.join(root, "app/assets/tailwind/untitled_ui/midnight.css"))
+
+        # Should have placeholder colors (no preset) but inverted semantics
+        expect(content).to include("/* TODO: customize */")
+        expect(content).to include("--color-bg-primary: var(--color-gray-950)")
+        expect(content).to include("--color-text-primary: var(--color-gray-50)")
+        expect(content).to include("--color-border-primary: var(--color-gray-700)")
+      end
+    end
+
     it "allows using a preset name different from the theme name" do
       Dir.mktmpdir do |root|
         prepare_minimal_app!(root)

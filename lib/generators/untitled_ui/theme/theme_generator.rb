@@ -13,6 +13,9 @@ module UntitledUi
       class_option :preset, type: :string, default: nil,
         desc: "Use a color preset: corporate, ocean, warm, or dark"
 
+      class_option :dark, type: :boolean, default: false,
+        desc: "Generate with inverted semantic tokens for dark backgrounds"
+
       PRESETS = {
         "corporate" => {
           brand: {
@@ -221,7 +224,7 @@ module UntitledUi
 
       def generate_theme_css
         preset = options[:preset] ? PRESETS[options[:preset]] : nil
-        dark_mode = options[:preset] == "dark"
+        dark_mode = options[:dark] || options[:preset] == "dark"
         sanitized_name = theme_name.gsub(/[^a-zA-Z0-9_-]/, "-")
 
         <<~CSS
