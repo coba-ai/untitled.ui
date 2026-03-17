@@ -66,16 +66,10 @@ module UntitledUi
           description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." },
         { id: "date_picker", name: "Date Picker", category: "Base",
           description: "Calendar date picker with month navigation, range constraints, and input styling." },
-        { id: "tag_input", name: "Tag Input", category: "Base",
-          description: "Tag input with pill-style tags, keyboard navigation, duplicate prevention, and max tag limit." },
+        { id: "skeleton", name: "Skeleton", category: "Base",
+          description: "Animated placeholder skeleton for loading states with text, circular, and rectangular variants." },
         { id: "timeline", name: "Timeline", category: "Application",
-          description: "Vertical timeline with connector lines, colored dot/icon indicators, title, description, and timestamp per item." },
-        { id: "color_picker", name: "Color Picker", category: "Base",
-          description: "Color picker with preset swatches grid and hex input field for selecting colors." },
-        { id: "slider", name: "Slider", category: "Base",
-          description: "Range slider with brand-colored filled track, value display, and form submission support." },
-        { id: "command_palette", name: "Command Palette", category: "Application",
-          description: "Keyboard-driven command palette with Cmd+K shortcut, live filtering, grouped items, and keyboard navigation." }
+          description: "Vertical timeline with connector lines, colored dot/icon indicators, title, description, and timestamp per item." }
       ].freeze
 
       def index
@@ -94,7 +88,7 @@ module UntitledUi
 
       def show
         @component = COMPONENTS.find { |c| c[:id] == params[:id] }
-        redirect_to design_system_components_path, alert: "Component not found" unless @component
+        redirect_to components_path, alert: "Component not found" unless @component
       end
 
       def playground

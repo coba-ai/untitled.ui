@@ -1,0 +1,21 @@
+<%%= render "untitled_ui/design_system/shared/example_section", title: "Default" do %>
+  <%%= render(<%= component_class_name %>.new) { "<%= human_name %>" } %>
+<%% end %>
+
+<%%= render "untitled_ui/design_system/shared/code_block",
+     code: 'render(<%= component_class_name %>.new) { "<%= human_name %>" }' %>
+<% select_props.each do |prop| %>
+<% if prop[:values].any? %>
+
+<%%= render "untitled_ui/design_system/shared/example_section", title: "<%= prop[:name].capitalize %> Variants" do %>
+  <div class="flex flex-wrap items-center gap-3">
+    <%% %i[<%= prop[:values].join(" ") %>].each do |option| %>
+      <%%= render(<%= component_class_name %>.new(<%= prop[:name] %>: option)) { option.to_s.capitalize } %>
+    <%% end %>
+  </div>
+<%% end %>
+
+<%%= render "untitled_ui/design_system/shared/code_block",
+     code: 'render(<%= component_class_name %>.new(<%= prop[:name] %>: :<%= prop[:values].first %>)) { "<%= prop[:values].first&.capitalize %>" }' %>
+<% end %>
+<% end %>

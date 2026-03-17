@@ -3,7 +3,7 @@
   return unless config
 
   controls = config[:controls]
-  playground_url = untitled_ui.playground_design_system_component_path(@component[:id])
+  playground_url = untitled_ui.playground_component_path(@component[:id])
 %>
 
 <div class="mb-14">
@@ -69,7 +69,7 @@
       </div>
 
       <%# Preview + code panel %>
-      <div class="flex-1 p-6 lg:p-8">
+      <div class="min-w-0 flex-1 overflow-hidden p-6 lg:p-8">
         <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-quaternary">Preview</h3>
 
         <div data-playground-target="preview">
