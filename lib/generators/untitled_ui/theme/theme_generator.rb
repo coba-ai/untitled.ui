@@ -292,6 +292,65 @@ module UntitledUi
               --color-bg-success-solid: var(--color-success-600);
               --color-bg-disabled: var(--color-gray-100);
             --color-bg-active: var(--color-gray-50);
+
+              /* ----------------------------------------
+                 TAILWIND V4 INTERNAL MAPPINGS
+                 These bridge semantic tokens to Tailwind's
+                 internal utility variables. Required for
+                 theme overrides to take effect.
+                 ---------------------------------------- */
+              --background-color-primary: var(--color-bg-primary);
+              --background-color-primary_hover: var(--color-bg-primary_hover);
+              --background-color-secondary: var(--color-bg-secondary);
+              --background-color-secondary_hover: var(--color-bg-secondary_hover);
+              --background-color-tertiary: var(--color-bg-tertiary);
+              --background-color-quaternary: var(--color-bg-quaternary);
+              --background-color-brand-primary: var(--color-bg-brand-primary);
+              --background-color-brand-solid: var(--color-bg-brand-solid);
+              --background-color-brand-solid_hover: var(--color-bg-brand-solid_hover);
+              --background-color-brand-section: var(--color-bg-brand-section);
+              --background-color-error-primary: var(--color-bg-error-primary);
+              --background-color-error-solid: var(--color-bg-error-solid);
+              --background-color-warning-primary: var(--color-bg-warning-primary);
+              --background-color-warning-solid: var(--color-bg-warning-solid);
+              --background-color-success-primary: var(--color-bg-success-primary);
+              --background-color-success-solid: var(--color-bg-success-solid);
+              --background-color-disabled: var(--color-bg-disabled);
+              --background-color-active: var(--color-bg-active);
+              --text-color-primary: var(--color-text-primary);
+              --text-color-secondary: var(--color-text-secondary);
+              --text-color-secondary_hover: var(--color-text-secondary_hover);
+              --text-color-tertiary: var(--color-text-tertiary);
+              --text-color-tertiary_hover: var(--color-text-tertiary_hover);
+              --text-color-quaternary: var(--color-text-quaternary);
+              --text-color-disabled: var(--color-text-disabled);
+              --text-color-placeholder: var(--color-text-placeholder);
+              --text-color-brand-primary: var(--color-text-brand-primary);
+              --text-color-brand-secondary: var(--color-text-brand-secondary);
+              --text-color-brand-secondary_hover: var(--color-text-brand-secondary_hover);
+              --text-color-brand-tertiary: var(--color-text-brand-tertiary);
+              --text-color-error-primary: var(--color-text-error-primary);
+              --text-color-warning-primary: var(--color-text-warning-primary);
+              --text-color-success-primary: var(--color-text-success-primary);
+              --border-color-primary: var(--color-border-primary);
+              --border-color-secondary: var(--color-border-secondary);
+              --border-color-tertiary: var(--color-border-tertiary);
+              --border-color-brand: var(--color-border-brand);
+              --border-color-brand_alt: var(--color-border-brand_alt);
+              --border-color-brand-solid: var(--color-bg-brand-solid);
+              --border-color-brand-solid_hover: var(--color-bg-brand-solid_hover);
+              --border-color-error: var(--color-border-error);
+              --border-color-disabled: var(--color-border-disabled);
+              --ring-color-primary: var(--color-border-primary);
+              --ring-color-secondary: var(--color-border-secondary);
+              --ring-color-tertiary: var(--color-border-tertiary);
+              --ring-color-brand: var(--color-border-brand);
+              --ring-color-brand-solid: var(--color-bg-brand-solid);
+              --ring-color-brand-solid_hover: var(--color-bg-brand-solid_hover);
+              --ring-color-error: var(--color-border-error);
+              --ring-color-disabled: var(--color-border-disabled);
+              --outline-color-brand: var(--color-border-brand);
+              --outline-color-error: var(--color-border-error);
           }
         CSS
       end
