@@ -1,0 +1,94 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Basic Card" do %>
+  <%= render Ui::Card::Component.new do |card| %>
+    <% card.with_header do %>
+      <h3 class="text-lg font-semibold text-primary">Card Title</h3>
+      <p class="text-sm text-tertiary">Supporting description text</p>
+    <% end %>
+    <p class="text-sm text-tertiary">This is the body content of the card. You can put any content here including text, forms, or other components.</p>
+    <% card.with_footer do %>
+      <div class="flex justify-end gap-3">
+        <%= render(Ui::Button::Component.new(color: :secondary, size: :sm)) { "Cancel" } %>
+        <%= render(Ui::Button::Component.new(size: :sm)) { "Save" } %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Card::Component.new do |card|
+  card.with_header do
+    # <h3>Card Title</h3>
+  end
+  # <p>Body content here.</p>
+  card.with_footer do
+    # Footer actions
+  end
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Card with Media" do %>
+  <div class="max-w-sm">
+    <%= render Ui::Card::Component.new do |card| %>
+      <% card.with_media do %>
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=300&fit=crop" alt="Mountain landscape" class="w-full h-48 object-cover" />
+      <% end %>
+      <% card.with_header do %>
+        <h3 class="text-lg font-semibold text-primary">Mountain View</h3>
+      <% end %>
+      <p class="text-sm text-tertiary">A beautiful mountain landscape with snow-capped peaks and clear blue skies.</p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Card::Component.new do |card|
+  card.with_media do
+    image_tag("photo.jpg", class: "w-full h-48 object-cover")
+  end
+  card.with_header { "Title" }
+  # Body content
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Padding Variants" do %>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <% %i[sm md lg].each do |size| %>
+      <%= render Ui::Card::Component.new(padding: size) do %>
+        <p class="text-sm font-medium text-primary">Padding: <%= size %></p>
+        <p class="text-sm text-tertiary">Content with <%= size %> padding.</p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Card::Component.new(padding: :sm) { "Small padding" }
+render Ui::Card::Component.new(padding: :md) { "Medium padding (default)" }
+render Ui::Card::Component.new(padding: :lg) { "Large padding" }' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Shadow Variants" do %>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <% %i[none sm md lg].each do |shadow| %>
+      <%= render Ui::Card::Component.new(shadow: shadow) do %>
+        <p class="text-sm font-medium text-primary">Shadow: <%= shadow %></p>
+        <p class="text-sm text-tertiary">Card with <%= shadow %> shadow.</p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Card::Component.new(shadow: :none) { "No shadow" }
+render Ui::Card::Component.new(shadow: :sm)   { "Small shadow (default)" }
+render Ui::Card::Component.new(shadow: :md)   { "Medium shadow" }
+render Ui::Card::Component.new(shadow: :lg)   { "Large shadow" }' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Without Border / Without Rounded" do %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <%= render Ui::Card::Component.new(border: false) do %>
+      <p class="text-sm font-medium text-primary">No border</p>
+      <p class="text-sm text-tertiary">Card rendered without a border ring.</p>
+    <% end %>
+    <%= render Ui::Card::Component.new(rounded: false) do %>
+      <p class="text-sm font-medium text-primary">No rounded corners</p>
+      <p class="text-sm text-tertiary">Card rendered with sharp corners.</p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Card::Component.new(border: false) { "No border" }
+render Ui::Card::Component.new(rounded: false) { "No rounded corners" }' %>

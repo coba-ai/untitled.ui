@@ -1,0 +1,23 @@
+<div class="<%= container_classes %>">
+  <% if media.present? %>
+    <%= media %>
+  <% end %>
+
+  <% if header.present? %>
+    <div class="<%= header_classes %>">
+      <%= header %>
+    </div>
+  <% end %>
+
+  <% if content? %>
+    <div class="<%= body_classes %>">
+      <%= content %>
+    </div>
+  <% end %>
+
+  <% if footer.present? %>
+    <div class="<%= footer_classes %>">
+      <%= footer %>
+    </div>
+  <% end %>
+</div>
