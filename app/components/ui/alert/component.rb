@@ -8,28 +8,28 @@ module Ui
           root: "bg-utility-brand-50 ring-utility-brand-200",
           icon: "text-utility-brand-500",
           title: "text-utility-brand-700",
-          description: "text-utility-brand-600",
+          description: "text-utility-brand-700",
           close: "text-utility-brand-500 hover:text-utility-brand-700"
         },
         success: {
           root: "bg-utility-success-50 ring-utility-success-200",
           icon: "text-utility-success-500",
           title: "text-utility-success-700",
-          description: "text-utility-success-600",
+          description: "text-utility-success-700",
           close: "text-utility-success-500 hover:text-utility-success-700"
         },
         warning: {
           root: "bg-utility-warning-50 ring-utility-warning-200",
           icon: "text-utility-warning-500",
           title: "text-utility-warning-700",
-          description: "text-utility-warning-600",
+          description: "text-utility-warning-700",
           close: "text-utility-warning-500 hover:text-utility-warning-700"
         },
         error: {
           root: "bg-utility-error-50 ring-utility-error-200",
           icon: "text-utility-error-500",
           title: "text-utility-error-700",
-          description: "text-utility-error-600",
+          description: "text-utility-error-700",
           close: "text-utility-error-500 hover:text-utility-error-700"
         }
       }.freeze
