@@ -1,0 +1,91 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Default" do %>
+  <div class="max-w-lg">
+    <%= render Ui::FileUpload::Component.new %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::FileUpload::Component.new' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Label & Hint" do %>
+  <div class="max-w-lg">
+    <%= render Ui::FileUpload::Component.new(
+      label: "Profile photo",
+      hint: "SVG, PNG, JPG or GIF (max. 800x400px)"
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::FileUpload::Component.new(
+  label: "Profile photo",
+  hint: "SVG, PNG, JPG or GIF (max. 800x400px)"
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Accept Specific File Types" do %>
+  <div class="max-w-lg">
+    <%= render Ui::FileUpload::Component.new(
+      label: "Document",
+      name: "document",
+      accept: ".pdf,.doc,.docx",
+      hint: "PDF, DOC, or DOCX (max. 10MB)"
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::FileUpload::Component.new(
+  label: "Document",
+  name: "document",
+  accept: ".pdf,.doc,.docx",
+  hint: "PDF, DOC, or DOCX (max. 10MB)"
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Multiple Files" do %>
+  <div class="max-w-lg">
+    <%= render Ui::FileUpload::Component.new(
+      label: "Attachments",
+      name: "attachments[]",
+      multiple: true,
+      accept: "image/*,.pdf",
+      hint: "Upload multiple images or PDFs"
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::FileUpload::Component.new(
+  label: "Attachments",
+  name: "attachments[]",
+  multiple: true,
+  accept: "image/*,.pdf",
+  hint: "Upload multiple images or PDFs"
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Invalid State" do %>
+  <div class="max-w-lg">
+    <%= render Ui::FileUpload::Component.new(
+      label: "Required file",
+      invalid: true,
+      hint: "Please upload a file to continue."
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::FileUpload::Component.new(
+  label: "Required file",
+  invalid: true,
+  hint: "Please upload a file to continue."
+)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Disabled" do %>
+  <div class="max-w-lg">
+    <%= render Ui::FileUpload::Component.new(
+      label: "Upload disabled",
+      disabled: true,
+      hint: "File uploads are not available right now."
+    ) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::FileUpload::Component.new(
+  label: "Upload disabled",
+  disabled: true,
+  hint: "File uploads are not available right now."
+)' %>

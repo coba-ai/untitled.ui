@@ -1,0 +1,81 @@
+<div class="<%= cx('flex h-max w-full flex-col items-start justify-start gap-1.5', extra_classes) %>"
+     data-controller="select"
+     data-select-searchable-value="<%= searchable %>"
+     data-select-options-value="<%= options_json %>">
+  <% if label.present? %>
+    <%= render Ui::Label::Component.new(text: label, required: required, for_id: id) %>
+  <% end %>
+
+  <input type="hidden"
+         <% if id.present? %>id="<%= id %>"<% end %>
+         <% if name.present? %>name="<%= name %>"<% end %>
+         <% if value.present? %>value="<%= value %>"<% end %>
+         <% if required %>required<% end %>
+         data-select-target="hiddenInput">
+
+  <div class="relative w-full">
+    <div class="<%= wrapper_classes %>"
+         data-select-target="trigger"
+         role="combobox"
+         aria-expanded="false"
+         aria-haspopup="listbox"
+         <% if disabled %>aria-disabled="true"<% end %>
+         tabindex="<%= disabled ? -1 : 0 %>"
+         data-action="click->select#toggle keydown->select#onTriggerKeydown">
+      <span class="<%= trigger_classes %>" data-select-target="display">
+        <% if selected_label %>
+          <%= selected_label %>
+        <% else %>
+          <span class="text-placeholder"><%= placeholder %></span>
+        <% end %>
+      </span>
+      <svg class="<%= chevron_classes %>" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+      </svg>
+    </div>
+
+    <div class="<%= dropdown_classes %> hidden"
+         data-select-target="dropdown"
+         role="listbox"
+         tabindex="-1">
+      <% if searchable %>
+        <input type="text"
+               class="<%= search_classes %>"
+               placeholder="Search..."
+               data-select-target="search"
+               data-action="input->select#filter keydown->select#onSearchKeydown"
+               autocomplete="off">
+      <% end %>
+
+      <div class="py-1" data-select-target="optionsList">
+        <% options.each_with_index do |opt, index| %>
+          <div class="<%= option_classes %> hover:bg-primary_hover"
+               role="option"
+               aria-selected="<%= opt[:value] == value.to_s %>"
+               data-select-target="option"
+               data-value="<%= opt[:value] %>"
+               data-label="<%= opt[:label] %>"
+               data-index="<%= index %>"
+               data-action="click->select#selectOption mouseenter->select#highlightOption">
+            <div class="flex items-center justify-between">
+              <span><%= opt[:label] %></span>
+              <% if opt[:value] == value.to_s %>
+                <svg class="size-4 text-brand-solid" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/>
+                </svg>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="hidden px-3 py-2 text-sm text-tertiary" data-select-target="noResults">
+        No results found.
+      </div>
+    </div>
+  </div>
+
+  <% if hint.present? %>
+    <%= render Ui::HintText::Component.new(invalid: invalid).with_content(hint) %>
+  <% end %>
+</div>
