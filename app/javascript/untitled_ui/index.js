@@ -2,7 +2,6 @@ import { Application } from "@hotwired/stimulus"
 
 import CheckboxController from "untitled_ui/checkbox_controller"
 import ClipboardController from "untitled_ui/clipboard_controller"
-import DatePickerController from "untitled_ui/date_picker_controller"
 import DropdownController from "untitled_ui/dropdown_controller"
 import ModalController from "untitled_ui/modal_controller"
 import NavigationMobileController from "untitled_ui/navigation_mobile_controller"
@@ -17,7 +16,6 @@ import TooltipController from "untitled_ui/tooltip_controller"
 const controllerDefinitions = [
   ["checkbox", CheckboxController],
   ["clipboard", ClipboardController],
-  ["date-picker", DatePickerController],
   ["dropdown", DropdownController],
   ["file-upload", FileUploadController],
   ["modal", ModalController],
@@ -43,7 +41,6 @@ export {
   application,
   CheckboxController,
   ClipboardController,
-  DatePickerController,
   DropdownController,
   FileUploadController,
   ModalController,
