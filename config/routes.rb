@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 UntitledUi::Engine.routes.draw do
-  namespace :design_system do
-    resources :components, only: %i[index show], param: :id do
-      member do
-        get :playground
-      end
+  resources :components, only: %i[index show], param: :id,
+                          controller: "design_system/components" do
+    member do
+      get :playground
     end
   end
 
