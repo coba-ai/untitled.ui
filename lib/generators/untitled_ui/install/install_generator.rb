@@ -72,6 +72,38 @@ module UntitledUi
         say ""
       end
 
+      def cleanup_stale_view_overrides
+        stale_files = [
+          "app/views/untitled_ui/design_system/components/index.html.erb",
+          "app/views/untitled_ui/design_system/components/show.html.erb",
+          "app/views/untitled_ui/design_system/components/_playground.html.erb",
+          "app/views/untitled_ui/design_system/components/_playground_preview.html.erb",
+          "app/views/untitled_ui/design_system/shared/_example_section.html.erb",
+          "app/views/untitled_ui/design_system/shared/_code_block.html.erb",
+          "app/views/layouts/untitled_ui/design_system.html.erb"
+        ]
+
+        removed = stale_files.select do |file|
+          path = File.join(destination_root, file)
+          if File.exist?(path)
+            FileUtils.rm(path)
+            say_status :remove, "#{file} (now served from gem)", :yellow
+            true
+          end
+        end
+
+        if removed.any?
+          # Clean up empty directories
+          %w[
+            app/views/untitled_ui/design_system/shared
+            app/views/layouts/untitled_ui
+          ].each do |dir|
+            dir_path = File.join(destination_root, dir)
+            FileUtils.rmdir(dir_path) if File.directory?(dir_path) && Dir.empty?(dir_path)
+          end
+        end
+      end
+
       def copy_example_partials
         copy_tree(
           source_dir: UntitledUi.gem_root.join("app", "views", "untitled_ui", "design_system", "components", "examples"),
