@@ -65,7 +65,9 @@ module UntitledUi
         { id: "select", name: "Select", category: "Base",
           description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." },
         { id: "date_picker", name: "Date Picker", category: "Base",
-          description: "Calendar date picker with month navigation, range constraints, and input styling." }
+          description: "Calendar date picker with month navigation, range constraints, and input styling." },
+        { id: "accordion", name: "Accordion", category: "Application",
+          description: "Collapsible accordion with single or multiple open items, animated height transitions, and chevron rotation." }
       ].freeze
 
       def index

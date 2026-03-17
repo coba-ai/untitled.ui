@@ -1,0 +1,63 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Default (Single Open)" do %>
+  <%= render Ui::Accordion::Component.new do |accordion| %>
+    <% accordion.with_item(title: "What is Untitled UI?") do %>
+      Untitled UI is a comprehensive design system and component library built for Ruby on Rails applications. It provides production-ready UI components styled with Tailwind CSS.
+    <% end %>
+    <% accordion.with_item(title: "How do I install it?") do %>
+      Add the gem to your Gemfile and run <code class="rounded bg-bg-secondary px-1 py-0.5 font-mono text-xs">bundle install</code>. Then run the installer to set up Tailwind CSS and import the JavaScript controllers.
+    <% end %>
+    <% accordion.with_item(title: "Is it customizable?", open: true) do %>
+      Yes! Every component accepts a <code class="rounded bg-bg-secondary px-1 py-0.5 font-mono text-xs">class:</code> prop for custom Tailwind classes. Components also expose semantic color tokens so they adapt to your brand.
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Accordion::Component.new do |accordion|
+  accordion.with_item(title: "What is Untitled UI?") do
+    "Untitled UI is a design system for Rails..."
+  end
+  accordion.with_item(title: "How do I install it?") do
+    "Add the gem to your Gemfile..."
+  end
+  accordion.with_item(title: "Is it customizable?", open: true) do
+    "Yes! Every component accepts a class: prop..."
+  end
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Multiple Open" do %>
+  <%= render Ui::Accordion::Component.new(multiple: true) do |accordion| %>
+    <% accordion.with_item(title: "Can multiple items be open?", open: true) do %>
+      Yes — pass <code class="rounded bg-bg-secondary px-1 py-0.5 font-mono text-xs">multiple: true</code> to allow several items to be expanded simultaneously.
+    <% end %>
+    <% accordion.with_item(title: "Keyboard accessible?", open: true) do %>
+      All accordion headers are rendered as <code class="rounded bg-bg-secondary px-1 py-0.5 font-mono text-xs">&lt;button&gt;</code> elements, so they are fully keyboard navigable.
+    <% end %>
+    <% accordion.with_item(title: "Animation support?") do %>
+      Height is animated smoothly via the <code class="rounded bg-bg-secondary px-1 py-0.5 font-mono text-xs">accordion_controller.js</code> Stimulus controller using CSS transitions.
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Accordion::Component.new(multiple: true) do |accordion|
+  accordion.with_item(title: "First item", open: true) { "Content..." }
+  accordion.with_item(title: "Second item", open: true) { "Content..." }
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Icons" do %>
+  <% chevron_right_svg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>' %>
+  <% info_svg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>' %>
+  <% lock_svg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>' %>
+  <%= render Ui::Accordion::Component.new do |accordion| %>
+    <% accordion.with_item(title: "Getting started", icon: chevron_right_svg) do %>
+      Follow the quick start guide to install and configure the gem in your Rails application.
+    <% end %>
+    <% accordion.with_item(title: "Documentation", icon: info_svg, open: true) do %>
+      Full documentation is available on the design system pages. Each component includes usage examples and prop reference.
+    <% end %>
+    <% accordion.with_item(title: "Security", icon: lock_svg) do %>
+      Components are built with accessibility and security best practices. All user-provided content is HTML-escaped by default.
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: "accordion.with_item(title: \"Getting started\", icon: icon_svg) do\n  \"Content...\"\nend" %>
