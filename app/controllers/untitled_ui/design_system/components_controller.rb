@@ -59,7 +59,9 @@ module UntitledUi
         { id: "stat", name: "Stat", category: "Application",
           description: "Metric display card with value, trend indicator, and change percentage." },
         { id: "file_upload", name: "File Upload", category: "Base",
-          description: "Drag-and-drop file upload zone with click fallback, file type filtering, and size limits." }
+          description: "Drag-and-drop file upload zone with click fallback, file type filtering, and size limits." },
+        { id: "toast", name: "Toast", category: "Application",
+          description: "Toast notification with success/error/warning/info variants, auto-dismiss, and stacking." }
       ].freeze
 
       def index
