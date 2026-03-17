@@ -58,10 +58,12 @@ module UntitledUi
           description: "Breadcrumb navigation with chevron/slash separators and aria support." },
         { id: "stat", name: "Stat", category: "Application",
           description: "Metric display card with value, trend indicator, and change percentage." },
+        { id: "file_upload", name: "File Upload", category: "Base",
+          description: "Drag-and-drop file upload zone with click fallback, file type filtering, and size limits." },
+        { id: "toast", name: "Toast", category: "Application",
+          description: "Toast notification with success/error/warning/info variants, auto-dismiss, and stacking." },
         { id: "select", name: "Select", category: "Base",
-          description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." },
-        { id: "date_picker", name: "Date Picker", category: "Base",
-          description: "Calendar date picker with month navigation, range constraints, and input styling." }
+          description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." }
       ].freeze
 
       def index

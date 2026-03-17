@@ -5,14 +5,15 @@ module Ui
     class ItemComponent < Ui::Base
       attr_reader :label, :href, :icon
 
-      def initialize(label:, href: nil, icon: nil, **_opts)
+      def initialize(label:, href: nil, icon: nil, current: nil, **_opts)
         @label = label
         @href = href
         @icon = icon
+        @current = current
       end
 
       def current?
-        @href.nil?
+        @current.nil? ? @href.nil? : @current
       end
     end
   end

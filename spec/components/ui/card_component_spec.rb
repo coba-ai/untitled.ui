@@ -36,7 +36,7 @@ RSpec.describe Ui::Card::Component, type: :component do
       "Body"
     end
 
-    expect(page).to have_css("div.card-media img")
+    expect(page).to have_css("img[src='test.jpg']")
   end
 
   it "renders media above header when both are present" do
@@ -46,7 +46,7 @@ RSpec.describe Ui::Card::Component, type: :component do
       "Body"
     end
 
-    expect(page).to have_css("div.card-media + div.border-b")
+    expect(page).to have_css("img + div.border-b")
   end
 
   context "padding variants" do

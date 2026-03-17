@@ -65,6 +65,16 @@ RSpec.describe Ui::Breadcrumb::Component, type: :component do
     expect(page).to have_css("a svg")
   end
 
+  it "marks a linked item as current when current: true" do
+    render_inline(described_class.new) do |breadcrumb|
+      breadcrumb.with_item(label: "Home", href: "/")
+      breadcrumb.with_item(label: "Settings", href: "/settings", current: true)
+    end
+
+    expect(page).to have_css("a[href='/settings']")
+    expect(page).to have_css("[aria-current='page']", text: "Settings")
+  end
+
   it "accepts custom classes" do
     render_inline(described_class.new(class: "mt-4")) do |breadcrumb|
       breadcrumb.with_item(label: "Home", href: "/")
