@@ -93,7 +93,6 @@ module UntitledUi
         end
 
         if removed.any?
-          # Clean up empty directories
           %w[
             app/views/untitled_ui/design_system/shared
             app/views/layouts/untitled_ui
@@ -103,6 +102,7 @@ module UntitledUi
           end
         end
       end
+
 
       def copy_example_partials
         copy_tree(

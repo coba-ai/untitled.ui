@@ -157,7 +157,6 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
     Dir.mktmpdir do |root|
       prepare_minimal_app!(root)
 
-      # Simulate stale files from a previous install
       stale_files = [
         "app/views/untitled_ui/design_system/components/index.html.erb",
         "app/views/untitled_ui/design_system/components/show.html.erb",
