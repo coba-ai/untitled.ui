@@ -75,7 +75,9 @@ module UntitledUi
         { id: "slider", name: "Slider", category: "Base",
           description: "Range slider with brand-colored filled track, value display, and form submission support." },
         { id: "command_palette", name: "Command Palette", category: "Application",
-          description: "Keyboard-driven command palette with Cmd+K shortcut, live filtering, grouped items, and keyboard navigation." }
+          description: "Keyboard-driven command palette with Cmd+K shortcut, live filtering, grouped items, and keyboard navigation." },
+        { id: "stepper", name: "Stepper", category: "Application",
+          description: "Multi-step wizard with progress indicators, connector lines, content panels, and next/prev navigation." }
       ].freeze
 
       def index

@@ -14,6 +14,7 @@ import FileUploadController from "untitled_ui/file_upload_controller"
 import SelectController from "untitled_ui/select_controller"
 import ToastController from "untitled_ui/toast_controller"
 import TooltipController from "untitled_ui/tooltip_controller"
+import StepperController from "untitled_ui/stepper_controller"
 
 const controllerDefinitions = [
   ["checkbox", CheckboxController],
@@ -27,6 +28,7 @@ const controllerDefinitions = [
   ["playground", PlaygroundController],
   ["tabs", TabsController],
   ["select", SelectController],
+  ["stepper", StepperController],
   ["toast", ToastController],
   ["toggle", ToggleController],
   ["tooltip", TooltipController]
@@ -56,5 +58,6 @@ export {
   SelectController,
   ToastController,
   ToggleController,
-  TooltipController
+  TooltipController,
+  StepperController
 }

@@ -1,0 +1,104 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Basic Stepper (Step 1 of 3)" do %>
+  <%= render Ui::Stepper::Component.new(current_step: 1) do |stepper| %>
+    <% stepper.with_step(title: "Your details", description: "Name and email") %>
+    <% stepper.with_step(title: "Company details", description: "Website and location") %>
+    <% stepper.with_step(title: "Invite your team", description: "Start collaborating") %>
+    <% stepper.with_panel do %>
+      <div class="rounded-lg border border-secondary bg-primary p-6">
+        <h3 class="mb-4 text-md font-semibold text-primary">Your details</h3>
+        <div class="space-y-4">
+          <div>
+            <%= render Ui::Label::Component.new(text: "Full name") %>
+            <%= render Ui::Input::Component.new(placeholder: "John Doe") %>
+          </div>
+          <div>
+            <%= render Ui::Label::Component.new(text: "Email address") %>
+            <%= render Ui::Input::Component.new(type: "email", placeholder: "john@example.com") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% stepper.with_panel do %>
+      <div class="rounded-lg border border-secondary bg-primary p-6">
+        <h3 class="mb-4 text-md font-semibold text-primary">Company details</h3>
+        <div class="space-y-4">
+          <div>
+            <%= render Ui::Label::Component.new(text: "Company name") %>
+            <%= render Ui::Input::Component.new(placeholder: "Acme Inc.") %>
+          </div>
+          <div>
+            <%= render Ui::Label::Component.new(text: "Website") %>
+            <%= render Ui::Input::Component.new(placeholder: "https://acme.com") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% stepper.with_panel do %>
+      <div class="rounded-lg border border-secondary bg-primary p-6">
+        <h3 class="mb-4 text-md font-semibold text-primary">Invite your team</h3>
+        <p class="text-sm text-tertiary">Add team members to collaborate with you.</p>
+        <div class="mt-4">
+          <%= render Ui::Label::Component.new(text: "Email addresses") %>
+          <%= render Ui::Input::Component.new(placeholder: "colleague@example.com") %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Stepper (Step 2 active)" do %>
+  <%= render Ui::Stepper::Component.new(current_step: 2) do |stepper| %>
+    <% stepper.with_step(title: "Your details", description: "Name and email") %>
+    <% stepper.with_step(title: "Company details", description: "Website and location") %>
+    <% stepper.with_step(title: "Invite your team", description: "Start collaborating") %>
+    <% stepper.with_panel do %>
+      <div class="rounded-lg border border-secondary bg-primary p-6">
+        <p class="text-sm text-tertiary">Your details content here.</p>
+      </div>
+    <% end %>
+    <% stepper.with_panel do %>
+      <div class="rounded-lg border border-secondary bg-primary p-6">
+        <h3 class="mb-4 text-md font-semibold text-primary">Company details</h3>
+        <p class="text-sm text-tertiary">Enter your company information.</p>
+      </div>
+    <% end %>
+    <% stepper.with_panel do %>
+      <div class="rounded-lg border border-secondary bg-primary p-6">
+        <p class="text-sm text-tertiary">Invite teammates here.</p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Stepper (Last step — Finish)" do %>
+  <%= render Ui::Stepper::Component.new(current_step: 3) do |stepper| %>
+    <% stepper.with_step(title: "Your details", description: "Name and email") %>
+    <% stepper.with_step(title: "Company details", description: "Website and location") %>
+    <% stepper.with_step(title: "Invite your team", description: "Start collaborating") %>
+    <% stepper.with_panel do %>
+      <div class="rounded-lg border border-secondary bg-primary p-6">
+        <p class="text-sm text-tertiary">Your details content here.</p>
+      </div>
+    <% end %>
+    <% stepper.with_panel do %>
+      <div class="rounded-lg border border-secondary bg-primary p-6">
+        <p class="text-sm text-tertiary">Company details content here.</p>
+      </div>
+    <% end %>
+    <% stepper.with_panel do %>
+      <div class="rounded-lg border border-secondary bg-primary p-6">
+        <h3 class="mb-4 text-md font-semibold text-primary">All done!</h3>
+        <p class="text-sm text-tertiary">You are ready to start collaborating with your team.</p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Stepper::Component.new(current_step: 1) do |stepper|
+  stepper.with_step(title: "Your details", description: "Name and email")
+  stepper.with_step(title: "Company details", description: "Website and location")
+  stepper.with_step(title: "Invite your team", description: "Start collaborating")
+  stepper.with_panel { "Step 1 content here" }
+  stepper.with_panel { "Step 2 content here" }
+  stepper.with_panel { "Step 3 content here" }
+end' %>
