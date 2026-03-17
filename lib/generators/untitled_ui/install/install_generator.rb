@@ -177,7 +177,7 @@ module UntitledUi
       end
 
       STIMULUS_BLOCK_START = "// UntitledUi Stimulus controllers"
-      STIMULUS_BLOCK_END = 'application.register("tooltip", TooltipController)'
+      STIMULUS_BLOCK_END = "// End UntitledUi Stimulus controllers"
       VALID_IMPORT_PREFIXES = %w[untitled_ui ./untitled_ui].freeze
 
       private
@@ -232,26 +232,24 @@ module UntitledUi
       def stimulus_registration(import_prefix)
         raise ArgumentError, "Invalid import prefix: #{import_prefix}" unless VALID_IMPORT_PREFIXES.include?(import_prefix)
 
-        <<~JS
+        controllers = discover_stimulus_controllers
+        imports = controllers.map { |c| "import #{c[:class_name]} from \"#{import_prefix}/#{c[:file_name]}\"" }
+        registrations = controllers.map { |c| "application.register(\"#{c[:identifier]}\", #{c[:class_name]})" }
 
-          #{STIMULUS_BLOCK_START}
-          import CheckboxController from "#{import_prefix}/checkbox_controller"
-          import DropdownController from "#{import_prefix}/dropdown_controller"
-          import ModalController from "#{import_prefix}/modal_controller"
-          import NavigationMobileController from "#{import_prefix}/navigation_mobile_controller"
-          import NavigationSidebarController from "#{import_prefix}/navigation_sidebar_controller"
-          import TabsController from "#{import_prefix}/tabs_controller"
-          import ToggleController from "#{import_prefix}/toggle_controller"
-          import TooltipController from "#{import_prefix}/tooltip_controller"
-          application.register("checkbox", CheckboxController)
-          application.register("dropdown", DropdownController)
-          application.register("modal", ModalController)
-          application.register("navigation-mobile", NavigationMobileController)
-          application.register("navigation-sidebar", NavigationSidebarController)
-          application.register("tabs", TabsController)
-          application.register("toggle", ToggleController)
-          #{STIMULUS_BLOCK_END}
-        JS
+        "\n#{STIMULUS_BLOCK_START}\n#{imports.join("\n")}\n#{registrations.join("\n")}\n#{STIMULUS_BLOCK_END}\n"
+      end
+
+      def discover_stimulus_controllers
+        js_dir = UntitledUi.gem_root.join("app", "javascript", "untitled_ui")
+        return [] unless js_dir.directory?
+
+        Dir.glob(js_dir.join("*_controller.js")).sort.map do |file|
+          file_name = File.basename(file, ".js")
+          base_name = file_name.sub("_controller", "")
+          class_name = base_name.split("_").map(&:capitalize).join + "Controller"
+          identifier = base_name.tr("_", "-")
+          { file_name: file_name, class_name: class_name, identifier: identifier }
+        end
       end
 
       def replace_or_append_stimulus_registration(js_path, import_prefix)
