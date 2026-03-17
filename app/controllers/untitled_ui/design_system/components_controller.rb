@@ -65,7 +65,9 @@ module UntitledUi
         { id: "select", name: "Select", category: "Base",
           description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." },
         { id: "date_picker", name: "Date Picker", category: "Base",
-          description: "Calendar date picker with month navigation, range constraints, and input styling." }
+          description: "Calendar date picker with month navigation, range constraints, and input styling." },
+        { id: "skeleton", name: "Skeleton", category: "Base",
+          description: "Animated placeholder skeleton for loading states with text, circular, and rectangular variants." }
       ].freeze
 
       def index
