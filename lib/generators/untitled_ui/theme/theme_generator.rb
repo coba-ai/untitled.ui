@@ -144,6 +144,27 @@ module UntitledUi
         say_status :insert, "app/assets/tailwind/application.css", :green
       end
 
+      def configure_theme
+        initializer_path = File.join(destination_root, "config/initializers/untitled_ui.rb")
+
+        if File.exist?(initializer_path)
+          content = File.read(initializer_path)
+          if content.include?("config.theme")
+            content.gsub!(/config\.theme\s*=\s*:\w+/, "config.theme = :#{theme_name}")
+            File.write(initializer_path, content)
+            say_status :update, "config/initializers/untitled_ui.rb", :green
+          else
+            inject_into_file initializer_path, "  config.theme = :#{theme_name}\n", after: /configure do \|config\|\n/
+          end
+        else
+          create_file "config/initializers/untitled_ui.rb", <<~RUBY
+            UntitledUi.configure do |config|
+              config.theme = :#{theme_name}
+            end
+          RUBY
+        end
+      end
+
       def show_instructions
         say ""
         say "Theme '#{theme_name}' generated successfully!", :green

@@ -3,7 +3,8 @@
 module UntitledUi
   module ThemeHelper
     def untitled_ui_theme_class
-      UntitledUi.configuration.theme == :hacker ? "hacker-theme" : ""
+      theme = UntitledUi.configuration.theme
+      theme == :default ? "" : "#{theme}-theme"
     end
   end
 end
