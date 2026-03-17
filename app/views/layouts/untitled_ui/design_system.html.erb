@@ -24,6 +24,19 @@
           </div>
         </div>
 
+        <%# Theme Switcher %>
+        <div class="mb-6">
+          <label for="ds-theme-switcher" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-quaternary">Theme</label>
+          <select
+            id="ds-theme-switcher"
+            class="w-full rounded-lg border-0 bg-secondary py-2 pl-3 pr-8 text-sm text-primary ring-1 ring-primary ring-inset outline-hidden focus:ring-2 focus:ring-brand"
+          >
+            <% untitled_ui_available_themes.each do |theme| %>
+              <option value="<%= theme[:value] %>" <%= "selected" if theme[:value] == untitled_ui_theme_class %>><%= theme[:name] %></option>
+            <% end %>
+          </select>
+        </div>
+
         <%# Search %>
         <div class="mb-8">
           <div class="relative">
@@ -61,6 +74,26 @@
 
     <script>
       (function() {
+        // Theme switcher
+        var switcher = document.getElementById('ds-theme-switcher');
+        var body = document.body;
+
+        // Restore from localStorage
+        var savedTheme = localStorage.getItem('untitled-ui-ds-theme');
+        if (savedTheme !== null) {
+          body.className = body.className.replace(/\S+-theme/g, '').trim();
+          if (savedTheme) body.classList.add(savedTheme);
+          switcher.value = savedTheme;
+        }
+
+        switcher.addEventListener('change', function() {
+          body.className = body.className.replace(/\S+-theme/g, '').trim();
+          body.className = body.className.replace(/\s+/g, ' ').trim();
+          if (this.value) body.classList.add(this.value);
+          localStorage.setItem('untitled-ui-ds-theme', this.value);
+        });
+
+        // Component search
         var input = document.getElementById('ds-component-search');
         var items = document.querySelectorAll('[data-nav-item]');
         var groups = document.querySelectorAll('[data-nav-group]');
