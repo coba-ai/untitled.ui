@@ -72,19 +72,10 @@ module UntitledUi
         say ""
       end
 
-      def copy_view_templates
+      def copy_example_partials
         copy_tree(
-          source_dir: UntitledUi.gem_root.join("app", "views", "untitled_ui"),
-          destination_dir: app_path("app/views/untitled_ui"),
-          only_extensions: [".erb"],
-          overwrite: true
-        )
-      end
-
-      def copy_layout_templates
-        copy_tree(
-          source_dir: UntitledUi.gem_root.join("app", "views", "layouts", "untitled_ui"),
-          destination_dir: app_path("app/views/layouts/untitled_ui"),
+          source_dir: UntitledUi.gem_root.join("app", "views", "untitled_ui", "design_system", "components", "examples"),
+          destination_dir: app_path("app/views/untitled_ui/design_system/components/examples"),
           only_extensions: [".erb"],
           overwrite: true
         )
