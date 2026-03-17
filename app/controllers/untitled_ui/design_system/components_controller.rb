@@ -63,7 +63,9 @@ module UntitledUi
         { id: "toast", name: "Toast", category: "Application",
           description: "Toast notification with success/error/warning/info variants, auto-dismiss, and stacking." },
         { id: "select", name: "Select", category: "Base",
-          description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." }
+          description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." },
+        { id: "date_picker", name: "Date Picker", category: "Base",
+          description: "Calendar date picker with month navigation, range constraints, and input styling." }
       ].freeze
 
       def index

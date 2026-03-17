@@ -1,0 +1,73 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Default" do %>
+  <div class="max-w-sm">
+    <%= render Ui::DatePicker::Component.new %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::DatePicker::Component.new' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Label & Hint" do %>
+  <div class="max-w-sm">
+    <%= render Ui::DatePicker::Component.new(label: "Start Date", hint: "Select the start date for your project.", name: "start_date") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::DatePicker::Component.new(label: "Start Date", hint: "Select the start date for your project.", name: "start_date")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Preset Value" do %>
+  <div class="max-w-sm">
+    <%= render Ui::DatePicker::Component.new(label: "Birthday", value: "1990-05-20", name: "birthday") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::DatePicker::Component.new(label: "Birthday", value: "1990-05-20", name: "birthday")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Custom Format" do %>
+  <div class="max-w-sm">
+    <%= render Ui::DatePicker::Component.new(label: "Event Date", value: "2025-12-25", format: "%d/%m/%Y", name: "event_date") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::DatePicker::Component.new(label: "Event Date", value: "2025-12-25", format: "%d/%m/%Y", name: "event_date")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Sizes" do %>
+  <div class="max-w-sm space-y-4">
+    <%= render Ui::DatePicker::Component.new(size: :sm, placeholder: "Small date picker") %>
+    <%= render Ui::DatePicker::Component.new(size: :md, placeholder: "Medium date picker") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::DatePicker::Component.new(size: :sm, placeholder: "Small")
+render Ui::DatePicker::Component.new(size: :md, placeholder: "Medium")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Min/Max Constraints" do %>
+  <div class="max-w-sm">
+    <%= render Ui::DatePicker::Component.new(label: "Appointment", min: "2025-01-01", max: "2025-12-31", hint: "Only dates in 2025 are available.", name: "appointment") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::DatePicker::Component.new(label: "Appointment", min: "2025-01-01", max: "2025-12-31", name: "appointment")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Required" do %>
+  <div class="max-w-sm">
+    <%= render Ui::DatePicker::Component.new(label: "Due Date", required: true, name: "due_date") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::DatePicker::Component.new(label: "Due Date", required: true, name: "due_date")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Invalid" do %>
+  <div class="max-w-sm">
+    <%= render Ui::DatePicker::Component.new(label: "Date", invalid: true, hint: "Please select a valid date.", name: "invalid_date") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::DatePicker::Component.new(label: "Date", invalid: true, hint: "Please select a valid date.")' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Disabled" do %>
+  <div class="max-w-sm">
+    <%= render Ui::DatePicker::Component.new(label: "Locked Date", value: "2025-06-01", disabled: true, name: "locked_date") %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::DatePicker::Component.new(label: "Locked Date", value: "2025-06-01", disabled: true)' %>
