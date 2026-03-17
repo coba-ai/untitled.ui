@@ -7,7 +7,14 @@
           <span aria-hidden="true"><%= separator_html.html_safe %></span>
         <% end %>
 
-        <% if item.current? %>
+        <% if item.href.present? %>
+          <a href="<%= item.href %>" class="<%= item.current? ? item_classes(item) : link_classes %>"<% if item.current? %> aria-current="page"<% end %>>
+            <% if item.icon.present? %>
+              <%= item.icon.html_safe %>
+            <% end %>
+            <%= item.label %>
+          </a>
+        <% else %>
           <span class="<%= item_classes(item) %>" aria-current="page">
             <% if item.icon.present? %>
               <span class="flex items-center gap-1.5">
@@ -18,13 +25,6 @@
               <%= item.label %>
             <% end %>
           </span>
-        <% else %>
-          <a href="<%= item.href %>" class="<%= link_classes %>">
-            <% if item.icon.present? %>
-              <%= item.icon.html_safe %>
-            <% end %>
-            <%= item.label %>
-          </a>
         <% end %>
       </li>
     <% end %>
