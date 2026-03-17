@@ -1,0 +1,8 @@
+<div class="<%%= root_classes %>">
+  <%%= content %>
+<% slot_names.each do |slot| %>
+  <%% if <%= slot %> %>
+    <%%= <%= slot %> %>
+  <%% end %>
+<% end %>
+</div>

@@ -1,0 +1,28 @@
+# frozen_string_literal: true
+
+require "rails_helper"
+
+RSpec.describe <%= component_class_name %>, type: :component do
+  it "renders with default props" do
+    render_inline(described_class.new) { "<%= human_name %>" }
+
+    expect(page).to have_text("<%= human_name %>")
+  end
+
+  it "accepts extra CSS classes" do
+    render_inline(described_class.new(class: "custom-class")) { "<%= human_name %>" }
+
+    expect(page).to have_css(".custom-class")
+  end
+<% select_props.each do |prop| %>
+<% if prop[:values].any? %>
+
+  it "renders all <%= prop[:name] %> variants" do
+    <%= prop[:name].upcase %>_OPTIONS.each do |option|
+      render_inline(described_class.new(<%= prop[:name] %>: option)) { "<%= human_name %>" }
+      expect(page).to have_text("<%= human_name %>")
+    end
+  end
+<% end %>
+<% end %>
+end
