@@ -130,7 +130,7 @@ module UntitledUi
       end
 
       def module_name
-        file_name.split("_").map(&:capitalize).join
+        file_name.camelize
       end
 
       def component_class_name
