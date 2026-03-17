@@ -6,19 +6,21 @@ export default class extends Controller {
   open() {
     if (!this.hasDialogTarget || !this.hasPanelTarget) return
 
-    this.dialogTarget.showModal()
-
-    // Start off-screen
+    // Set initial off-screen state before showing
     const isLeft = this.dialogTarget.classList.contains("justify-start")
     this.panelTarget.style.transform = isLeft ? "translateX(-100%)" : "translateX(100%)"
-    this.panelTarget.style.transition = "transform 300ms ease-out"
     this.dialogTarget.style.opacity = "0"
-    this.dialogTarget.style.transition = "opacity 200ms ease-out"
 
-    // Animate in on next frame
+    this.dialogTarget.showModal()
+
+    // Animate in after browser paints the initial state
     requestAnimationFrame(() => {
-      this.panelTarget.style.transform = "translateX(0)"
-      this.dialogTarget.style.opacity = "1"
+      requestAnimationFrame(() => {
+        this.panelTarget.style.transition = "transform 300ms ease-out"
+        this.dialogTarget.style.transition = "opacity 200ms ease-out"
+        this.panelTarget.style.transform = "translateX(0)"
+        this.dialogTarget.style.opacity = "1"
+      })
     })
   }
 
