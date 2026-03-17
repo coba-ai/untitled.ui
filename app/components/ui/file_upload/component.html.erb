@@ -1,6 +1,7 @@
 <div
   class="<%= cx('flex h-max w-full flex-col items-start justify-start gap-1.5', extra_classes) %>"
   data-controller="file-upload"
+  <% if max_size.present? %>data-file-upload-max-size-value="<%= max_size %>"<% end %>
 >
   <% if label.present? %>
     <%= render Ui::Label::Component.new(text: label, for_id: input_id) %>
@@ -27,7 +28,7 @@
     <%# File name display (hidden by default) %>
     <p class="hidden text-sm font-medium text-primary" data-file-upload-target="filename"></p>
 
-    <% if hint.present? %>
+    <% if hint.present? && !invalid %>
       <p class="mt-1 text-xs text-tertiary"><%= hint %></p>
     <% end %>
 
@@ -41,7 +42,6 @@
       <% if name.present? %>name="<%= name %>"<% end %>
       <% if accept.present? %>accept="<%= accept %>"<% end %>
       <% if multiple %>multiple<% end %>
-      <% if max_size.present? %>data-file-upload-max-size-value="<%= max_size %>"<% end %>
       <% if disabled %>disabled<% end %>
     >
   </div>
