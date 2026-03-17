@@ -1,0 +1,36 @@
+<div class="accordion-item" data-accordion-target="item">
+  <button type="button"
+          class="<%= header_classes %>"
+          aria-expanded="<%= open %>"
+          data-action="click->accordion#toggle"
+          data-accordion-target="header"
+          id="accordion-header-<%= item_id %>"
+          aria-controls="accordion-panel-<%= item_id %>">
+    <span class="flex items-center gap-3">
+      <% if icon.present? %>
+        <span class="size-5 shrink-0 text-fg-quaternary"><%= icon.html_safe %></span>
+      <% end %>
+      <span><%= title %></span>
+    </span>
+    <svg class="<%= chevron_classes %>"
+         xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke-width="2"
+         stroke="currentColor"
+         data-accordion-target="chevron"
+         aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+    </svg>
+  </button>
+  <div class="<%= panel_classes %>"
+       id="accordion-panel-<%= item_id %>"
+       role="region"
+       aria-labelledby="accordion-header-<%= item_id %>"
+       data-accordion-target="panel"
+       style="<%= open ? '' : 'height: 0;' %>">
+    <div class="px-6 pb-4 text-sm text-tertiary">
+      <%= content %>
+    </div>
+  </div>
+</div>

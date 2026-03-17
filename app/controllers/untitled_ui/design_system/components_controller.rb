@@ -69,7 +69,9 @@ module UntitledUi
         { id: "skeleton", name: "Skeleton", category: "Base",
           description: "Animated placeholder skeleton for loading states with text, circular, and rectangular variants." },
         { id: "timeline", name: "Timeline", category: "Application",
-          description: "Vertical timeline with connector lines, colored dot/icon indicators, title, description, and timestamp per item." }
+          description: "Vertical timeline with connector lines, colored dot/icon indicators, title, description, and timestamp per item." },
+        { id: "accordion", name: "Accordion", category: "Application",
+          description: "Collapsible accordion with single or multiple open items, animated height transitions, and chevron rotation." }
       ].freeze
 
       def index
