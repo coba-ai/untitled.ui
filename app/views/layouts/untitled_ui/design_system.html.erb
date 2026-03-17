@@ -29,7 +29,7 @@
           <label for="ds-theme-switcher" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-quaternary">Theme</label>
           <select
             id="ds-theme-switcher"
-            class="w-full rounded-lg border-0 bg-secondary py-2 pl-3 pr-8 text-sm text-primary ring-1 ring-primary ring-inset outline-hidden focus:ring-2 focus:ring-brand"
+            class="w-full rounded-lg border-0 bg-secondary px-3 py-2 pr-8 text-sm text-primary ring-1 ring-primary ring-inset outline-hidden focus:ring-2 focus:ring-brand"
           >
             <% untitled_ui_available_themes.each do |theme| %>
               <option value="<%= theme[:value] %>" <%= "selected" if theme[:value] == untitled_ui_theme_class %>><%= theme[:name] %></option>
@@ -67,7 +67,7 @@
       </aside>
 
       <%# Main content %>
-      <main class="flex-1 px-8 pt-20 pb-10 lg:px-12 lg:pb-12">
+      <main class="flex-1 px-8 pt-18 pb-10 lg:px-12 lg:pb-12">
         <%= yield %>
       </main>
     </div>
