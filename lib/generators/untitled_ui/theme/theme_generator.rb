@@ -11,7 +11,7 @@ module UntitledUi
       argument :theme_name, type: :string, desc: "Name of the theme (e.g. corporate, ocean)"
 
       class_option :preset, type: :string, default: nil,
-        desc: "Use a color preset: corporate, ocean, or warm"
+        desc: "Use a color preset: corporate, ocean, warm, or dark"
 
       PRESETS = {
         "corporate" => {
@@ -109,6 +109,38 @@ module UntitledUi
             500 => "rgb(121 113 107)", 600 => "rgb(87 83 78)", 700 => "rgb(68 64 60)",
             800 => "rgb(41 37 36)", 900 => "rgb(28 25 23)", 950 => "rgb(23 20 18)"
           }
+        },
+        "dark" => {
+          brand: {
+            25 => "rgb(240 249 255)", 50 => "rgb(224 242 254)", 100 => "rgb(186 230 253)",
+            200 => "rgb(125 211 252)", 300 => "rgb(56 189 248)", 400 => "rgb(14 165 233)",
+            500 => "rgb(2 132 199)", 600 => "rgb(3 105 161)", 700 => "rgb(7 89 133)",
+            800 => "rgb(12 74 110)", 900 => "rgb(8 51 78)", 950 => "rgb(5 33 52)"
+          },
+          error: {
+            25 => "rgb(255 245 245)", 50 => "rgb(254 228 226)", 100 => "rgb(254 205 202)",
+            200 => "rgb(252 165 163)", 300 => "rgb(252 107 105)", 400 => "rgb(248 66 64)",
+            500 => "rgb(229 47 47)", 600 => "rgb(195 28 28)", 700 => "rgb(154 18 18)",
+            800 => "rgb(120 12 12)", 900 => "rgb(95 10 10)", 950 => "rgb(67 7 7)"
+          },
+          warning: {
+            25 => "rgb(255 252 235)", 50 => "rgb(254 243 199)", 100 => "rgb(253 230 138)",
+            200 => "rgb(252 211 77)", 300 => "rgb(251 191 36)", 400 => "rgb(245 158 11)",
+            500 => "rgb(217 119 6)", 600 => "rgb(180 83 9)", 700 => "rgb(146 64 14)",
+            800 => "rgb(120 53 15)", 900 => "rgb(98 44 16)", 950 => "rgb(69 31 11)"
+          },
+          success: {
+            25 => "rgb(240 253 244)", 50 => "rgb(220 252 231)", 100 => "rgb(187 247 208)",
+            200 => "rgb(134 239 172)", 300 => "rgb(74 222 128)", 400 => "rgb(34 197 94)",
+            500 => "rgb(22 163 74)", 600 => "rgb(21 128 61)", 700 => "rgb(20 83 45)",
+            800 => "rgb(15 64 35)", 900 => "rgb(14 55 31)", 950 => "rgb(9 37 21)"
+          },
+          gray: {
+            25 => "rgb(248 250 252)", 50 => "rgb(241 245 249)", 100 => "rgb(226 232 240)",
+            200 => "rgb(203 213 225)", 300 => "rgb(148 163 184)", 400 => "rgb(100 116 139)",
+            500 => "rgb(71 85 105)", 600 => "rgb(51 65 85)", 700 => "rgb(30 41 59)",
+            800 => "rgb(15 23 42)", 900 => "rgb(8 15 31)", 950 => "rgb(3 7 18)"
+          }
         }
       }.freeze
 
@@ -189,6 +221,7 @@ module UntitledUi
 
       def generate_theme_css
         preset = options[:preset] ? PRESETS[options[:preset]] : nil
+        dark_mode = options[:preset] == "dark"
         sanitized_name = theme_name.gsub(/[^a-zA-Z0-9_-]/, "-")
 
         <<~CSS
@@ -245,74 +278,74 @@ module UntitledUi
                  fine-grained control beyond changing the
                  base color scales.
                  ---------------------------------------- */
-              --color-text-primary: var(--color-gray-900);
-              --color-text-secondary: var(--color-gray-700);
-              --color-text-secondary_hover: var(--color-gray-800);
-              --color-text-tertiary: var(--color-gray-600);
-              --color-text-tertiary_hover: var(--color-gray-700);
+              --color-text-primary: #{dark_mode ? "var(--color-gray-50)" : "var(--color-gray-900)"};
+              --color-text-secondary: #{dark_mode ? "var(--color-gray-300)" : "var(--color-gray-700)"};
+              --color-text-secondary_hover: #{dark_mode ? "var(--color-gray-200)" : "var(--color-gray-800)"};
+              --color-text-tertiary: #{dark_mode ? "var(--color-gray-400)" : "var(--color-gray-600)"};
+              --color-text-tertiary_hover: #{dark_mode ? "var(--color-gray-300)" : "var(--color-gray-700)"};
               --color-text-quaternary: var(--color-gray-500);
               --color-text-disabled: var(--color-gray-500);
               --color-text-placeholder: var(--color-gray-500);
-              --color-text-placeholder_subtle: var(--color-gray-300);
-              --color-text-brand-primary: var(--color-brand-900);
-              --color-text-brand-secondary: var(--color-brand-700);
-              --color-text-brand-secondary_hover: var(--color-brand-800);
-              --color-text-brand-tertiary: var(--color-brand-600);
-              --color-text-brand-tertiary_alt: var(--color-brand-600);
-              --color-text-error-primary: var(--color-error-600);
-              --color-text-warning-primary: var(--color-warning-600);
-              --color-text-success-primary: var(--color-success-600);
+              --color-text-placeholder_subtle: #{dark_mode ? "var(--color-gray-600)" : "var(--color-gray-300)"};
+              --color-text-brand-primary: #{dark_mode ? "var(--color-brand-300)" : "var(--color-brand-900)"};
+              --color-text-brand-secondary: #{dark_mode ? "var(--color-brand-400)" : "var(--color-brand-700)"};
+              --color-text-brand-secondary_hover: #{dark_mode ? "var(--color-brand-300)" : "var(--color-brand-800)"};
+              --color-text-brand-tertiary: #{dark_mode ? "var(--color-brand-400)" : "var(--color-brand-600)"};
+              --color-text-brand-tertiary_alt: #{dark_mode ? "var(--color-brand-400)" : "var(--color-brand-600)"};
+              --color-text-error-primary: #{dark_mode ? "var(--color-error-400)" : "var(--color-error-600)"};
+              --color-text-warning-primary: #{dark_mode ? "var(--color-warning-400)" : "var(--color-warning-600)"};
+              --color-text-success-primary: #{dark_mode ? "var(--color-success-400)" : "var(--color-success-600)"};
 
               /* ----------------------------------------
                  BORDER COLORS
                  Borders, dividers, and separators.
                  ---------------------------------------- */
-              --color-border-primary: var(--color-gray-300);
-              --color-border-secondary: var(--color-gray-200);
-              --color-border-tertiary: var(--color-gray-100);
-              --color-border-brand: var(--color-brand-500);
-              --color-border-brand_alt: var(--color-brand-600);
-              --color-border-error: var(--color-error-500);
-              --color-border-disabled: var(--color-gray-300);
+              --color-border-primary: #{dark_mode ? "var(--color-gray-700)" : "var(--color-gray-300)"};
+              --color-border-secondary: #{dark_mode ? "var(--color-gray-800)" : "var(--color-gray-200)"};
+              --color-border-tertiary: #{dark_mode ? "var(--color-gray-800)" : "var(--color-gray-100)"};
+              --color-border-brand: #{dark_mode ? "var(--color-brand-400)" : "var(--color-brand-500)"};
+              --color-border-brand_alt: #{dark_mode ? "var(--color-gray-700)" : "var(--color-brand-600)"};
+              --color-border-error: #{dark_mode ? "var(--color-error-400)" : "var(--color-error-500)"};
+              --color-border-disabled: #{dark_mode ? "var(--color-gray-700)" : "var(--color-gray-300)"};
 
               /* ----------------------------------------
                  FOREGROUND COLORS
                  Icons and foreground decorative elements.
                  ---------------------------------------- */
-              --color-fg-primary: var(--color-gray-900);
-              --color-fg-secondary: var(--color-gray-700);
-              --color-fg-secondary_hover: var(--color-gray-800);
-              --color-fg-tertiary: var(--color-gray-600);
+              --color-fg-primary: #{dark_mode ? "var(--color-gray-100)" : "var(--color-gray-900)"};
+              --color-fg-secondary: #{dark_mode ? "var(--color-gray-300)" : "var(--color-gray-700)"};
+              --color-fg-secondary_hover: #{dark_mode ? "var(--color-gray-200)" : "var(--color-gray-800)"};
+              --color-fg-tertiary: #{dark_mode ? "var(--color-gray-400)" : "var(--color-gray-600)"};
               --color-fg-quaternary: var(--color-gray-400);
-              --color-fg-brand-primary: var(--color-brand-600);
-              --color-fg-brand-secondary: var(--color-brand-500);
+              --color-fg-brand-primary: #{dark_mode ? "var(--color-brand-400)" : "var(--color-brand-600)"};
+              --color-fg-brand-secondary: #{dark_mode ? "var(--color-brand-400)" : "var(--color-brand-500)"};
               --color-fg-disabled: var(--color-gray-400);
-              --color-fg-error-primary: var(--color-error-600);
-              --color-fg-warning-primary: var(--color-warning-600);
-              --color-fg-success-primary: var(--color-success-600);
+              --color-fg-error-primary: #{dark_mode ? "var(--color-error-400)" : "var(--color-error-600)"};
+              --color-fg-warning-primary: #{dark_mode ? "var(--color-warning-400)" : "var(--color-warning-600)"};
+              --color-fg-success-primary: #{dark_mode ? "var(--color-success-400)" : "var(--color-success-600)"};
 
               /* ----------------------------------------
                  BACKGROUND COLORS
                  Surface and container backgrounds.
                  ---------------------------------------- */
-              --color-bg-primary: var(--color-white);
-              --color-bg-primary_hover: var(--color-gray-50);
-              --color-bg-secondary: var(--color-gray-50);
-              --color-bg-secondary_hover: var(--color-gray-100);
-              --color-bg-tertiary: var(--color-gray-100);
-              --color-bg-quaternary: var(--color-gray-200);
-              --color-bg-brand-primary: var(--color-brand-50);
+              --color-bg-primary: #{dark_mode ? "var(--color-gray-950)" : "var(--color-white)"};
+              --color-bg-primary_hover: #{dark_mode ? "var(--color-gray-800)" : "var(--color-gray-50)"};
+              --color-bg-secondary: #{dark_mode ? "var(--color-gray-900)" : "var(--color-gray-50)"};
+              --color-bg-secondary_hover: #{dark_mode ? "var(--color-gray-800)" : "var(--color-gray-100)"};
+              --color-bg-tertiary: #{dark_mode ? "var(--color-gray-800)" : "var(--color-gray-100)"};
+              --color-bg-quaternary: #{dark_mode ? "var(--color-gray-700)" : "var(--color-gray-200)"};
+              --color-bg-brand-primary: #{dark_mode ? "var(--color-brand-950)" : "var(--color-brand-50)"};
               --color-bg-brand-solid: var(--color-brand-600);
-              --color-bg-brand-solid_hover: var(--color-brand-700);
-              --color-bg-brand-section: var(--color-brand-800);
-              --color-bg-error-primary: var(--color-error-50);
+              --color-bg-brand-solid_hover: #{dark_mode ? "var(--color-brand-500)" : "var(--color-brand-700)"};
+              --color-bg-brand-section: #{dark_mode ? "var(--color-gray-900)" : "var(--color-brand-800)"};
+              --color-bg-error-primary: #{dark_mode ? "var(--color-error-950)" : "var(--color-error-50)"};
               --color-bg-error-solid: var(--color-error-600);
-              --color-bg-warning-primary: var(--color-warning-50);
+              --color-bg-warning-primary: #{dark_mode ? "var(--color-warning-950)" : "var(--color-warning-50)"};
               --color-bg-warning-solid: var(--color-warning-600);
-              --color-bg-success-primary: var(--color-success-50);
+              --color-bg-success-primary: #{dark_mode ? "var(--color-success-950)" : "var(--color-success-50)"};
               --color-bg-success-solid: var(--color-success-600);
-              --color-bg-disabled: var(--color-gray-100);
-            --color-bg-active: var(--color-gray-50);
+              --color-bg-disabled: #{dark_mode ? "var(--color-gray-800)" : "var(--color-gray-100)"};
+            --color-bg-active: #{dark_mode ? "var(--color-gray-800)" : "var(--color-gray-50)"};
 
               /* ----------------------------------------
                  TAILWIND V4 INTERNAL MAPPINGS
