@@ -1,9 +1,12 @@
 import { Application } from "@hotwired/stimulus"
 
+import AccordionController from "untitled_ui/accordion_controller"
 import CheckboxController from "untitled_ui/checkbox_controller"
 import ColorPickerController from "untitled_ui/color_picker_controller"
 import ClipboardController from "untitled_ui/clipboard_controller"
+import CommandPaletteController from "untitled_ui/command_palette_controller"
 import DatePickerController from "untitled_ui/date_picker_controller"
+import DrawerController from "untitled_ui/drawer_controller"
 import DropdownController from "untitled_ui/dropdown_controller"
 import ModalController from "untitled_ui/modal_controller"
 import NavigationMobileController from "untitled_ui/navigation_mobile_controller"
@@ -14,13 +17,19 @@ import ToggleController from "untitled_ui/toggle_controller"
 import FileUploadController from "untitled_ui/file_upload_controller"
 import SelectController from "untitled_ui/select_controller"
 import ToastController from "untitled_ui/toast_controller"
+import TableController from "untitled_ui/table_controller"
+import TagInputController from "untitled_ui/tag_input_controller"
 import TooltipController from "untitled_ui/tooltip_controller"
+import StepperController from "untitled_ui/stepper_controller"
 
 const controllerDefinitions = [
+  ["accordion", AccordionController],
   ["checkbox", CheckboxController],
   ["color-picker", ColorPickerController],
   ["clipboard", ClipboardController],
+  ["command-palette", CommandPaletteController],
   ["date-picker", DatePickerController],
+  ["drawer", DrawerController],
   ["dropdown", DropdownController],
   ["file-upload", FileUploadController],
   ["modal", ModalController],
@@ -29,7 +38,10 @@ const controllerDefinitions = [
   ["playground", PlaygroundController],
   ["tabs", TabsController],
   ["select", SelectController],
+  ["stepper", StepperController],
+  ["table", TableController],
   ["toast", ToastController],
+  ["tag-input", TagInputController],
   ["toggle", ToggleController],
   ["tooltip", TooltipController]
 ]
@@ -45,10 +57,13 @@ controllerDefinitions.forEach(([identifier, controller]) => {
 
 export {
   application,
+  AccordionController,
   CheckboxController,
   ColorPickerController,
   ClipboardController,
+  CommandPaletteController,
   DatePickerController,
+  DrawerController,
   DropdownController,
   FileUploadController,
   ModalController,
@@ -57,7 +72,10 @@ export {
   PlaygroundController,
   TabsController,
   SelectController,
+  TableController,
+  TagInputController,
   ToastController,
   ToggleController,
-  TooltipController
+  TooltipController,
+  StepperController
 }
