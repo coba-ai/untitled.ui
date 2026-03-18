@@ -16,6 +16,7 @@ import ToggleController from "untitled_ui/toggle_controller"
 import FileUploadController from "untitled_ui/file_upload_controller"
 import SelectController from "untitled_ui/select_controller"
 import ToastController from "untitled_ui/toast_controller"
+import TableController from "untitled_ui/table_controller"
 import TooltipController from "untitled_ui/tooltip_controller"
 
 const controllerDefinitions = [
@@ -33,6 +34,7 @@ const controllerDefinitions = [
   ["playground", PlaygroundController],
   ["tabs", TabsController],
   ["select", SelectController],
+  ["table", TableController],
   ["toast", ToastController],
   ["toggle", ToggleController],
   ["tooltip", TooltipController]
@@ -63,6 +65,7 @@ export {
   PlaygroundController,
   TabsController,
   SelectController,
+  TableController,
   ToastController,
   ToggleController,
   TooltipController
