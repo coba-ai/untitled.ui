@@ -18,6 +18,7 @@ import SelectController from "untitled_ui/select_controller"
 import ToastController from "untitled_ui/toast_controller"
 import TableController from "untitled_ui/table_controller"
 import TooltipController from "untitled_ui/tooltip_controller"
+import StepperController from "untitled_ui/stepper_controller"
 
 const controllerDefinitions = [
   ["accordion", AccordionController],
@@ -34,6 +35,7 @@ const controllerDefinitions = [
   ["playground", PlaygroundController],
   ["tabs", TabsController],
   ["select", SelectController],
+  ["stepper", StepperController],
   ["table", TableController],
   ["toast", ToastController],
   ["toggle", ToggleController],
@@ -68,5 +70,6 @@ export {
   TableController,
   ToastController,
   ToggleController,
-  TooltipController
+  TooltipController,
+  StepperController
 }
