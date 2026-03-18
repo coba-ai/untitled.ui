@@ -81,7 +81,9 @@ module UntitledUi
         { id: "stepper", name: "Stepper", category: "Application",
           description: "Multi-step wizard with progress indicators, connector lines, content panels, and next/prev navigation." },
         { id: "color_picker", name: "Color Picker", category: "Base",
-          description: "Color picker with preset swatches grid and hex input field for selecting colors." }
+          description: "Color picker with preset swatches grid and hex input field for selecting colors." },
+        { id: "slider", name: "Slider", category: "Base",
+          description: "Range slider with brand-colored filled track, value display, and form submission support." }
       ].freeze
 
       def index

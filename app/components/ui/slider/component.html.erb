@@ -1,0 +1,46 @@
+<div class="<%= wrapper_classes %>"
+     data-controller="slider"
+     data-slider-min-value="<%= min %>"
+     data-slider-max-value="<%= max %>">
+
+  <% if label.present? || show_value %>
+    <div class="flex items-center justify-between">
+      <% if label.present? %>
+        <label <% if id.present? %>for="<%= id %>"<% end %>
+               class="<%= cx('text-sm font-medium text-secondary', disabled && 'cursor-not-allowed opacity-50') %>">
+          <%= label %>
+        </label>
+      <% end %>
+      <% if show_value %>
+        <span class="<%= cx('ml-auto text-sm font-medium tabular-nums text-secondary', disabled && 'opacity-50') %>"
+              data-slider-target="valueDisplay">
+          <%= value %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="<%= track_classes %>">
+    <div class="pointer-events-none absolute left-0 top-0 h-full rounded-full bg-fg-brand-primary transition-none"
+         style="width: <%= percentage %>%"
+         data-slider-target="fill"></div>
+
+    <input type="range"
+           class="<%= range_input_classes %>"
+           <% if id.present? %>id="<%= id %>"<% end %>
+           value="<%= value %>"
+           min="<%= min %>"
+           max="<%= max %>"
+           step="<%= step %>"
+           <% if disabled %>disabled<% end %>
+           data-slider-target="input"
+           data-action="input->slider#update">
+  </div>
+
+  <% if name.present? %>
+    <input type="hidden"
+           name="<%= name %>"
+           value="<%= value %>"
+           data-slider-target="hiddenInput">
+  <% end %>
+</div>

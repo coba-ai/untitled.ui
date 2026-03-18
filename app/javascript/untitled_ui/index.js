@@ -20,6 +20,7 @@ import ToastController from "untitled_ui/toast_controller"
 import TableController from "untitled_ui/table_controller"
 import TagInputController from "untitled_ui/tag_input_controller"
 import TooltipController from "untitled_ui/tooltip_controller"
+import SliderController from "untitled_ui/slider_controller"
 import StepperController from "untitled_ui/stepper_controller"
 
 const controllerDefinitions = [
@@ -43,7 +44,8 @@ const controllerDefinitions = [
   ["toast", ToastController],
   ["tag-input", TagInputController],
   ["toggle", ToggleController],
-  ["tooltip", TooltipController]
+  ["tooltip", TooltipController],
+  ["slider", SliderController]
 ]
 
 const application = window.Stimulus || Application.start()
@@ -77,5 +79,6 @@ export {
   ToastController,
   ToggleController,
   TooltipController,
+  SliderController,
   StepperController
 }

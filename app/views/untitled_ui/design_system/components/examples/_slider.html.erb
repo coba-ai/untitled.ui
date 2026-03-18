@@ -1,0 +1,53 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Default" do %>
+  <div class="max-w-md">
+    <%= render Ui::Slider::Component.new(label: "Volume", value: 50) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Slider::Component.new(label: "Volume", value: 50)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Without Label" do %>
+  <div class="max-w-md">
+    <%= render Ui::Slider::Component.new(value: 30) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Slider::Component.new(value: 30)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Without Value Display" do %>
+  <div class="max-w-md">
+    <%= render Ui::Slider::Component.new(label: "Brightness", value: 70, show_value: false) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Slider::Component.new(label: "Brightness", value: 70, show_value: false)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Custom Range & Step" do %>
+  <div class="max-w-md space-y-6">
+    <%= render Ui::Slider::Component.new(label: "Temperature (°C)", value: 20, min: -10, max: 40, step: 1) %>
+    <%= render Ui::Slider::Component.new(label: "Price ($)", value: 500, min: 0, max: 1000, step: 50) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Slider::Component.new(label: "Temperature", value: 20, min: -10, max: 40, step: 1)
+render Ui::Slider::Component.new(label: "Price", value: 500, min: 0, max: 1000, step: 50)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Disabled" do %>
+  <div class="max-w-md">
+    <%= render Ui::Slider::Component.new(label: "Locked setting", value: 40, disabled: true) %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Slider::Component.new(label: "Locked setting", value: 40, disabled: true)' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Form Usage" do %>
+  <%= form_with url: "#", method: :get do |f| %>
+    <div class="max-w-md space-y-4">
+      <%= render Ui::Slider::Component.new(name: "volume", label: "Volume", value: 60) %>
+      <%= render Ui::Slider::Component.new(name: "bass", label: "Bass", value: 40) %>
+      <%= render Ui::Slider::Component.new(name: "treble", label: "Treble", value: 55) %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Slider::Component.new(name: "volume", label: "Volume", value: 60)' %>
