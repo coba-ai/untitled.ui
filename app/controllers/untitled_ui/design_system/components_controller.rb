@@ -79,7 +79,9 @@ module UntitledUi
         { id: "command_palette", name: "Command Palette", category: "Application",
           description: "Keyboard-driven command palette with Cmd+K shortcut, live filtering, grouped items, and keyboard navigation." },
         { id: "stepper", name: "Stepper", category: "Application",
-          description: "Multi-step wizard with progress indicators, connector lines, content panels, and next/prev navigation." }
+          description: "Multi-step wizard with progress indicators, connector lines, content panels, and next/prev navigation." },
+        { id: "color_picker", name: "Color Picker", category: "Base",
+          description: "Color picker with preset swatches grid and hex input field for selecting colors." }
       ].freeze
 
       def index
