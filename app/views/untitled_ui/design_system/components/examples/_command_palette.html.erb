@@ -23,13 +23,11 @@
     <%= render Ui::CommandPalette::Component.new(
       id: "ds-command-palette-basic",
       items: sample_items
-    ) %>
-    <div>
-      <%= render(Ui::Button::Component.new(
-        color: :secondary,
-        data: { action: "click->command-palette#open", controller: "" }
-      )) { "Open Command Palette" } %>
-    </div>
+    ) do |palette| %>
+      <% palette.with_trigger do %>
+        <%= render(Ui::Button::Component.new(color: :secondary)).with_content("Open Command Palette") %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
 
@@ -48,13 +46,11 @@ render Ui::CommandPalette::Component.new(items: items)' %>
       id: "ds-command-palette-placeholder",
       placeholder: "Search commands...",
       items: sample_items
-    ) %>
-    <div>
-      <%= render(Ui::Button::Component.new(
-        color: :secondary,
-        data: { action: "click->command-palette#open", controller: "" }
-      )) { "Open (Custom Placeholder)" } %>
-    </div>
+    ) do |palette| %>
+      <% palette.with_trigger do %>
+        <%= render(Ui::Button::Component.new(color: :secondary)).with_content("Open (Custom Placeholder)") %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
 
@@ -69,13 +65,11 @@ render Ui::CommandPalette::Component.new(items: items)' %>
     <%= render Ui::CommandPalette::Component.new(
       id: "ds-command-palette-icons",
       items: sample_items
-    ) %>
-    <div>
-      <%= render(Ui::Button::Component.new(
-        color: :secondary,
-        data: { action: "click->command-palette#open", controller: "" }
-      )) { "Open (With Icons)" } %>
-    </div>
+    ) do |palette| %>
+      <% palette.with_trigger do %>
+        <%= render(Ui::Button::Component.new(color: :secondary)).with_content("Open (With Icons)") %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
 

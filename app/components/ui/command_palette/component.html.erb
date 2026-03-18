@@ -2,6 +2,12 @@
      data-command-palette-items-value="<%= items_as_json %>"
      data-command-palette-palette-id-value="<%= palette_id %>">
 
+  <% if trigger.present? %>
+    <div data-action="click->command-palette#open">
+      <%= trigger %>
+    </div>
+  <% end %>
+
   <dialog id="<%= palette_id %>"
           class="<%= overlay_classes %>"
           data-command-palette-target="dialog"

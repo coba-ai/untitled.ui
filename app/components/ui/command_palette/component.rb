@@ -3,6 +3,8 @@
 module Ui
   module CommandPalette
     class Component < Ui::Base
+      renders_one :trigger
+
       attr_reader :placeholder, :items, :extra_classes, :palette_id
 
       # @param placeholder [String] placeholder text for the search input
