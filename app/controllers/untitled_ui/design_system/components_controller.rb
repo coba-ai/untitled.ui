@@ -74,6 +74,8 @@ module UntitledUi
           description: "Vertical timeline with connector lines, colored dot/icon indicators, title, description, and timestamp per item." },
         { id: "accordion", name: "Accordion", category: "Application",
           description: "Collapsible accordion with single or multiple open items, animated height transitions, and chevron rotation." },
+        { id: "tag_input", name: "Tag Input", category: "Base",
+          description: "Tag input with pill-style tags, keyboard navigation, duplicate prevention, and max tag limit." },
         { id: "command_palette", name: "Command Palette", category: "Application",
           description: "Keyboard-driven command palette with Cmd+K shortcut, live filtering, grouped items, and keyboard navigation." },
         { id: "stepper", name: "Stepper", category: "Application",
