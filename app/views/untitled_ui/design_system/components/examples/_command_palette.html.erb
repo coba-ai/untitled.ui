@@ -25,7 +25,7 @@
       items: sample_items
     ) do |palette| %>
       <% palette.with_trigger do %>
-        <%= render(Ui::Button::Component.new(color: :secondary)).with_content("Open Command Palette") %>
+        <button type="button" class="rounded-lg bg-secondary px-3 py-2 text-sm font-semibold text-secondary shadow-xs ring-1 ring-primary ring-inset hover:bg-secondary_hover">Open Command Palette</button>
       <% end %>
     <% end %>
   </div>
@@ -48,7 +48,7 @@ render Ui::CommandPalette::Component.new(items: items)' %>
       items: sample_items
     ) do |palette| %>
       <% palette.with_trigger do %>
-        <%= render(Ui::Button::Component.new(color: :secondary)).with_content("Open (Custom Placeholder)") %>
+        <button type="button" class="rounded-lg bg-secondary px-3 py-2 text-sm font-semibold text-secondary shadow-xs ring-1 ring-primary ring-inset hover:bg-secondary_hover">Open (Custom Placeholder)</button>
       <% end %>
     <% end %>
   </div>
@@ -67,7 +67,7 @@ render Ui::CommandPalette::Component.new(items: items)' %>
       items: sample_items
     ) do |palette| %>
       <% palette.with_trigger do %>
-        <%= render(Ui::Button::Component.new(color: :secondary)).with_content("Open (With Icons)") %>
+        <button type="button" class="rounded-lg bg-secondary px-3 py-2 text-sm font-semibold text-secondary shadow-xs ring-1 ring-primary ring-inset hover:bg-secondary_hover">Open (With Icons)</button>
       <% end %>
     <% end %>
   </div>
