@@ -1,0 +1,13 @@
+<% if variant == :text %>
+  <div class="<%= cx('flex flex-col gap-2', extra_classes) %>" aria-hidden="true">
+    <% lines.times do |i| %>
+      <span class="<%= line_classes(i) %>"></span>
+    <% end %>
+  </div>
+<% else %>
+  <span
+    class="<%= root_classes %>"
+    style="<%= inline_style %>"
+    aria-hidden="true"
+  ></span>
+<% end %>

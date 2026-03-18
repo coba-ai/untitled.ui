@@ -159,6 +159,47 @@ RSpec.describe UntitledUi::Generators::ThemeGenerator do
       end
     end
 
+    it "fills in curated color values for the dark preset" do
+      Dir.mktmpdir do |root|
+        prepare_minimal_app!(root)
+        run_generator!(root, "dark", preset: "dark")
+
+        content = File.read(File.join(root, "app/assets/tailwind/untitled_ui/dark.css"))
+
+        # Should have actual RGB values, not placeholders
+        expect(content).not_to include("/* TODO: customize */")
+
+        # Dark preset uses a slate-based blue brand
+        expect(content).to include("--color-brand-600: rgb(3 105 161);")
+
+        # Inverted gray scale — darkest values at high steps
+        expect(content).to include("--color-gray-950: rgb(3 7 18);")
+        expect(content).to include("--color-gray-25: rgb(248 250 252);")
+
+        # Semantic tokens should be inverted for dark backgrounds
+        expect(content).to include("--color-bg-primary: var(--color-gray-950)")
+        expect(content).to include("--color-bg-secondary: var(--color-gray-900)")
+        expect(content).to include("--color-text-primary: var(--color-gray-50)")
+        expect(content).to include("--color-text-secondary: var(--color-gray-300)")
+        expect(content).to include("--color-border-primary: var(--color-gray-700)")
+      end
+    end
+
+    it "generates inverted semantic tokens with --dark flag and custom colors" do
+      Dir.mktmpdir do |root|
+        prepare_minimal_app!(root)
+        run_generator!(root, "midnight", dark: true)
+
+        content = File.read(File.join(root, "app/assets/tailwind/untitled_ui/midnight.css"))
+
+        # Should have placeholder colors (no preset) but inverted semantics
+        expect(content).to include("/* TODO: customize */")
+        expect(content).to include("--color-bg-primary: var(--color-gray-950)")
+        expect(content).to include("--color-text-primary: var(--color-gray-50)")
+        expect(content).to include("--color-border-primary: var(--color-gray-700)")
+      end
+    end
+
     it "allows using a preset name different from the theme name" do
       Dir.mktmpdir do |root|
         prepare_minimal_app!(root)

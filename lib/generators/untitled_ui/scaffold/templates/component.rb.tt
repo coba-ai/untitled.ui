@@ -1,0 +1,43 @@
+# frozen_string_literal: true
+
+module Ui
+  module <%= module_name %>
+    class Component < Ui::Base
+      BASE_CLASSES = ""
+<% if select_props.any? %>
+
+<%   select_props.each do |prop| %>
+      <%= prop[:name].upcase %>_OPTIONS = %i[<%= prop[:values].join(" ") %>].freeze
+<%   end %>
+<% end %>
+
+      attr_reader :<%= (all_props.map { |p| p[:name] } + ["extra_classes"]).join(", :") %>
+<% if slot_names.any? %>
+
+<%   slot_names.each do |slot| %>
+      renders_one :<%= slot %>
+<%   end %>
+<% end %>
+
+      def initialize(<%= initialize_args %>class: nil, **_opts)
+<% all_props.each do |prop| %>
+<%   if prop[:type] == "boolean" %>
+        @<%= prop[:name] %> = <%= prop[:name] %>
+<%   elsif prop[:type] == "select" %>
+        @<%= prop[:name] %> = <%= prop[:name] %>.to_sym
+<%   else %>
+        @<%= prop[:name] %> = <%= prop[:name] %>
+<%   end %>
+<% end %>
+        @extra_classes = binding.local_variable_get(:class)
+      end
+
+      def root_classes
+        cx(
+          BASE_CLASSES,
+          @extra_classes
+        )
+      end
+    end
+  end
+end
