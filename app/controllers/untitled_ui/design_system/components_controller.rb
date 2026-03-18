@@ -33,6 +33,8 @@ module UntitledUi
         { id: "loading_indicator", name: "Loading Indicator", category: "Base",
           description: "Animated spinner with line_simple and line_spinner types." },
         { id: "tabs", name: "Tabs", category: "Application", description: "Tab navigation with button_brand, button_gray, and underline types." },
+        { id: "drawer", name: "Drawer", category: "Application",
+          description: "Slide-out panel from left or right edge using HTML <dialog> with header/footer slots and size variants." },
         { id: "modal", name: "Modal", category: "Application", description: "Dialog overlay using HTML <dialog> with header/footer slots." },
         { id: "dropdown", name: "Dropdown", category: "Application", description: "Dropdown menu with items, icons, and keyboard navigation." },
         { id: "table", name: "Table", category: "Application",
@@ -66,6 +68,20 @@ module UntitledUi
           description: "Dropdown select with optional search filtering, keyboard navigation, and form builder integration." },
         { id: "date_picker", name: "Date Picker", category: "Base",
           description: "Calendar date picker with month navigation, range constraints, and input styling." },
+        { id: "skeleton", name: "Skeleton", category: "Base",
+          description: "Animated placeholder skeleton for loading states with text, circular, and rectangular variants." },
+        { id: "timeline", name: "Timeline", category: "Application",
+          description: "Vertical timeline with connector lines, colored dot/icon indicators, title, description, and timestamp per item." },
+        { id: "accordion", name: "Accordion", category: "Application",
+          description: "Collapsible accordion with single or multiple open items, animated height transitions, and chevron rotation." },
+        { id: "tag_input", name: "Tag Input", category: "Base",
+          description: "Tag input with pill-style tags, keyboard navigation, duplicate prevention, and max tag limit." },
+        { id: "command_palette", name: "Command Palette", category: "Application",
+          description: "Keyboard-driven command palette with Cmd+K shortcut, live filtering, grouped items, and keyboard navigation." },
+        { id: "stepper", name: "Stepper", category: "Application",
+          description: "Multi-step wizard with progress indicators, connector lines, content panels, and next/prev navigation." },
+        { id: "color_picker", name: "Color Picker", category: "Base",
+          description: "Color picker with preset swatches grid and hex input field for selecting colors." },
         { id: "slider", name: "Slider", category: "Base",
           description: "Range slider with brand-colored filled track, value display, and form submission support." }
       ].freeze
@@ -86,7 +102,7 @@ module UntitledUi
 
       def show
         @component = COMPONENTS.find { |c| c[:id] == params[:id] }
-        redirect_to design_system_components_path, alert: "Component not found" unless @component
+        redirect_to components_path, alert: "Component not found" unless @component
       end
 
       def playground

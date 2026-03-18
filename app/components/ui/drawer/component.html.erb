@@ -1,0 +1,36 @@
+<div data-controller="drawer">
+<% if trigger.present? %>
+  <div data-action="click->drawer#open">
+    <%= trigger %>
+  </div>
+<% end %>
+
+<dialog id="<%= drawer_id %>"
+        class="<%= overlay_classes %>"
+        data-drawer-target="dialog"
+        data-action="click->drawer#closeOnBackdrop">
+  <div class="<%= panel_classes %>"
+       data-drawer-target="panel">
+    <% if header.present? %>
+      <div class="flex items-start justify-between border-b border-secondary px-6 py-5 shrink-0">
+        <div class="flex-1"><%= header %></div>
+        <div data-action="click->drawer#close">
+          <%= render Ui::CloseButton::Component.new(
+            label: "Close drawer"
+          ) %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="flex-1 overflow-y-auto px-6 py-5">
+      <%= content %>
+    </div>
+
+    <% if footer.present? %>
+      <div class="flex items-center justify-end gap-3 border-t border-secondary px-6 py-4 shrink-0">
+        <%= footer %>
+      </div>
+    <% end %>
+  </div>
+</dialog>
+</div>
