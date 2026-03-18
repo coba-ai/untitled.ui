@@ -219,6 +219,22 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       end
     end
 
+    it "dynamically discovers all controllers from the gem" do
+      Dir.mktmpdir do |root|
+        prepare_importmap_app!(root)
+        run_install!(root)
+
+        js = File.read(File.join(root, "app/javascript/controllers/index.js"))
+        # Verify new controllers are included (not just the original 8)
+        expect(js).to include('application.register("drawer", DrawerController)')
+        expect(js).to include('application.register("accordion", AccordionController)')
+        expect(js).to include('application.register("select", SelectController)')
+        expect(js).to include('application.register("toast", ToastController)')
+        expect(js).to include('application.register("file-upload", FileUploadController)')
+        expect(js).to include("// End UntitledUi Stimulus controllers")
+      end
+    end
+
     it "copies JS files and uses relative imports for node bundlers" do
       Dir.mktmpdir do |root|
         prepare_node_app!(root)
@@ -251,7 +267,7 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
         run_install!(root)
 
         js = File.read(File.join(root, "app/javascript/controllers/index.js"))
-        expect(js.scan("UntitledUi Stimulus controllers").length).to eq(1)
+        expect(js.scan("// UntitledUi Stimulus controllers\n").length).to eq(1)
         expect(js.scan('application.register("checkbox"').length).to eq(1)
       end
     end
@@ -273,7 +289,7 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
         js = File.read(File.join(root, "app/javascript/controllers/index.js"))
         expect(js).to include('from "./untitled_ui/checkbox_controller"')
         expect(js).not_to include('from "untitled_ui/checkbox_controller"')
-        expect(js.scan("UntitledUi Stimulus controllers").length).to eq(1)
+        expect(js.scan("// UntitledUi Stimulus controllers\n").length).to eq(1)
       end
     end
   end
