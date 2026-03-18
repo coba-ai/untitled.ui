@@ -1,0 +1,104 @@
+<%= render "untitled_ui/design_system/shared/example_section", title: "Basic Drawer (Right)" do %>
+  <%= render Ui::Drawer::Component.new(id: "ds-drawer-basic") do |drawer| %>
+    <% drawer.with_trigger do %>
+      <%= render(Ui::Button::Component.new) { "Open Drawer" } %>
+    <% end %>
+    <% drawer.with_header do %>
+      <h3 class="text-lg font-semibold text-primary">Drawer Title</h3>
+      <p class="text-sm text-tertiary">This is a description of the drawer content.</p>
+    <% end %>
+    <p class="text-sm text-tertiary">This is the body content of the drawer. You can put any content here including forms, text, or other components.</p>
+    <% drawer.with_footer do %>
+      <div class="flex justify-end gap-3">
+        <%= render(Ui::Button::Component.new(color: :secondary, data: { action: "click->drawer#close" })) { "Cancel" } %>
+        <%= render(Ui::Button::Component.new(data: { action: "click->drawer#close" })) { "Confirm" } %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Drawer::Component.new(id: "my-drawer") do |drawer|
+  drawer.with_trigger do
+    render(Ui::Button::Component.new) { "Open Drawer" }
+  end
+  drawer.with_header do
+    # <h3>Title</h3>
+  end
+  # <p>Body content here.</p>
+  drawer.with_footer do
+    render(Ui::Button::Component.new(color: :secondary)) { "Cancel" }
+    render(Ui::Button::Component.new) { "Confirm" }
+  end
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Left Position" do %>
+  <%= render Ui::Drawer::Component.new(id: "ds-drawer-left", position: :left) do |drawer| %>
+    <% drawer.with_trigger do %>
+      <%= render(Ui::Button::Component.new(color: :secondary)) { "Open Left Drawer" } %>
+    <% end %>
+    <% drawer.with_header do %>
+      <h3 class="text-lg font-semibold text-primary">Left Drawer</h3>
+    <% end %>
+    <p class="text-sm text-tertiary">This drawer slides in from the left side of the screen.</p>
+    <% drawer.with_footer do %>
+      <%= render(Ui::Button::Component.new(color: :secondary, data: { action: "click->drawer#close" })) { "Close" } %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Drawer::Component.new(position: :left) do |drawer|
+  # ...
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Size Variants" do %>
+  <div class="flex flex-wrap gap-3">
+    <%= render Ui::Drawer::Component.new(id: "ds-drawer-sm", size: :sm) do |drawer| %>
+      <% drawer.with_trigger do %>
+        <%= render(Ui::Button::Component.new(color: :secondary, size: :sm)) { "Small (w-80)" } %>
+      <% end %>
+      <% drawer.with_header do %>
+        <h3 class="text-lg font-semibold text-primary">Small Drawer</h3>
+      <% end %>
+      <p class="text-sm text-tertiary">This is the small size drawer (w-80).</p>
+    <% end %>
+
+    <%= render Ui::Drawer::Component.new(id: "ds-drawer-md", size: :md) do |drawer| %>
+      <% drawer.with_trigger do %>
+        <%= render(Ui::Button::Component.new(color: :secondary, size: :sm)) { "Medium (w-96)" } %>
+      <% end %>
+      <% drawer.with_header do %>
+        <h3 class="text-lg font-semibold text-primary">Medium Drawer</h3>
+      <% end %>
+      <p class="text-sm text-tertiary">This is the medium size drawer (w-96). This is the default size.</p>
+    <% end %>
+
+    <%= render Ui::Drawer::Component.new(id: "ds-drawer-lg", size: :lg) do |drawer| %>
+      <% drawer.with_trigger do %>
+        <%= render(Ui::Button::Component.new(color: :secondary, size: :sm)) { "Large (w-[32rem])" } %>
+      <% end %>
+      <% drawer.with_header do %>
+        <h3 class="text-lg font-semibold text-primary">Large Drawer</h3>
+      <% end %>
+      <p class="text-sm text-tertiary">This is the large size drawer (w-[32rem]).</p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '# Size variants: :sm (w-80), :md (w-96, default), :lg (w-[32rem])
+render Ui::Drawer::Component.new(size: :lg) do |drawer|
+  # ...
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Without Footer" do %>
+  <%= render Ui::Drawer::Component.new(id: "ds-drawer-no-footer") do |drawer| %>
+    <% drawer.with_trigger do %>
+      <%= render(Ui::Button::Component.new(color: :secondary)) { "Open (No Footer)" } %>
+    <% end %>
+    <% drawer.with_header do %>
+      <h3 class="text-lg font-semibold text-primary">Information</h3>
+    <% end %>
+    <p class="text-sm text-tertiary">This drawer has no footer. Use the close button in the header to dismiss.</p>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: '# Omit drawer.with_footer to render without footer' %>

@@ -33,6 +33,39 @@
 end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Sortable Columns" do %>
+  <%= render Ui::Table::Component.new(sortable: true) do |table| %>
+    <% table.with_column(label: "Name") %>
+    <% table.with_column(label: "Email") %>
+    <% table.with_column(label: "Role") %>
+    <% table.with_column(label: "Status") %>
+    <tr class="border-b border-secondary">
+      <td class="px-6 py-4 text-sm font-medium text-primary">Jane Cooper</td>
+      <td class="px-6 py-4 text-sm text-tertiary">jane@example.com</td>
+      <td class="px-6 py-4 text-sm text-tertiary">Admin</td>
+      <td class="px-6 py-4"><%= render(Ui::Badge::Component.new(color: :success, type: :pill_color)) { "Active" } %></td>
+    </tr>
+    <tr class="border-b border-secondary">
+      <td class="px-6 py-4 text-sm font-medium text-primary">Alice Brown</td>
+      <td class="px-6 py-4 text-sm text-tertiary">alice@example.com</td>
+      <td class="px-6 py-4 text-sm text-tertiary">Viewer</td>
+      <td class="px-6 py-4"><%= render(Ui::Badge::Component.new(color: :gray, type: :pill_color)) { "Inactive" } %></td>
+    </tr>
+    <tr>
+      <td class="px-6 py-4 text-sm font-medium text-primary">John Smith</td>
+      <td class="px-6 py-4 text-sm text-tertiary">john@example.com</td>
+      <td class="px-6 py-4 text-sm text-tertiary">Member</td>
+      <td class="px-6 py-4"><%= render(Ui::Badge::Component.new(color: :warning, type: :pill_color)) { "Pending" } %></td>
+    </tr>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Table::Component.new(sortable: true) do |table|
+  table.with_column(label: "Name")
+  table.with_column(label: "Email")
+  # All columns become sortable; click header to toggle sort direction
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Per-Column Sortable" do %>
   <%= render Ui::Table::Component.new do |table| %>
     <% table.with_column(label: "Name", sortable: true) %>
     <% table.with_column(label: "Email", sortable: true) %>
@@ -53,7 +86,92 @@ end' %>
   <% end %>
 <% end %>
 
-<%= render "untitled_ui/design_system/shared/code_block", code: 'table.with_column(label: "Name", sortable: true)' %>
+<%= render "untitled_ui/design_system/shared/code_block", code: 'table.with_column(label: "Name", sortable: true)
+table.with_column(label: "Email", sortable: true)
+table.with_column(label: "Role")  # not sortable' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "With Row Selection" do %>
+  <%= render Ui::Table::Component.new(selectable: true) do |table| %>
+    <% table.with_column(label: "Name") %>
+    <% table.with_column(label: "Email") %>
+    <% table.with_column(label: "Role") %>
+    <% table.with_bulk_actions do %>
+      <div class="flex items-center gap-3">
+        <span class="text-sm font-medium text-secondary">rows selected</span>
+        <%= render(Ui::Button::Component.new(size: :sm, color: :secondary)) { "Archive" } %>
+        <%= render(Ui::Button::Component.new(size: :sm, color: :error)) { "Delete" } %>
+      </div>
+    <% end %>
+    <tr class="border-b border-secondary">
+      <td class="pl-6 pr-3 py-4 w-10">
+        <input type="checkbox" class="size-4 rounded border-primary text-brand-solid focus:ring-brand-solid cursor-pointer" data-table-target="rowCheckbox" data-action="change->table#toggleRow" />
+      </td>
+      <td class="px-6 py-4 text-sm font-medium text-primary">Jane Cooper</td>
+      <td class="px-6 py-4 text-sm text-tertiary">jane@example.com</td>
+      <td class="px-6 py-4 text-sm text-tertiary">Admin</td>
+    </tr>
+    <tr class="border-b border-secondary">
+      <td class="pl-6 pr-3 py-4 w-10">
+        <input type="checkbox" class="size-4 rounded border-primary text-brand-solid focus:ring-brand-solid cursor-pointer" data-table-target="rowCheckbox" data-action="change->table#toggleRow" />
+      </td>
+      <td class="px-6 py-4 text-sm font-medium text-primary">John Smith</td>
+      <td class="px-6 py-4 text-sm text-tertiary">john@example.com</td>
+      <td class="px-6 py-4 text-sm text-tertiary">Member</td>
+    </tr>
+    <tr>
+      <td class="pl-6 pr-3 py-4 w-10">
+        <input type="checkbox" class="size-4 rounded border-primary text-brand-solid focus:ring-brand-solid cursor-pointer" data-table-target="rowCheckbox" data-action="change->table#toggleRow" />
+      </td>
+      <td class="px-6 py-4 text-sm font-medium text-primary">Alice Brown</td>
+      <td class="px-6 py-4 text-sm text-tertiary">alice@example.com</td>
+      <td class="px-6 py-4 text-sm text-tertiary">Viewer</td>
+    </tr>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Table::Component.new(selectable: true) do |table|
+  table.with_column(label: "Name")
+  table.with_bulk_actions do
+    render(Ui::Button::Component.new(size: :sm, color: :error)) { "Delete" }
+  end
+  # Each <tr> needs a checkbox <td> as the first cell:
+  # <td><input type="checkbox" data-table-target="rowCheckbox" data-action="change->table#toggleRow" /></td>
+end' %>
+
+<%= render "untitled_ui/design_system/shared/example_section", title: "Selectable + Sortable" do %>
+  <%= render Ui::Table::Component.new(selectable: true, sortable: true) do |table| %>
+    <% table.with_column(label: "Name") %>
+    <% table.with_column(label: "Email") %>
+    <% table.with_column(label: "Role") %>
+    <% table.with_bulk_actions do %>
+      <div class="flex items-center gap-3">
+        <span class="text-sm font-medium text-secondary">rows selected</span>
+        <%= render(Ui::Button::Component.new(size: :sm, color: :error)) { "Delete" } %>
+      </div>
+    <% end %>
+    <tr class="border-b border-secondary">
+      <td class="pl-6 pr-3 py-4 w-10">
+        <input type="checkbox" class="size-4 rounded border-primary text-brand-solid focus:ring-brand-solid cursor-pointer" data-table-target="rowCheckbox" data-action="change->table#toggleRow" />
+      </td>
+      <td class="px-6 py-4 text-sm font-medium text-primary">Jane Cooper</td>
+      <td class="px-6 py-4 text-sm text-tertiary">jane@example.com</td>
+      <td class="px-6 py-4 text-sm text-tertiary">Admin</td>
+    </tr>
+    <tr>
+      <td class="pl-6 pr-3 py-4 w-10">
+        <input type="checkbox" class="size-4 rounded border-primary text-brand-solid focus:ring-brand-solid cursor-pointer" data-table-target="rowCheckbox" data-action="change->table#toggleRow" />
+      </td>
+      <td class="px-6 py-4 text-sm font-medium text-primary">John Smith</td>
+      <td class="px-6 py-4 text-sm text-tertiary">john@example.com</td>
+      <td class="px-6 py-4 text-sm text-tertiary">Member</td>
+    </tr>
+  <% end %>
+<% end %>
+
+<%= render "untitled_ui/design_system/shared/code_block", code: 'render Ui::Table::Component.new(selectable: true, sortable: true) do |table|
+  table.with_column(label: "Name")
+  # ...
+end' %>
 
 <%= render "untitled_ui/design_system/shared/example_section", title: "With Header Content" do %>
   <%= render Ui::Table::Component.new do |table| %>

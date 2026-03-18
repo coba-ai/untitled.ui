@@ -44,9 +44,10 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
       expect(File.exist?(File.join(root, "app/components/ui/button/component.rb"))).to be(false)
       expect(File.exist?(File.join(root, "app/components/ui/button/component.html.erb"))).to be(false)
 
-      # Views and layouts ARE still copied
-      expect(File.exist?(File.join(root, "app/views/untitled_ui/design_system/components/index.html.erb"))).to be(true)
-      expect(File.exist?(File.join(root, "app/views/layouts/untitled_ui/design_system.html.erb"))).to be(true)
+      # Only example partials are copied — layout and index/show come from the gem
+      expect(File.exist?(File.join(root, "app/views/untitled_ui/design_system/components/examples/_button.html.erb"))).to be(true)
+      expect(File.exist?(File.join(root, "app/views/untitled_ui/design_system/components/index.html.erb"))).to be(false)
+      expect(File.exist?(File.join(root, "app/views/layouts/untitled_ui/design_system.html.erb"))).to be(false)
       expect(File.exist?(File.join(root, "app/assets/tailwind/untitled_ui/theme.css"))).to be(true)
 
       # sources.css is generated with relative path (not absolute)
@@ -152,35 +153,46 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
     end
   end
 
-  it "updates untitled_ui design system view templates on reinstall" do
+  it "removes stale view overrides from previous installs" do
     Dir.mktmpdir do |root|
       prepare_minimal_app!(root)
+
+      stale_files = [
+        "app/views/untitled_ui/design_system/components/index.html.erb",
+        "app/views/untitled_ui/design_system/components/show.html.erb",
+        "app/views/untitled_ui/design_system/components/_playground.html.erb",
+        "app/views/untitled_ui/design_system/components/_playground_preview.html.erb",
+        "app/views/untitled_ui/design_system/shared/_example_section.html.erb",
+        "app/views/untitled_ui/design_system/shared/_code_block.html.erb",
+        "app/views/layouts/untitled_ui/design_system.html.erb"
+      ]
+
+      stale_files.each do |file|
+        path = File.join(root, file)
+        FileUtils.mkdir_p(File.dirname(path))
+        File.write(path, "<!-- stale -->\n")
+      end
+
       run_install!(root)
 
-      view_path = File.join(root, "app/views/untitled_ui/design_system/components/show.html.erb")
-      File.write(view_path, "<!-- stale -->\n")
-
-      run_install!(root)
-
-      view = File.read(view_path)
-      expect(view).not_to include("<!-- stale -->")
-      expect(view).to include("<h1 class=\"text-display-sm font-semibold text-primary\">")
+      stale_files.each do |file|
+        expect(File.exist?(File.join(root, file))).to be(false), "Expected #{file} to be removed"
+      end
     end
   end
 
-  it "updates untitled_ui design system layout template on reinstall" do
+  it "updates example partials on reinstall" do
     Dir.mktmpdir do |root|
       prepare_minimal_app!(root)
       run_install!(root)
 
-      layout_path = File.join(root, "app/views/layouts/untitled_ui/design_system.html.erb")
-      File.write(layout_path, "<!-- stale layout -->\n")
+      example_path = File.join(root, "app/views/untitled_ui/design_system/components/examples/_button.html.erb")
+      File.write(example_path, "<!-- stale -->\n")
 
       run_install!(root)
 
-      layout = File.read(layout_path)
-      expect(layout).not_to include("<!-- stale layout -->")
-      expect(layout).to include("<aside class=\"sticky top-0")
+      content = File.read(example_path)
+      expect(content).not_to include("<!-- stale -->")
     end
   end
 
@@ -204,6 +216,22 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
         expect(js).to include('from "untitled_ui/checkbox_controller"')
         expect(js).to include('application.register("checkbox", CheckboxController)')
         expect(js).not_to include("./untitled_ui")
+      end
+    end
+
+    it "dynamically discovers all controllers from the gem" do
+      Dir.mktmpdir do |root|
+        prepare_importmap_app!(root)
+        run_install!(root)
+
+        js = File.read(File.join(root, "app/javascript/controllers/index.js"))
+        # Verify new controllers are included (not just the original 8)
+        expect(js).to include('application.register("drawer", DrawerController)')
+        expect(js).to include('application.register("accordion", AccordionController)')
+        expect(js).to include('application.register("select", SelectController)')
+        expect(js).to include('application.register("toast", ToastController)')
+        expect(js).to include('application.register("file-upload", FileUploadController)')
+        expect(js).to include("// End UntitledUi Stimulus controllers")
       end
     end
 
@@ -239,7 +267,7 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
         run_install!(root)
 
         js = File.read(File.join(root, "app/javascript/controllers/index.js"))
-        expect(js.scan("UntitledUi Stimulus controllers").length).to eq(1)
+        expect(js.scan("// UntitledUi Stimulus controllers\n").length).to eq(1)
         expect(js.scan('application.register("checkbox"').length).to eq(1)
       end
     end
@@ -261,7 +289,7 @@ RSpec.describe UntitledUi::Generators::InstallGenerator do
         js = File.read(File.join(root, "app/javascript/controllers/index.js"))
         expect(js).to include('from "./untitled_ui/checkbox_controller"')
         expect(js).not_to include('from "untitled_ui/checkbox_controller"')
-        expect(js.scan("UntitledUi Stimulus controllers").length).to eq(1)
+        expect(js.scan("// UntitledUi Stimulus controllers\n").length).to eq(1)
       end
     end
   end
