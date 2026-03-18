@@ -3,15 +3,18 @@
 module Ui
   module Table
     class Component < Ui::Base
-      attr_reader :size, :extra_classes
+      attr_reader :size, :extra_classes, :selectable, :sortable
 
       renders_one :header_content
+      renders_one :bulk_actions
       renders_many :columns, lambda { |label:, sortable: false, tooltip: nil, **opts|
-        Ui::Table::Column.new(label: label, sortable: sortable, tooltip: tooltip, size: @size, **opts)
+        Ui::Table::Column.new(label: label, sortable: sortable || @sortable, tooltip: tooltip, size: @size, **opts)
       }
 
-      def initialize(size: :md, class: nil, **_opts)
+      def initialize(size: :md, selectable: false, sortable: false, class: nil, **_opts)
         @size = size.to_sym
+        @selectable = selectable
+        @sortable = sortable
         @extra_classes = binding.local_variable_get(:class)
       end
 
@@ -25,6 +28,12 @@ module Ui
 
       def row_height
         @size == :sm ? "h-14" : "h-18"
+      end
+
+      def stimulus_controller_attrs
+        return {} unless @selectable || @sortable
+
+        { "data-controller" => "table" }
       end
     end
 

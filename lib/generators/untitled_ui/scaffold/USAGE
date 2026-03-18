@@ -1,0 +1,55 @@
+Description:
+    Generates a complete component scaffold for the UntitledUi design system.
+
+    This generator creates:
+    - app/components/ui/{name}/component.rb       — Ruby class extending Ui::Base
+    - app/components/ui/{name}/component.html.erb — ERB template with root div
+    - spec/components/ui/{name}_component_spec.rb — RSpec tests
+    - app/views/untitled_ui/design_system/components/examples/_{name}.html.erb — Design system preview
+    - Registers the component in the COMPONENTS array of components_controller.rb
+
+    With --stimulus:
+    - app/javascript/untitled_ui/{name}_controller.js — Stimulus controller
+    - Registers the controller in app/javascript/untitled_ui/index.js
+
+Usage:
+    rails generate untitled_ui:scaffold NAME [options]
+
+Arguments:
+    NAME    The component name in snake_case (e.g. my_component, card_header)
+
+Options:
+    --stimulus
+        Generate a Stimulus controller alongside the component.
+
+    --slots=SLOT[,SLOT,...]
+        Add renders_one slots to the component.
+        Example: --slots=header,footer,actions
+
+    --props=PROP_DEF[,PROP_DEF,...]
+        Add props to the component's initializer.
+        Each PROP_DEF can be:
+          name              — string prop (defaults to nil)
+          name:string       — explicit string prop
+          name:boolean      — boolean prop (defaults to false)
+          name:select:a:b:c — symbol prop restricted to given values (defaults to first value)
+        Example: --props=size:select:sm:md:lg,disabled:boolean,label:string
+
+Examples:
+    # Basic scaffold
+    rails generate untitled_ui:scaffold my_component
+
+    # With a Stimulus controller
+    rails generate untitled_ui:scaffold my_component --stimulus
+
+    # With slots
+    rails generate untitled_ui:scaffold card --slots=header,body,footer
+
+    # With typed props
+    rails generate untitled_ui:scaffold badge --props=size:select:sm:md:lg,color:select:gray:brand:error,dismissible:boolean
+
+    # Full-featured example
+    rails generate untitled_ui:scaffold notification \
+      --stimulus \
+      --slots=icon,actions \
+      --props=variant:select:info:success:warning:error,dismissible:boolean,title:string
