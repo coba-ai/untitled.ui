@@ -1,6 +1,6 @@
-# UntitledUi
+# Untitled UI
 
-A ViewComponent-based design system implementing Untitled UI tokens, components, and patterns for Rails applications with Tailwind CSS v4.
+A comprehensive ViewComponent-based design system for Rails applications, implementing Untitled UI tokens, components, and patterns with Tailwind CSS v4.
 
 ## Requirements
 
@@ -8,68 +8,32 @@ A ViewComponent-based design system implementing Untitled UI tokens, components,
 - Rails >= 7.1
 - [ViewComponent](https://viewcomponent.org/) >= 3.0
 - [Tailwind CSS v4](https://tailwindcss.com/) with `@import "tailwindcss"`
-- [Importmap-rails](https://github.com/rails/importmap-rails) (for Stimulus controllers)
-- [Propshaft](https://github.com/rails/propshaft) (asset pipeline)
+- [Stimulus](https://stimulus.hotwired.dev/) (for interactive components)
 
 ## Installation
 
 Add the gem to your `Gemfile`:
 
 ```ruby
-# From GitHub
 gem "untitled_ui", github: "coba-ai/untitled.ui", branch: "main"
-
-# Or from a local path during development
-gem "untitled_ui", path: "../untitled_ui"
 ```
 
 Then run:
 
 ```bash
 bundle install
-```
-
-### Run the Install Generator
-
-```bash
 rails generate untitled_ui:install
 ```
 
-The generator performs the following steps:
-
-1. **Copies a brand color template** to `app/assets/tailwind/untitled_ui_colors.css`. It starts with the default Untitled UI palette and can be edited to match your brand.
-
-2. **Copies Untitled UI templates into your app**:
-   - `app/components/ui/**` (component classes and templates)
-   - `app/views/untitled_ui/**` (design system views)
-   - `app/views/layouts/untitled_ui/**` (design system layout)
-   - `app/assets/tailwind/untitled_ui/**` (theme, typography, globals, hacker CSS)
-
-3. **Injects CSS imports** into your `app/assets/tailwind/application.css`:
-   ```css
-   @import "./untitled_ui/theme.css";
-   @import "./untitled_ui/typography.css";
-   @import "./untitled_ui/globals.css";
-   @import "./untitled_ui/hacker.css";
-   @import "./untitled_ui_colors.css";
-   @source "../../components/**/*.erb";
-   @source "../../components/**/*.rb";
-   @source "../../views/**/*.erb";
-   ```
-
-4. **Mounts the engine** in your `config/routes.rb`:
-   ```ruby
-   mount UntitledUi::Engine => "/design_system"
-   ```
-   This gives you a built-in design system browser at `/design_system` with live examples for every component.
-
-5. **Registers Stimulus controllers** in `app/javascript/controllers/index.js` for interactive components (checkbox, dropdown, modal, tabs, toggle, tooltip).
+The install generator:
+1. Copies Tailwind CSS theme files and a brand color template
+2. Creates `@source` directives so Tailwind scans gem components and views
+3. Copies component example partials for the design system
+4. Cleans up stale view overrides from previous installs
+5. Mounts the engine at `/design_system`
+6. Dynamically discovers and registers all Stimulus controllers
 
 ## Usage
-
-### Components
-
-Use components in any view:
 
 ```erb
 <%= render(Ui::Button::Component.new(color: :primary, size: :md)) { "Click me" } %>
@@ -77,99 +41,200 @@ Use components in any view:
 <%= render Ui::Input::Component.new(label: "Email", placeholder: "you@example.com") %>
 
 <%= render(Ui::Badge::Component.new(color: :success)) { "Active" } %>
+```
 
-<%= render Ui::Modal::Component.new do |modal| %>
-  <% modal.with_trigger { "Open" } %>
-  <% modal.with_header { "Modal Title" } %>
-  Modal content here
+## Components
+
+### Base Components
+
+| Component | Description | Props |
+|-----------|-------------|-------|
+| **Alert** | Persistent banner with info/success/warning/error variants | `title:`, `description:`, `variant:`, `dismissible:`, `icon:` |
+| **Avatar** | User avatar with image, initials, or placeholder | `name:`, `src:`, `size:` |
+| **Badge** | Status indicator with pill/badge types, 10 colors | `type:`, `size:`, `color:`, `dot:`, `dismissible:` |
+| **Button** | Versatile button with sizes, colors, icons, loading | `size:`, `color:`, `tag:`, `href:`, `disabled:`, `loading:` |
+| **Card** | Content container with header, footer, media slots | `padding:`, `shadow:`, `border:`, `rounded:` |
+| **Checkbox** | Checkbox with visual indicator, label, hint | `size:`, `label:`, `hint:`, `checked:`, `disabled:` |
+| **Close Button** | Accessible close button with size/theme variants | `size:`, `theme:` |
+| **Color Picker** | Color picker with swatch grid and hex input | `name:`, `value:`, `label:`, `swatches:`, `disabled:` |
+| **Date Picker** | Calendar dropdown with month navigation | `name:`, `value:`, `label:`, `min:`, `max:`, `format:` |
+| **Dot Icon** | Simple colored dot indicator | `size:`, `color:` |
+| **Featured Icon** | Icon container with light/dark/modern/outline themes | `theme:`, `color:`, `size:` |
+| **File Upload** | Drag-and-drop upload zone with click fallback | `name:`, `accept:`, `multiple:`, `max_size:`, `label:` |
+| **Hint Text** | Helper text for form fields | `invalid:` |
+| **Input** | Text input with label, hint, icon, validation | `size:`, `label:`, `hint:`, `placeholder:`, `invalid:`, `id:` |
+| **Label** | Form label with required asterisk and tooltip | `text:`, `required:`, `tooltip:`, `for_id:` |
+| **Loading Indicator** | Animated spinner | `type:`, `size:`, `label:` |
+| **Progress Bar** | Progress bar with value, label, percentage | `value:`, `label:` |
+| **Radio Button** | Radio button with dot indicator, label, hint | `size:`, `label:`, `hint:`, `checked:`, `name:`, `value:` |
+| **Select** | Dropdown select with search, keyboard navigation | `name:`, `options:`, `searchable:`, `label:`, `placeholder:` |
+| **Skeleton** | Loading placeholder with text/circular/rectangular | `variant:`, `lines:`, `width:`, `height:`, `animated:` |
+| **Slider** | Range slider with brand-colored fill track | `name:`, `value:`, `min:`, `max:`, `step:`, `label:` |
+| **Tag Input** | Multi-value input with pills, add/remove | `name:`, `value:`, `placeholder:`, `max_tags:`, `label:` |
+| **Textarea** | Multi-line text input with label, hint, validation | `label:`, `hint:`, `placeholder:`, `rows:`, `invalid:` |
+| **Toggle** | Toggle switch with track/thumb animation | `size:`, `label:`, `hint:`, `checked:`, `disabled:` |
+| **Tooltip** | Tooltip with title, description, placement | `title:`, `description:`, `placement:` |
+
+### Application Components
+
+| Component | Description | Props |
+|-----------|-------------|-------|
+| **Accordion** | Collapsible sections, single/multiple open | `multiple:` + `renders_many :items` with `title:`, `open:`, `icon:` |
+| **Button Group** | Groups buttons with shared border styling | -- |
+| **Command Palette** | Cmd+K search overlay with grouped items | `placeholder:`, `items:` + `renders_one :trigger` |
+| **Drawer** | Slide-out panel from left/right | `position:`, `size:` + trigger/header/footer slots |
+| **Dropdown** | Dropdown menu with items and keyboard navigation | -- |
+| **Empty State** | Placeholder for empty views | `title:`, `description:`, `size:` |
+| **Modal** | Dialog overlay with header/footer slots | `id:` + trigger/header/footer slots |
+| **Pagination** | Pagination with 4 variant types | -- |
+| **Progress Steps** | Horizontal progress indicators | -- |
+| **Stat** | Metric card with value, trend, change | `label:`, `value:`, `change:`, `trend:`, `period:`, `icon:` |
+| **Stepper** | Multi-step wizard with navigation | `current_step:` + `renders_many :steps, :panels` |
+| **Table** | Data table with sort, selection, bulk actions | `size:`, `selectable:`, `sortable:` + `renders_one :bulk_actions` |
+| **Tabs** | Tab navigation with button/underline types | -- |
+| **Timeline** | Vertical event feed with connector lines | `renders_many :items` with `title:`, `timestamp:`, `color:`, `icon:` |
+| **Toast** | Auto-dismiss notification | `title:`, `description:`, `variant:`, `duration:`, `dismissible:` |
+
+### Navigation Components
+
+| Component | Description |
+|-----------|-------------|
+| **Breadcrumb** | Breadcrumb with chevron/slash separators and `current:` support |
+| **Nav Sidebar** | Sidebar navigation with 5 variant types |
+| **Nav Header** | Top header navigation bar |
+| **Nav Item** | Navigation link with collapsible, icon, badge support |
+| **Nav Account Card** | User account card with avatar and dropdown |
+
+## Form Builder
+
+Ergonomic form helpers that auto-populate names, values, labels, and validation errors:
+
+```erb
+<%= form_with model: @user, builder: UntitledUi::FormBuilder do |form| %>
+  <%= form.ui_input :email, placeholder: "you@example.com" %>
+  <%= form.ui_textarea :bio %>
+  <%= form.ui_select :role, options: [["Admin", "admin"], ["Member", "member"]] %>
+  <%= form.ui_checkbox :terms, label: "I agree to the terms" %>
+  <%= form.ui_toggle :notifications %>
+  <%= form.ui_radio_button :plan, value: "pro" %>
+  <%= form.ui_button "Save" %>
 <% end %>
 ```
 
-### Available Components
+## Design System
 
-| Category | Components |
-|----------|-----------|
-| **Actions** | Button, ButtonGroup, CloseButton, Dropdown |
-| **Feedback** | Badge, ProgressBar, LoadingIndicator, EmptyState |
-| **Forms** | Input, Textarea, Checkbox, Toggle, RadioButton, Label, HintText |
-| **Data Display** | Avatar, Table, Tabs, DotIcon, FeaturedIcon |
-| **Overlays** | Modal, Tooltip |
-| **Navigation** | Sidebar, Header, MobileHeader, Item, ItemButton, AccountCard, List |
-| **Layout** | Pagination, ProgressSteps |
-
-### Design System Browser
-
-Visit `/design_system` to browse all components with live, interactive examples and copy-to-clipboard code snippets.
-
-### Customizing Brand Colors
-
-Edit `app/assets/tailwind/untitled_ui_colors.css` to customize your brand palette. The Untitled UI token system automatically cascades your brand colors through all semantic tokens used by the components.
+Visit `/design_system` to browse all components with:
+- Live interactive examples
+- Copy-to-clipboard code snippets
+- **Playground** -- interactive controls to tweak component props in real-time (available for all components)
+- **Theme switcher** -- dropdown to preview all installed themes
+- **Dark mode toggle** -- switch between light and dark variants
+- Alphabetically sorted sidebar with live search
 
 ## Themes
 
-UntitledUi ships with two themes: the default clean/professional theme and a **hacker theme** (terminal-inspired with neon green accents, monospace fonts, and dark backgrounds).
+### Built-in Presets
 
-### Theme Toggle in the Design System
+Generate themes with curated color palettes:
 
-The design system browser (`/design_system`) includes a theme toggle button in the sidebar. Click the terminal icon to switch to the hacker theme. The preference is saved in localStorage and persists across page reloads.
-
-### Setting the Default Theme
-
-Configure the default theme in an initializer:
-
-```ruby
-# config/initializers/untitled_ui.rb
-UntitledUi.configure do |config|
-  config.theme = :hacker  # :default or :hacker
-end
+```bash
+rails generate untitled_ui:theme corporate --preset=corporate  # Indigo-blue
+rails generate untitled_ui:theme ocean --preset=ocean          # Blue-teal
+rails generate untitled_ui:theme warm --preset=warm            # Orange-earth
+rails generate untitled_ui:theme dark --preset=dark            # Professional dark
 ```
 
-### Using the Theme in Your Own Layouts
+Each preset automatically generates a dark variant (e.g., `dark_corporate.css`).
 
-Add the theme class to your `<body>` tag using the provided helper:
+### Custom Themes
+
+```bash
+# Generate with placeholder colors to customize
+rails generate untitled_ui:theme my_brand
+
+# Generate a custom dark theme
+rails generate untitled_ui:theme midnight --dark
+
+# Combine a preset palette with dark mode
+rails generate untitled_ui:theme dark_ocean --preset=ocean --dark
+```
+
+### Applying Themes
+
+The generator creates the CSS file, adds the `@import`, and configures the initializer automatically.
 
 ```erb
-<body class="<%= untitled_ui_theme_class %>">
+<body class="ocean-theme">
 ```
 
-Or toggle it with JavaScript for client-side switching:
+Switch dynamically with JavaScript:
 
 ```javascript
-// Enable hacker theme
-document.body.classList.add('hacker-theme');
-
-// Disable hacker theme
-document.body.classList.remove('hacker-theme');
+document.body.className = 'ocean-theme';      // Light
+document.body.className = 'dark_ocean-theme';  // Dark
+document.body.className = '';                  // Default
 ```
 
-### How It Works
+### How Themes Work
 
-The hacker theme uses CSS variable overrides scoped under the `.hacker-theme` class selector. This follows the same pattern as the built-in `.dark-mode` support in `theme.css`. When `.hacker-theme` is present on the body:
+Themes override CSS custom properties (brand, error, warning, success, gray color scales + semantic tokens) scoped under a CSS class. Dark themes also invert semantic tokens (dark backgrounds, light text, adjusted borders). All components automatically pick up theme colors through Tailwind's semantic token system.
 
-- **Fonts**: `--font-body` and `--font-display` resolve to JetBrains Mono / IBM Plex Mono
-- **Border radius**: All `--radius-*` values become `2px` (sharp terminal aesthetic), except `--radius-full` which stays `9999px` for avatars
-- **Shadows**: Skeuomorphic shadows are replaced with subtle green glow effects
-- **Colors**: Full dark palette with neon green (`#00ff88`) as the brand color, terminal-appropriate error/warning/success colors
+## Generators
 
-No component code changes are needed — all Tailwind utilities resolve through CSS custom properties that the theme overrides.
+### Install
 
-### Hacker Utility Classes
+```bash
+rails generate untitled_ui:install
+```
 
-The hacker theme also provides optional utility classes for enhanced terminal effects:
+### Theme
 
-| Class | Effect |
-|-------|--------|
-| `hacker-glow` | Green glow box-shadow |
-| `hacker-scanlines` | CRT scanline overlay via `::after` |
-| `hacker-grid-bg` | Subtle grid background pattern |
-| `hacker-glitch` | Glitch animation |
-| `hacker-cursor` | Blinking cursor via `::after` |
+```bash
+rails generate untitled_ui:theme NAME [--preset=PRESET] [--dark]
+```
+
+Available presets: `corporate`, `ocean`, `warm`, `dark`
+
+### Component Scaffold
+
+Scaffold a new component with all boilerplate:
+
+```bash
+# Basic component
+rails generate untitled_ui:scaffold my_component
+
+# With Stimulus controller
+rails generate untitled_ui:scaffold my_component --stimulus
+
+# With slots
+rails generate untitled_ui:scaffold my_component --slots=header,footer
+
+# With typed props
+rails generate untitled_ui:scaffold my_component --props=size:select:sm:md:lg,disabled:boolean
+
+# Full-featured
+rails generate untitled_ui:scaffold notification \
+  --stimulus \
+  --slots=icon,actions \
+  --props=variant:select:info:success:warning:error,dismissible:boolean,title:string
+```
+
+Generates: component.rb, component.html.erb, spec, design system example, and registers in the COMPONENTS array and index.js.
+
+### Selective Component Installation
+
+Copy specific components to your app for customization:
+
+```bash
+rails generate untitled_ui:component button modal
+```
 
 ## Development
 
 ```bash
 bundle install
-bundle exec rspec
+bundle exec rspec           # Run all 509 specs
+bundle exec rspec spec/components/ui/button_component_spec.rb  # Single component
 ```
 
 ## License
