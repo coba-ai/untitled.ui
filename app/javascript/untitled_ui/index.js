@@ -3,6 +3,7 @@ import { Application } from "@hotwired/stimulus"
 import AccordionController from "untitled_ui/accordion_controller"
 import CheckboxController from "untitled_ui/checkbox_controller"
 import ClipboardController from "untitled_ui/clipboard_controller"
+import CommandPaletteController from "untitled_ui/command_palette_controller"
 import DatePickerController from "untitled_ui/date_picker_controller"
 import DrawerController from "untitled_ui/drawer_controller"
 import DropdownController from "untitled_ui/dropdown_controller"
@@ -21,6 +22,7 @@ const controllerDefinitions = [
   ["accordion", AccordionController],
   ["checkbox", CheckboxController],
   ["clipboard", ClipboardController],
+  ["command-palette", CommandPaletteController],
   ["date-picker", DatePickerController],
   ["drawer", DrawerController],
   ["dropdown", DropdownController],
@@ -50,6 +52,7 @@ export {
   AccordionController,
   CheckboxController,
   ClipboardController,
+  CommandPaletteController,
   DatePickerController,
   DrawerController,
   DropdownController,

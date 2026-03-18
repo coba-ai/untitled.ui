@@ -73,7 +73,9 @@ module UntitledUi
         { id: "timeline", name: "Timeline", category: "Application",
           description: "Vertical timeline with connector lines, colored dot/icon indicators, title, description, and timestamp per item." },
         { id: "accordion", name: "Accordion", category: "Application",
-          description: "Collapsible accordion with single or multiple open items, animated height transitions, and chevron rotation." }
+          description: "Collapsible accordion with single or multiple open items, animated height transitions, and chevron rotation." },
+        { id: "command_palette", name: "Command Palette", category: "Application",
+          description: "Keyboard-driven command palette with Cmd+K shortcut, live filtering, grouped items, and keyboard navigation." }
       ].freeze
 
       def index
